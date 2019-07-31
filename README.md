@@ -44,6 +44,7 @@ Networking, 18'*
    经典的Multi-agent算法。本质上说，是DDPG的扩展；它利用centralized training在训练时为critic网络给出了额外的信息，而actor则不直接利用这些信息；最后测试时只使用actor网络决策。另外它为了防止competitive情况下的overfit，训练了一堆平行的参数每次均匀随机选择。
  * *COMA*
  * *DPIQN*
+ * *Learning with opponent-learning awareness*
  
 ## Policy Gradient
 
@@ -70,6 +71,7 @@ Networking, 18'*
 Networks, Inverse Reinforcement Learning, and
 Energy-Based Models*
   GAN，能量模型和Guided Cost Learning是相通的。
+  
  * *Generative Adversarial Imitation Learning 16'*
   它是GAN在强化学习（实际上是模仿学习）领域的推广。分为两个不断重复的阶段：其中一个阶段是固定Generator优化Discriminator；另一个阶段是固定Discriminator以分类结果的对数似然作为Reward去训练Generator。注意学习architecture要画清楚数据流！
 ## Behavior Cloning
@@ -79,5 +81,50 @@ Energy-Based Models*
 ### Divergence-based Policy Representation
 ### Theory of Mind
 
+## Self Play
+
+### Miscellanous
+* *Multiagent Cooperation and Competition with Deep
+Reinforcement Learning*
+这篇文章好像就是调了一下DQN的reward然后说明可以合作/竞争。没有什么太大价值，应用也不存在的。
+* *Intrinsic motivation and
+automatic curricula via asymmetric self-play*
+LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去了。但是这个算法连OpenAI自己都说方差极大，不稳定，计算极为复杂，显然不适合嵌套到另一个算法的循环里。
+
+
+### Evolutionary
+* *Competitive coevolution through evolutionary complexification*
+进化算法。
+
+### Game theory
+* *Deep Reinforcement Learning from Self-Play in Imperfect-Information Games 16'*
+简介见下面Game theory一节。
+
+### Monte-Carlo Based
+* *Mastering the game of go without human knowledge*
+（未完待续）
+* *Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm 17'*
+这一篇和上一篇基本上没有太大区别。
+* *Emergent Complexity via Multi-Agent Competition ICLR 18'*
+这篇文章的核心思想是competition introduces a natural learning curriculum。
+一般来说避免overfit的方法包括随机抽取一个集合作为对手（同样的思路也用在了MADDPG里），给轨迹的熵加正则项（一般用在机器人控制里面，假设移动服从某种概率分布，如高斯分布）。
+这篇文章用分布式PPO训练。总的来说很吃数据量（想来也是，它完全不采取centralize的方法进行训练。）。
+这篇文章的一个小trick是它使用自己的过去作为sample，另一个是开始阶段手动设计的curriculum。
 ## Game Theory
 ### Fictitious Play
+Fictitious Play是一种寻找双人博弈中Nash均衡的方法。
+* *Full-Width Extensive Form FSP*
+* *Fictitious Self-Play in Extensive-Form Games 15'*
+* *Deep Reinforcement Learning from Self-Play in Imperfect-Information Games 16'*
+它使用了NFSP。NFSP是Fictitious Self Play和Neural Network的结合.
+博弈论的问题：过于domain-specific，难以在未知的环境规律下推广
+ML的问题：在信息不完全时容易发散。
+(未完待续）
+
+### Counterfactual
+
+## Reward Shaping
+* *Policy Invariance Under Reward Transformations： Theory and Application to Reward Shaping, ICML 99'*
+注意区分reward shaping和正则项。这二者都是改变reward函数，但reward shaping是不改变最优策略的；而正则项是会改变最优策略的。
+reward shaping的优点在于完全不会改变最优策略，缺点在于其形式必须满足一个特殊要求：对于任何(s,a,s')的转移，函数都可以写成cf(s')-f(s)，其中c为一小于1的常数。[对于只有位置具有重要性的gridworld就很有用了]
+正则项的优点在于可以加入任何东西，但它不能保证最优解。
