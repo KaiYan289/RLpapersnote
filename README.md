@@ -104,7 +104,7 @@ LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去�
 * *Mastering the game of go without human knowledge*
 （未完待续）
 * *Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm 17'*
-这一篇和上一篇基本上没有太大区别。
+这一篇和上一篇基本上没有太大区别，只是上一篇应用的一个扩展。
 * *Emergent Complexity via Multi-Agent Competition ICLR 18'*
 这篇文章的核心思想是competition introduces a natural learning curriculum。
 一般来说避免overfit的方法包括随机抽取一个集合作为对手（同样的思路也用在了MADDPG里），给轨迹的熵加正则项（一般用在机器人控制里面，假设移动服从某种概率分布，如高斯分布）。
