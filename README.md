@@ -116,10 +116,13 @@ Fictitious Play是一种寻找双人博弈中Nash均衡的方法。
 * *Full-Width Extensive Form FSP*
 * *Fictitious Self-Play in Extensive-Form Games 15'*
 * *Deep Reinforcement Learning from Self-Play in Imperfect-Information Games 16'*
-它使用了NFSP。NFSP是Fictitious Self Play和Neural Network的结合.
+它使用了NFSP。NFSP是Fictitious Self Play和Neural Network的结合，其实就是应用DQN和Behavior Cloning分别做计算最优对策和计算对手当前对策的工作。
 博弈论的问题：过于domain-specific，难以在未知的环境规律下推广
 ML的问题：在信息不完全时容易发散。
-(未完待续）
+* *Monte Carlo Neural Fictitious Self-Play:
+Approach to Approximate Nash Equilibrium of
+Imperfect-Information Games 19'*
+使用Monte-Carlo/异步方法做self-play，提高对局质量。要求所有的agent共享同样的参数。
 
 ### Counterfactual
 
