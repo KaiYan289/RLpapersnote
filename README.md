@@ -37,11 +37,13 @@ Networking, 18'*
  * *AC*
   Actor-Critic从本质上说是Policy Iteration的升级版。
  * *A2C*
+ * *A3C*
  * *SAC*
  
 ## MARL
  * *MADDPG*
    经典的Multi-agent算法。本质上说，是DDPG的扩展；它利用centralized training在训练时为critic网络给出了额外的信息，而actor则不直接利用这些信息；最后测试时只使用actor网络决策。另外它为了防止competitive情况下的overfit，训练了一堆平行的参数每次均匀随机选择。
+ * *R-MADDPG*
  * *COMA*
  * *DPIQN*
  * *Learning with opponent-learning awareness*
@@ -61,9 +63,9 @@ Networking, 18'*
  * *Bayes Inverse Reinforcement
  Learning 08'*
   不需要每次求“最优”Policy了，比较优的就可以。
- * *Maxent 08'*
+ * *Maximum Entropy Inverse Reinforcement Learning 08'*
   两个假设：一个是reward是手动设计的一些特征的线性组合，另一个是认为轨迹的概率分布（这是一个重要概念！）出现的概率是和e^reward成正比。这一篇我复现过，实际效果嘛……emmm。
- * *Deep Maxent 10'*
+ * *Maximum Entropy Deep Inverse Reinforcement Learning 10'*
   “Deep”是用来解决上一篇中特征提取问题的。上一篇认为reward是手动设计的一些特征的线性组合，这里就变成了网络自动从地图里提取特征做组合。
  * *Guided Cost Learning 15'*
    
@@ -78,9 +80,15 @@ Energy-Based Models*
 
 ## Agent Modeling
 ### Classical Modeling：Feature Engineering
-### Divergence-based Policy Representation
-### Theory of Mind
+* *Player Modeling in Civilization IV*
 
+### Divergence-based Policy Representation
+* *Learning Policy Representations in Multiagent Systems*
+* *Modeling Others using Oneself in Multi-Agent Reinforcement Learning*
+* *Opponent Modeling in Deep Reinforcement Learning*
+### Theory of Mind
+* *Machine Theory of Mind*
+* *Theory of Minds: Understanding Behavior in Groups Through Inverse Planning*
 ## Self Play
 
 ### Miscellanous
@@ -110,6 +118,8 @@ LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去�
 一般来说避免overfit的方法包括随机抽取一个集合作为对手（同样的思路也用在了MADDPG里），给轨迹的熵加正则项（一般用在机器人控制里面，假设移动服从某种概率分布，如高斯分布）。
 这篇文章用分布式PPO训练。总的来说很吃数据量（想来也是，它完全不采取centralize的方法进行训练。）。
 这篇文章的一个小trick是它使用自己的过去作为sample，另一个是开始阶段手动设计的curriculum。
+
+
 ## Game Theory
 ### Fictitious Play
 Fictitious Play是一种寻找双人博弈中Nash均衡的方法。
