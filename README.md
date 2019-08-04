@@ -1,6 +1,8 @@
 # RL Papers Note
 这是一篇阅读文献的简记。
+
 OpenAI spinning up：https://spinningup.openai.com/en/latest/index.html
+
 ## Surveys and Books
  * *Deep Reinforcement Learning for Cyber Security, 19'*
  一篇讲述DRL在网络安全中应用的综述。
@@ -29,7 +31,7 @@ Networking, 18'*
  * *DQN*
   Q网络的拟合目标是用Q网络自己的早期版本（即target net）用Bellman方程作为结果。另外Experience Replay把时序过程中的步骤拆分出来作为训练集也是一个经典操作。
  * *TRPO* Trust Region Policy Optimization 15' 
-  思路：要保证策略梯度得到的结果单调不降----->
+  思路：要保证策略梯度得到的结果单调不降----->只要满足advantage>=0---->需要近似计算所以不能离的太远----->对KL散度有限制---->用KL散度的二阶展开近似KL散度变成凸优化问题。
  * *PPO* Proximal Policy Optimization 17'
   简单实用的正则项动态系数调整法（系数动态调整+clip），加正则项的方法都可以借鉴它。
  * *TRPO/PPO for POMDP*
@@ -37,18 +39,20 @@ Networking, 18'*
  * *AC*
   Actor-Critic从本质上说是Policy Iteration的升级版。
  * *A2C*
+ advantage Actor-critic
  * *A3C*
+ 在之前的基础上加入了一个异步更新。
  * *SAC*
  
 ## MARL
  * *MADDPG*
    经典的Multi-agent算法。本质上说，是DDPG的扩展；它利用centralized training在训练时为critic网络给出了额外的信息，而actor则不直接利用这些信息；最后测试时只使用actor网络决策。另外它为了防止competitive情况下的overfit，训练了一堆平行的参数每次均匀随机选择。
  * *R-MADDPG*
+   R-MADDPG是MADDPG的一个拓展，它在Actor和Critic（主要是Critic）上增加了一个循环结构，用以储存过去接收的信息，处理依赖于时序的任务。实验结果表明，在critic上安装循环结构效果显著，而在actor上安装循环结构几乎没有效果。
  * *COMA*
  * *DPIQN*
  * *Learning with opponent-learning awareness*
- 
-## Policy Gradient
+
 
 ## Distance of Distribution
   * *Wassenstein Reinforcement Learning*
@@ -66,13 +70,13 @@ Networking, 18'*
  * *Maximum Entropy Inverse Reinforcement Learning 08'*
   两个假设：一个是reward是手动设计的一些特征的线性组合，另一个是认为轨迹的概率分布（这是一个重要概念！）出现的概率是和e^reward成正比。这一篇我复现过，实际效果嘛……emmm。
  * *Maximum Entropy Deep Inverse Reinforcement Learning 10'*
-  “Deep”是用来解决上一篇中特征提取问题的。上一篇认为reward是手动设计的一些特征的线性组合，这里就变成了网络自动从地图里提取特征做组合。
+  “Deep”是用来解决上一篇中特征提取问题的。上一篇认为reward是手动设计的一些特征的线性组合，这里就变成了网络自动从地图里提取特征做任意的组合。
  * *Guided Cost Learning 15'*
    
  * *A Connection Between Generative Adversarial
 Networks, Inverse Reinforcement Learning, and
 Energy-Based Models*
-  GAN，能量模型和Guided Cost Learning是相通的。
+  GAN，能量模型和GAIL是相通的。
   
  * *Generative Adversarial Imitation Learning 16'*
   它是GAN在强化学习（实际上是模仿学习）领域的推广。分为两个不断重复的阶段：其中一个阶段是固定Generator优化Discriminator；另一个阶段是固定Discriminator以分类结果的对数似然作为Reward去训练Generator。注意学习architecture要画清楚数据流！
@@ -124,11 +128,11 @@ LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去�
 ### Fictitious Play
 Fictitious Play是一种寻找双人博弈中Nash均衡的方法。
 * *Full-Width Extensive Form FSP*
+理论上说extensive form也可以直接暴力展开为normal form然后使用FSP，但是那样效率太低，因为可能的决策会以指数级别增长。这篇文章证明了FSP也可以直接被用在extensive form上并且还给出了policy mix起来的方法：线性组合。
 * *Fictitious Self-Play in Extensive-Form Games 15'*
+这里就提出用网络近似best response（？）
 * *Deep Reinforcement Learning from Self-Play in Imperfect-Information Games 16'*
-它使用了NFSP。NFSP是Fictitious Self Play和Neural Network的结合，其实就是应用DQN和Behavior Cloning分别做计算最优对策和计算对手当前对策的工作。
-博弈论的问题：过于domain-specific，难以在未知的环境规律下推广
-ML的问题：在信息不完全时容易发散。
+它使用了NFSP。NFSP是Fictitious Self Play和Neural Network的结合，其实就是应用DQN和Behavioral Cloning分别做计算最优对策和计算对手当前对策的工作。
 * *Monte Carlo Neural Fictitious Self-Play:
 Approach to Approximate Nash Equilibrium of
 Imperfect-Information Games 19'*
