@@ -54,6 +54,7 @@ architecture
 the space of protocols is extremely high-dimensional. 
 “during learning, agents can
 backpropagate error derivatives through (noisy) communication channels”
+color-digit MNIST
 中心化训练与去中心化执行。
 ## MARL
  * *MADDPG*
