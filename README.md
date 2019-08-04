@@ -147,3 +147,7 @@ Imperfect-Information Games 19'*
 注意区分reward shaping和正则项。这二者都是改变reward函数，但reward shaping是不改变最优策略的；而正则项是会改变最优策略的。
 reward shaping的优点在于完全不会改变最优策略，缺点在于其形式必须满足一个特殊要求：对于任何(s,a,s')的转移，函数都可以写成cf(s')-f(s)，其中c为一小于1的常数。[对于只有位置具有重要性的gridworld就很有用了]
 正则项的优点在于可以加入任何东西，但它不能保证最优解。
+
+## Deception
+* *Designing Deception in Adversarial Reinforcement Learning*
+在传统框架下设计policy让agent学会骗人。这里面提到了一个观点：欺骗是一种能够引诱对手进入某种特殊policy的技巧，有利于把对手拉进自己熟悉的子游戏并战胜之。（类似的MADDPG和18年OpenAI一篇分布式PPO的文章也做了和欺骗相关的multi-agent实验）
