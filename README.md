@@ -167,3 +167,9 @@ reward shaping的优点在于完全不会改变最优策略，缺点在于其形
 * *Active Classification based on Value of Classifier*
 * *Learning how to Active Learn: A Deep Reinforcement Learning Approach*
 active learning本来是一种通过分类器主动将未标记文本选择并送给专家标记的方式提高学习效率的方法。本来是将active learning用于NLP，这里把它建模成一个RL选样本作为policy的问题。而且是先在一个语言上学习policy再迁移到另一个语言上。把语料库打乱，然后认为面对一个句子有两个action：接受或不接受。如果接受，则update当前的classifier。注意到他们把当前classifier的状态建模成了一个state，所以可以认为训练是off-policy的。
+
+
+## Novel Architectures
+* *Structured Control Nets for Deep Reinforcement Learning*
+把策略分为两个独立的流：线性控制和非线性控制。线性控制就是一个简单的矩阵乘法；非线性控制是一个MLP（不过不局限于MLP，其中一个实验就使用了**中央模式生成器**）二者的简单相加就是最后神经网络的输出。“直观地，非线性控制用于前视角和全局控制，而线性控制围绕全局控制以外的局部动态变量的稳定”。中文教程见https://www.jianshu.com/p/4f5d663803ba
+
