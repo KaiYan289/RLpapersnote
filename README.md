@@ -162,3 +162,7 @@ reward shaping的优点在于完全不会改变最优策略，缺点在于其形
 ## Deception
 * *Designing Deception in Adversarial Reinforcement Learning*
 在传统框架下设计policy让agent学会骗人。这里面提到了一个观点：欺骗是一种能够引诱对手进入某种特殊policy的技巧，有利于把对手拉进自己熟悉的子游戏并战胜之。（类似的MADDPG和18年OpenAI一篇分布式PPO的文章也做了和欺骗相关的multi-agent实验）
+
+## Active Classifier
+* *Active Classification based on Value of Classifier*
+
