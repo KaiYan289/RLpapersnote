@@ -22,9 +22,10 @@ A Comprehensive Survey and Open Problems, 17'*
 ### Network Security (Games)
   * *Defending against distributed denial-of-service attacks with max-min fair server-centric router throttles*
   网络攻击的经典模型之一：攻击者控制了几个初始节点（叶子）。向目标服务器发动进攻，而防守者控制着到目标服务器（树根）上某些必经之路的路由器，需要调整丢包比例让保证安全的同时最大限度让合法请求通过。这个设定被用在之后大量的DDOS相关论文中，也包括一些用MARL解决该问题的文章。
-  * *Reinforcement Learning for Autonomous Defence in Software-Defined
-Networking, 18'*
+  * *Reinforcement Learning for Autonomous Defence in Software-Defined Networking, 18'*
   网络攻击的经典模型之二：攻击者控制了几个初始节点，并且向目标服务器发动进攻，每回合感染一些与上一回合节点相邻的服务器。防守者可以选择断开某些服务器连接、重连某些服务器、转移目标服务器数据到其他指定位置。
+  * *Adversarial Reinforcement Learning for Observer Design in Autonomous Systems under Cyber Attacks*
+  固定control policy，用self play同时训练adversarial和观察者。注意到这里controller是fixed的；训练的可以说是一个“输入扭曲器”和“输入矫正器”。文章以经典的pendulum做实验。另外，为了保证self play能收敛，文章使用了TRPO。
 ### Green Security Games
   * *Deep Reinforcement Learning for Green Security Games with Real-Time Information, AAAI 19'*
  对Green Security Games这种特殊的安全游戏引入了一种DRL解法。Green Security Game是一个面对偷猎行为建模设计的游戏，在2D gridworld上进行。游戏分为两方，一个是偷猎者，另一个是巡逻者。偷猎者可以四处移动，或是放下偷猎工具，它每回合有一定概率爆炸，若爆炸则收获正reward（巡逻者收获负reward），并消失；巡逻者可以拆除偷猎工具，或者是抓到偷猎者以得到正reward（对应的，偷猎者收获负reward）。游戏是partial observation的。游戏在巡逻者抓住偷猎者且场上没有偷猎工具时结束。DRL本身似乎没有什么特别的。
