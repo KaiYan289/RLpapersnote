@@ -166,3 +166,4 @@ reward shaping的优点在于完全不会改变最优策略，缺点在于其形
 ## Active Learning
 * *Active Classification based on Value of Classifier*
 * *Learning how to Active Learn: A Deep Reinforcement Learning Approach*
+active learning本来是一种通过分类器主动将未标记文本选择并送给专家标记的方式提高学习效率的方法。本来是将active learning用于NLP，这里把它建模成一个RL选样本作为policy的问题。而且是先在一个语言上学习policy再迁移到另一个语言上。把语料库打乱，然后认为面对一个句子有两个action：接受或不接受。如果接受，则update当前的classifier。注意到他们把当前classifier的状态建模成了一个state，所以可以认为训练是off-policy的。
