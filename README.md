@@ -33,6 +33,7 @@ A Comprehensive Survey and Open Problems, 17'*
 ## Classical DRL
  * *DQN*
   Q网络的拟合目标是用Q网络自己的早期版本（即target net）用Bellman方程作为结果。另外Experience Replay把时序过程中的步骤拆分出来作为训练集也是一个经典操作。
+ * *Implicit Quantile Networks for Distributional Reinforcement Learning* DQN系到18年的SOTA，但是似乎不能解决POMDP。
  * *TRPO* Trust Region Policy Optimization 15' 
   思路：要保证策略梯度得到的结果单调不降----->只要满足advantage>=0---->需要近似计算所以不能离的太远----->对KL散度有限制---->用KL散度的二阶展开近似KL散度变成凸优化问题。
  * *PPO* Proximal Policy Optimization 17'
