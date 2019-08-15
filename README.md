@@ -58,6 +58,7 @@ the space of protocols is extremely high-dimensional.
 backpropagate error derivatives through (noisy) communication channels”
 color-digit MNIST
 中心化训练与去中心化执行。
+* *RDPG*
 ## MARL
  * *MADDPG*
    经典的Multi-agent算法。本质上说，是DDPG的扩展；它利用centralized training在训练时为critic网络给出了额外的信息，而actor则不直接利用这些信息；最后测试时只使用actor网络决策。另外它为了防止competitive情况下的overfit，训练了一堆平行的参数每次均匀随机选择。
