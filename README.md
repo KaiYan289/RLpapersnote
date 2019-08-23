@@ -62,7 +62,7 @@ color-digit MNIST
 * *DRPIQN* 面对POMDP，有一种训练方法是维护一个网络对隐藏状态的“信念”（另外两种常见的方法分别是actor-critic给critic训练时额外的信息，以及LSTM记住历史）。
 * *BAD* 
 * *RLaR: Concurrent Reinforcement Learning as a Rehearsal for
-Decentralized Planning Under Uncertainty, AAMAS 13'* 
+Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决dec-POMDP的方法。dec-POMDP是一种特殊的MARL，它要求所有的agent共享一个global reward。Dec-POMDP是NEXP-Complete的。 **RLAR是一种认为训练时全部状态可见、执行时不可见的方法，它把训练叫做一种“rehearsal”，即排练。**它分为两步：第一步是在完全状态下学到一个policy；第二步是agent通过探索去建立一个预测模型，根据预测模型和原policy学到新的不需要完全可见就可以work的policy。
 ## MARL
  * *MADDPG*
    经典的Multi-agent算法。本质上说，是DDPG的扩展；它利用centralized training在训练时为critic网络给出了额外的信息，而actor则不直接利用这些信息；最后测试时只使用actor网络决策。另外它为了防止competitive情况下的overfit，训练了一堆平行的参数每次均匀随机选择。
