@@ -39,7 +39,7 @@ A Comprehensive Survey and Open Problems, 17'*
  * *PPO* Proximal Policy Optimization 17'
   简单实用的正则项动态系数调整法（系数动态调整+clip），加正则项的方法都可以借鉴它。
  * *TRPO/PPO for POMDP*
- * *DDPG*
+ * *DDPG* DDPG是一种难以训练的方法。虽然理论上说DDPG可以适用于gridworld这样的低维度动作环境中，但是实验表明其表现和收敛速度远不如DQN。DDPG依然算是一种面对连续/高维决策空间的无奈之举。
  * *AC*
   Actor-Critic从本质上说是Policy Iteration的升级版。
  * *A2C*
@@ -58,12 +58,16 @@ the space of protocols is extremely high-dimensional.
 backpropagate error derivatives through (noisy) communication channels”
 color-digit MNIST
 中心化训练与去中心化执行。
-* *RDPG*
+* *RDPG* RDPG比DDPG更难训练，更容易收敛到局部最优。但凡是带Recurrent的RL过程，其必须保存下整个trajectory用于训练（只保存每个transition的hidden state实验证明是低效的，且很难训练出来。）
+* *DRPIQN* 面对POMDP，有一种训练方法是维护一个网络对隐藏状态的“信念”（另外两种常见的方法分别是actor-critic给critic训练时额外的信息，以及LSTM记住历史）。
+* *BAD* 
+* *RLaR: Concurrent Reinforcement Learning as a Rehearsal for
+Decentralized Planning Under Uncertainty, AAMAS 13'* 
 ## MARL
  * *MADDPG*
    经典的Multi-agent算法。本质上说，是DDPG的扩展；它利用centralized training在训练时为critic网络给出了额外的信息，而actor则不直接利用这些信息；最后测试时只使用actor网络决策。另外它为了防止competitive情况下的overfit，训练了一堆平行的参数每次均匀随机选择。
  * *R-MADDPG*
-   R-MADDPG是MADDPG的一个拓展，它在Actor和Critic（主要是Critic）上增加了一个循环结构，用以储存过去接收的信息，处理依赖于时序的任务。实验结果表明，在critic上安装循环结构效果显著，而在actor上安装循环结构几乎没有效果。
+   R-MADDPG是MADDPG的一个拓展，它在Actor和Critic（主要是Critic）上增加了一个循环结构，用以储存过去接收的信息，处理依赖于时序的任务。实验结果表明，在critic上安装循环结构效果显著，而在actor上安装循环结构几乎没有效果。（虽然极其难训就对了）
  * *COMA*
  * *DPIQN*
  * *Learning with opponent-learning awareness*
@@ -100,7 +104,7 @@ Energy-Based Models*
 ## Agent Modeling
 ### Classical Modeling：Feature Engineering
 * *Player Modeling in Civilization IV*
-
+这个大概还是使用传统的特征工程，需要手动设计特征。Agent Modeling只有在近两年概率空间投影的policy representation才摆脱了传统方法。
 ### Divergence-based Policy Representation
 * *Learning Policy Representations in Multiagent Systems*
 * *Modeling Others using Oneself in Multi-Agent Reinforcement Learning*
