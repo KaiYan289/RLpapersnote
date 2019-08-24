@@ -49,7 +49,8 @@ A Comprehensive Survey and Open Problems, 17'*
  * *SAC*
  * *ACER: SAMPLE EFFICIENT ACTOR-CRITIC WITH
 EXPERIENCE REPLAY , ICLR 17'*
- ACER是A3C对于off-policy的改编版本。
+ ACER是A3C对于off-policy的改编版本。**Controlling the variance and stability of off-policy
+estimators is notoriously hard. Importance sampling is one of the most popular approaches for off-policy learning**。
 
 ### Partly Observable RL
 * *DRQN* 把第一个全连接层换成了LSTM，其他的和DQN 完 全 一 致。
