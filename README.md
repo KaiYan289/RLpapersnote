@@ -47,6 +47,10 @@ A Comprehensive Survey and Open Problems, 17'*
  * *A3C*
  在之前的基础上加入了一个异步更新。
  * *SAC*
+ * *ACER: SAMPLE EFFICIENT ACTOR-CRITIC WITH
+EXPERIENCE REPLAY , ICLR 17'*
+ ACER是A3C对于off-policy的改编版本。
+
 ### Partly Observable RL
 * *DRQN* 把第一个全连接层换成了LSTM，其他的和DQN 完 全 一 致。
 * *DDRQN*是一个用来解决MARL中团队合作__交流__的网络结构。第一个D代表distributed。文章中提到了三个主要修改：第一个是把上一个agent的动作作为下一个时间步的输入；第二个是所有agent参数共享；第三个是**对于不稳定环境不使用experience replay**。使用soft更新（就是说加权更新target network参数而不是直接复制）。另外实验比较有意思，把帽子和开关的智力题建模成了MARL问题。
