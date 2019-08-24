@@ -40,6 +40,7 @@ A Comprehensive Survey and Open Problems, 17'*
   简单实用的正则项动态系数调整法（系数动态调整+clip），加正则项的方法都可以借鉴它。
  * *TRPO/PPO for POMDP*
  * *DDPG* DDPG是一种难以训练的方法。虽然理论上说DDPG可以适用于gridworld这样的低维度动作环境中，但是实验表明其表现和收敛速度远不如DQN。DDPG依然算是一种面对连续/高维决策空间的无奈之举。
+ * *TD3* TD3 is a direct successor of DDPG and improves it using three major tricks: clipped double Q-Learning, delayed policy update and target policy smoothing.
  * *AC*
   Actor-Critic从本质上说是Policy Iteration的升级版。
  * *A2C*
@@ -187,3 +188,5 @@ active learning本来是一种通过分类器主动将未标记文本选择并�
 
 * *Safe and efficient off-policy reinforcement learning NIPS 16’*
 这篇文章提出了一种叫Retrace(lambda)的算法。它可以高效、“安全”地进行off-policy训练，并且它的方差很小。这是一个不需要GLIE前提就可以收敛的算法。GLIE(Greedy in the Limit with Infinite Exploration)，直白的说是在有限的时间内进行无限可能的探索。具体表现为：所有已经经历的状态行为对（state-action pair）会被无限次探索；另外随着探索的无限延伸，贪婪算法中ϵ值趋向于０。
+
+* *Hindsight Experience Replay (HER)*
