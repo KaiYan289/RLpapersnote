@@ -184,3 +184,5 @@ active learning本来是一种通过分类器主动将未标记文本选择并�
 * *Structured Control Nets for Deep Reinforcement Learning*
 把策略分为两个独立的流：线性控制和非线性控制。线性控制就是一个简单的矩阵乘法；非线性控制是一个MLP（不过不局限于MLP，其中一个实验就使用了**中央模式生成器**）二者的简单相加就是最后神经网络的输出。“直观地，非线性控制用于前视角和全局控制，而线性控制围绕全局控制以外的局部动态变量的稳定”。中文教程见https://www.jianshu.com/p/4f5d663803ba
 
+* *Safe and efficient off-policy reinforcement learning NIPS 16’*
+这篇文章提出了一种叫Retrace(lambda)的算法。它可以高效、“安全”地进行off-policy训练，并且它的方差很小。这是一个不需要GLIE前提就可以收敛的算法。GLIE(Greedy in the Limit with Infinite Exploration)，直白的说是在有限的时间内进行无限可能的探索。具体表现为：所有已经经历的状态行为对（state-action pair）会被无限次探索；另外随着探索的无限延伸，贪婪算法中ϵ值趋向于０。
