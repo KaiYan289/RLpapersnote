@@ -78,7 +78,7 @@ Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决de
  * *R-MADDPG*
    R-MADDPG是MADDPG的一个拓展，它在Actor和Critic（主要是Critic）上增加了一个循环结构，用以储存过去接收的信息，处理依赖于时序的任务。实验结果表明，在critic上安装循环结构效果显著，而在actor上安装循环结构几乎没有效果。（虽然极其难训就对了）
  * *COMA*
- * *DPIQN*
+ * *DP(R)IQN*在D(R)QN的基础上改进，用一个带softmax的inference分支去将对手的policy纳入考虑。
  * *Learning with opponent-learning awareness*
 
 
