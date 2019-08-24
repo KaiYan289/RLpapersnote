@@ -51,6 +51,7 @@ A Comprehensive Survey and Open Problems, 17'*
 EXPERIENCE REPLAY , ICLR 17'*
  ACER是A3C对于off-policy的改编版本。**Controlling the variance and stability of off-policy
 estimators is notoriously hard. Importance sampling is one of the most popular approaches for off-policy learning**。
+这里面有一个非常重要的地方：许多Actor-Critic算法的实现实际上使用了replay buffer。从理论上说，这是不对的（因为梯度这个东西涉及到policy采取各个动作进行转移的概率，但是off-policy情况下actor输出的概率不再是原来那个了，对应的critic的输入会有变化（我自己在实现replay buffer的时候可以说是瞎搞，比如要在转移里随机加噪声直接给对应方向+1再归一化），应该要加重要性采样加以修正；但是重要性采样方差太大，所以有了tree back-up和retrace（lambda），以及ACER），但是从实践上说，一般是可以work的——只限于1-step TD-learning。在n-step TD-learning时，由于转移与policy高度耦合，很快就会出现巨大的误差。（一般好像也没人用buffer去做n-step TD-learning）也有观点认为，1-step TD-learning仅仅是让程序额外学了一些转移。另外，off-policy情况下buffer里的policy原则上不应该和现在的policy偏移太大。
 
 ### Partly Observable RL
 * *DRQN* 把第一个全连接层换成了LSTM，其他的和DQN 完 全 一 致。
