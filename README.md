@@ -8,6 +8,8 @@ OpenAI spinning up：https://spinningup.openai.com/en/latest/index.html
  一篇讲述DRL在网络安全中应用的综述。
  * *Deep Reinforcement Learning for Multi-Agent Systems: A Review of Challenges, Solutions and Applications,18'*
  一篇DRL在MARL中应用的文章。
+ * *Multi-Agent Reinforcement Learning: A
+Report on Challenges and Approaches, 18'* 7月份的文章，比上面那篇12月的要早一些。把MARL的几个分支都讲到了。
  * *Autonomous Agents Modelling Other Agents:
 A Comprehensive Survey and Open Problems, 17'*
  一篇非常全面地讲述agent modeling的文章。实际上直到这一年，agent modeling一直没有什么很大的进展，停留在提取特征和对对手过去行为做统计（fictitious learning也算），比较依赖于环境本身的信息。另一个比较新颖的思路是把对手的policy看成自动机；很不幸的是，这样不能建模非常复杂的对手，因为问题关于状态是非多项式可解的。
