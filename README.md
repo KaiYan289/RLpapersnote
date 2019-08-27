@@ -35,7 +35,9 @@ A Comprehensive Survey and Open Problems, 17'*
 ## Ancient RL
 ### Distributed Cooperation
  * * Hysteretic Q-learning* an algorithm for decentralized reinforcement learning in cooperative multi-agent teams
-Hysteretic Q-learning是一种通过分布式训练得到一队能够合作的agents的方法。它起源于博弈论，主要研究了重复双人矩阵游戏。其实本质没有什么新东西，只不过调了调变好和变坏时的参数，使得q-value估计变高和变低时变化的速率不同。soft-update增加稳定性这个稍有常识的人都会看出的吧。
+Hysteretic Q-learning是一种通过分布式训练得到一队能够合作的agents的方法。它起源于博弈论，主要研究了重复双人矩阵游戏。其实本质没有什么新东西，只不过调了调变好和变坏时的参数，使得q-value估计变高和变低时变化的速率不同。soft-update增加稳定性这个稍有常识的人都会看出的吧。This results in an optimistic update function
+which puts more weight on positive experiences, which is shown
+to be beneficial in cooperative multi-agent settings.
 * *Lenient learners in cooperative multiagent systems*
 也是一个研究cooperative的情况。文章非常短，只有3页。本质上是把Q-value方程的迭代变成模拟退火。不过呢，需要指出的是虽然方法看起来很trivial，但是它应该是有内在的道理的：这篇文章和上面的文章一样，试图解决cooperative情况下agent不会合理利用自己队友的动作。"Lenient learners store temperature values that are associated with state-action pairs. Each time a state-action pair is visited
 the respective temperature value is decayed, thereby decreasing the
