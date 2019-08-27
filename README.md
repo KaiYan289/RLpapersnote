@@ -212,5 +212,24 @@ active learning本来是一种通过分类器主动将未标记文本选择并�
 HER是一个框架，可以和其他off-policy框架配合使用。
 
 * *Lenient DQN*
-
+Lenient DQN中有几个重要的概念：lenient参数和温度。Leniency was designed to prevent
+relative overgeneralization, which occurs when agents gravitate
+towards a robust but sub-optimal joint policy due to noise induced
+by the mutual influence of each agent’s exploration strategy on
+others’ learning updates. 反过来说，competitive的时候恰好需要这种robust but sub-optimal的policy才有generalization。所以可以说competitive MARL比cooperative MARL更难。
+Temperature-based exploration（模拟退火）
+Auto-encoder是一种对付高维/连续S-A pair的方法。
+The autoencoder, consisting of convolutional, dense, and transposed convolutional layers, can be trained using the states stored in
+the agent’s replay memory [30]. It then serves as a pre-processing
+function д : S → R
+D , with a dense layer consisting of D neurons
+with a saturating activation function (e.g. a Sigmoid function) at
+the centre. SimHash [9], a locality-sensitive hashing (LSH) function,
+can be applied to the rounded output of the dense layer to generate a hash-key ϕ for a state s. This hash-key is computed using a
+constant k × D matrix A with i.i.d. entries drawn from a standard
+Gaussian distribution N(0, 1) as
+ϕ(s) = sдn
+Aд(s)∈ {−1, 1}k
+where д(s) is the autoencoder pre-processing function, and k controls the granularity suc
+其实可以反过来想：cooperative的目标是减少其他agent反复的noise带来的sub-optimal,而competitive恰恰要利用这种noise，要把它适当加大到一个可以避免过拟合的程度。
 * *Deep decentralized multi-task multi-agent reinforcement learning under partial observability, ICLR 17'*
