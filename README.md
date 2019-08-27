@@ -31,7 +31,21 @@ A Comprehensive Survey and Open Problems, 17'*
 ### Green Security Games
   * *Deep Reinforcement Learning for Green Security Games with Real-Time Information, AAAI 19'*
  对Green Security Games这种特殊的安全游戏引入了一种DRL解法。Green Security Game是一个面对偷猎行为建模设计的游戏，在2D gridworld上进行。游戏分为两方，一个是偷猎者，另一个是巡逻者。偷猎者可以四处移动，或是放下偷猎工具，它每回合有一定概率爆炸，若爆炸则收获正reward（巡逻者收获负reward），并消失；巡逻者可以拆除偷猎工具，或者是抓到偷猎者以得到正reward（对应的，偷猎者收获负reward）。游戏是partial observation的。游戏在巡逻者抓住偷猎者且场上没有偷猎工具时结束。DRL本身似乎没有什么特别的。
- 
+
+## Ancient RL
+### Distributed Cooperation
+ * * Hysteretic Q-learning* an algorithm for decentralized reinforcement learning in cooperative multi-agent teams
+Hysteretic Q-learning是一种通过分布式训练得到一队能够合作的agents的方法。它起源于博弈论，主要研究了重复双人矩阵游戏。其实本质没有什么新东西，只不过调了调变好和变坏时的参数，使得q-value估计变高和变低时变化的速率不同。soft-update增加稳定性这个稍有常识的人都会看出的吧。
+* *Lenient learners in cooperative multiagent systems*
+也是一个研究cooperative的情况。文章非常短，只有3页。本质上是把Q-value方程的迭代变成模拟退火。不过呢，需要指出的是虽然方法看起来很trivial，但是它应该是有内在的道理的：这篇文章和上面的文章一样，试图解决cooperative情况下agent不会合理利用自己队友的动作。"Lenient learners store temperature values that are associated with state-action pairs. Each time a state-action pair is visited
+the respective temperature value is decayed, thereby decreasing the
+amount of leniency that the agent applies when performing a policy
+update for the state-action pair. The stored temperatures enable
+the agents to gradually transition from optimists to average reward
+learners for frequently encountered state-action pairs, allowing the
+agents to outperform optimistic and maximum based learners in
+environments with misleading stochastic rewards".
+
 ## Classical DRL
  * *DQN*
   Q网络的拟合目标是用Q网络自己的早期版本（即target net）用Bellman方程作为结果。另外Experience Replay把时序过程中的步骤拆分出来作为训练集也是一个经典操作。
@@ -167,6 +181,7 @@ Imperfect-Information Games 19'*
 使用Monte-Carlo/异步方法做self-play，提高对局质量。要求所有的agent共享同样的参数。
 
 ### Counterfactual
+* *Deep Counterfactual Regret Minimization*
 
 ## Reward Shaping
 * *Policy Invariance Under Reward Transformations： Theory and Application to Reward Shaping, ICML 99'*
@@ -192,3 +207,8 @@ active learning本来是一种通过分类器主动将未标记文本选择并�
 这篇文章提出了一种叫Retrace(lambda)的算法。它可以高效、“安全”地进行off-policy训练，并且它的方差很小。这是一个不需要GLIE前提就可以收敛的算法。GLIE(Greedy in the Limit with Infinite Exploration)，直白的说是在有限的时间内进行无限可能的探索。具体表现为：所有已经经历的状态行为对（state-action pair）会被无限次探索；另外随着探索的无限延伸，贪婪算法中ϵ值趋向于０。
 
 * *Hindsight Experience Replay (HER)*
+HER是一个框架，可以和其他off-policy框架配合使用。
+
+* *Lenient DQN*
+
+* *Deep decentralized multi-task multi-agent reinforcement learning under partial observability, ICLR 17'*
