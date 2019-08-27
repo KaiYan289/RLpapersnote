@@ -233,3 +233,4 @@ Aд(s)∈ {−1, 1}k
 where д(s) is the autoencoder pre-processing function, and k controls the granularity suc
 其实可以反过来想：cooperative的目标是减少其他agent反复的noise带来的sub-optimal,而competitive恰恰要利用这种noise，要把它适当加大到一个可以避免过拟合的程度。
 * *Deep decentralized multi-task multi-agent reinforcement learning under partial observability, ICLR 17'*
+ MT-MARL， CERT
