@@ -17,6 +17,8 @@ A Comprehensive Survey and Open Problems, 17'*
  一本涵盖了多智能体与算法、博弈论、分布式推理、强化学习、拍卖机制、社会选择等交集的作品。
  前面提到了一些关于**异步DP，multi-agent的ABT搜索**等内容。
  这里面提到了一些多人博弈、时序博弈中基本的概念，比如**extensive form 和normal form**。对于时序博弈，存在一个“不可信威胁”概念，就是说如果整个Nash均衡，在第一步一方打破Nash均衡后，另一方采取反制措施会让自己的reward收到损失，那么这就是“不可信”的，所以说这样的Nash均衡是不稳定的。于是提出**子游戏精炼纳什均衡**。还有**颤抖手精炼纳什均衡**，大概就是指在假设一定犯错概率的情况下达到纳什均衡。另外还有一个有意思的**无名氏定理**：如果无限次重复进行的游戏具有合适的贴现因子，同时所有人针对一个人时，会给这个人带来额外的损失，那么agent之间是可以合作的。
+* *Is multiagent deep reinforcement learning the answer or the question? A brief survey 18'*
+* *A Survey of Learning in Multiagent Environments: Dealing with Non-Stationarity 17'*
 ## Security Games
 ### Abstract Security Games
   * *Improving learning and adaptation in security games by exploiting information asymmetry, INFOCOM 15'*
@@ -84,7 +86,7 @@ backpropagate error derivatives through (noisy) communication channels”
 color-digit MNIST
 中心化训练与去中心化执行。
 * *RDPG* RDPG比DDPG更难训练，更容易收敛到局部最优。但凡是带Recurrent的RL过程，其必须保存下整个trajectory用于训练（只保存每个transition的hidden state实验证明是低效的，且很难训练出来。）
-* *DRPIQN* 面对POMDP，有一种训练方法是维护一个网络对隐藏状态的“信念”（另外两种常见的方法分别是actor-critic给critic训练时额外的信息，以及LSTM记住历史）。
+* *DRPIQN* 面对POMDP，有一种训练方法是维护一个网络对隐藏状态的“信念”（另外两种常见的方法分别是actor-critic给critic训练时额外的信息，以及LSTM记住历史）。虽然“信念”听起来很贝叶斯，但是实际上就是额外拉出一个网络分支用来预测对手的动作。
 * *BAD* 
 * *RLaR: Concurrent Reinforcement Learning as a Rehearsal for
 Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决dec-POMDP的方法。dec-POMDP是一种特殊的MARL，它要求所有的agent共享一个global reward。Dec-POMDP是NEXP-Complete的。 **RLAR是一种认为训练时全部状态可见、执行时不可见的方法，它把训练叫做一种“rehearsal”，即排练。**它分为两步：第一步是在完全状态下学到一个policy；第二步是agent通过探索去建立一个预测模型，根据预测模型和原policy学到新的不需要完全可见就可以work的policy。
