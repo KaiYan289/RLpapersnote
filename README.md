@@ -19,6 +19,10 @@ A Comprehensive Survey and Open Problems, 17'*
  这里面提到了一些多人博弈、时序博弈中基本的概念，比如**extensive form 和normal form**。对于时序博弈，存在一个“不可信威胁”概念，就是说如果整个Nash均衡，在第一步一方打破Nash均衡后，另一方采取反制措施会让自己的reward收到损失，那么这就是“不可信”的，所以说这样的Nash均衡是不稳定的。于是提出**子游戏精炼纳什均衡**。还有**颤抖手精炼纳什均衡**，大概就是指在假设一定犯错概率的情况下达到纳什均衡。另外还有一个有意思的**无名氏定理**：如果无限次重复进行的游戏具有合适的贴现因子，同时所有人针对一个人时，会给这个人带来额外的损失，那么agent之间是可以合作的。
  言内行为，言外行为和言后行为；交流四原则（quality，quantity，politeness和relativity）。
 * *Is multiagent deep reinforcement learning the answer or the question? A brief survey 18'* 这篇文章和那篇18年12月的文章一样都是可以当成工具书使用的精良survey。作者将MARL当前的工作分成了四个方向：研究single Agent算法在MA环境下的反应；沟通协议；合作和对他人建模。
+Competitive RL最怕的就是和对手之间产生过拟合；为此常见的方法包括训练一个对mixture of policy的对策以及加噪声。
+另外这篇文章也提出了一个好的解决思路：Robust Multi-Agent Reinforcement Learning
+via Minimax Deep Deterministic Policy Gradient
+
 * *A Survey of Learning in Multiagent Environments: Dealing with Non-Stationarity 17'*
 five categories (in
 increasing order of sophistication): ignore, forget, respond to target models, learn models,
