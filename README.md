@@ -17,8 +17,13 @@ A Comprehensive Survey and Open Problems, 17'*
  一本涵盖了多智能体与算法、博弈论、分布式推理、强化学习、拍卖机制、社会选择等交集的作品。
  前面提到了一些关于**异步DP，multi-agent的ABT搜索**等内容。
  这里面提到了一些多人博弈、时序博弈中基本的概念，比如**extensive form 和normal form**。对于时序博弈，存在一个“不可信威胁”概念，就是说如果整个Nash均衡，在第一步一方打破Nash均衡后，另一方采取反制措施会让自己的reward收到损失，那么这就是“不可信”的，所以说这样的Nash均衡是不稳定的。于是提出**子游戏精炼纳什均衡**。还有**颤抖手精炼纳什均衡**，大概就是指在假设一定犯错概率的情况下达到纳什均衡。另外还有一个有意思的**无名氏定理**：如果无限次重复进行的游戏具有合适的贴现因子，同时所有人针对一个人时，会给这个人带来额外的损失，那么agent之间是可以合作的。
-* *Is multiagent deep reinforcement learning the answer or the question? A brief survey 18'*
+ 言内行为，言外行为和言后行为；交流四原则（quality，quantity，politeness和relativity）。
+* *Is multiagent deep reinforcement learning the answer or the question? A brief survey 18'* 这篇文章和那篇18年12月的文章一样都是可以当成工具书使用的精良survey。作者将MARL当前的工作分成了四个方向：研究single Agent算法在MA环境下的反应；沟通协议；合作和对他人建模。
 * *A Survey of Learning in Multiagent Environments: Dealing with Non-Stationarity 17'*
+five categories (in
+increasing order of sophistication): ignore, forget, respond to target models, learn models,
+and theory of mind. 
+**Policy Generating Function**
 ## Security Games
 ### Abstract Security Games
   * *Improving learning and adaptation in security games by exploiting information asymmetry, INFOCOM 15'*
@@ -236,6 +241,3 @@ where д(s) is the autoencoder pre-processing function, and k controls the granu
 其实可以反过来想：cooperative的目标是减少其他agent反复的noise带来的sub-optimal,而competitive恰恰要利用这种noise，要把它适当加大到一个可以避免过拟合的程度。
 * *Deep decentralized multi-task multi-agent reinforcement learning under partial observability, ICLR 17'*
  MT-MARL， CERT
- 
- ## Multitask RL
- * *Distral: Robust Multitask Reinforcement Learning 17’*
