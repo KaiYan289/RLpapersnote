@@ -19,7 +19,7 @@ A Comprehensive Survey and Open Problems, 17'*
  这里面提到了一些多人博弈、时序博弈中基本的概念，比如**extensive form 和normal form**。对于时序博弈，存在一个“不可信威胁”概念，就是说如果整个Nash均衡，在第一步一方打破Nash均衡后，另一方采取反制措施会让自己的reward收到损失，那么这就是“不可信”的，所以说这样的Nash均衡是不稳定的。于是提出**子游戏精炼纳什均衡**。还有**颤抖手精炼纳什均衡**，大概就是指在假设一定犯错概率的情况下达到纳什均衡。另外还有一个有意思的**无名氏定理**：如果无限次重复进行的游戏具有合适的贴现因子，同时所有人针对一个人时，会给这个人带来额外的损失，那么agent之间是可以合作的。
  言内行为，言外行为和言后行为；交流四原则（quality，quantity，politeness和relativity）。
 * *Is multiagent deep reinforcement learning the answer or the question? A brief survey 18'* 这篇文章和那篇18年12月的文章一样都是可以当成工具书使用的精良survey。作者将MARL当前的工作分成了四个方向：研究single Agent算法在MA环境下的反应；沟通协议；合作和对他人建模。
-Competitive RL最怕的就是和对手之间产生过拟合；为此常见的方法包括训练一个对mixture of policy的对策以及加噪声。
+Competitive RL最怕的就是和对手之间产生过拟合；为此常见的方法包括训练一个对mixture of policy的对策以及加噪声。对于可以建模成博弈论的情况（Normal/Extensive form），还有一个方法就是self play。
 另外这篇文章也提出了一个好的解决思路：Robust Multi-Agent Reinforcement Learning
 via Minimax Deep Deterministic Policy Gradient
 
@@ -58,6 +58,16 @@ the agents to gradually transition from optimists to average reward
 learners for frequently encountered state-action pairs, allowing the
 agents to outperform optimistic and maximum based learners in
 environments with misleading stochastic rewards".
+
+### Adversarial RL
+* *Planning in the Presence of Cost Functions
+Controlled by an Adversary 03'* planning in a
+Markov Decision Process where the cost function is chosen by an adversary after we fix
+our policy
+找这篇文章看起来算是找对了。一上来举的一个例子（固定放置sensor，最小化暴露时间）就和我的一个设想不谋而合。
+它把reward表示为一个向量。把Bellman方程表示为EV+c>=0，V是每个状态的造访频率，E是policy所对应生成的矩阵（（1/1-gamma）-1）转移矩阵，c是reward向量。
+文章提出来一种叫Double Oracle的算法。它首先需要将一般的RL问题转化到基于state visitation frequency向量与环境相乘作为payoff的矩阵博弈，然后用来解决矩阵博弈问题。所谓double oracle，是指给定行玩家/列玩家任意一方的mixed strategy，都可以瞬间求出另一方的best pure strategic response。不过，response的集合一直是**有限大**的（虽然最后会收敛到minimax nash均衡点）。
+首先假设一开始双方都只能在一个有限的集合内选策略。然后计算双方的一个对之前这些策略元素的最佳mixed strategy（概率分布）。接下来假装对方会按照这个mixed strategy行事，再计算最优pure strategic response。然后将response加入决策集，重复上述过程直到决策集大小不再增加即收敛。
 
 ## Classical DRL
  * *DQN*
@@ -158,7 +168,6 @@ Reinforcement Learning*
 automatic curricula via asymmetric self-play*
 LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去了。但是这个算法连OpenAI自己都说方差极大，不稳定，计算极为复杂，显然不适合嵌套到另一个算法的循环里。
 
-
 ### Evolutionary
 * *Competitive coevolution through evolutionary complexification*
 进化算法。
@@ -212,6 +221,28 @@ reward shaping的优点在于完全不会改变最优策略，缺点在于其形
 active learning本来是一种通过分类器主动将未标记文本选择并送给专家标记的方式提高学习效率的方法。本来是将active learning用于NLP，这里把它建模成一个RL选样本作为policy的问题。而且是先在一个语言上学习policy再迁移到另一个语言上。把语料库打乱，然后认为面对一个句子有两个action：接受或不接受。如果接受，则update当前的classifier。注意到他们把当前classifier的状态建模成了一个state，所以可以认为训练是off-policy的。
 
 
+## Overfitting Prevention
+* *Protecting against evaluation overfitting in empirical
+reinforcement learning, AAAI 11'*
+* *Improved Empirical Methods in Reinforcement Learning Evaluation, 15'*
+* *A Unified Game-Theoretic Approach to
+Multiagent Reinforcement Learning, 17'*
+g. 
+When the model is fully known and the setting is strictly adversarial with two players, there are policy
+iteration methods based on regret minimization that scale very well when using domain-specific
+abstractions
+文章基于经典的Double Oracle算法，提出了Policy Space Response Oracle（PSRO）算法。它将policy视为一种pure strategy用来玩double oracle。区别只在于，计算best response使用的是DRL方法。我们认为这是一种比训练对mixture of policy更好的解决方案：因为它保证了收敛到minimax nash聚恒。
+Here, we introduce a new solver we call projected
+replicator dynamics (PRD)
+* *Robust Multi-Agent Reinforcement Learning
+via Minimax Deep Deterministic Policy Gradient AAAI 19’* Its core
+idea is that during training, we force each agent to behave
+well even when its training opponents response in the worst
+way.
+核心的想法有两个：第一，为了保证鲁棒性，希望对手每一步即使走出针对我们使我们表现最差的表现能够最好（即minimax）；
+第二，为了快速计算内嵌的min，用一个线性的函数去拟合内部，然后做一次梯度下降。
+不过超参是不是有点多啊。
+
 ## Novel Architectures
 * *Structured Control Nets for Deep Reinforcement Learning*
 把策略分为两个独立的流：线性控制和非线性控制。线性控制就是一个简单的矩阵乘法；非线性控制是一个MLP（不过不局限于MLP，其中一个实验就使用了**中央模式生成器**）二者的简单相加就是最后神经网络的输出。“直观地，非线性控制用于前视角和全局控制，而线性控制围绕全局控制以外的局部动态变量的稳定”。中文教程见https://www.jianshu.com/p/4f5d663803ba
@@ -245,3 +276,4 @@ where д(s) is the autoencoder pre-processing function, and k controls the granu
 其实可以反过来想：cooperative的目标是减少其他agent反复的noise带来的sub-optimal,而competitive恰恰要利用这种noise，要把它适当加大到一个可以避免过拟合的程度。
 * *Deep decentralized multi-task multi-agent reinforcement learning under partial observability, ICLR 17'*
  MT-MARL， CERT
+
