@@ -96,7 +96,12 @@ estimators is notoriously hard. Importance sampling is one of the most popular a
 ### Partly Observable RL
 * *DRQN* 把第一个全连接层换成了LSTM，其他的和DQN 完 全 一 致。
 * *DDRQN*是一个用来解决MARL中团队合作__交流__的网络结构。第一个D代表distributed。文章中提到了三个主要修改：第一个是把上一个agent的动作作为下一个时间步的输入；第二个是所有agent参数共享；第三个是**对于不稳定环境不使用experience replay**。使用soft更新（就是说加权更新target network参数而不是直接复制）。另外实验比较有意思，把帽子和开关的智力题建模成了MARL问题。
-* *RIAL&DIAL* 目标是设计一个end-to-end的学习协议。RIAL是建立在DRQN的基础上的。
+* *RIAL&DIAL: Learning to communicate with deep multi-agent reinforcement learning* 目标是设计一个end-to-end的学习协议。RIAL是建立在DRQN的基础上的。DIAL大概的想法似乎是通过梯度的串联实现中心化训练、非中心化执行。
+DIAL allows real-valued messages to pass between agents during centralised learning, thereby treating communication
+actions as bottleneck connections between agents. As a result, gradients can be pushed through the
+communication channel, yielding a system that is end-to-end trainable even across agents. During
+decentralised execution, real-valued messages are discretised and mapped to the discrete set of
+communication actions allowed by the task. 
 architecture
 独立的Q-learning指agent互相都把对方当成环境的一部分。
 the space of protocols is extremely high-dimensional. 
