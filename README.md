@@ -203,6 +203,7 @@ Imperfect-Information Games 19'*
 使用Monte-Carlo/异步方法做self-play，提高对局质量。要求所有的agent共享同样的参数。
 
 ### Counterfactual
+* *An Introduction to Counterfactual Regret Minimization*
 * *Deep Counterfactual Regret Minimization*
 
 ## Reward Shaping
