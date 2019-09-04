@@ -122,12 +122,30 @@ Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决de
  * *COMA*
  * *DP(R)IQN*在D(R)QN的基础上改进，用一个带softmax的inference分支去将对手的policy纳入考虑。
  * *Learning with opponent-learning awareness*
-
-
+### Communication
+ * *BiCNet: Multiagent Bidirectionally-Coordinated Nets
+Emergence of Human-level Coordination in Learning to Play StarCraft Combat Game*
+As the bi-directional recurrent structure could serve not only as a communication channel but
+also as a local memory saver, each individual agent is able
+to maintain its own internal states, as well as to share the
+information with its collaborators.
+computing the backward gradients by unfolding the network
+of length N (the number of controlled agents) and then applying backpropagation through time (BPTT)
+The gradients pass to both the individual Qi function and the
+policy function.
 ## Distance of Distribution
   * *Wassenstein Reinforcement Learning*
   不可无一不可有二的文章。作者对把RL推广到这一量度上做了很多非常用心的理论推导；但是其真的推广到这一领域能比传统RL的表现好多少是存疑的。
   
+## Soft Q-learning
+算法产生的模型探索更充分，探索到有用的子模式更多。
+* *Reinforcement Learning with Deep Energy-Based Policies ICML17’* https://zhuanlan.zhihu.com/p/44783057 有详细解说。
+* *Multiagent Soft Q-Learning*
+Relative overgeneralization occurs when
+a suboptimal Nash Equilibrium in the joint space of actions is preferred over an optimal Nash Equilibrium because
+each agent’s action in the suboptimal equilibrium is a better
+choice when matched with arbitrary actions from the collaborating agents.
+* *Balancing Two-Player Stochastic Games with Soft Q-Learning*
 
 ## IRL
  * *Inverse Reinforcement Learning 00'*
