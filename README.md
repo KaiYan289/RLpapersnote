@@ -228,7 +228,19 @@ Imperfect-Information Games 19'*
 
 ### Counterfactual
 * *An Introduction to Counterfactual Regret Minimization*
-* *Deep Counterfactual Regret Minimization*
+* *Deep Counterfactual Regret Minimization ICML 19'*
+The goal of Deep CFR is to approximate the behavior of CFR without calculating and accumulating regrets at each infoset, by generalizing across similar infosets using function approximation
+via deep neural networks.
+ One method to combat this is Monte Carlo CFR (MCCFR), in which only a portion of the game tree is traversed on each iteration (Lanctot et al.,2009). In MCCFR, a subset of nodes Qt in the game tree is traversed at each iteration, where Qt is sampled from some distribution. 
+* *Single Deep Counterfactual Regret Minimization 19'*
+
+### Nash Equilibrium
+* *Nash Q-Learning for General-Sum Stochastic Games 03'*  就是把Q-learning的最优下一步Q换成下一步大家都按Nash均衡行事。
+* *Actor-Critic Algorithms for Learning Nash Equilibria in N-player General-Sum Games*
+two desirable properties of any multi-agent learning algorithm
+are as follows:
+(a) Rationality: Learn to play optimally when other agents follow stationary strategies; and
+(b) Self-play convergence: Converge to a Nash equilibrium assuming all agents are using the same learning algorithm
 
 ## Reward Shaping
 * *Policy Invariance Under Reward Transformations： Theory and Application to Reward Shaping, ICML 99'*
