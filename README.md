@@ -239,6 +239,7 @@ via deep neural networks.
 * *Single Deep Counterfactual Regret Minimization 19'*
 
 ### Nash Equilibrium
+Nash这种东西在计算意义上的本质，就是反复针对对方做最优决策，然后不断迭代，希望能够达到稳定。
 * *Nash Q-Learning for General-Sum Stochastic Games 03'*  就是把Q-learning的最优下一步Q换成下一步大家都按Nash均衡行事。
 * *Actor-Critic Algorithms for Learning Nash Equilibria in N-player General-Sum Games*
 two desirable properties of any multi-agent learning algorithm
