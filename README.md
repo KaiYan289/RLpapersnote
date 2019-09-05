@@ -227,7 +227,11 @@ Imperfect-Information Games 19'*
 使用Monte-Carlo/异步方法做self-play，提高对局质量。要求所有的agent共享同样的参数。
 
 ### Counterfactual
-* *An Introduction to Counterfactual Regret Minimization*
+目前只能用在双人零和博弈里面。CFR的一个核心在于“反事实导致的遗憾”，即如果在这个时候选择了其他动作，那么其regret相当于选这个动作所额外带来的reward。
+CFR determines an iteration’s strategy by applying any of
+several regret minimization algorithms to each infoset (Littlestone & Warmuth, 1994; Chaudhuri et al., 2009). Typically, regret matching (RM) is used as the regret minimization algorithm within CFR due to RM’s simplicity and lack of parameters.
+RM大概就是一种在正regret中根据比例选动作的简单算法。
+* *An Introduction to Counterfactual Regret Minimization*一篇很好的入门教程。
 * *Deep Counterfactual Regret Minimization ICML 19'*
 The goal of Deep CFR is to approximate the behavior of CFR without calculating and accumulating regrets at each infoset, by generalizing across similar infosets using function approximation
 via deep neural networks.
@@ -251,7 +255,8 @@ reward shaping的优点在于完全不会改变最优策略，缺点在于其形
 ## Deception
 * *Designing Deception in Adversarial Reinforcement Learning*
 在传统框架下设计policy让agent学会骗人。这里面提到了一个观点：欺骗是一种能够引诱对手进入某种特殊policy的技巧，有利于把对手拉进自己熟悉的子游戏并战胜之。（类似的MADDPG和18年OpenAI一篇分布式PPO的文章也做了和欺骗相关的multi-agent实验）
-
+* *Finding Friend and Foe in Multi-Agent Games 19’*
+和我现在做的内容比较相似，但是有大量的handcraft痕迹。使用CFR（见上面的Counterfactual一节）。
 ## Active Learning
 * *Active Classification based on Value of Classifier*
 * *Learning how to Active Learn: A Deep Reinforcement Learning Approach*
