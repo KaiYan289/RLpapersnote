@@ -215,6 +215,12 @@ LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去�
 ## Game Theory
 ### Fictitious Play
 Fictitious Play是一种寻找双人博弈中Nash均衡的方法。
+* *On the Convergence of Fictitious Play 98'*
+对一般的General sum游戏来说，NFSP是不收敛的。 
+CFP almost never converges cyclically to a mixed
+strategy equilibrium in which both players use more than two pure strategies. Thus, Shapley's example of nonconvergence is the norm rather than the exception. Mixed strategy equilibria appear to be generally unstable with respect to cyclical fictitious play processes.
+In a recent paper, Hofbauer (1994) has made a related conjecture: if CFP converges to a regular mixed strategy equilibrium, then the game is zero-sum.
+* *On the Global Convergence of Stochastic Fictitious Play* 揭示出有四种游戏是可以保证全局收敛的：games with an interior ESS（内部进化稳定点，即作为完全对称的游戏，在一个mixed-strategy邻域内是极优策略）, zero sum games, potential games（即所有人获得的reward始终相同）, and supermodular games：在超模博弈中，每个参与者增加其策略所引起的边际效用随着对手策略的递增而增加。博弈里最优反应的对应是递增的，所以参与者的策略是“策略互补的”。
 * *Full-Width Extensive Form FSP*
 理论上说extensive form也可以直接暴力展开为normal form然后使用FSP，但是那样效率太低，因为可能的决策会以指数级别增长。这篇文章证明了FSP也可以直接被用在extensive form上并且还给出了policy mix起来的方法：线性组合。
 * *Fictitious Self-Play in Extensive-Form Games 15'*
@@ -231,12 +237,17 @@ Imperfect-Information Games 19'*
 CFR determines an iteration’s strategy by applying any of
 several regret minimization algorithms to each infoset (Littlestone & Warmuth, 1994; Chaudhuri et al., 2009). Typically, regret matching (RM) is used as the regret minimization algorithm within CFR due to RM’s simplicity and lack of parameters.
 RM大概就是一种在正regret中根据比例选动作的简单算法。
-* *An Introduction to Counterfactual Regret Minimization*一篇很好的入门教程。
+* *Regret Minimization in Games with Incomplete Information 07’* 
+* *An Introduction to Counterfactual Regret Minimization* 一篇很好的入门教程。
+* *Regret Minimization in Non-Zero-Sum Games with Applications to Building Champion Multiplayer Computer Poker Agents 13’*
+这文章其实多少有一点玄学：证明了一个仍然是发散的界（regret与根号倍迭代轮数成正比），然后实际上训了一个还行的结果。
 * *Deep Counterfactual Regret Minimization ICML 19'*
 The goal of Deep CFR is to approximate the behavior of CFR without calculating and accumulating regrets at each infoset, by generalizing across similar infosets using function approximation
 via deep neural networks.
  One method to combat this is Monte Carlo CFR (MCCFR), in which only a portion of the game tree is traversed on each iteration (Lanctot et al.,2009). In MCCFR, a subset of nodes Qt in the game tree is traversed at each iteration, where Qt is sampled from some distribution. 
 * *Single Deep Counterfactual Regret Minimization 19'*
+* *Efficient Monte Carlo Counterfactual Regret Minimization in Games with Many Player Actions*
+说到底，提高采样效率用到的还是老一套，比如Monte Carlo，连稍微高级一点的Gibbs/Hasting-Metropolis采样都没用到。很多算法从tabular classical向deep搬运的过程，说白了就解决了两个问题：1）大规模计算如何用function approximator等工具代替 2）如何更好地采样以代替概率。
 
 ### Nash Equilibrium
 Nash这种东西在计算意义上的本质，就是反复针对对方做最优决策，然后不断迭代，希望能够达到稳定。
