@@ -237,6 +237,9 @@ Imperfect-Information Games 19'*
 CFR determines an iteration’s strategy by applying any of
 several regret minimization algorithms to each infoset (Littlestone & Warmuth, 1994; Chaudhuri et al., 2009). Typically, regret matching (RM) is used as the regret minimization algorithm within CFR due to RM’s simplicity and lack of parameters.
 RM大概就是一种在正regret中根据比例选动作的简单算法。
+* *Using Counterfactual Regret Minimization to Create
+Competitive Multiplayer Poker Agents 10'*
+
 * *Regret Minimization in Games with Incomplete Information 07’* 
 * *An Introduction to Counterfactual Regret Minimization* 一篇很好的入门教程。
 * *Regret Minimization in Non-Zero-Sum Games with Applications to Building Champion Multiplayer Computer Poker Agents 13’*
@@ -249,6 +252,9 @@ via deep neural networks.
 * *Efficient Monte Carlo Counterfactual Regret Minimization in Games with Many Player Actions*
 说到底，提高采样效率用到的还是老一套，比如Monte Carlo，连稍微高级一点的Gibbs/Hasting-Metropolis采样都没用到。很多算法从tabular classical向deep搬运的过程，说白了就解决了两个问题：1）大规模计算如何用function approximator等工具代替 2）如何更好地采样以代替概率。
 
+### Regret Matching
+* *A SIMPLE ADAPTIVE PROCEDURE LEADING TO CORRELATED EQUILIBRIUM 00'*
+
 ### Nash Equilibrium
 Nash这种东西在计算意义上的本质，就是反复针对对方做最优决策，然后不断迭代，希望能够达到稳定。
 * *Nash Q-Learning for General-Sum Stochastic Games 03'*  就是把Q-learning的最优下一步Q换成下一步大家都按Nash均衡行事。
@@ -257,6 +263,8 @@ two desirable properties of any multi-agent learning algorithm
 are as follows:
 (a) Rationality: Learn to play optimally when other agents follow stationary strategies; and
 (b) Self-play convergence: Converge to a Nash equilibrium assuming all agents are using the same learning algorithm
+
+
 
 ## Reward Shaping
 * *Policy Invariance Under Reward Transformations： Theory and Application to Reward Shaping, ICML 99'*
@@ -301,6 +309,7 @@ way.
 
 
 ## Novel Architectures
+* *Asynchronous Methods for Deep Reinforcement Learning* 异步DQN，类似于A3C之于A2C的改进（实际上，文章提出的是一个框架）。不过，考虑到A3C其实对于A2C也没什么改进，异步版本DQN能有什么样的性能提升也很难说。
 * *Structured Control Nets for Deep Reinforcement Learning*
 把策略分为两个独立的流：线性控制和非线性控制。线性控制就是一个简单的矩阵乘法；非线性控制是一个MLP（不过不局限于MLP，其中一个实验就使用了**中央模式生成器**）二者的简单相加就是最后神经网络的输出。“直观地，非线性控制用于前视角和全局控制，而线性控制围绕全局控制以外的局部动态变量的稳定”。中文教程见https://www.jianshu.com/p/4f5d663803ba
 
