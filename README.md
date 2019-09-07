@@ -232,6 +232,14 @@ Approach to Approximate Nash Equilibrium of
 Imperfect-Information Games 19'*
 使用Monte-Carlo/异步方法做self-play，提高对局质量。要求所有的agent共享同样的参数。
 
+### Multiple Payoffs
+* *Games with multiple payoffs, 75'*
+
+
+## Blogs and Slides
+* *https://www.freecodecamp.org/news/an-introduction-to-policy-gradients-with-cartpole-and-doom-495b5ef2207f/* 为什么需要policy gradient？随机策略和确定性策略比起来有什么好处？
+* *http://www.cs.umd.edu/~hajiagha/474GT13/Lecture10152013.pdf* Multiple Payoff的相关课件。
+
 ### Counterfactual
 目前只能用在双人零和博弈里面。CFR的一个核心在于“反事实导致的遗憾”，即如果在这个时候选择了其他动作，那么其regret相当于选这个动作所额外带来的reward。
 CFR determines an iteration’s strategy by applying any of
