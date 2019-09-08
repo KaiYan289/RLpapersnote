@@ -69,6 +69,7 @@ our policy
 文章提出来一种叫Double Oracle的算法。它首先需要将一般的RL问题转化到基于state visitation frequency向量与环境相乘作为payoff的矩阵博弈，然后用来解决矩阵博弈问题。所谓double oracle，是指给定行玩家/列玩家任意一方的mixed strategy，都可以瞬间求出另一方的best pure strategic response。不过，response的集合一直是**有限大**的（虽然最后会收敛到minimax nash均衡点）。
 首先假设一开始双方都只能在一个有限的集合内选策略。然后计算双方的一个对之前这些策略元素的最佳mixed strategy（概率分布）。接下来假装对方会按照这个mixed strategy行事，再计算最优pure strategic response。然后将response加入决策集，重复上述过程直到决策集大小不再增加即收敛。
 
+
 ## Classical DRL
  * *DQN*
   Q网络的拟合目标是用Q网络自己的早期版本（即target net）用Bellman方程作为结果。另外Experience Replay把时序过程中的步骤拆分出来作为训练集也是一个经典操作。
@@ -234,7 +235,7 @@ Imperfect-Information Games 19'*
 
 ### Multiple Payoffs
 * *Games with multiple payoffs, 75'*
-
+这里面的设定是虽然multiple，但是实际上根据加权最后还是要有一个唯一的优化目标。这个加权也不是唯一固定的，它在against nature游戏中由玩家决定以最大化总收益，而在双人博弈中似乎不是固定的。
 
 ## Blogs and Slides
 * *https://www.freecodecamp.org/news/an-introduction-to-policy-gradients-with-cartpole-and-doom-495b5ef2207f/* 为什么需要policy gradient？随机策略和确定性策略比起来有什么好处？
@@ -272,7 +273,9 @@ are as follows:
 (a) Rationality: Learn to play optimally when other agents follow stationary strategies; and
 (b) Self-play convergence: Converge to a Nash equilibrium assuming all agents are using the same learning algorithm
 
-
+### Robust(Minimax) Optimization
+* *Handling uncertainty of resource division in multi-agent system using game against nature*
+这篇文章是一篇很老的文章，主要就是对未知情景采用minimax来保证表现。文章解决了一类机器人合作收集物品问题。
 
 ## Reward Shaping
 * *Policy Invariance Under Reward Transformations： Theory and Application to Reward Shaping, ICML 99'*
