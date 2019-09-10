@@ -217,7 +217,7 @@ LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去�
 ### Fictitious Play
 Fictitious Play是一种寻找双人博弈中Nash均衡的方法。
 * *On the Convergence of Fictitious Play 98'*
-对一般的General sum游戏来说，NFSP是不收敛的。 
+对一般的General sum游戏来说，NFSP是不收敛的；实际上，不收敛是一种常态。（但是也许会收敛到cyclic equilibrium？）
 CFP almost never converges cyclically to a mixed
 strategy equilibrium in which both players use more than two pure strategies. Thus, Shapley's example of nonconvergence is the norm rather than the exception. Mixed strategy equilibria appear to be generally unstable with respect to cyclical fictitious play processes.
 In a recent paper, Hofbauer (1994) has made a related conjecture: if CFP converges to a regular mixed strategy equilibrium, then the game is zero-sum.
@@ -272,7 +272,14 @@ two desirable properties of any multi-agent learning algorithm
 are as follows:
 (a) Rationality: Learn to play optimally when other agents follow stationary strategies; and
 (b) Self-play convergence: Converge to a Nash equilibrium assuming all agents are using the same learning algorithm
-
+文章是几个印度人写的。
+为了绕过前人已经做出的结论（任何value-based方法，试图只用Q-learning不搞其他骚操作的方法，对general-sum game无法保证收敛到纳什均衡），作者写了一句“We avoid this impossibility result by searching for both values and policies instead of just values, in our proposed algorithms”。
+这个放在小字里面就很灵性……反正我没看懂什么意思，总不会是“我们这个算法本质爆搜”的意思吧？
+* *Learning Nash Equilibrium for General-Sum Markov Games from Batch Data* Markov Game（或者说Stochastic Game）是一种特殊的MDP，或者也可以理解为“回合制的”MDP。特点是决策完全由当前状态决定。它也有对应的部分可见版本，叫POSG。
+* *Markov games as a framework for multi-agent reinforcement learning* Littman的经典文章。虽然idea在现在看来都很基本，但它却是博弈论与MARL结合的先驱。
+* *Cyclic Equilibria in Markov Games* 这篇文章证明了：但凡使用Q值的值迭代算法（所以也包括DQN及其任意变种）都没法算出任意general sum game的**静态**Nash均衡。不过，作者提出一个新概念叫循环均衡——它满足任何一方单独改变策略都无法优化的条件，但是它并不满足无名氏定理，而是在一组静态策略之间循环。很多双人双状态双动作游戏都无法在value-based方法下收敛，但在几乎所有的游戏之中它们都达到了“循环均衡”。可以理解为剪刀石头布限定纯策略情况下双方在三种策略之间来回震荡，但是总的来说满足均衡条件。需要注意的是：cyclic equilibrium是一种correlated equilibrium，所以它对于competitive game还是……emmm。
+* *Actor-Critic Fictitious Play in Simultaneous Move
+Multistage Games* 一个NFSP的变种（？从年代上看和NFSP差不多，用去中心化的actor-critic方法解决了2-player 0-sum game。）
 ### Robust(Minimax) Optimization
 * *Handling uncertainty of resource division in multi-agent system using game against nature*
 这篇文章是一篇很老的文章，主要就是对未知情景采用minimax来保证表现。文章解决了一类机器人合作收集物品问题。
