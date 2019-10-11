@@ -180,6 +180,9 @@ Energy-Based Models*
 * *Learning Policy Representations in Multiagent Systems*
 * *Modeling Others using Oneself in Multi-Agent Reinforcement Learning*
 * *Opponent Modeling in Deep Reinforcement Learning*
+* *LEARNING ACTIONABLE REPRESENTATIONS WITH
+GOAL-CONDITIONED POLICIES*
+* *Learning Action Representations for Reinforcement Learning*
 ### Theory of Mind
 * *Machine Theory of Mind*
 * *Theory of Minds: Understanding Behavior in Groups Through Inverse Planning*
