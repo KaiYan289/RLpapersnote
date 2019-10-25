@@ -124,6 +124,9 @@ Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决de
  * *COMA*
  * *DP(R)IQN*在D(R)QN的基础上改进，用一个带softmax的inference分支去将对手的policy纳入考虑。
  * *Learning with opponent-learning awareness*
+### Hierarchical RL
+ * *HIRO: HIerarchical Reinforcement learning with Off-policy correction*
+ * *Hierarchical Actor-Critic*
 ### Communication
  * *BiCNet: Multiagent Bidirectionally-Coordinated Nets
 Emergence of Human-level Coordination in Learning to Play StarCraft Combat Game*
