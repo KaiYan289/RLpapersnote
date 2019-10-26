@@ -124,6 +124,8 @@ Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决de
  * *COMA*
  * *DP(R)IQN*在D(R)QN的基础上改进，用一个带softmax的inference分支去将对手的policy纳入考虑。
  * *Learning with opponent-learning awareness*
+ * *QTRAN: Learning to Factorize with Transformation for Cooperative Multi-Agent Reinforcement Learning*
+ * *QMIX*
 ### Hierarchical RL
  * *HIRO: HIerarchical Reinforcement learning with Off-policy correction*
  * *Hierarchical Actor-Critic*
@@ -173,6 +175,7 @@ Energy-Based Models*
   
  * *Generative Adversarial Imitation Learning 16'*
   它是GAN在强化学习（实际上是模仿学习）领域的推广。分为两个不断重复的阶段：其中一个阶段是固定Generator优化Discriminator；另一个阶段是固定Discriminator以分类结果的对数似然作为Reward去训练Generator。注意学习architecture要画清楚数据流！
+  * *Multi-Agent Adversarial Inverse Reinforcement Learning, ICML 19'*
 ## Behavior Cloning
 
 ## Agent Modeling
