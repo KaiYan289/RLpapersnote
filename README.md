@@ -175,6 +175,7 @@ Energy-Based Models*
   
  * *Generative Adversarial Imitation Learning 16'*
   它是GAN在强化学习（实际上是模仿学习）领域的推广。分为两个不断重复的阶段：其中一个阶段是固定Generator优化Discriminator；另一个阶段是固定Discriminator以分类结果的对数似然作为Reward去训练Generator。注意学习architecture要画清楚数据流！
+  * *MAGAIL：Multi-Agent Generative Adversarial Imitation Learning 18'*
   * *Multi-Agent Adversarial Inverse Reinforcement Learning, ICML 19'*
 ## Behavior Cloning
 
