@@ -166,15 +166,15 @@ choice when matched with arbitrary actions from the collaborating agents.
   两个假设：一个是reward是手动设计的一些特征的线性组合，另一个是认为轨迹的概率分布（这是一个重要概念！）出现的概率是和e^reward成正比。这一篇我复现过，实际效果嘛……emmm。
  * *Maximum Entropy Deep Inverse Reinforcement Learning 10'*
   “Deep”是用来解决上一篇中特征提取问题的。上一篇认为reward是手动设计的一些特征的线性组合，这里就变成了网络自动从地图里提取特征做任意的组合。
- * *Guided Cost Learning 15'*
-   
+ * *Guided Cost Learning 15'*  
  * *A Connection Between Generative Adversarial
 Networks, Inverse Reinforcement Learning, and
 Energy-Based Models*
   GAN，能量模型和GAIL是相通的。
-  
  * *Generative Adversarial Imitation Learning 16'*
   它是GAN在强化学习（实际上是模仿学习）领域的推广。分为两个不断重复的阶段：其中一个阶段是固定Generator优化Discriminator；另一个阶段是固定Discriminator以分类结果的对数似然作为Reward去训练Generator。注意学习architecture要画清楚数据流！
+   * *LEARNING ROBUST REWARDS WITH ADVERSARIAL
+INVERSE REINFORCEMENT LEARNING, ICLR 18'*
   * *MAGAIL：Multi-Agent Generative Adversarial Imitation Learning 18'*
   * *Multi-Agent Adversarial Inverse Reinforcement Learning, ICML 19'*
 ## Behavior Cloning
