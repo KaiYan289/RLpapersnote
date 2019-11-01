@@ -129,6 +129,7 @@ Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决de
 ### Hierarchical RL
  * *HIRO: HIerarchical Reinforcement learning with Off-policy correction*
  * *Hierarchical Actor-Critic*
+ * *MCP: Learning Composable Hierarchical Control with Multiplicative Compositional Policies*
 ### Communication
  * *BiCNet: Multiagent Bidirectionally-Coordinated Nets
 Emergence of Human-level Coordination in Learning to Play StarCraft Combat Game*
