@@ -205,6 +205,7 @@ Reinforcement Learning*
 * *Intrinsic motivation and
 automatic curricula via asymmetric self-play*
 LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去了。但是这个算法连OpenAI自己都说方差极大，不稳定，计算极为复杂，显然不适合嵌套到另一个算法的循环里。
+* *A Structured Prediction Approach of Generalization in Cooperative Multi-Agent Reinforcement Learning*
 
 ### Evolutionary
 * *Competitive coevolution through evolutionary complexification*
