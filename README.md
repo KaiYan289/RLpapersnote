@@ -178,7 +178,7 @@ INVERSE REINFORCEMENT LEARNING, ICLR 18'*
  * *AIRL: LEARNING ROBUST REWARDS WITH ADVERSARIAL
 INVERSE REINFORCEMENT LEARNING 17'*
   * *MAGAIL：Multi-Agent Generative Adversarial Imitation Learning 18'*
-  * *Multi-Agent Adversarial Inverse Reinforcement Learning, ICML 19'*
+  * *Multi-Agent Adversarial Inverse Reinforcement Learning, ICML 19'* 见github里的MAAIRL.pptx。
 ## Behavior Cloning
 
 ## Agent Modeling
