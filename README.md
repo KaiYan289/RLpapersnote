@@ -68,7 +68,7 @@ our policy
 它把reward表示为一个向量。把Bellman方程表示为EV+c>=0，V是每个状态的造访频率，E是policy所对应生成的矩阵（（1/1-gamma）-1）转移矩阵，c是reward向量。
 文章提出来一种叫Double Oracle的算法。它首先需要将一般的RL问题转化到基于state visitation frequency向量与环境相乘作为payoff的矩阵博弈，然后用来解决矩阵博弈问题。所谓double oracle，是指给定行玩家/列玩家任意一方的mixed strategy，都可以瞬间求出另一方的best pure strategic response。不过，response的集合一直是**有限大**的（虽然最后会收敛到minimax nash均衡点）。
 首先假设一开始双方都只能在一个有限的集合内选策略。然后计算双方的一个对之前这些策略元素的最佳mixed strategy（概率分布）。接下来假装对方会按照这个mixed strategy行事，再计算最优pure strategic response。然后将response加入决策集，重复上述过程直到决策集大小不再增加即收敛。
-
+* *Adversarial policies: Attacking Deep Reinforcement Learning*
 
 ## Classical DRL
  * *DQN*
