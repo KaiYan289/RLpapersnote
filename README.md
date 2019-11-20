@@ -69,6 +69,7 @@ our policy
 文章提出来一种叫Double Oracle的算法。它首先需要将一般的RL问题转化到基于state visitation frequency向量与环境相乘作为payoff的矩阵博弈，然后用来解决矩阵博弈问题。所谓double oracle，是指给定行玩家/列玩家任意一方的mixed strategy，都可以瞬间求出另一方的best pure strategic response。不过，response的集合一直是**有限大**的（虽然最后会收敛到minimax nash均衡点）。
 首先假设一开始双方都只能在一个有限的集合内选策略。然后计算双方的一个对之前这些策略元素的最佳mixed strategy（概率分布）。接下来假装对方会按照这个mixed strategy行事，再计算最优pure strategic response。然后将response加入决策集，重复上述过程直到决策集大小不再增加即收敛。
 * *Adversarial policies: Attacking Deep Reinforcement Learning*
+* *A Study on Overfitting in Deep Reinforcement Learning 18'* noise injection methods used in several DRL works cannot robustly detect or alleviate overfitting; In particular, the same agents and learning algorithms could have drastically different test performance, even when all of them achieve optimal rewards during training. 现有的一些方法包括：stochastic policy，random starts，sticky actions（有一定概率复读上一轮动作）和frame skipping。
 
 ## Classical DRL
  * *DQN*
@@ -198,6 +199,9 @@ GOAL-CONDITIONED POLICIES*
 * *Theory of Minds: Understanding Behavior in Groups Through Inverse Planning*
 ## Self Play
 
+## Relational Reinforcement Learning
+似乎是符号主义和连接主义的结合。
+*Relational Deep Reinforcement Learning, 18'*
 ### Miscellanous
 * *Multiagent Cooperation and Competition with Deep
 Reinforcement Learning*
@@ -206,7 +210,10 @@ Reinforcement Learning*
 automatic curricula via asymmetric self-play*
 LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去了。但是这个算法连OpenAI自己都说方差极大，不稳定，计算极为复杂，显然不适合嵌套到另一个算法的循环里。
 * *A Structured Prediction Approach of Generalization in Cooperative Multi-Agent Reinforcement Learning*
-
+* *Neural Logic Reinforcement Learning, ICML 19'* NLRL:少见的符号主义和连接主义的结合。用一阶逻辑表示policy。实际上早在世纪初就有用一阶逻辑表示state的尝试；但是这个需要agent对state和reward的逻辑形式有所了解(known dynamics)。
+说实话有点看不懂；它基于prolog这个逻辑型程序设计语言。感觉它就是一个从输入到输出的二值神经网络（向量只有0/1）？最后实验也比较弱，大概就是很小地图的cliff walking和砖块的放上放下。
+不管怎么说，它的运算可以看成一组**clause**对输入的连续处理。它的优点应该是：可解释（policy可以被一些从句解释出来——其实稍微大一点就不human readable了）、不依赖于background knowledge、可移植性强（其实RL已经有很多在注意这个问题了？）。
+* *Probability Functional Descent: A Unifying Perspective on GANs, Variational Inference, and Reinforcement Learning*
 ### Evolutionary
 * *Competitive coevolution through evolutionary complexification*
 进化算法。
@@ -317,6 +324,11 @@ reward shaping的优点在于完全不会改变最优策略，缺点在于其形
 * *Learning how to Active Learn: A Deep Reinforcement Learning Approach*
 active learning本来是一种通过分类器主动将未标记文本选择并送给专家标记的方式提高学习效率的方法。本来是将active learning用于NLP，这里把它建模成一个RL选样本作为policy的问题。而且是先在一个语言上学习policy再迁移到另一个语言上。把语料库打乱，然后认为面对一个句子有两个action：接受或不接受。如果接受，则update当前的classifier。注意到他们把当前classifier的状态建模成了一个state，所以可以认为训练是off-policy的。
 
+## Application
+###  Recommending Systems
+* *Generative Adversarial User Model for Reinforcement Learning Based Recommendation System， ICML 19'*
+* *A Deep Reinforcement Learning Perspective on Internet Congestion Control, ICML 19'*
+
 
 ## Overfitting Prevention
 * *Protecting against evaluation overfitting in empirical
@@ -325,7 +337,7 @@ reinforcement learning, AAAI 11'*
 * *A Unified Game-Theoretic Approach to
 Multiagent Reinforcement Learning, 17'*
 g. 
-When the model is fully known and the setting is strictly adversarial with two players, there are policy
+When the model is fully known and the setting is strictly with two players, there are policy
 iteration methods based on regret minimization that scale very well when using domain-specific
 abstractions
 文章基于经典的Double Oracle算法，提出了Policy Space Response Oracle（PSRO）算法。它将policy视为一种pure strategy用来玩double oracle。区别只在于，计算best response使用的是DRL方法。我们认为这是一种比训练对mixture of policy更好的解决方案：因为它保证了收敛到minimax nash聚恒。
@@ -341,7 +353,7 @@ way.
 不过超参是不是有点多啊。
 * *Actor-Critic Algorithms for Learning Nash Equilibria in N-player General-Sum Games*
 有纳什均衡理论背书的方法在generalization和鲁棒性上多少会好一点。
-
+* *Quantifying Generalization in Reinforcement Learning* OPENAI的COINRUN。考虑了很多因素，给出了一个平台，证明很多agent都会overfit。
 
 ## Novel Architectures
 * *Asynchronous Methods for Deep Reinforcement Learning* 异步DQN，类似于A3C之于A2C的改进（实际上，文章提出的是一个框架）。不过，考虑到A3C其实对于A2C也没什么改进，异步版本DQN能有什么样的性能提升也很难说。
