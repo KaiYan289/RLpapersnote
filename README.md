@@ -328,6 +328,8 @@ active learning本来是一种通过分类器主动将未标记文本选择并�
 ###  Recommending Systems
 * *Generative Adversarial User Model for Reinforcement Learning Based Recommendation System， ICML 19'*
 * *A Deep Reinforcement Learning Perspective on Internet Congestion Control, ICML 19'*
+### Packet Switching
+* *Neural Packet Classification 19’* 用RL（好像还是MARL？）做packet classification。认为生成决策树的每一步是一个action，目的是在每一步最小化时间和空间综合而成的一个loss。使用actor-critic算法。
 
 
 ## Overfitting Prevention
