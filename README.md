@@ -28,7 +28,6 @@ five categories (in
 increasing order of sophistication): ignore, forget, respond to target models, learn models,
 and theory of mind. 
 **Policy Generating Function**
-## Security Games
 ### Abstract Security Games
   * *Improving learning and adaptation in security games by exploiting information asymmetry, INFOCOM 15'*
   考虑了在抽象security game且状态部分可见的情况下如何利用tabular minmax Q-learning（Q-learning变种）去学习。
