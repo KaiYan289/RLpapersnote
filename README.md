@@ -196,11 +196,14 @@ GOAL-CONDITIONED POLICIES*
 ### Theory of Mind
 * *Machine Theory of Mind*
 * *Theory of Minds: Understanding Behavior in Groups Through Inverse Planning*
+### Society of Agents
+* *Social Influence as Intrinsic Motivation for Multi-Agent Deep RL* 奖励那些在CFR下能让队友做出不一样动作（给到信息）的动作。作者指出，如果没有这种特殊的奖励，那么就会陷入一种babbling的尴尬均衡。文章使用互信息来作为衡量指标。另外，为了CFR而训练的MOA网络其实也给出了对其他agent的embedding。还有一点，这个agent训练是完全decentralized的。其实firing beam的设定我感觉也挺有道理——无名氏定理保证了在不定长的repeated games中，如果所有人联合起来可以不让一个人好过，那么就能出现某种程度的合作。
+* *Mean-field MARL* 似乎是用“和它相关的附近的几个agent”考察一对一对的关系来降低维度。
 ## Self Play
 
 ## Relational Reinforcement Learning
 似乎是符号主义和连接主义的结合。
-*Relational Deep Reinforcement Learning, 18'*
+* *Relational Deep Reinforcement Learning, 18'* 别出心裁的定义。但是实验过于简单，实际推广的效果如何还存疑。
 ### Miscellanous
 * *Multiagent Cooperation and Competition with Deep
 Reinforcement Learning*
@@ -322,6 +325,8 @@ reward shaping的优点在于完全不会改变最优策略，缺点在于其形
 * *Active Classification based on Value of Classifier*
 * *Learning how to Active Learn: A Deep Reinforcement Learning Approach*
 active learning本来是一种通过分类器主动将未标记文本选择并送给专家标记的方式提高学习效率的方法。本来是将active learning用于NLP，这里把它建模成一个RL选样本作为policy的问题。而且是先在一个语言上学习policy再迁移到另一个语言上。把语料库打乱，然后认为面对一个句子有两个action：接受或不接受。如果接受，则update当前的classifier。注意到他们把当前classifier的状态建模成了一个state，所以可以认为训练是off-policy的。
+
+
 
 ## Application
 ###  Recommending Systems
