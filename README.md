@@ -71,6 +71,15 @@ our policy
 * *A Study on Overfitting in Deep Reinforcement Learning 18'* noise injection methods used in several DRL works cannot robustly detect or alleviate overfitting; In particular, the same agents and learning algorithms could have drastically different test performance, even when all of them achieve optimal rewards during training. 现有的一些方法包括：stochastic policy，random starts，sticky actions（有一定概率复读上一轮动作）和frame skipping。
 
 ## Classical DRL
+### Analysis
+ * *Diagnosing Bottlenecks in Deep Q-learning Algorithms, ICLR 19'* 一篇比较全面地分析Q-learning算法在实际神经网络使用中情况的文章。除了很实用之外，文章使用的三种用于分析的策略（exact，sample和replay-FQI）也提供了一个非常好的insight。
+ smaller architectures introduce significant bias in the learning process.This gap may be due to the fact that when the target is bootstrapped, we must be able to represent all Q-function along the path to the solution, and not just the final result.
+ higher sample count leads to improved learning speed and a better final solution, confirming our hypothesis that overfitting has
+a significant effect on the performance of Q-learning.
+replay buffers and early stopping can be used to mitigate the effects of overfitting.
+nonstationarities in both distributions and target values, when isolated, do not cause significant stability issues. Instead, other factors such as sampling error and function approximation appear to have more significant effects on performance. 
+文章还提出了更好的sampling方法：Adversarial Feature Matching。
+### Algorithms
  * *DQN*
   Q网络的拟合目标是用Q网络自己的早期版本（即target net）用Bellman方程作为结果。另外Experience Replay把时序过程中的步骤拆分出来作为训练集也是一个经典操作。
  * *Implicit Quantile Networks for Distributional Reinforcement Learning* DQN系到18年的SOTA，但是似乎不能解决POMDP。
