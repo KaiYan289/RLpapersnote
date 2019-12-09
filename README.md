@@ -146,7 +146,7 @@ policy function.
   不可无一不可有二的文章。作者对把RL推广到这一量度上做了很多非常用心的理论推导；但是其真的推广到这一领域能比传统RL的表现好多少是存疑的。
   
 ## Soft Q-learning
-算法产生的模型探索更充分，探索到有用的子模式更多。
+算法产生的模型探索更充分，探索到有用的子模式更多。Soft Q-learning本来就是要解决exploration的问题，所以才在reward上加了一个正则项（注意它并不是神经网络的正则项，所以不一定要用到神经网络上，tabular也完全可能应用soft Q-learning）。感觉上，DQN似乎不太能解决这个问题；deterministic的决策原本就不利于做出探索。
 * *Reinforcement Learning with Deep Energy-Based Policies ICML17’* https://zhuanlan.zhihu.com/p/44783057 有详细解说。
 * *Multiagent Soft Q-Learning*
 Relative overgeneralization occurs when
