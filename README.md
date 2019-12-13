@@ -8,8 +8,7 @@ OpenAI spinning up：https://spinningup.openai.com/en/latest/index.html
  一篇讲述DRL在网络安全中应用的综述。
  * *Deep Reinforcement Learning for Multi-Agent Systems: A Review of Challenges, Solutions and Applications,18'*
  一篇DRL在MARL中应用的文章。
- * *Multi-Agent Reinforcement Learning: A
-Report on Challenges and Approaches, 18'* 7月份的文章，比上面那篇12月的要早一些。把MARL的几个分支都讲到了。应该说这一篇是基于问题导向的（上一篇则是基于算法导向的）。
+ * *Multi-Agent Reinforcement Learning: A Report on Challenges and Approaches, 18'* 7月份的文章，比上面那篇12月的要早一些。把MARL的几个分支都讲到了。应该说这一篇是基于问题导向的（上一篇则是基于算法导向的）。
  * *Autonomous Agents Modelling Other Agents:
 A Comprehensive Survey and Open Problems, 17'*
  一篇非常全面地讲述agent modeling的文章。实际上直到这一年，agent modeling一直没有什么很大的进展，停留在提取特征和对对手过去行为做统计（fictitious learning也算），比较依赖于环境本身的信息。另一个比较新颖的思路是把对手的policy看成自动机；很不幸的是，这样不能建模非常复杂的对手，因为问题关于状态是非多项式可解的。
@@ -89,7 +88,7 @@ nonstationarities in both distributions and target values, when isolated, do not
   简单实用的正则项动态系数调整法（系数动态调整+clip），加正则项的方法都可以借鉴它。
  * *TRPO/PPO for POMDP*
  * *DDPG* DDPG是一种难以训练的方法。虽然理论上说DDPG可以适用于gridworld这样的低维度动作环境中，但是实验表明其表现和收敛速度远不如DQN。DDPG依然算是一种面对连续/高维决策空间的无奈之举。
- * *TD3* TD3 is a direct successor of DDPG and improves it using three major tricks: clipped double Q-Learning, delayed policy update and target policy smoothing.
+ * *TD3* TD3 is a direct successor of DDPG and improves it using three major tricks: clipped double Q-Learning, delayed policy update and target policy smoothing. TD3本质上可以说是一种DDPG的变种，从算法上差异也不大。它主要解决的是Q-learning中由于无法知道value的准确值导致的estimation bias问题。
  * *AC*
   Actor-Critic从本质上说是Policy Iteration的升级版。
  * *A2C*
@@ -214,6 +213,7 @@ GOAL-CONDITIONED POLICIES*
 似乎是符号主义和连接主义的结合。
 * *Relational Deep Reinforcement Learning, 18'* 别出心裁的定义。但是实验过于简单，实际推广的效果如何还存疑。
 ### Miscellanous
+* *LEARNING WHAT YOU CAN DO BEFORE DOING ANYTHING， ICLR 19'* 想办法从录像中获得一种embedding。比较值得借鉴的想法是利用互信息去衡量两个完全不同的表达方式其中一个embedding另外一个的效果，作为目标函数。
 * *Multiagent Cooperation and Competition with Deep
 Reinforcement Learning*
 这篇文章好像就是调了一下DQN的reward然后说明可以合作/竞争。没有什么太大价值，应用也不存在的。
@@ -370,7 +370,11 @@ way.
 有纳什均衡理论背书的方法在generalization和鲁棒性上多少会好一点。
 * *Quantifying Generalization in Reinforcement Learning* OPENAI的COINRUN。考虑了很多因素，给出了一个平台，证明很多agent都会overfit。
 
+* *Exploration by random network distillation ICLR 19'* 一个鼓励exploration的文章。基本想法是拿一个预测网络，如果结果不好预测说明是未知的，就给一些奖励。文章还提到了一个经典的noisy-TV场景：一个agent在迷宫里走，遇到随机播放频道的电视就会停下来无限探索。
+
 ## Novel Architectures
+* *Value Propagation Networks, ICLR 19'*  VIN的改进。一个奇妙的observation在于，二维gridworld上的value iteration可以看成是图卷积神经网络的卷积过程。
+
 * *Asynchronous Methods for Deep Reinforcement Learning* 异步DQN，类似于A3C之于A2C的改进（实际上，文章提出的是一个框架）。不过，考虑到A3C其实对于A2C也没什么改进，异步版本DQN能有什么样的性能提升也很难说。
 * *Structured Control Nets for Deep Reinforcement Learning*
 把策略分为两个独立的流：线性控制和非线性控制。线性控制就是一个简单的矩阵乘法；非线性控制是一个MLP（不过不局限于MLP，其中一个实验就使用了**中央模式生成器**）二者的简单相加就是最后神经网络的输出。“直观地，非线性控制用于前视角和全局控制，而线性控制围绕全局控制以外的局部动态变量的稳定”。中文教程见https://www.jianshu.com/p/4f5d663803ba
