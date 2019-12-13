@@ -188,6 +188,7 @@ INVERSE REINFORCEMENT LEARNING, ICLR 18'*
 INVERSE REINFORCEMENT LEARNING 17'*
   * *MAGAIL：Multi-Agent Generative Adversarial Imitation Learning 18'*
   * *Multi-Agent Adversarial Inverse Reinforcement Learning, ICML 19'* 见github里的MAAIRL.pptx。
+  * *Adversarial Imitation via Variational Inverse Reinforcement Learning， ICLR 19'*
 ## Behavior Cloning
 
 ## Agent Modeling
