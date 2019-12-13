@@ -188,7 +188,7 @@ INVERSE REINFORCEMENT LEARNING, ICLR 18'*
 INVERSE REINFORCEMENT LEARNING 17'*
   * *MAGAIL：Multi-Agent Generative Adversarial Imitation Learning 18'*
   * *Multi-Agent Adversarial Inverse Reinforcement Learning, ICML 19'* 见github里的MAAIRL.pptx。
-  * *Adversarial Imitation via Variational Inverse Reinforcement Learning， ICLR 19'*
+  * *Adversarial Imitation via Variational Inverse Reinforcement Learning， ICLR 19'* 这里面提出了一个概念：empowerment。empowerment是I(s',a|s)，它表示的是有agent有多大的可能性“影响自己的未来”。研究者认为增加这一正则项有助于防止agent过拟合到专家的demonstration上。
 ## Behavior Cloning
 
 ## Agent Modeling
@@ -226,6 +226,7 @@ LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去�
 说实话有点看不懂；它基于prolog这个逻辑型程序设计语言。感觉它就是一个从输入到输出的二值神经网络（向量只有0/1）？最后实验也比较弱，大概就是很小地图的cliff walking和砖块的放上放下。
 不管怎么说，它的运算可以看成一组**clause**对输入的连续处理。它的优点应该是：可解释（policy可以被一些从句解释出来——其实稍微大一点就不human readable了）、不依赖于background knowledge、可移植性强（其实RL已经有很多在注意这个问题了？）。
 * *Probability Functional Descent: A Unifying Perspective on GANs, Variational Inference, and Reinforcement Learning*
+* *Variational information maximisation for intrinsically motivated reinforcement learning, NIPS 15’* 除了提出了empowerment之外，这篇文章的一个重要可借鉴的地方是：如果函数本身难以优化，就尝试推导一个下界然后去优化它的下界。
 ### Evolutionary
 * *Competitive coevolution through evolutionary complexification*
 进化算法。
