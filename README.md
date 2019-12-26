@@ -5,7 +5,7 @@ OpenAI spinning up：https://spinningup.openai.com/en/latest/index.html
 
 ## Meta Learning Survey
 https://arxiv.org/pdf/1810.03548.pdf
-
+* *https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html* 优质meta learning综述。
 ## Surveys and Books
  * *Deep Reinforcement Learning for Cyber Security, 19'*
  一篇讲述DRL在网络安全中应用的综述。
