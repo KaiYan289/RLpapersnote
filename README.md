@@ -1,3 +1,7 @@
+# 一些实验心得
+1.A2C/PPO很难处理mountain car（如果不加reward shaping或者延长episode），因为reward太稀疏了。
+
+
 # RL Papers Note
 这是一篇阅读文献的简记。
 
@@ -168,7 +172,7 @@ Relative overgeneralization occurs when
 a suboptimal Nash Equilibrium in the joint space of actions is preferred over an optimal Nash Equilibrium because
 each agent’s action in the suboptimal equilibrium is a better
 choice when matched with arbitrary actions from the collaborating agents.
-* *Balancing Two-Player Stochastic Games with Soft Q-Learning*
+* *Balancing Two-Player Stochastic Games with Soft Q-Learning 18’* 
 
 ## IRL
  * *Inverse Reinforcement Learning 00'*
@@ -255,6 +259,9 @@ LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去�
 
 
 ## Game Theory
+### Classic MARL
+* *Deep Q-Learning for Nash Equilibria: Nash-DQN 19’* 用线性/二阶展开逼近去求Advatange等。
+* *Coco-Q: Learning in stochastic games with side payments 13’*
 ### Fictitious Play
 Fictitious Play是一种寻找双人博弈中Nash均衡的方法。
 * *On the Convergence of Fictitious Play 98'*
