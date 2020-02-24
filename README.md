@@ -1,6 +1,6 @@
 # 一些实验心得
 1.A2C/PPO很难处理mountain car（如果不加reward shaping或者延长episode），因为reward太稀疏了。
-2.exploration是很重要的事情，同样一个环境让非法动作原地不动&随机到一个方向&给不给巨大reward，A2C的performance会有很大差距。
+2.exploration是很重要的事情，同样一个环境让非法动作原地不动&随机到一个方向&给不给巨大reward，A2C的performance会有很大差距。一个神奇的情况是，在我自己的setting里地图边界出去时“保持不动”和中心“随机”都会让performance好很多。
 
 # RL Papers Note
 这是一篇阅读文献的简记。注释仅供参考（从后来的观点看有些解释不太对）。
