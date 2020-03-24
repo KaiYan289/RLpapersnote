@@ -1,11 +1,13 @@
 # 一些实验心得
 1.A2C/PPO很难处理mountain car（如果不加reward shaping或者延长episode），因为reward太稀疏了。
 2.exploration是很重要的事情，同样一个环境让非法动作原地不动&随机到一个方向&给不给巨大reward，A2C的performance会有很大差距。一个神奇的情况是，在我自己的setting里地图边界出去时“保持不动”和中心“随机”都会让performance好很多。
-
+3.对PPO来说做reward归一化是很重要的。
 # RL Papers Note
 这是一篇阅读文献的简记。注释仅供参考（从后来的观点看有些解释不太对）。
 
 OpenAI spinning up：https://spinningup.openai.com/en/latest/index.html
+
+
 
 ## Meta Learning Survey
 https://arxiv.org/pdf/1810.03548.pdf
@@ -231,20 +233,18 @@ Reinforcement Learning*
 这篇文章好像就是调了一下DQN的reward然后说明可以合作/竞争。没有什么太大价值，应用也不存在的。
 * *Intrinsic motivation and
 automatic curricula via asymmetric self-play*
-LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去了。但是这个算法连OpenAI自己都说方差极大，不稳定，计算极为复杂，显然不适合嵌套到另一个算法的循环里。
 * *A Structured Prediction Approach of Generalization in Cooperative Multi-Agent Reinforcement Learning*
 * *Neural Logic Reinforcement Learning, ICML 19'* NLRL:少见的符号主义和连接主义的结合。用一阶逻辑表示policy。实际上早在世纪初就有用一阶逻辑表示state的尝试；但是这个需要agent对state和reward的逻辑形式有所了解(known dynamics)。
 说实话有点看不懂；它基于prolog这个逻辑型程序设计语言。感觉它就是一个从输入到输出的二值神经网络（向量只有0/1）？最后实验也比较弱，大概就是很小地图的cliff walking和砖块的放上放下。
 不管怎么说，它的运算可以看成一组**clause**对输入的连续处理。它的优点应该是：可解释（policy可以被一些从句解释出来——其实稍微大一点就不human readable了）、不依赖于background knowledge、可移植性强（其实RL已经有很多在注意这个问题了？）。
 * *Probability Functional Descent: A Unifying Perspective on GANs, Variational Inference, and Reinforcement Learning*
 * *Variational information maximisation for intrinsically motivated reinforcement learning, NIPS 15’* 除了提出了empowerment之外，这篇文章的一个重要可借鉴的地方是：如果函数本身难以优化，就尝试推导一个下界然后去优化它的下界。
+
+
 ### Evolutionary
 * *Competitive coevolution through evolutionary complexification*
 进化算法。
-
-### Game theory
-* *Deep Reinforcement Learning from Self-Play in Imperfect-Information Games 16'*
-简介见下面Game theory一节。
+* *Evolutionary Population Curriculum for Scaling Multi-agent Reinforcement Learning
 
 ### Monte-Carlo Based
 * *Mastering the game of go without human knowledge*
@@ -259,11 +259,16 @@ LOLA算法：这个算法似乎是把别人期望的梯度下降也考虑进去�
 
 
 ## Game Theory
+### Differentiable Games
+* *Stable Opponent Shaping*
+* *Learning with Opponent Learning Awareness(LOLA)*
 ### Classic MARL
 * *Deep Q-Learning for Nash Equilibria: Nash-DQN 19’* 用线性/二阶展开逼近去求Advatange等。
-* *Coco-Q: Learning in stochastic games with side payments 13’*
+* *Coco-Q: Learning in stochastic games with side payments 13’*一种新的solution concept，利用“给reward”的形式达成某种类似“契约”的状态。
 ### Fictitious Play
 Fictitious Play是一种寻找双人博弈中Nash均衡的方法。
+* *Deep Reinforcement Learning from Self-Play in Imperfect-Information Games 16'*
+简介见下面Game theory一节。
 * *On the Convergence of Fictitious Play 98'*
 对一般的General sum游戏来说，NFSP是不收敛的；实际上，不收敛是一种常态。（但是也许会收敛到cyclic equilibrium？）
 CFP almost never converges cyclically to a mixed
