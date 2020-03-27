@@ -7,11 +7,6 @@
 
 OpenAI spinning up：https://spinningup.openai.com/en/latest/index.html
 
-
-## Non-RL papers
-* *the IQ of neural networks* 一篇还算比较有趣的文章，用CNN来做智力测试题。
-* *What can neural networks reason about?* 非常棒的文章，它为我们这些年来在NN方面设计的各种结构模块背后的理论依据提供了insight。文章以PAC-learning作为基石，提出如果神经网络的模块能够和经典算法有好的alignment（即sample complexity高），那么就会有好的performance和generalization。
-
 ## Meta Learning Survey
 https://arxiv.org/pdf/1810.03548.pdf
 * *https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html* 优质meta learning综述。
@@ -232,7 +227,8 @@ GOAL-CONDITIONED POLICIES*
 似乎是符号主义和连接主义的结合。
 * *Relational Deep Reinforcement Learning, 18'* 别出心裁的定义。但是实验过于简单，实际推广的效果如何还存疑。
 ### Miscellanous
-* *jumpstart RL*
+* *the IQ of neural networks* 一篇还算比较有趣的文章，用CNN来做智力测试题。
+* *What can neural networks reason about?* 非常棒的文章，它为我们这些年来在NN方面设计的各种结构模块背后的理论依据提供了insight，特别是GNN。文章以PAC-learning作为基石，提出如果神经网络的模块能够和经典算法有好的alignment（即sample complexity高），那么就会有好的performance和generalization。
 * *LEARNING WHAT YOU CAN DO BEFORE DOING ANYTHING， ICLR 19'* 想办法从录像中获得一种embedding。比较值得借鉴的想法是利用互信息去衡量两个完全不同的表达方式其中一个embedding另外一个的效果，作为目标函数。
 * *Multiagent Cooperation and Competition with Deep
 Reinforcement Learning*
@@ -380,6 +376,7 @@ active learning本来是一种通过分类器主动将未标记文本选择并�
 * *A Deep Reinforcement Learning Perspective on Internet Congestion Control, ICML 19'*
 ### Network Intrusion Detection
 intrusion detection可以分为host-based（基于主机的日志文件）和network-based（基于流量或包的内容）；也可以分为signature-based（固定规则）和anomaly-based。
+* *An Overview of Flow-based and Packet-based Intrusion Detection Performance in High-Speed Networks*
 * *A Flow-based Method for Abnormal Network Traffic Detection*
 * *PHY-layer Spoofing Detection with Reinforcement Learning in Wireless Networks* 这篇本质上是个security games，实际上和博弈论结合更紧密。
 
