@@ -8,6 +8,9 @@
 OpenAI spinning up：https://spinningup.openai.com/en/latest/index.html
 
 
+## Non-RL papers
+* *the IQ of neural networks* 一篇还算比较有趣的文章，用CNN来做智力测试题。
+* *What can neural networks reason about?* 非常棒的文章，它为我们这些年来在NN方面设计的各种结构模块背后的理论依据提供了insight。文章以PAC-learning作为基石，提出如果神经网络的模块能够和经典算法有好的alignment（即sample complexity高），那么就会有好的performance和generalization。
 
 ## Meta Learning Survey
 https://arxiv.org/pdf/1810.03548.pdf
@@ -168,7 +171,7 @@ policy function.
   不可无一不可有二的文章。作者对把RL推广到这一量度上做了很多非常用心的理论推导；但是其真的推广到这一领域能比传统RL的表现好多少是存疑的。
   
 ## Soft Q-learning
-算法产生的模型探索更充分，探索到有用的子模式更多。Soft Q-learning本来就是要解决exploration的问题，所以才在reward上加了一个正则项（注意它并不是神经网络的正则项，所以不一定要用到神经网络上，tabular也完全可能应用soft Q-learning）。感觉上，DQN似乎不太能解决这个问题；deterministic的决策原本就不利于做出探索。
+算法产生的模型探索更充分，探索到有用的子模式更多。Soft Q-learning本来就是要解决exploration的问题，所以才在reward上加了一个正则项（注意它并不是神经网络的正则项，所以不一定要用到神经网络上，tabular也完全可能应用soft Q-learning）。感觉上，DQN似乎不太能解决这个问题；deterministic的决策原本就不利于做出探索。然而一个奇怪的现象是，按照我的实践经验，soft actor-critic似乎推广到离散环境时表现不好（soft Q-learning表现尚可）。
 * *Reinforcement Learning with Deep Energy-Based Policies ICML17’* https://zhuanlan.zhihu.com/p/44783057 有详细解说。
 * *Multiagent Soft Q-Learning*
 Relative overgeneralization occurs when
@@ -219,6 +222,7 @@ GOAL-CONDITIONED POLICIES*
 ### Theory of Mind
 * *Machine Theory of Mind*
 * *Theory of Minds: Understanding Behavior in Groups Through Inverse Planning*
+
 ### Society of Agents
 * *Social Influence as Intrinsic Motivation for Multi-Agent Deep RL* 奖励那些在CFR下能让队友做出不一样动作（给到信息）的动作。作者指出，如果没有这种特殊的奖励，那么就会陷入一种babbling的尴尬均衡。文章使用互信息来作为衡量指标。另外，为了CFR而训练的MOA网络其实也给出了对其他agent的embedding。还有一点，这个agent训练是完全decentralized的。其实firing beam的设定我感觉也挺有道理——无名氏定理保证了在不定长的repeated games中，如果所有人联合起来可以不让一个人好过，那么就能出现某种程度的合作。
 * *Mean-field MARL* 似乎是用“和它相关的附近的几个agent”考察一对一对的关系来降低维度。
@@ -246,7 +250,7 @@ automatic curricula via asymmetric self-play*
 ### Evolutionary
 * *Competitive coevolution through evolutionary complexification*
 进化算法。
-* *Evolutionary Population Curriculum for Scaling Multi-agent Reinforcement Learning
+* *Evolutionary Population Curriculum for Scaling Multi-agent Reinforcement Learning, ICLR 2020* 非常好的文章，在agent间沟通的权重选择、变异与进化方法上都有亮点。
 
 ### Monte-Carlo Based
 * *Mastering the game of go without human knowledge*
@@ -262,7 +266,10 @@ automatic curricula via asymmetric self-play*
 
 ## Game Theory
 ### Differentiable Games
-* *Stable Opponent Shaping*
+Differentiable Games是一类特殊的游戏，它要求每个人的reward函数都已知并且由每个人的action(原文为theta)完全决定且对theta可约。
+* *N-player Diffentiable Games*
+* *Consensus Optimization* 
+* *Stable Opponent Shaping* LOLA的改进。
 * *Learning with Opponent Learning Awareness(LOLA)*
 ### Classic MARL
 * *Deep Q-Learning for Nash Equilibria: Nash-DQN 19’* 用线性/二阶展开逼近去求Advatange等。
@@ -352,13 +359,17 @@ reward shaping的优点在于完全不会改变最优策略，缺点在于其形
 和我现在做的内容比较相似，但是有大量的handcraft痕迹。使用CFR（见上面的Counterfactual一节）。
 
 * *Learning Existing Social Conventions via Observationally Augmented Self-Play AIES 19’(?)*
-学习民俗，以便更好地融入agent社会中（？）定义了一个偏序关系用来描述policy的相似性，这个比较有意思。总的来说是一篇比较有意思的文章啦，但是AIES是什么鬼……
+学习民俗，以便更好地融入agent社会中（？）定义了一个偏序关系用来描述policy的相似性，这个比较有意思。总的来说是一篇比较有意思的文章，但是AIES是什么鬼……
 ## Active Learning
 * *Active Classification based on Value of Classifier*
 * *Learning how to Active Learn: A Deep Reinforcement Learning Approach*
 active learning本来是一种通过分类器主动将未标记文本选择并送给专家标记的方式提高学习效率的方法。本来是将active learning用于NLP，这里把它建模成一个RL选样本作为policy的问题。而且是先在一个语言上学习policy再迁移到另一个语言上。把语料库打乱，然后认为面对一个句子有两个action：接受或不接受。如果接受，则update当前的classifier。注意到他们把当前classifier的状态建模成了一个state，所以可以认为训练是off-policy的。
 
 
+
+## Experimental
+* *Deep Reinforcement Learning and the Deadly Triad* 证明了DQN没有那么容易陷入死亡三角。另一个值得注意的结论是，如果Q-value异乎寻常的大，那么performance多半不会好。
+* *Deep Reinforcement Learning that Matters* 实验做的很充分，但结果却很悲观：甚至连不同的代码实现都会对同一算法的表现带来很大影响。
 
 ## Application
 ###  Recommending Systems
@@ -367,6 +378,10 @@ active learning本来是一种通过分类器主动将未标记文本选择并�
 ### Packet Switching
 * *Neural Packet Classification 19’* 用RL（好像还是MARL？）做packet classification。认为生成决策树的每一步是一个action，目的是在每一步最小化时间和空间综合而成的一个loss。使用actor-critic算法。
 * *A Deep Reinforcement Learning Perspective on Internet Congestion Control, ICML 19'*
+### Network Intrusion Detection
+intrusion detection可以分为host-based（基于主机的日志文件）和network-based（基于流量或包的内容）；也可以分为signature-based（固定规则）和anomaly-based。
+* *A Flow-based Method for Abnormal Network Traffic Detection*
+* *PHY-layer Spoofing Detection with Reinforcement Learning in Wireless Networks* 这篇本质上是个security games，实际上和博弈论结合更紧密。
 
 ## Overfitting Prevention
 * *Protecting against evaluation overfitting in empirical
