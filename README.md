@@ -1,9 +1,14 @@
 # 一些实验心得
 1.A2C/PPO很难处理mountain car（如果不加reward shaping或者延长episode），因为reward太稀疏了。
+
 2.exploration是很重要的事情，同样一个环境让非法动作原地不动&随机到一个方向&给不给巨大reward，A2C的performance会有很大差距。一个神奇的情况是，在我自己的setting里地图边界出去时“保持不动”和中心“随机”都会让performance好很多。
+
 3.对PPO来说做reward归一化是很重要的。
+
+4.（按原文实现的）deep CFR一般不太能做步数很多（即树很深）的算法，因为深度增加导致需要遍历的状态数指数级扩大。德州扑克虽然信息集数量非常大，但是每局游戏的博弈树本身并不深。 
+
 # RL Papers Note
-这是一篇阅读文献的简记。注释仅供参考（从后来的观点看有些解释不太对）。
+这是一篇阅读文献的简记。注释仅供参考（从后来的观点看有些解释不太对；解释仅供参考）。
 
 OpenAI spinning up：https://spinningup.openai.com/en/latest/index.html
 
@@ -23,7 +28,7 @@ A Comprehensive Survey and Open Problems, 17'*
  一本涵盖了多智能体与算法、博弈论、分布式推理、强化学习、拍卖机制、社会选择等交集的作品。
  前面提到了一些关于**异步DP，multi-agent的ABT搜索**等内容。
  这里面提到了一些多人博弈、时序博弈中基本的概念，比如**extensive form 和normal form**。对于时序博弈，存在一个“不可信威胁”概念，就是说如果整个Nash均衡，在第一步一方打破Nash均衡后，另一方采取反制措施会让自己的reward收到损失，那么这就是“不可信”的，所以说这样的Nash均衡是不稳定的。于是提出**子游戏精炼纳什均衡**。还有**颤抖手精炼纳什均衡**，大概就是指在假设一定犯错概率的情况下达到纳什均衡。另外还有一个有意思的**无名氏定理**：如果无限次重复进行的游戏具有合适的贴现因子，同时所有人针对一个人时，会给这个人带来额外的损失，那么agent之间是可以合作的。
- 言内行为，言外行为和言后行为；交流四原则（quality，quantity，politeness和relativity）。
+ 还讲到了一些人类学内容，包括言内行为，言外行为和言后行为；交流四原则（quality，quantity，politeness和relativity）。
 * *Is multiagent deep reinforcement learning the answer or the question? A brief survey 18'* 这篇文章和那篇18年12月的文章一样都是可以当成工具书使用的精良survey。作者将MARL当前的工作分成了四个方向：研究single Agent算法在MA环境下的反应；沟通协议；合作和对他人建模。
 Competitive RL最怕的就是和对手之间产生过拟合；为此常见的方法包括训练一个对mixture of policy的对策以及加噪声。对于可以建模成博弈论的情况（Normal/Extensive form），还有一个方法就是self play。
 另外这篇文章也提出了一个好的解决思路：Robust Multi-Agent Reinforcement Learning
@@ -41,6 +46,8 @@ and theory of mind.
 ### Abstract Security Games
   * *Improving learning and adaptation in security games by exploiting information asymmetry, INFOCOM 15'*
   考虑了在抽象security game且状态部分可见的情况下如何利用tabular minmax Q-learning（Q-learning变种）去学习。
+  * *A survey of interdependent information security games*
+  
 ### Network Security (Games)
   * *Defending against distributed denial-of-service attacks with max-min fair server-centric router throttles*
   网络攻击的经典模型之一：攻击者控制了几个初始节点（叶子）。向目标服务器发动进攻，而防守者控制着到目标服务器（树根）上某些必经之路的路由器，需要调整丢包比例让保证安全的同时最大限度让合法请求通过。这个设定被用在之后大量的DDOS相关论文中，也包括一些用MARL解决该问题的文章。
@@ -131,10 +138,14 @@ color-digit MNIST
 中心化训练与去中心化执行。
 * *RDPG* RDPG比DDPG更难训练，更容易收敛到局部最优。但凡是带Recurrent的RL过程，其必须保存下整个trajectory用于训练（只保存每个transition的hidden state实验证明是低效的，且很难训练出来。）
 * *DRPIQN* 面对POMDP，有一种训练方法是维护一个网络对隐藏状态的“信念”（另外两种常见的方法分别是actor-critic给critic训练时额外的信息，以及LSTM记住历史）。虽然“信念”听起来很贝叶斯，但是实际上就是额外拉出一个网络分支用来预测对手的动作。
-* *BAD* 
 * *RLaR: Concurrent Reinforcement Learning as a Rehearsal for
-Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决dec-POMDP的方法。dec-POMDP是一种特殊的MARL，它要求所有的agent共享一个global reward。Dec-POMDP是NEXP-Complete的。 **RLAR是一种认为训练时全部状态可见、执行时不可见的方法，它把训练叫做一种“rehearsal”，即排练。**它分为两步：第一步是在完全状态下学到一个policy；第二步是agent通过探索去建立一个预测模型，根据预测模型和原policy学到新的不需要完全可见就可以work的policy。
+Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决dec-POMDP的方法。dec-POMDP是一种特殊的MARL，它要求所有的agent共享一个global reward。Dec-POMDP是NEXP-Complete的。 **RLAR是一种认为训练时全部状态可见、执行时不可见的方法，它把训练叫做一种“rehearsal”，即排练。** 它分为两步：第一步是在完全状态下学到一个policy；第二步是agent通过探索去建立一个预测模型，根据预测模型和原policy学到新的不需要完全可见就可以work的policy。
 * *Actor-Critic Policy Optimization in Partially Observable Multiagent Environments, NIPS 18'*
+以下是三篇按照时间先后排列的文章，它们都尝试用decoder对
+* *BAD: Bayes Action Decoder* 
+* *SAD: Simplified Bayes Action Decoder *
+* *VariBAD: *
+
 ## MARL
  * *MADDPG*
    经典的Multi-agent算法。本质上说，是DDPG的扩展；它利用centralized training在训练时为critic网络给出了额外的信息，而actor则不直接利用这些信息；最后测试时只使用actor网络决策。另外它为了防止competitive情况下的overfit，训练了一堆平行的参数每次均匀随机选择。
@@ -201,6 +212,8 @@ INVERSE REINFORCEMENT LEARNING 17'*
   * *MAGAIL：Multi-Agent Generative Adversarial Imitation Learning 18'*
   * *Multi-Agent Adversarial Inverse Reinforcement Learning, ICML 19'* 见github里的MAAIRL.pptx。
   * *Adversarial Imitation via Variational Inverse Reinforcement Learning， ICLR 19'* 这里面提出了一个概念：empowerment。empowerment是I(s',a|s)，它表示的是有agent有多大的可能性“影响自己的未来”。研究者认为增加这一正则项有助于防止agent过拟合到专家的demonstration上。
+  * *Asynchronous Multi-Agent Adversarial Inverse Reinforcement Learning*
+  
 ## Behavior Cloning
 
 ## Agent Modeling
@@ -220,12 +233,14 @@ GOAL-CONDITIONED POLICIES*
 
 ### Society of Agents
 * *Social Influence as Intrinsic Motivation for Multi-Agent Deep RL* 奖励那些在CFR下能让队友做出不一样动作（给到信息）的动作。作者指出，如果没有这种特殊的奖励，那么就会陷入一种babbling的尴尬均衡。文章使用互信息来作为衡量指标。另外，为了CFR而训练的MOA网络其实也给出了对其他agent的embedding。还有一点，这个agent训练是完全decentralized的。其实firing beam的设定我感觉也挺有道理——无名氏定理保证了在不定长的repeated games中，如果所有人联合起来可以不让一个人好过，那么就能出现某种程度的合作。
-* *Mean-field MARL* 似乎是用“和它相关的附近的几个agent”考察一对一对的关系来降低维度。
+* *Mean-field MARL* 是用“和它相关的附近的几个agent”考察一对一对的关系来降低维度。然而其限制在于，其应用环境必须满足reward能被和field内附近agent的互动很好地勾勒。
+
 ## Self Play
 
 ## Relational Reinforcement Learning
 似乎是符号主义和连接主义的结合。
 * *Relational Deep Reinforcement Learning, 18'* 别出心裁的定义。但是实验过于简单，实际推广的效果如何还存疑。
+
 ### Miscellanous
 * *the IQ of neural networks* 一篇还算比较有趣的文章，用CNN来做智力测试题。
 * *What can neural networks reason about?* 非常棒的文章，它为我们这些年来在NN方面设计的各种结构模块背后的理论依据提供了insight，特别是GNN。文章以PAC-learning作为基石，提出如果神经网络的模块能够和经典算法有好的alignment（即sample complexity高），那么就会有好的performance和generalization。
@@ -238,11 +253,11 @@ automatic curricula via asymmetric self-play*
 * *A Structured Prediction Approach of Generalization in Cooperative Multi-Agent Reinforcement Learning*
 * *Neural Logic Reinforcement Learning, ICML 19'* NLRL:少见的符号主义和连接主义的结合。用一阶逻辑表示policy。实际上早在世纪初就有用一阶逻辑表示state的尝试；但是这个需要agent对state和reward的逻辑形式有所了解(known dynamics)。
 说实话有点看不懂；它基于prolog这个逻辑型程序设计语言。感觉它就是一个从输入到输出的二值神经网络（向量只有0/1）？最后实验也比较弱，大概就是很小地图的cliff walking和砖块的放上放下。
-不管怎么说，它的运算可以看成一组**clause**对输入的连续处理。它的优点应该是：可解释（policy可以被一些从句解释出来——其实稍微大一点就不human readable了）、不依赖于background knowledge、可移植性强（其实RL已经有很多在注意这个问题了？）。
+它的运算可以看成一组**clause**对输入的连续处理。它的优点应该是：可解释（policy可以被一些从句解释出来——其实稍微大一点就不human readable了）、不依赖于background knowledge、可移植性强（其实RL已经有很多在注意这个问题了？）。
 * *Probability Functional Descent: A Unifying Perspective on GANs, Variational Inference, and Reinforcement Learning*
-* *Variational information maximisation for intrinsically motivated reinforcement learning, NIPS 15’* 除了提出了empowerment之外，这篇文章的一个重要可借鉴的地方是：如果函数本身难以优化，就尝试推导一个下界然后去优化它的下界。
-
-
+* *Variational information maximisation for intrinsically motivated reinforcement learning, NIPS 15’* 除了提出了empowerment之外，这篇文章的一个重要可借鉴的地方是：如果函数本身难以优化，就尝试推导一个下界然后去优化它的下界。在凸优化中，我们有时会优化envelope function，找proximal mapping，也就是这个道理。
+* *Are security experts useful? Bayesian Nash equilibria for network security games with limited information* 
+这篇文章从博弈论的角度告诉我们，杀毒软件不能装太多。原文abstract：“expert users can be not only invaluable contirbutors, but also free-riders, defectors and narcissistic opportunists.”
 ### Evolutionary
 * *Competitive coevolution through evolutionary complexification*
 进化算法。
@@ -250,7 +265,7 @@ automatic curricula via asymmetric self-play*
 
 ### Monte-Carlo Based
 * *Mastering the game of go without human knowledge*
-（未完待续）
+AlphaGo。
 * *Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm 17'*
 这一篇和上一篇基本上没有太大区别，只是上一篇应用的一个扩展。
 * *Emergent Complexity via Multi-Agent Competition ICLR 18'*
@@ -262,14 +277,14 @@ automatic curricula via asymmetric self-play*
 
 ## Game Theory
 ### Differentiable Games
-Differentiable Games是一类特殊的游戏，它要求每个人的reward函数都已知并且由每个人的action(原文为theta)完全决定且对theta可约。
+Differentiable Games是一类特殊的游戏，它要求每个人的reward函数都已知并且由每个人的action(原文为theta)完全决定且对theta可微。
 * *N-player Diffentiable Games*
 * *Consensus Optimization* 
 * *Stable Opponent Shaping* LOLA的改进。
-* *Learning with Opponent Learning Awareness(LOLA)*
+* *Learning with Opponent Learning Awareness(LOLA)* 把对手当成naive learner，预测对手的update。不过这样的假设在对手也是LOLA Agent的时候会导致“arrogant”的行为，即假设对手会遵从自己对我方有利的动作调整（具体阐述见上面的Stable Opponent shaping）。
 ### Classic MARL
 * *Deep Q-Learning for Nash Equilibria: Nash-DQN 19’* 用线性/二阶展开逼近去求Advatange等。
-* *Coco-Q: Learning in stochastic games with side payments 13’*一种新的solution concept，利用“给reward”的形式达成某种类似“契约”的状态。
+* *Coco-Q: Learning in stochastic games with side payments 13’* 一种新的solution concept，利用“给reward”的形式达成某种类似“契约”的状态。
 ### Fictitious Play
 Fictitious Play是一种寻找双人博弈中Nash均衡的方法。
 * *Deep Reinforcement Learning from Self-Play in Imperfect-Information Games 16'*
@@ -336,6 +351,7 @@ are as follows:
 * *Learning Nash Equilibrium for General-Sum Markov Games from Batch Data* Markov Game（或者说Stochastic Game）是一种特殊的MDP，或者也可以理解为“回合制的”MDP。特点是决策完全由当前状态决定。它也有对应的部分可见版本，叫POSG。
 * *Markov games as a framework for multi-agent reinforcement learning* Littman的经典文章。虽然idea在现在看来都很基本，但它却是博弈论与MARL结合的先驱。
 * *Cyclic Equilibria in Markov Games* 这篇文章证明了：但凡使用Q值的值迭代算法（所以也包括DQN及其任意变种）都没法算出任意general sum game的**静态**Nash均衡。不过，作者提出一个新概念叫循环均衡——它满足任何一方单独改变策略都无法优化的条件，但是它并不满足无名氏定理，而是在一组静态策略之间循环。很多双人双状态双动作游戏都无法在value-based方法下收敛，但在几乎所有的游戏之中它们都达到了“循环均衡”。可以理解为剪刀石头布限定纯策略情况下双方在三种策略之间来回震荡，但是总的来说满足均衡条件。需要注意的是：cyclic equilibrium是一种correlated equilibrium，所以它对于competitive game还是……emmm。
+**多说一句：** 从动力系统的观点来看，循环均衡正是由每方策略优化方向决定的向量场中互相可达且（在允许无穷小误差意义下）常返的“旋涡”。这本质是就是alpharank的MCC。
 * *Actor-Critic Fictitious Play in Simultaneous Move
 Multistage Games* 一个NFSP的变种（？从年代上看和NFSP差不多，用去中心化的actor-critic方法解决了2-player 0-sum game。）
 ### Robust(Minimax) Optimization
@@ -352,16 +368,14 @@ reward shaping的优点在于完全不会改变最优策略，缺点在于其形
 * *Designing Deception in Adversarial Reinforcement Learning*
 在传统框架下设计policy让agent学会骗人。这里面提到了一个观点：欺骗是一种能够引诱对手进入某种特殊policy的技巧，有利于把对手拉进自己熟悉的子游戏并战胜之。（类似的MADDPG和18年OpenAI一篇分布式PPO的文章也做了和欺骗相关的multi-agent实验）
 * *Finding Friend and Foe in Multi-Agent Games 19’*
-和我现在做的内容比较相似，但是有大量的handcraft痕迹。使用CFR（见上面的Counterfactual一节）。
+有大量的prior knowledge，但是不失为好的尝试。使用CFR（见上面的Counterfactual一节）。
 
 * *Learning Existing Social Conventions via Observationally Augmented Self-Play AIES 19’(?)*
-学习民俗，以便更好地融入agent社会中（？）定义了一个偏序关系用来描述policy的相似性，这个比较有意思。总的来说是一篇比较有意思的文章，但是AIES是什么鬼……
+学习民俗，以便更好地融入agent社会中（？）定义了一个偏序关系用来描述policy的相似性，这个比较有意思。总的来说是一篇比较有意思的文章。
 ## Active Learning
 * *Active Classification based on Value of Classifier*
 * *Learning how to Active Learn: A Deep Reinforcement Learning Approach*
 active learning本来是一种通过分类器主动将未标记文本选择并送给专家标记的方式提高学习效率的方法。本来是将active learning用于NLP，这里把它建模成一个RL选样本作为policy的问题。而且是先在一个语言上学习policy再迁移到另一个语言上。把语料库打乱，然后认为面对一个句子有两个action：接受或不接受。如果接受，则update当前的classifier。注意到他们把当前classifier的状态建模成了一个state，所以可以认为训练是off-policy的。
-
-
 
 ## Experimental
 * *Deep Reinforcement Learning and the Deadly Triad* 证明了DQN没有那么容易陷入死亡三角。另一个值得注意的结论是，如果Q-value异乎寻常的大，那么performance多半不会好。
@@ -379,6 +393,8 @@ intrusion detection可以分为host-based（基于主机的日志文件）和net
 * *An Overview of Flow-based and Packet-based Intrusion Detection Performance in High-Speed Networks*
 * *A Flow-based Method for Abnormal Network Traffic Detection*
 * *PHY-layer Spoofing Detection with Reinforcement Learning in Wireless Networks* 这篇本质上是个security games，实际上和博弈论结合更紧密。
+### Traffic Control
+
 
 ## Overfitting Prevention
 * *Protecting against evaluation overfitting in empirical
