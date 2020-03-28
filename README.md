@@ -141,10 +141,10 @@ color-digit MNIST
 * *RLaR: Concurrent Reinforcement Learning as a Rehearsal for
 Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决dec-POMDP的方法。dec-POMDP是一种特殊的MARL，它要求所有的agent共享一个global reward。Dec-POMDP是NEXP-Complete的。 **RLAR是一种认为训练时全部状态可见、执行时不可见的方法，它把训练叫做一种“rehearsal”，即排练。** 它分为两步：第一步是在完全状态下学到一个policy；第二步是agent通过探索去建立一个预测模型，根据预测模型和原policy学到新的不需要完全可见就可以work的policy。
 * *Actor-Critic Policy Optimization in Partially Observable Multiagent Environments, NIPS 18'*
-以下是三篇按照时间先后排列的文章，它们都尝试用decoder对
+以下是三个按照时间先后排列的算法。
 * *BAD: Bayes Action Decoder* 
 * *SAD: Simplified Bayes Action Decoder *
-* *VariBAD: *
+* *VariBAD*
 
 ## MARL
  * *MADDPG*
@@ -242,6 +242,7 @@ GOAL-CONDITIONED POLICIES*
 * *Relational Deep Reinforcement Learning, 18'* 别出心裁的定义。但是实验过于简单，实际推广的效果如何还存疑。
 
 ### Miscellanous
+* *A survey on Federated Learning Systems: Vision, Hype and Reality for Data Privacy and Protection* 联邦学习的综述。
 * *the IQ of neural networks* 一篇还算比较有趣的文章，用CNN来做智力测试题。
 * *What can neural networks reason about?* 非常棒的文章，它为我们这些年来在NN方面设计的各种结构模块背后的理论依据提供了insight，特别是GNN。文章以PAC-learning作为基石，提出如果神经网络的模块能够和经典算法有好的alignment（即sample complexity高），那么就会有好的performance和generalization。
 * *LEARNING WHAT YOU CAN DO BEFORE DOING ANYTHING， ICLR 19'* 想办法从录像中获得一种embedding。比较值得借鉴的想法是利用互信息去衡量两个完全不同的表达方式其中一个embedding另外一个的效果，作为目标函数。
