@@ -7,7 +7,7 @@
 
 4.（按原文实现的）deep CFR一般不太能做步数很多（即树很深）的算法，因为深度增加导致需要遍历的状态数指数级扩大。德州扑克虽然信息集数量非常大，但是每局游戏的博弈树本身并不深。 
 
-5.Recurrent DDPG的表现并不可靠，至少很难调。Recurrent TD3也是；能不用recurrent的情况尽量别用。
+5.Recurrent DDPG的表现并不可靠，至少很难调。Recurrent MADDPG更是如此（MADDPG本身就不好调）。Recurrent TD3也是；能不用recurrent的情况尽量别用。
 
 # RL Papers Note
 这是一篇阅读文献的简记。注释仅供参考（从后来的观点看有些解释不太对；解释仅供参考）。
@@ -383,6 +383,15 @@ active learning本来是一种通过分类器主动将未标记文本选择并�
 ## Experimental
 * *Deep Reinforcement Learning and the Deadly Triad* 证明了DQN没有那么容易陷入死亡三角。另一个值得注意的结论是，如果Q-value异乎寻常的大，那么performance多半不会好。
 * *Deep Reinforcement Learning that Matters* 实验做的很充分，但结果却很悲观：甚至连不同的代码实现都会对同一算法的表现带来很大影响。
+下面是两篇专门研究PPO和TRPO的文章：
+* *Implementation Matters in Deep Policy Gradients: A Case Study on PPO and TRPO*
+不加技巧的PPO实际上performance并不好。几个重要的结论有：
+1.clip（对于advantage在\[1-epsilon,1+epsilon\]之间的截断）如果没有的话，surrogate loss里的KL散度会大一些——尽管如此，差距并不显著，甚至还基本保持在TRPO的硬性限制之内。从最终reward的差距来看也并不算显著。（或者说，允许的KL散度和似乎有一定关系）
+2.加了代码优化的PPO和TRPO都能保持某个平均KL，但不加代码优化的PPO似乎不能保持住trust region的KL差距。
+
+在humanoid2d-v2和walker2d-v2里，anneal_lr（把Adam的lr拿来退火——尽管Adam本身就是自适应算法）似乎有显著的reward提升。归一化reward有显著的reward提升。除此之外，value loss的clip和好的初始化（正交而不是xavier）可以带来微弱的reward提升。
+
+* *Are Deep Policy Gradient ALgorithms Truly Policy Gradient Algorithms?* 这篇文章对DPG算法从原理层面提出了一定的质疑，并且呼吁评价RL算法应该多角度评价（比如，能不能很好地对问题进行真实的建模）。文章表明我们平常的算法采样的数量，下降的梯度以及整个value function的landscape与真实情况实际上相去甚远，而且重复跑多次之后，其梯度差异很大——至少要多三个数量级才能做到这些。
 
 ## Application
 ###  Recommending Systems
