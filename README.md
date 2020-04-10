@@ -148,7 +148,7 @@ Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决de
 * *Actor-Critic Policy Optimization in Partially Observable Multiagent Environments, NIPS 18'*
 以下是三个按照时间先后排列的算法。
 * *BAD: Bayes Action Decoder* 
-* *SAD: Simplified Bayes Action Decoder *
+* *SAD: Simplified Bayes Action Decoder*
 * *VariBAD*
 
 ## MARL
@@ -240,8 +240,6 @@ GOAL-CONDITIONED POLICIES*
 * *Social Influence as Intrinsic Motivation for Multi-Agent Deep RL* 奖励那些在CFR下能让队友做出不一样动作（给到信息）的动作。作者指出，如果没有这种特殊的奖励，那么就会陷入一种babbling的尴尬均衡。文章使用互信息来作为衡量指标。另外，为了CFR而训练的MOA网络其实也给出了对其他agent的embedding。还有一点，这个agent训练是完全decentralized的。其实firing beam的设定我感觉也挺有道理——无名氏定理保证了在不定长的repeated games中，如果所有人联合起来可以不让一个人好过，那么就能出现某种程度的合作。
 * *Mean-field MARL* 是用“和它相关的附近的几个agent”考察一对一对的关系来降低维度。然而其限制在于，其应用环境必须满足reward能被和field内附近agent的互动很好地勾勒。
 
-## Self Play
-
 ## Relational Reinforcement Learning
 似乎是符号主义和连接主义的结合。
 * *Relational Deep Reinforcement Learning, 18'* 别出心裁的定义。但是实验过于简单，实际推广的效果如何还存疑。
@@ -291,6 +289,7 @@ Differentiable Games是一类特殊的游戏，它要求每个人的reward函数
 ### Classic MARL
 * *Deep Q-Learning for Nash Equilibria: Nash-DQN 19’* 用线性/二阶展开逼近去求Advatange等。
 * *Coco-Q: Learning in stochastic games with side payments 13’* 一种新的solution concept，利用“给reward”的形式达成某种类似“契约”的状态。
+
 ### Fictitious Play
 Fictitious Play是一种寻找双人博弈中Nash均衡的方法。
 * *Deep Reinforcement Learning from Self-Play in Imperfect-Information Games 16'*
@@ -319,7 +318,7 @@ Imperfect-Information Games 19'*
 ## Blogs and Slides
 * *https://www.freecodecamp.org/news/an-introduction-to-policy-gradients-with-cartpole-and-doom-495b5ef2207f/* 为什么需要policy gradient？随机策略和确定性策略比起来有什么好处？
 * *http://www.cs.umd.edu/~hajiagha/474GT13/Lecture10152013.pdf* Multiple Payoff的相关课件。
-
+* *https://vincentherrmann.github.io/blog/wasserstein/* 关于Wassenstein GAN的一些内容，或许有助于了解Wassenstein距离。
 ### Counterfactual
 目前只能用在双人零和博弈里面。CFR的一个核心在于“反事实导致的遗憾”，即如果在这个时候选择了其他动作，那么其regret相当于选这个动作所额外带来的reward。
 CFR determines an iteration’s strategy by applying any of
@@ -341,7 +340,7 @@ via deep neural networks.
 说到底，提高采样效率用到的还是老一套，比如Monte Carlo，连稍微高级一点的Gibbs/Hasting-Metropolis采样都没用到。很多算法从tabular classical向deep搬运的过程，说白了就解决了两个问题：1）大规模计算如何用function approximator等工具代替 2）如何更好地采样以代替概率。
 
 ### Regret Matching
-* *A SIMPLE ADAPTIVE PROCEDURE LEADING TO CORRELATED EQUILIBRIUM 00'*
+* *A SIMPLE ADAPTIVE PROCEDURE LEADING TO CORRELATED EQUILIBRIUM 00'* CFR的基础是regret matching，本质上CFR就是regret matching延展到extensive form game的产物（至少主流的CFR是这样）。
 
 ### Nash Equilibrium
 Nash这种东西在计算意义上的本质，就是反复针对对方做最优决策，然后不断迭代，希望能够达到稳定。
@@ -378,6 +377,7 @@ reward shaping的优点在于完全不会改变最优策略，缺点在于其形
 
 * *Learning Existing Social Conventions via Observationally Augmented Self-Play AIES 19’(?)*
 学习民俗，以便更好地融入agent社会中（？）定义了一个偏序关系用来描述policy的相似性，这个比较有意思。总的来说是一篇比较有意思的文章。
+
 ## Active Learning
 * *Active Classification based on Value of Classifier*
 * *Learning how to Active Learn: A Deep Reinforcement Learning Approach*
@@ -409,7 +409,7 @@ intrusion detection可以分为host-based（基于主机的日志文件）和net
 * *A Flow-based Method for Abnormal Network Traffic Detection*
 * *PHY-layer Spoofing Detection with Reinforcement Learning in Wireless Networks* 这篇本质上是个security games，实际上和博弈论结合更紧密。
 ### Traffic Control
-
+* *Multi-agent Deep Reinforcement Learning for Large-Scale Traffic Signal Control*
 
 ## Overfitting Prevention
 * *Protecting against evaluation overfitting in empirical
