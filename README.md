@@ -12,6 +12,10 @@
 6.不要在pycharm调试的watch里放一些可能会改变全局变量的函数，这会改变程序的行为（比如有一个函数的作用是将全局变量+1，那么这样的函数就不要放在调试的观察里，否则会导致全局变量的值异常）
 
 7.注意torch.tensor的类型。如果torch.tensor是整数类型的，拿它和常数比较的时候可能会把常数给round down掉！所以就会造成tensor(\[0\]) < 0.5为假这样的奇怪事件。
+
+8.如果有的时候整个实验不work，不妨fix一些要素试一试。比如off-policy情况下两步动作训练不出来可以考虑先把第一步fix住看第二步是否能训练出来；图片当训练集不work就先拿一张图片当训练集看是否能收敛到过拟合，如果不是则说明代码有问题。
+
+
 # RL Papers Note
 这是一篇阅读文献的简记。注释仅供参考（从后来的观点看有些解释不太对；解释仅供参考）。
 
@@ -180,7 +184,8 @@ policy function.
 ## Distance of Distribution
   * *Wassenstein Reinforcement Learning*
   不可无一不可有二的文章。作者对把RL推广到这一量度上做了很多非常用心的理论推导；但是其真的推广到这一领域能比传统RL的表现好多少是存疑的。
-  
+  * *Wasserstein GAN*
+  Wasserstein对比KL的一大好处是不要求定义域完全重合（甚至交集为0也可以衡量两个分布之间的距离）。
 ## Soft Q-learning
 算法产生的模型探索更充分，探索到有用的子模式更多。Soft Q-learning本来就是要解决exploration的问题，所以才在reward上加了一个正则项（注意它并不是神经网络的正则项，所以不一定要用到神经网络上，tabular也完全可能应用soft Q-learning）。感觉上，DQN似乎不太能解决这个问题；deterministic的决策原本就不利于做出探索。然而一个奇怪的现象是，按照我的实践经验，soft actor-critic似乎推广到离散环境时表现不好（soft Q-learning表现尚可）。
 * *Reinforcement Learning with Deep Energy-Based Policies ICML17’* https://zhuanlan.zhihu.com/p/44783057 有详细解说。
