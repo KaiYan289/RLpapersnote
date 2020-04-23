@@ -24,6 +24,7 @@ OpenAI spinning up：https://spinningup.openai.com/en/latest/index.html
 ## Meta Learning Survey
 https://arxiv.org/pdf/1810.03548.pdf
 * *https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html* 优质meta learning综述。
+
 ## Surveys and Books
  * *Deep Reinforcement Learning for Cyber Security, 19'*
  一篇讲述DRL在网络安全中应用的综述。
@@ -249,7 +250,11 @@ GOAL-CONDITIONED POLICIES*
 似乎是符号主义和连接主义的结合。
 * *Relational Deep Reinforcement Learning, 18'* 别出心裁的定义。但是实验过于简单，实际推广的效果如何还存疑。
 
+## Mathematical Background
+* *Rethinking the effective sample size*
+
 ### Miscellanous
+* *Meta Q-learning*
 * *A survey on Federated Learning Systems: Vision, Hype and Reality for Data Privacy and Protection* 联邦学习的综述。
 * *the IQ of neural networks* 一篇还算比较有趣的文章，用CNN来做智力测试题。
 * *What can neural networks reason about?* 非常棒的文章，它为我们这些年来在NN方面设计的各种结构模块背后的理论依据提供了insight，特别是GNN。文章以PAC-learning作为基石，提出如果神经网络的模块能够和经典算法有好的alignment（即sample complexity高），那么就会有好的performance和generalization。
@@ -319,6 +324,7 @@ Imperfect-Information Games 19'*
 ### Multiple Payoffs
 * *Games with multiple payoffs, 75'*
 这里面的设定是虽然multiple，但是实际上根据加权最后还是要有一个唯一的优化目标。这个加权也不是唯一固定的，它在against nature游戏中由玩家决定以最大化总收益，而在双人博弈中似乎不是固定的。
+
 
 ## Blogs and Slides
 * *https://www.freecodecamp.org/news/an-introduction-to-policy-gradients-with-cartpole-and-doom-495b5ef2207f/* 为什么需要policy gradient？随机策略和确定性策略比起来有什么好处？
