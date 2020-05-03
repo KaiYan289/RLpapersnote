@@ -254,6 +254,9 @@ GOAL-CONDITIONED POLICIES*
 * *Rethinking the effective sample size*
 
 ### Miscellanous
+* *SEIR epidemic model with delay*（AI无关）
+* *DR-RNN: A deep residual recurrent neural network for model reduction*
+对于（如物理模型等）大规模模拟的简化，有三种主要思路。第一种是基于物理公式的简化模型（所以是heavily prior-based）；第二种是纯拟合的黑箱模型（类似于专家-学徒问题中的模仿学习）；第三种是基于投影的低秩模型（ROM）。第三种思路的前提是必须假设整个模型可以被低秩线性表出。得到投影基使用**Galerkin projection（伽辽金方法）**。几种主要算法是：Proper Orthogonal Decomposition; Krylov subspace methods; truncated balanced realization.文章提出了一种基于RNN的model reduction(?)
 * *Meta Q-learning*
 * *A survey on Federated Learning Systems: Vision, Hype and Reality for Data Privacy and Protection* 联邦学习的综述。
 * *the IQ of neural networks* 一篇还算比较有趣的文章，用CNN来做智力测试题。
@@ -421,6 +424,8 @@ intrusion detection可以分为host-based（基于主机的日志文件）和net
 * *PHY-layer Spoofing Detection with Reinforcement Learning in Wireless Networks* 这篇本质上是个security games，实际上和博弈论结合更紧密。
 ### Traffic Control
 * *Multi-agent Deep Reinforcement Learning for Large-Scale Traffic Signal Control*
+### Public Health
+* *A Microscopic Epidemic Model and Pandemic Prediction Using Multi-Agent Reinforcement Learning*
 
 ## Overfitting Prevention
 * *Protecting against evaluation overfitting in empirical
