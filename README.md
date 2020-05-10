@@ -291,6 +291,9 @@ AlphaGo。
 这篇文章用分布式PPO训练。总的来说很吃数据量（想来也是，它完全不采取centralize的方法进行训练。）。
 这篇文章的一个小trick是它使用自己的过去作为sample，另一个是开始阶段手动设计的curriculum。
 
+### Credit Assignment
+* *Credit Assignment For Collective Multiagent RL With Global Rewards*
+* *Shapley Q-value: A Local Reward Approach to Solve Global Reward Games*
 
 ## Game Theory
 ### Differentiable Games
@@ -301,7 +304,8 @@ Differentiable Games是一类特殊的游戏，它要求每个人的reward函数
 * *Learning with Opponent Learning Awareness(LOLA)* 把对手当成naive learner，预测对手的update。不过这样的假设在对手也是LOLA Agent的时候会导致“arrogant”的行为，即假设对手会遵从自己对我方有利的动作调整（具体阐述见上面的Stable Opponent shaping）。
 ### Classic MARL
 * *Deep Q-Learning for Nash Equilibria: Nash-DQN 19’* 用线性/二阶展开逼近去求Advatange等。
-* *Coco-Q: Learning in stochastic games with side payments 13’* 一种新的solution concept，利用“给reward”的形式达成某种类似“契约”的状态。
+* *Coco-Q: Learning in stochastic games with side payments 13’* 一种新的solution concept，利用“给reward”的形式达成某种类似“契约”的状态。实际上，这个或许能够给reward assignment一点insight？
+
 
 ### Fictitious Play
 Fictitious Play是一种寻找双人博弈中Nash均衡的方法。
