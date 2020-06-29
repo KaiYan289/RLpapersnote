@@ -167,6 +167,8 @@ Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决de
  * *Learning with opponent-learning awareness*
  * *QTRAN: Learning to Factorize with Transformation for Cooperative Multi-Agent Reinforcement Learning*
  * *QMIX*
+ * *Diff-DAC: Distributed Actor-Critic for Average Multitask Deep Reinforcement Learning* 其实或许这也是一种图卷积神经网络的思想？
+
 ### Hierarchical RL
  * *HIRO: HIerarchical Reinforcement learning with Off-policy correction*
  * *Hierarchical Actor-Critic*
