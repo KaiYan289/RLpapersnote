@@ -21,6 +21,15 @@
 
 OpenAI spinning up：https://spinningup.openai.com/en/latest/index.html
 
+## Sequential Decision Making
+* *A Survey of Multi-Objective Sequential Decision-Making*
+
+
+### Multi-arm Bandit
+* *Multi-armed bandits with switching penalties*
+* *Learning in A Changing World: Restless Multi-Armed Bandit with Unknown Dynamics*
+* *Mortal Multi-Armed Bandits* 会消逝的摇杆
+
 ## Meta Learning Survey
 https://arxiv.org/pdf/1810.03548.pdf
 * *https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html* 优质meta learning综述。
