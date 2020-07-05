@@ -441,7 +441,8 @@ intrusion detection可以分为host-based（基于主机的日志文件）和net
 * *Multi-agent Deep Reinforcement Learning for Large-Scale Traffic Signal Control*
 ### Public Health
 * *A Microscopic Epidemic Model and Pandemic Prediction Using Multi-Agent Reinforcement Learning*
-
+### Cloud Computing
+* *A Hierarchical Framework of Cloud Resource Allocation and Power Management Using Deep Reinforcement Learning*
 ## Overfitting Prevention
 * *Protecting against evaluation overfitting in empirical
 reinforcement learning, AAAI 11'*
