@@ -53,6 +53,8 @@ Competitive RL最怕的就是和对手之间产生过拟合；为此常见的方
 另外这篇文章也提出了一个好的解决思路：Robust Multi-Agent Reinforcement Learning
 via Minimax Deep Deterministic Policy Gradient
 
+* *Tutorial on Variational Autoencoders*，https://arxiv.org/pdf/1606.05908.pdf
+
 * *A Survey of Learning in Multiagent Environments: Dealing with Non-Stationarity 17'*
 five categories (in
 increasing order of sophistication): ignore, forget, respond to target models, learn models,
@@ -127,7 +129,7 @@ nonstationarities in both distributions and target values, when isolated, do not
  * *DDPG* DDPG是一种难以训练的方法。虽然理论上说DDPG可以适用于gridworld这样的低维度动作环境中，但是实验表明其表现和收敛速度远不如DQN。DDPG依然算是一种面对连续/高维决策空间的无奈之举。
  * *TD3* TD3 is a direct successor of DDPG and improves it using three major tricks: clipped double Q-Learning, delayed policy update and target policy smoothing. TD3本质上可以说是一种DDPG的变种，从算法上差异也不大。它主要解决的是Q-learning中由于无法知道value的准确值导致的estimation bias问题。
  * *AC*
-  Actor-Critic从本质上说是Policy Iteration的升级版。
+  Actor-Critic从本质上说是Policy Iteration的升级版。 
  * *A2C*
  advantage Actor-critic
  * *A3C*
