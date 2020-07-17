@@ -444,6 +444,8 @@ intrusion detection可以分为host-based（基于主机的日志文件）和net
 * *Multi-agent Deep Reinforcement Learning for Large-Scale Traffic Signal Control*
 ### Public Health
 * *A Microscopic Epidemic Model and Pandemic Prediction Using Multi-Agent Reinforcement Learning*
+* *A brief review of synthetic population generation practices in agent-based social simulation* 把这篇放在这里是因为它讲述了生成模拟人口数据的常见方法，而模拟人口数据在传染病研究里很常见。
+* *Generating Realistic Synthetic Population Datasets*
 ### Cloud Computing
 * *A Hierarchical Framework of Cloud Resource Allocation and Power Management Using Deep Reinforcement Learning* Autoencoder+全局/机器内部建模。
 * *Energy-Efficient Virtual Machines Consolidation in Cloud Data Centers Using Reinforcement Learning*
