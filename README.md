@@ -518,3 +518,4 @@ where д(s) is the autoencoder pre-processing function, and k controls the granu
 * *Reward Estimation for Variance Reduction in Deep Reinforcement Learning* 
 给DQN降低方差的技巧： average DQN和ensemble DQN。前者是用过去几次的参数做平均数得到的Q去用在bellman方程里更新，后者是希望解决前者在方差减小的同时导致计算代价增大的问题——同时维护和更新k套参数。
 * *Issues in using function approximation for reinforcement learning.* 很老的一篇文章，提出了为什么Q-value经常会overestimate的理由——因为bellman方程中的max operator会捕捉和放大那些偏大的Q值估计；这样会导致花费很多时间去探索那些实际上不好的(s,a)pair。一个关键的observation是，在reward固定且deterministic转移的情况下，假定Q(s,a)-Q*(s,a)期望为0，其所造成的误差是gamma*(max_a Q - max_a Q*)，这个值的期望往往是大于0的（不严谨地说，当所有Q一样且落到0两侧的概率相等时，误差为正的概率是1-(1/2)^|a|；Q不一样但落到0两侧概率相等时，那些Q\*值小一点的贡献也会小一些。）
+Stochastic Variance Reduction for Deep Q-learning, AAMAS 19’ 把SVRG用在了DQN中。
