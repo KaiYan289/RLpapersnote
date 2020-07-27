@@ -514,3 +514,7 @@ where д(s) is the autoencoder pre-processing function, and k controls the granu
 * *Deep decentralized multi-task multi-agent reinforcement learning under partial observability, ICLR 17'*
  MT-MARL， CERT
 
+### Variance Reduction
+* *Reward Estimation for Variance Reduction in Deep Reinforcement Learning* 
+给DQN降低方差的技巧： average DQN和ensemble DQN。前者是用过去几次的参数做平均数得到的Q去用在bellman方程里更新，后者是希望解决前者在方差减小的同时导致计算代价增大的问题——同时维护和更新k套参数。
+* *Issues in using function approximation for reinforcement learning.* 
