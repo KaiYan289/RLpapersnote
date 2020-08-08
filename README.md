@@ -239,7 +239,8 @@ INVERSE REINFORCEMENT LEARNING 17'*
   * *Asynchronous Multi-Agent Adversarial Inverse Reinforcement Learning*
   
 ## Behavior Cloning
-
+* *Integrating Behavior Cloning and Reinforcement Learning for Improved Performance in Dense and Sparse Reward Environments*
+* *Accelerating Online Reinforcement Learning with Offline Datasets*
 ## Agent Modeling
 ### Classical Modeling：Feature Engineering
 * *Player Modeling in Civilization IV*
