@@ -117,6 +117,8 @@ a significant effect on the performance of Q-learning.
 replay buffers and early stopping can be used to mitigate the effects of overfitting.
 nonstationarities in both distributions and target values, when isolated, do not cause significant stability issues. Instead, other factors such as sampling error and function approximation appear to have more significant effects on performance. 
 文章还提出了更好的sampling方法：Adversarial Feature Matching。
+* *Near-Optimal Reinforcement Learning in Polynomial Time 02'* 很经典的一篇文章，出自大佬Singh之手。文章提出了The Explicit Explore or Exploit算法，它通过定义了一个“known state”的概念，然后将算法分为两个反复的阶段——balanced wandering（当来到“unknown状态”时进入，去尝试当前尝试次数最少的动作）和offline attempted exploration/exploitation（如果当前的已知集合足够好，则在其中exploit；否则尽快跳出这个已知状态集合。如果在过程中意外来到了未知状态，则立即回到balanced wandering）。“已知”的概念是每个动作都被探索一定的次数，这个“一定”是根据理论计算得到的。
+
 ### Algorithms
  * *DQN*
   Q网络的拟合目标是用Q网络自己的早期版本（即target net）用Bellman方程作为结果。另外Experience Replay把时序过程中的步骤拆分出来作为训练集也是一个经典操作。
@@ -245,13 +247,17 @@ INVERSE REINFORCEMENT LEARNING 17'*
 ### Classical Modeling：Feature Engineering
 * *Player Modeling in Civilization IV*
 这个大概还是使用传统的特征工程，需要手动设计特征。Agent Modeling只有在近两年概率空间投影的policy representation才摆脱了传统方法。
-### Divergence-based Policy Representation
+## Policy Representation
+### Divergence-based
 * *Learning Policy Representations in Multiagent Systems*
 * *Modeling Others using Oneself in Multi-Agent Reinforcement Learning*
 * *Opponent Modeling in Deep Reinforcement Learning*
 * *LEARNING ACTIONABLE REPRESENTATIONS WITH
 GOAL-CONDITIONED POLICIES*
 * *Learning Action Representations for Reinforcement Learning*
+### Encoding & Hidden State
+* *Provably efficient RL with Rich Observations via Latent State Decoding*
+
 ### Theory of Mind
 * *Machine Theory of Mind*
 * *Theory of Minds: Understanding Behavior in Groups Through Inverse Planning*
