@@ -79,7 +79,7 @@ and theory of mind.
 ### Green Security Games
   * *Deep Reinforcement Learning for Green Security Games with Real-Time Information, AAAI 19'*
  对Green Security Games这种特殊的安全游戏引入了一种DRL解法。Green Security Game是一个面对偷猎行为建模设计的游戏，在2D gridworld上进行。游戏分为两方，一个是偷猎者，另一个是巡逻者。偷猎者可以四处移动，或是放下偷猎工具，它每回合有一定概率爆炸，若爆炸则收获正reward（巡逻者收获负reward），并消失；巡逻者可以拆除偷猎工具，或者是抓到偷猎者以得到正reward（对应的，偷猎者收获负reward）。游戏是partial observation的。游戏在巡逻者抓住偷猎者且场上没有偷猎工具时结束。DRL本身似乎没有什么特别的。
-
+关于Green security games，CMU的Fang Fei在这方面做的工作是最多的。
 ## Ancient RL
 ### Distributed Cooperation
  * * Hysteretic Q-learning* an algorithm for decentralized reinforcement learning in cooperative multi-agent teams
@@ -448,15 +448,16 @@ intrusion detection可以分为host-based（基于主机的日志文件）和net
 * *A Flow-based Method for Abnormal Network Traffic Detection*
 * *PHY-layer Spoofing Detection with Reinforcement Learning in Wireless Networks* 这篇本质上是个security games，实际上和博弈论结合更紧密。
 ### Traffic Control
-* *Multi-agent Deep Reinforcement Learning for Large-Scale Traffic Signal Control*
-* *Integrating Independnet and Centralized Milti-Agent Reinforcement Learning For Traffic Signal Network Optimization*
+* *Multi-agent Deep Reinforcement Learning for Large-Scale Traffic Signal Control* 这个是Independent RL。
+* *Integrating Independnet and Centralized Milti-Agent Reinforcement Learning For Traffic Signal Network Optimization* 这个在independent RL的基础上做了改进，针对的是交通灯这样一种既可以方便地找到局部reward又可以找到全局reward的问题：他额外计算了一个全局Q值，这个Q值是全局reward，但是policy是每个个体最大化自己的局部reward。然后梯度下降的时候同时考虑全局Q和局部Q。不过，如果只是这样的话，那么可以想见全局Q也不过是在局部最大化这个policy下局部Q的平均，那么整个算法就是IRL；但是他还搞了一个regularizer，就是要求每个Q都不能离平均的Q太远，这里做了一个惩罚项。这里其实有一点assumption，就是没有一个agent是特别突出的。
 ### Public Health
 * *A Microscopic Epidemic Model and Pandemic Prediction Using Multi-Agent Reinforcement Learning*
 * *A brief review of synthetic population generation practices in agent-based social simulation* 把这篇放在这里是因为它讲述了生成模拟人口数据的常见方法，而模拟人口数据在传染病研究里很常见。
 * *Generating Realistic Synthetic Population Datasets*
-### Cloud Computing
+### Cloud Computing (Resources Allocation)
 * *A Hierarchical Framework of Cloud Resource Allocation and Power Management Using Deep Reinforcement Learning* Autoencoder+全局/机器内部建模。
 * *Energy-Efficient Virtual Machines Consolidation in Cloud Data Centers Using Reinforcement Learning*
+* *Resource Management with Deep Reinforcement Learning* MIT的Hongzi Mao在这方面有一些工作，最早的就是这篇。这篇实际上是基于REINFORCE with baseline的任务调度，其中“冻结时间”把一步拆成好几步来降低动作空间的思路比较有趣。
 
 ## Overfitting Prevention
 * *Protecting against evaluation overfitting in empirical
