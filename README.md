@@ -449,6 +449,7 @@ intrusion detection可以分为host-based（基于主机的日志文件）和net
 * *PHY-layer Spoofing Detection with Reinforcement Learning in Wireless Networks* 这篇本质上是个security games，实际上和博弈论结合更紧密。
 ### Traffic Control
 * *Multi-agent Deep Reinforcement Learning for Large-Scale Traffic Signal Control*
+* *Integrating Independnet and Centralized Milti-Agent Reinforcement Learning For Traffic Signal Network Optimization*
 ### Public Health
 * *A Microscopic Epidemic Model and Pandemic Prediction Using Multi-Agent Reinforcement Learning*
 * *A brief review of synthetic population generation practices in agent-based social simulation* 把这篇放在这里是因为它讲述了生成模拟人口数据的常见方法，而模拟人口数据在传染病研究里很常见。
