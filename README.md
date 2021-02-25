@@ -68,7 +68,7 @@ and theory of mind.
   * *Improving learning and adaptation in security games by exploiting information asymmetry, INFOCOM 15'*
   考虑了在抽象security game且状态部分可见的情况下如何利用tabular minmax Q-learning（Q-learning变种）去学习。
   * *A survey of interdependent information security games*
-  
+
 ### Network Security (Games)
   * *Defending against distributed denial-of-service attacks with max-min fair server-centric router throttles*
   网络攻击的经典模型之一：攻击者控制了几个初始节点（叶子）。向目标服务器发动进攻，而防守者控制着到目标服务器（树根）上某些必经之路的路由器，需要调整丢包比例让保证安全的同时最大限度让合法请求通过。这个设定被用在之后大量的DDOS相关论文中，也包括一些用MARL解决该问题的文章。
@@ -529,6 +529,11 @@ where д(s) is the autoencoder pre-processing function, and k controls the granu
 * *Issues in using function approximation for reinforcement learning.* 很老的一篇文章，提出了为什么Q-value经常会overestimate的理由——因为bellman方程中的max operator会捕捉和放大那些偏大的Q值估计；这样会导致花费很多时间去探索那些实际上不好的(s,a)pair。一个关键的observation是，在reward固定且deterministic转移的情况下，假定Q(s,a)-Q*(s,a)期望为0，其所造成的误差是gamma*(max_a Q - max_a Q*)，这个值的期望往往是大于0的（不严谨地说，当所有Q一样且落到0两侧的概率相等时，误差为正的概率是1-(1/2)^|a|；Q不一样但落到0两侧概率相等时，那些Q\*值小一点的贡献也会小一些。）
 gamma太高的时候容易导致q-learning fail。
 Stochastic Variance Reduction for Deep Q-learning, AAMAS 19’ 把SVRG用在了DQN中。
+
+## Safe RL
+### RL with Constraint
+* *First order Constrained Optimization in Policy Space*是下面那篇projection-based的改进，它可以不用计算二阶导数。
+* *Projection-based Constrainted Policy Optimization*
 
 ## Evolutionary RL
 * *Evolution-guided policy gradient in reinforcement learning* NIPS 18'
