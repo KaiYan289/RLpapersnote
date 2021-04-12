@@ -15,6 +15,12 @@
 
 8.如果有的时候整个实验不work，不妨fix一些要素试一试。比如off-policy情况下两步动作训练不出来可以考虑先把第一步fix住看第二步是否能训练出来；图片当训练集不work就先拿一张图片当训练集看是否能收敛到过拟合，如果不是则说明代码有问题。
 
+# Predict + Optimization Papers Note
+TODO: 一个简单的预测优化文献小survey。
+* *SPO+*
+* *Melding the Decisions pipeline, AAAI 19'*
+* *Optnet*
+* *Direct Loss Minimization*
 
 # RL Papers Note
 这是一篇阅读文献的简记。注释仅供参考（从后来的观点看有些解释不太对；解释仅供参考）。
@@ -143,6 +149,9 @@ EXPERIENCE REPLAY , ICLR 17'*
 estimators is notoriously hard. Importance sampling is one of the most popular approaches for off-policy learning**。
 这里面有一个非常重要的地方：许多Actor-Critic算法的实现实际上使用了replay buffer。从理论上说，这是不对的（因为梯度这个东西涉及到policy采取各个动作进行转移的概率，但是off-policy情况下actor输出的概率不再是原来那个了，对应的critic的输入会有变化（我自己在实现replay buffer的时候可以说是瞎搞，比如要在转移里随机加噪声直接给对应方向+1再归一化），应该要加重要性采样加以修正；但是重要性采样方差太大，所以有了tree back-up和retrace（lambda），以及ACER），但是从实践上说，一般是可以work的——只限于1-step TD-learning。在n-step TD-learning时，由于转移与policy高度耦合，很快就会出现巨大的误差。（一般好像也没人用buffer去做n-step TD-learning）也有观点认为，1-step TD-learning仅仅是让程序额外学了一些转移。另外，off-policy情况下buffer里的policy原则上不应该和现在的policy偏移太大。
 
+下面是一篇对这些经典算法的改进：
+* *Improving Stochastic Policy Gradients in Continuous Control with Deep Reinforcement Learning using the Beta Distribution, ICLR 17'* 在输出连续动作时，我们常常假设动作的概率分布是高斯分布。但是并不是所有的场景都适合用高斯分布；这篇文章探索了使用beta分布去替代高斯分布的可能性。高斯分布有一个问题：它在处理具有边界的动作时会出现bias，因为有一些被分配了概率的动作实际上是不可能达到的（比如说，机器手的角度只能是(-30, 30)，这个时候假如输出一个均值-29的高斯分布，实际上就有相当一部分概率位于“不可行”的区域。相比之下，beta分布的支撑集是有界的，因此其在边界上是bias-free的。（应该说，高斯分布对很多对称或者近似对称的真实情况work的都很好；一种work的不好的情况是长尾分布）。
+   
 ### Partly Observable RL
 * *DRQN* 把第一个全连接层换成了LSTM，其他的和DQN 完 全 一 致。
 * *DDRQN*是一个用来解决MARL中团队合作__交流__的网络结构。第一个D代表distributed。文章中提到了三个主要修改：第一个是把上一个agent的动作作为下一个时间步的输入；第二个是所有agent参数共享；第三个是**对于不稳定环境不使用experience replay**。使用soft更新（就是说加权更新target network参数而不是直接复制）。另外实验比较有意思，把帽子和开关的智力题建模成了MARL问题。
@@ -181,6 +190,7 @@ Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决de
  * *QTRAN: Learning to Factorize with Transformation for Cooperative Multi-Agent Reinforcement Learning*
  * *QMIX*
  * *Diff-DAC: Distributed Actor-Critic for Average Multitask Deep Reinforcement Learning* 其实或许这也是一种图卷积神经网络的思想？
+
 
 ### Hierarchical RL
  * *HIRO: HIerarchical Reinforcement learning with Off-policy correction*
@@ -538,3 +548,4 @@ Stochastic Variance Reduction for Deep Q-learning, AAMAS 19’ 把SVRG用在了D
 ## Evolutionary RL
 * *Evolution-guided policy gradient in reinforcement learning* NIPS 18'
 * *Proximal Distilled Evolutionary Reinforcement Learning* AAAI 20' 
+
