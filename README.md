@@ -1,19 +1,96 @@
-# 一些实验心得
-1.A2C/PPO很难处理mountain car（如果不加reward shaping或者延长episode），因为reward太稀疏了。
+# Useful Tips of the Day (updated 2021.7)
 
-2.exploration是很重要的事情，同样一个环境让非法动作原地不动&随机到一个方向&给不给巨大reward，A2C的performance会有很大差距。一个神奇的情况是，在我自己的setting里地图边界出去时“保持不动”和中心“随机”都会让performance好很多。
+## Useful Tips of the Day
 
-3.对PPO来说做reward归一化是很重要的。
+1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
-4.（按原文实现的）deep CFR一般不太能做步数很多（即树很深）的算法，因为深度增加导致需要遍历的状态数指数级扩大。德州扑克虽然信息集数量非常大，但是每局游戏的博弈树本身并不深。 
+2. It is important to do state/reward normalization for PPO to maintain numerical stability.  
 
-5.Recurrent DDPG的表现并不可靠，至少很难调。Recurrent MADDPG更是如此（MADDPG本身就不好调）。Recurrent TD3也是；能不用recurrent的情况尽量别用。
+3. DO NOT put any function that changes global variables in Pycharm's watch! (e.g. a function in Pycharm's watch which adds a global counter by 1 may cause the wrong value of the counter).
 
-6.不要在pycharm调试的watch里放一些可能会改变全局变量的函数，这会改变程序的行为（比如有一个函数的作用是将全局变量+1，那么这样的函数就不要放在调试的观察里，否则会导致全局变量的值异常）
+4. SCIP (not scipy!) is currently the best open-source optimization solver.
 
-7.注意torch.tensor的类型。如果torch.tensor是整数类型的，拿它和常数比较的时候可能会把常数给round down掉！所以就会造成tensor(\[0\]) < 0.5为假这样的奇怪事件。
+5. Don't use scipy in your research project; use Gurobi instead. An academic license costs $0, yet Gurobi is ~250x faster than scipy (and also more numerically stable).
 
-8.如果有的时候整个实验不work，不妨fix一些要素试一试。比如off-policy情况下两步动作训练不出来可以考虑先把第一步fix住看第二步是否能训练出来；图片当训练集不work就先拿一张图片当训练集看是否能收敛到过拟合，如果不是则说明代码有问题。
+6. Normally, a good solver (e.g. Gurobi) will do some numerical tricks for actions that may cause singularity.
+
+7. If you don't know what hyper-parameter to set, go find a previous work and inherit their params. This will help to convince the reviewers that your idea works.
+
+8. Randomly initialized NN has a compressing effect (see Benjamin/Rechat's work), which means its output is probably a contract mapping (with possible shifts) with random inputs. This effect can be used in anomaly detection.
+
+9. When dealing with a temporal sequence, use the first part (e.g. year 1-6 for a 10-year dataset) as the training set, then validation set, finally the test set.
+
+10. Prediction models for time sequence (e.g. electricity/VM demand) usually underestimates, for there are systematic bias (e.g. peaks) in the dataset. On the other hand, underestimating the demands are usually more serious than overestimating in real life.
+
+11. You can get Azure VM information from Kusto.
+
+12. Exploration for RL matters, even for toy environment. The same environment with different default behavior for illegal actions (e.g. stay or randomly moving or giving large negative reward) causes huge performance gap for A2C. As for my own experience, the first two are better choices.
+
+13. L1 loss fits better for data with **sparse** entries, and is more **robust against outliers**.
+
+14. The goal of experimental parts in a paper is not stating "what we've done". It should be organized by "What we're going to validate" (e.g. Why do we design this experiment, and what is the conclusion).
+ 
+15. The MIT book and the Boyd book are the two classical textbooks for convex optimization; strongly recommending the two books.
+
+16. The difference of **\forall** and **for x \in X**: The former emphasizes "satisfaction of conditions", usually used in proofs of advanced mathematics; the latter is an enumeration. They are generally the same, but proper usage helps comprehension for readers.
+
+17. A **sparse embedding** (e.g. holiday tag) with **small training set** is inherently infavorable over two-stage method and favors decision-focused method.
+
+18.	Write papers! Only by writing papers can you be more rigorous in language for papers.
+
+19.	*Constraint* is for decision variables' feasible domain. The relationship between problem parameters should not appear in the constraint part. 
+
+20. tensor([0]) < 0.5 is **False**. Note the **round down of integer types of torch.tensor!**
+
+21. To check the difference of two general distributions (e.g. When you are comparing the performance of two methods), mean and std are not enough. Try percentile and **Maximum Mean Discrepancy**!
+
+22. Add axis label and title for debugging figures, as you may forget what you were plotting.
+
+23. Do periodically save your **code** and model for an actively debugged program; preferably automatically doing so every time you run your code.
+
+24. Add a L1/L2 regularization (e.g. ||f(\theta)-f(\hat theta)||, ||\theta-\hat theta|| where theta is the predicted param) is by essence Lipschitz regularization for target function.
+
+25. Some ways to note current update for your research field:  
+
+1) arxiv subscribing cs.AI cs.LG, plus manually searching the key word *proceedings of ICML、NeurIPS、ICLR、UAI、AISTATS, etc.*
+
+2) reddit.com/r/MachineLearning
+
+26. Put a demo one-line run script for cmd/shell in your project readme. The most common one will do.
+
+27. Do note your notations for theoretical parts, and try your best to make it coherent for each of the theorem / both main paper and appendix.
+
+28. Recurrent DDPG is unreliable and hard to tune. MADDPG/Recurrent MADDPG is even more painful. So do recurrent TD3; try to avoid recurrent policy if you want stable performance.
+
+29. Programming dataset, e.g. GAMS, has a very large number of dimensions for decisions (e.g. >100k).
+
+30. A noise of ~0.05 over a value 1 causes a SNR less than 15db, and by this aspect is not a small noise.
+
+31. If you can tell a good story / establish a good framework, then the experimental part will be much easier as it only serves as a validation. Otherwise, your research will be an empirical one, which requires high demand on performance.
+
+32.	General Multi-Objective problem may seem luring, but it is not trivial: pareto optimal means balance over multiple goals, yet such goals usually depends on the settings of real scenario.
+
+33. "Add noise then discretization(e.g. rounding)" is more close to reality than "discretization then add noise".
+
+34. Sometimes, if the experiment code is not working, you can fix some elements to debug. 
+
+E.g. for off-policy 2-step RL, you can fix the first step and try to train the 2nd step; if the current picture training set is not working, you can pick one picture as the training set to see if it can overfit; if not, the code may be buggy.
+
+However, such practice (the one datapoint method) may face the problem of **not having enough support for optimization surface**, so it is not a panecea.
+
+35. Intuitively, the following situation will put decision-focused method at advantage over 2-stage method:
+
+1) the optimization part, with surrogate, has a differentiable argmax and good generalization,
+
+2) the prediction part has some outlier dimensions which has low weight on optimization quality.
+
+36. If you find an unnecessary condition set in your experiment due to early decisions, If you have no time for re-runs, you can simply explain the condition in the appendix, and give a real-life example if necessary.
+
+37. For a multi-dimensional decision vector in optimization, the influence of single/minority number of dimension may be overwhelmed.
+
+38. 2-stage early stopping has an inherent logic of "doing prediction well first". Thus, it should be early stopping according to **prediction loss** instead of **optimization performance**.
+
+39. Significance tests are usually conducted in traditional statistic works for hypotheses, especially where test set does not exist. 
 
 # Predict + Optimization Papers Note
 TODO: 一个简单的预测优化文献小survey。
