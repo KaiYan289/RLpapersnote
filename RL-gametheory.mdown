@@ -1,0 +1,248 @@
+# Game Theory
+
+Game theory is closely related to dynamic systems, where the iterative update is in coherent with a point moving in a field.  
+
+For more information on regret matching and counterfactual regret minimization, see the AGT_survey file (arXiv: 2001.06487). This paper might(?) contain error w.r.t. LOLA. 
+
+* *Multiagent Cooperation and Competition with Deep Reinforcement Learning* 
+
+Shows the feasibility of using DQN for discovering cooperating/competiting strategy. Little novelty technologically from today's perspective; furthermore, value-based method has no theoretical guarantee for Nash equlibria. See the "solution concept" part.
+
+Intrinsic motivation and automatic curricula via asymmetric self-play
+
+## Differentiable Games
+
+Differentiable Games are a special type of game where every player's reward function is known and fully determined by parameters \theta of policy; moreover, the reward function shall be differentiable w.r.t theta.
+
+Such game is useful as it is closely related to GAN.
+
+* *N-player Diffentiable Games*
+
+* *Consensus Optimization*
+
+* *Stable Opponent Shaping*
+
+See "Stable Opponent Shaping in Differentiable Games.pptx". This is an improvement of LOLA.
+
+* *Learning with Opponent Learning Awareness(LOLA)* 
+
+See "Stable Opponent Shaping in Differentiable Games.pptx" for details. This paper models the opponent as a naive learner and predicts the update of the opponent.
+
+However, such assumption will cause **arrogance** when the opponent is also a LOLA agent, which means the algorithm assumes that the opponent will comply to our update that benefits ourselves.
+
+## Security Games
+
+### Abstract Security Games
+
+* *Improving learning and adaptation in security games by exploiting information asymmetry* (INFOCOM 15')
+
+ It introduces tabular minmax Q-learning under an abstract security game with partial observation.
+ 
+* *A survey of interdependent information security games*
+
+* *Are security experts useful? Bayesian Nash equilibria for network security games with limited information*
+
+An interesting conclusion for layman; this paper tells us not to install too much anti-virus softwares, quote, "expert users can be not only invaluable contirbutors, but also free-riders, defectors and narcissistic opportunists."
+
+### Network Security (Games)
+
+* *Defending Against Distributed Denial-of-Service Attacks with Max-min Fair Server-centric Router Throttles* (2005)
+
+This paper uses a typical model for network attacks: The attacker controls some initial nodes (leaves) and launches attack on the server on the root.
+
+The defender controls some of the routers in the tree, and its action space is drop rate to maximize the throughput of legal requests while ensuring safety.
+
+Such setting is widely used in DDOS-related papers including those with MARL solutions.
+
+* *Reinforcement Learning for Autonomous Defence in Software-Defined Networking* (2018)
+
+This paper uses another typical model for network attacks: The attacker controls some initial nodes on a graph and launches attack on the server. 
+
+Each turn, the attacker can infect (compromise) some of the neighbouring servers; the defender can break/reconstruct some of the links (edges), or move the data on the target server to another server.
+
+* *Adversarial Reinforcement Learning for Observer Design in Autonomous Systems under Cyber Attacks* (2018)
+
+This paper actually has less thing to do with "computer networks". This paper discusses the problem of defending an adversary that twists the input of a fixed RL agent by training a an agent that corrects the input.
+
+Self-play is used here to train the adversarial and the observer in the same time. The paper uses classical pendulum as input and TRPO as the fixed RL agent.
+
+###  Green Security Games
+
+See RL-application **anti-poaching** part.
+
+## Fictitious Play
+
+Fictitious Play is a way to find Nash Equilibrium for games. Yet, its guarantee of convergence is greatly limited by the type of the game.
+
+* *Games with multiple payoffs* (1975)
+
+"Multiple" payoff is not multi-dimensional, but a unique weighted sum decided by players.
+
+* *On the Convergence of Fictitious Play* (1998) 
+
+For normal general-sum game, fictitious self-play is not converging, and will **often** not converge. It  almost never converges cyclically to a mixed strategy equilibrium in which both players use more than two pure strategies.
+
+Shapley's example of nonconvergence is the norm rather than the exception.
+
+Mixed strategy equilibria appear to be generally unstable with respect to cyclical fictitious play processes.
+
+Actually, there is a conjecture by Hofbauer(1994): if CFP converges to a regular mixed strategy equilibrium, then the game is zero-sum.
+
+* *On the Global Convergence of Stochastic Fictitious Play* (2002)
+
+There are four type of games that can ensure global convergence:
+
+1) games with an interior ESS (as a fully symmetric game, be optiaml in a mixed-strategy neighbourhood);
+
+2) 0-sum games;
+
+3) potential games, where everyone's motivation can be described by a potential (Note: a good design of potential function, possibly non-Nash solution concept ones, can make things easier; e.g. Alpharank);
+
+4) supermodular games, where every participant's marginal profit by increasing their investion in strategy is increasing w.r.t. their opponent's investion.
+
+* *Full-Width Extensive Form FSP*
+
+Previous work studies self-play only for normal form. Theoretically, extensive form games can be trivially extended to normal form and applied with FSP, but as the possibility grows exponentially, this is a very low-efficiency method.
+
+This paper proves that FSP can be applied on extensive form with **linear combination** for policy mixture.
+
+* *Fictitious Self-Play in Extensive-Form Games* (2015)
+
+* *Deep Reinforcement Learning from Self-Play in Imperfect-Information Games* (2016)
+
+This paper proposes N(eural)FSP. NFSP is an extension of FSP where DQN instead of hand-crafted solution is used for giving optimal response oracle, and a supervised-learning network is used for modeling current opponent's behavior. 
+ 
+* *Monte Carlo Neural Fictitious Self-Play: Approach to Approximate Nash Equilibrium of Imperfect-Information Games* (2019)
+
+This paper uses asynchronous Monte-carlo method for self-play for games where all agents share the same parameters.
+
+## Counterfactual Regret Minimization
+
+Current research on counterfactual regret minimization (CFR, as of 2020) mainly focuses on 2-player 0-sum game.
+
+"regret" means that the "reward brought by this action if this action **were** chosen instead of others.
+
+CFR determines an iteration’s strategy by applying any of several regret minimization algorithms to each infoset (Littlestone & Warmuth, 1994; Chaudhuri et al., 2009). Typically, regret matching (RM) is used as the regret minimization algorithm within CFR due to RM’s simplicity and lack of parameters.
+
+This somewhat relates to Pearl's 3-level hierarchy on AI and causal inference (e.g. the notion of "do" operator).
+
+* *Using Counterfactual Regret Minimization to Create Competitive Multiplayer Poker Agents* (2010)
+
+* *Regret Minimization in Games with Incomplete Information* (2007)
+
+* *An Introduction to Counterfactual Regret Minimization* 
+
+A nice tutorial for counterfactual regret minimization.
+
+* *Regret Minimization in Non-Zero-Sum Games with Applications to Building Champion Multiplayer Computer Poker Agents* (2013) 
+
+这文章其实多少有一点玄学：证明了一个仍然是发散的界（regret与根号倍迭代轮数成正比），然后实际上训了一个还行的结果。
+
+* *Deep Counterfactual Regret Minimization* (2019) 
+
+The goal of Deep CFR is to approximate the behavior of CFR without calculating and accumulating regrets at each infoset, by generalizing across similar infosets using function approximation via deep neural networks. One method to combat this is Monte Carlo CFR (MCCFR), in which only a portion of the game tree is traversed on each iteration (Lanctot et al.,2009). In MCCFR, a subset of nodes Qt in the game tree is traversed at each iteration, where Qt is sampled from some distribution.
+
+* *Single Deep Counterfactual Regret Minimization* (2019)
+
+* *Efficient Monte Carlo Counterfactual Regret Minimization in Games with Many Player Actions*
+
+When you "translate" tabular classical algorithms to deep algorithm, you mainly deal with two problems:
+
+1）How to use function approximator to properly estimate a large value table? 
+
+2）How to improve sample efficiency?
+
+## Regret Matching
+
+Regret matching is the foundation of counterfactual regret minimization(CFR); (for most cases,) CFR is regret matching for extensive form game. 
+
+Other algorithms may do, but regret matching is the most widely-used. See the AGT_survey file (arXiv: 2001.06487) for details.
+
+* *A Simple Adaptive Procedure Leading to Correlated Equlibrium* (2000) 
+
+## Solution concepts
+
+Nash equilibrium, in essence, is continuous finding best response to the opponent and expecting to find a fixed point.
+
+Nash equilibrium, though widely used, is sometimes limited, for its "max" operator has a nature of sudden changes. 
+
+Choosing bounded rationality on the other hand, has more reason than simulating real-life behavior; it may lead to an iterative balance that is more **differentiable**.  
+
+* *Nash Q-Learning for General-Sum Stochastic Games* (2003) 
+
+Simply change the optimal action in Bellman equation to Nash equilibrium. However, vanilla Nash-Q are very slow to converge (as far as my experience), and calculating Nash equilibrium itself is very costly (NP-hard; see Prof. Xiaotie Deng's work.)  
+
+* *Actor-Critic Algorithms for Learning Nash Equilibria in N-player General-Sum Games* (2014)
+
+Two desirable properties of any multi-agent learning algorithm are as follows: 
+
+(a) Rationality: Learn to play optimally when other agents follow stationary strategies; and 
+
+(b) Self-play convergence: Converge to a Nash equilibrium assuming all agents are using the same learning algorithm.
+
+To bypass the conclusion of existing work (See the paper *Cyclic Equilibria in Markov Games*), the author "avoid this impossibility result by searching for both values and policies instead of just values, in our proposed algorithms".
+
+(It is somewhat strange that this sentence is put in the footnote instead of main paper without explanation, as if the authors want to hide this point.)
+
+* *Learning Nash Equilibrium for General-Sum Markov Games from Batch Data*
+
+Markov Game（或者说Stochastic Game）是一种特殊的MDP，或者也可以理解为“回合制的”MDP。特点是决策完全由当前状态决定。它也有对应的部分可见版本，叫POSG。
+
+* *Markov games as a framework for multi-agent reinforcement learning*
+ 
+Littman's classical papers, the pioneering work in MARL+game theory. 
+
+* *Cyclic Equilibria in Markov Games*
+
+ This paper proves that **no value-based method RL algorithm may calculate the static Nash equilibria of arbitrary general-sum game**.
+ 
+ However, this paper proposes a new notion called **cyclic equilibria**: It satisfies the condition that no one can optimize its strategy with only his/her policy changes. 
+ 
+ Yet, cyclic equilibria does not satisfies **folk theorem**; it cycles between a set of static strategies. (Consider rock-paper-scissors where you can only use pure strategy.)
+ 
+ Many 2-player 2-action 2-state games cannot converge under value-based method; yet, they almost always achieve cyclic equlibria. 
+ 
+ Note: **cyclic equilibrium is a correlated equilibrium**. Viewed from dynamic systems, cyclic equilibria is the **vortex** in the strategy optimization field. **This IS essentially Alpharank's MCC**.
+ 
+*  *Actor-Critic Fictitious Play in Simultaneous Move Multistage Games* 
+
+A variance of NFSP, use decentralized actor-critic to solve 2-player 0-sum game.
+
+* *Coco-Q: Learning in stochastic games with side payments* (2013) 
+
+A novel solution concept where agents "pay" others reward to make the other sides cooperate. This gives insight to some cooperating MARL problems, such as reward assignment and communication.
+
+[Under Construction]
+
+PSRO
+
+Alpharank
+
+## Deception
+
+* *Designing Deception in Adversarial Reinforcement Learning* 在传统框架下设计policy让agent学会骗人。这里面提到了一个观点：欺骗是一种能够引诱对手进入某种特殊policy的技巧，有利于把对手拉进自己熟悉的子游戏并战胜之。（类似的MADDPG和18年OpenAI一篇分布式PPO的文章也做了和欺骗相关的multi-agent实验）
+
+* *Finding Friend and Foe in Multi-Agent Games* 19’ 有大量的prior knowledge，但是不失为好的尝试。使用CFR（见上面的Counterfactual一节）。
+
+* *Learning Existing Social Conventions via Observationally Augmented Self-Play* AIES 19’(?) 学习民俗，以便更好地融入agent社会中（？）定义了一个偏序关系用来描述policy的相似性，这个比较有意思。总的来说是一篇比较有意思的文章。
+
+## Miscellanous
+
+* *Deep Q-Learning for Nash Equilibria: Nash-DQN* (2019) 用线性/二阶展开逼近去求Advatange等。
+
+* *Multi-Agent Systems: Algorithmic, Game-theoretic and Logical Foundations* (A classical book)
+
+A great book that includes multi-agent and algorithms, game theory, distributed reasoning, RL, auction and social choice. Strongly recommending this book!
+
+The book mentions some contents on asynchronous DP, ABT search for multi-agent and so on. 
+
+It also mentions the most basic notion in multi-player/sequential games, e.g. extensive form and normal form.
+
+For sequential games, there exists the notion of **"unreliable threat"**, which means, when one party breaks the Nash equilibria, the other party's reward will be more damaged if it chooses to retaliate. Such threat of keeping Nash equilibrium is not credible, and thus such Nash equilibrium is unstable. This urges us to introduce subgame-perfect equilibrium (SPE) for games.
+
+There is also the notion of **Folk theorem** (Copied from wikipedia): Any degree of cooperation, as long as it is feasible and individually rational (e.g. if everybody else is against one agent, the agent's reward will be worse than that of a cooperating agent), can be achieved for an infinite game with adequate discount factor.
+
+If the players are patient enough and far-sighted (i.e. if the discount factor , then repeated interaction can result in virtually any average payoff in an SPE equilibrium.[3] "Virtually any" is here technically defined as "feasible" and "individually rational".
+
+There are also some contents on anthropology, including *locutionary, illocutionary and perlocutionary act* (see *https://www.douban.com/note/663802620/*)；The four principles of communication (quality，quantity，politeness and relativity).
+
