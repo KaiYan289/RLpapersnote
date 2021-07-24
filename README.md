@@ -1,6 +1,6 @@
-# Useful Tips of the Day (updated 2021.7)
+2021/7/25更新：目前正在进行已有内容的整理工作，整理之后的内容是全英文的，补充了一些文章，并去掉了极个别暴论。更新完成后，原有的中文笔记将作为文件放在repo里，readme里放整理后的英文版笔记。现在整理好的部分已经放在repo里了。
 
-## Useful Tips of the Day
+## 40 Useful Tips of the Day (updated 2021.7)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -91,6 +91,8 @@ However, such practice (the one datapoint method) may face the problem of **not 
 38. 2-stage early stopping has an inherent logic of "doing prediction well first". Thus, it should be early stopping according to **prediction loss** instead of **optimization performance**.
 
 39. Significance tests are usually conducted in traditional statistic works for hypotheses, especially where test set does not exist. 
+
+40. Use **on-policy** methods for MARL, as stationarity is not preserved!  
 
 # Predict + Optimization Papers Note
 TODO: 一个简单的预测优化文献小survey。
