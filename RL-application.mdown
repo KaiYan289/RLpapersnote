@@ -142,8 +142,6 @@ Resource provisioning requires prediction for the resource and optimization with
 
 This category includes both resource distribution and mitigation strategy (i.e. handling VM error online).
 
-[Under construction]
-
 * *A Hierarchical Framework of Cloud Resource Allocation and Power Management Using Deep Reinforcement Learning* (2017)
 
 * *Energy-Efficient Virtual Machines Consolidation in Cloud Data Centers Using Reinforcement Learning*

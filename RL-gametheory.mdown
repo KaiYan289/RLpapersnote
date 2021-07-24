@@ -126,6 +126,8 @@ CFR determines an iteration’s strategy by applying any of several regret minim
 
 This somewhat relates to Pearl's 3-level hierarchy on AI and causal inference (e.g. the notion of "do" operator).
 
+Counterfactual regret minimization is one of the popular direction and frontier w.r.t. RL + game theory (as of 2020). There are, however, not much *reliable toy* deep CFR code on Github. Try *https://github.com/lcskxj/Deep_CFR* maybe?
+
 * *Using Counterfactual Regret Minimization to Create Competitive Multiplayer Poker Agents* (2010)
 
 * *Regret Minimization in Games with Incomplete Information* (2007)
@@ -136,7 +138,7 @@ A nice tutorial for counterfactual regret minimization.
 
 * *Regret Minimization in Non-Zero-Sum Games with Applications to Building Champion Multiplayer Computer Poker Agents* (2013) 
 
-这文章其实多少有一点玄学：证明了一个仍然是发散的界（regret与根号倍迭代轮数成正比），然后实际上训了一个还行的结果。
+This work gives a regret bound for non-0-sum 2-player game with CFR [The original version of comment may be erronous], and proves that CFR works empirically.
 
 * *Deep Counterfactual Regret Minimization* (2019) 
 
@@ -168,6 +170,8 @@ Nash equilibrium, though widely used, is sometimes limited, for its "max" operat
 
 Choosing bounded rationality on the other hand, has more reason than simulating real-life behavior; it may lead to an iterative balance that is more **differentiable**.  
 
+### Nash
+
 * *Nash Q-Learning for General-Sum Stochastic Games* (2003) 
 
 Simply change the optimal action in Bellman equation to Nash equilibrium. However, vanilla Nash-Q are very slow to converge (as far as my experience), and calculating Nash equilibrium itself is very costly (NP-hard; see Prof. Xiaotie Deng's work.)  
@@ -186,7 +190,7 @@ To bypass the conclusion of existing work (See the paper *Cyclic Equilibria in M
 
 * *Learning Nash Equilibrium for General-Sum Markov Games from Batch Data*
 
-Markov Game（或者说Stochastic Game）是一种特殊的MDP，或者也可以理解为“回合制的”MDP。特点是决策完全由当前状态决定。它也有对应的部分可见版本，叫POSG。
+Markov Game（Stochastic Game）is a MDP "with rounds", which means action is purely based on current state. A partial observable counterpart of POMDP is POSG.
 
 * *Markov games as a framework for multi-agent reinforcement learning*
  
@@ -208,29 +212,61 @@ Littman's classical papers, the pioneering work in MARL+game theory.
 
 A variance of NFSP, use decentralized actor-critic to solve 2-player 0-sum game.
 
+### Other Novel 
+
 * *Coco-Q: Learning in stochastic games with side payments* (2013) 
 
 A novel solution concept where agents "pay" others reward to make the other sides cooperate. This gives insight to some cooperating MARL problems, such as reward assignment and communication.
 
-[Under Construction]
+* *MAAIRL* See RL-inverse part.
 
-PSRO
+* *α-Rank: Multi-Agent Evaluation by Evolution*
+ 
+See ALPHARANK.pptx. This paper first links game theory and dynamic system in my knowledge sturcture.
 
-Alpharank
+* *A Generalized Training Approach for Multi-agent Learning* PSRO; see ALPHARANK.pptx.
+
+* *Multiagent Evaluation under Incomplete Information* A following work of alpharank under partial observable environment.
+
+* *αα-Rank: Practically Scaling α-Rank through Stochastic Optimisation* A following work of alpharank by Huawei to improve the exponentially growing (w.r.t. # agents) random walk space.
 
 ## Deception
 
-* *Designing Deception in Adversarial Reinforcement Learning* 在传统框架下设计policy让agent学会骗人。这里面提到了一个观点：欺骗是一种能够引诱对手进入某种特殊policy的技巧，有利于把对手拉进自己熟悉的子游戏并战胜之。（类似的MADDPG和18年OpenAI一篇分布式PPO的文章也做了和欺骗相关的multi-agent实验）
+Deception under partly observable environment are essentially **Bayesian security game**. MADDPG also does experiment in deception.
 
-* *Finding Friend and Foe in Multi-Agent Games* 19’ 有大量的prior knowledge，但是不失为好的尝试。使用CFR（见上面的Counterfactual一节）。
+* *Designing Deception in Adversarial Reinforcement Learning* 
 
-* *Learning Existing Social Conventions via Observationally Augmented Self-Play* AIES 19’(?) 学习民俗，以便更好地融入agent社会中（？）定义了一个偏序关系用来描述policy的相似性，这个比较有意思。总的来说是一篇比较有意思的文章。
+Designing policy under traditional framework to deceive the opponents in a soccer game.
+
+This paper brings up an interesting definition on "deception": Deception is a policy to lure your opponent to adapt a special policy, and thus control the game into a favorable subgame. 
+
+* *Finding Friend and Foe in Multi-Agent Games* 
+
+A paper using CFR with much prior knowledge to let the agents learn how to play Avalon; an interesting attempt.
+
+* *Learning Existing Social Conventions via Observationally Augmented Self-Play* (AIES 19’)
+
+This paper defines a partial order relationship to define the similarity of policy.
+
+Quoting its abstract, "**conventions** can be viewed as **a choice of equilibrium** in a coordination game. We consider the problem of an agent learning a policy ... and then using this policy when it enters an existing group."
+
+(That is to say, social convention is a special type of prior knowledge learned in pretraining which is the choice of action). This could be related to **ad-hoc cooperation**; that field is led by Prof. Peter Stone @ UTexas.  
+
+* *Deceptive Reinforcement Learning Under Adversarial Manipulations on Cost Signals*
+
+This is a paper where the attacker distorts cost signals. 
+
+* *Deception in Social Learning: A Multi-Agent Reinforcement Learning Perspective* 
+
+A survey. Quoting its abstract, "Social Learning is a new class of algorithms that enables agents to reshape the reward function of other agents with the goal of promoting cooperation and achieving higher global rewards in mixed-motive games." (Does this ring a bell w.r.t. Coco-Q learning & side payment?)
 
 ## Miscellanous
 
-* *Deep Q-Learning for Nash Equilibria: Nash-DQN* (2019) 用线性/二阶展开逼近去求Advatange等。
+* *Deep Q-Learning for Nash Equilibria: Nash-DQN* (2019) 
 
-* *Multi-Agent Systems: Algorithmic, Game-theoretic and Logical Foundations* (A classical book)
+This paper uses a local 1st/2nd Taylor expansion to analytically solvable optimal actions for DQN. However, value-based method RL, again, is not a good solution for finding Nash equilibrium.
+
+* *Multi-Agent Systems: Algorithmic, Game-theoretic and Logical Foundations* (A classical book!)
 
 A great book that includes multi-agent and algorithms, game theory, distributed reasoning, RL, auction and social choice. Strongly recommending this book!
 
