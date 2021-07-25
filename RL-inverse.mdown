@@ -1,0 +1,83 @@
+# Inverse RL
+
+## Early
+
+* *Inverse Reinforcement Learning* (2000)
+
+The first work of inverse reinforcement learning (IRL). It assumes policy optimality, and solves reward function with linear programming. 
+
+This work first proposes that reward is determined by a linear combination of "features", which is inherited in future work.
+
+* *Apprenticeship Learning via Inverse Reinforcement Learning* (2004)
+
+The final goal of apprenticeship learning is not getting an identical reward function, but a policy that works equally well with the expert.
+
+* *Bayes Inverse Reinforcement Learning* (2008)
+
+This work does not require optimal demonstration to recover reward function; suboptimal ones will do.
+
+## Maximum Entropy
+
+Maximizing the entropy of the distribution over paths subject to the feature constraints from observed data implies that we maximize the likelihood of the observed data under the maximum entropy; See *https://zhuanlan.zhihu.com/p/87442805* for a more detailed introduction. 
+
+See *https://zhuanlan.zhihu.com/p/107998641* for reference.
+
+* *Maximum Entropy Inverse Reinforcement Learning* (2008)
+
+This paper is the founding work of modern inverse reinforcement learning. This paper makes two assumptions:
+
+1) Reward function is a linear combination of some certain features (inherited from Andrew Ng's work in 2000)
+
+2) **The probability distribution of trajectories is proportional to e^r where r is the reward.**
+
+However, I have recurred the experiments and found that the recovery of reward function is not as accurate as one may imagine.   
+
+* *Modeling Interaction via the Principle of Maximum Causal Entropy* (2010)
+
+* *Infinite Time Horizon Maximum Causal Entropy Inverse Reinforcement Learning*
+
+* *Maximum Entropy Deep Inverse Reinforcement Learning* (2010) 
+
+"Deep" is used in this work to extract and combine features instead of handcrafting features and only combining them linearly. 
+
+* *Guided Cost Learning* (2015)
+
+Before this work, a main effort of MEIRL is to *estimate Z* in the denominator of maximum entropy probability distribution (Ziebart's work uses DP; there are also other works such as Laplacian approximation, value function based and sample based approximation).
+
+This work finds a sample distribution and uses importance sampling to estimate Z. It iteratively optimizes both the reward function and the sampling distribution.
+
+The goal of sampling distribution is to minimize the *KL-divergence* between the sampling distribution and the term exp(-reward_\theta(traj))/Z.
+
+* *Generative Adversarial Imitation Learning* (2016) 
+
+A generalization of GAN on imitation learning (note: unlike AIRL, GAIL cannot retrive reward function).
+
+* *LEARNING ROBUST REWARDS WITH ADVERSARIAL INVERSE REINFORCEMENT LEARNING* (ICLR 18')
+
+See MAAIRL.pptx in the github for details. Compared to GAIL, AIRL has the ability to retrieve reward function.
+
+* *Adversarial Imitation via Variational Inverse Reinforcement Learning* (ICLR 19') 
+
+The most important notion of this work is *empowerment*. Empowerment is I(s',a|s) where I represents mutual information; it describes the possiblity of agent "influencing its future".
+
+The researcher suggests that by adding this regularizer, we can prevent agent from overfitting onto demonstration policy.
+
+* *A Connection Between Generative Adversarial Networks, Inverse Reinforcement Learning, and Energy-Based Models*
+
+Highly recommending this paper. Intuitively, GAN trains a generator which generates data (which could be *sequences*) that a discriminator (classifier) cannot tell from a particular distribution, which, if substituting the "sequence" to "trajectory", is exactly what imitation learning / IRL does; 
+
+and energy-based models (with Boltzmann distribution) assign a sample with an energy value that has the same form with MEIRL. Moreover, the 
+
+## Multi-agent
+
+* *MAGAIL：Multi-Agent Generative Adversarial Imitation Learning* (2018)
+
+* *Multi-Agent Adversarial Inverse Reinforcement Learning* (ICML 19')
+
+See MAAIRL.pptx in the github for details. This paper proposes a new solution concept called **logistic stochastic best response equilibrium** (LSBRE).
+
+MAGAIL is MaxEnt RL + Nash Equilibrium; MAAIRL is MaxEnt RL + LSBRE.
+
+* *Competitive Multi-agent Inverse Reinforcement Learning with Sub-optimal Demonstrations* (2018)
+
+* *Asynchronous Multi-Agent Generative Adversarial Imitation Learning* (2019)
