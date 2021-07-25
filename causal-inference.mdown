@@ -1,0 +1,74 @@
+# Causal Inference
+
+Thanks the causal reading group @ MSRA for their valuable opinions on causal inference! For a more thorough and professional summary, see *https://github.com/fulifeng/Causal_Reading_Group*.
+
+Causality-related work includes Judea Pearl's *causal graphical model*, physics-based *structural causal model* (SCM), and statistical *potential outcome framework*.
+
+Below is a collection of causal inference paper. For beginners, read *https://www.bradyneal.com/causal-inference-course*. For more papers, you can also read Prof. David Sontag's work. 
+
+* *Understanding Simpson’s Paradox* 
+
+(Copied from wikipedia) Simpson's paradox, which also goes by several other names, is a phenomenon in probability and statistics in which a trend appears in several groups of data but disappears or reverses when the groups are combined.
+
+The paradox can be resolved when confounding variables and causal relations are appropriately addressed in the statistical modeling.[4][5] Simpson's paradox has been used to illustrate the kind of misleading results that the misuse of statistics can generate.
+
+This paper (tutorial?) by Judea Pearl consists of two parts; one is the history and introduction of Simpson's paradox, 
+
+the other is the "solution" of the paradox, which includes three parts: 1) why it is suprising, 2) when will it happen and 3) how to get the correct result. Rigorously solving the third point requires *do-calculus*, which is an important notion in today's causal inference work.
+
+* *https://amlab.science.uva.nl/meetings/causality-reading-club/*
+
+The discussion group of Prof. Joris Mooij's.
+
+* *https://causalai.net/r60.pdf* 
+
+This paper introduces the three layers of Pearl Causal Hierarchy(association, intervention, counterfact) with both the perspective of logical-probabilistic and inferential-graphical.
+
+* *ICYMI: https://diviyan-kalainathan.github.io* A Causal discovery toolbox which can be referenced to.
+
+* *WILDS: A Benchmark of in-the-Wild Distribution Shifts* A systematic distribution shift / domain generalization dataset.
+
+* *Bühlmann : Invariance, Causality and Robustness* (projecteuclid.org) (2018 Neyman Lecture)
+
+* *Treatment Effect Estimation Using Invariant Risk Minimization*
+
+* *http://www.engineering.org.cn/ch/10.1016/j.eng.2019.08.016* A Chinese survey on causal inference.
+
+* *https://qbnets.wordpress.com* Quantum Bayesian Networks.
+
+* *Unsuitability of NOTEARS for Causal Graph Discovery*
+
+* *Causality-based Feature Selection: Methods and Evaluations* 
+
+A survey on causality-based feature selection; It also proposes CausalFS, an open-source package of causal feature selection and causal (Bayesian network) structure learning.
+
+* *https://arxiv.org/abs/1906.02226* GraN-DAG (ICLR'20)
+
+* *Masked Gradient-Based Causal Structure Learning* (2019)
+
+* *A Graph Autoencoder Approach to Causal Structure Learning* (NeurIPS 19' workshop)
+
+* *DAGs with No Curl: Efficient DAG Structure Learning* (2020)
+
+* *From counterfactual simulation to causal judgement* https://escholarship.org/content/qt7kk1g3t8/qt7kk1g3t8.pdf
+
+* *A polynomial-time algorithm for learning nonparametric causal graphs* polynomial-time nonparametric causal graphs (nonparametric & minimize residual variance; NeurIPS'20)
+
+* *DiBS: Differentiable Bayesian Structure Learning* makes the non-differentiable score in score based method differentiable.
+
+* *Causal Autoregressive Flows* (2021) An application of *Neural Autoregressive Flows* (2018).
+
+* *D'ya like DAGs? A Survey on Structure Learning and Causal Discovery*
+
+* *Towards Efficient Local Causal Structure Learning* (2021)
+
+* *Efficient and Scalable Structure Learning for Bayesian Networks: Algorithms and Applications* (2020)
+
+* *Ordering-Based Causal Discovery with Reinforcement Learning* (2021) order-basewd w/ RL.
+
+Some miscellanous remarks:
+
+Skeleton learning is a subfield of Bayesian network sturcture learning.
+
+From the perspective of causality, identifying an edge is an output, while ruling out an edge is only a progress.
+
