@@ -108,7 +108,7 @@ Below is a collection of causal inference paper. For beginners, read *https://ww
 
 (Copied from wikipedia) Simpson's paradox, which also goes by several other names, is a phenomenon in probability and statistics in which a trend appears in several groups of data but disappears or reverses when the groups are combined.
 
-The paradox can be resolved when confounding variables and causal relations are appropriately addressed in the statistical modeling.[4][5] Simpson's paradox has been used to illustrate the kind of misleading results that the misuse of statistics can generate.
+The paradox can be resolved when confounding variables and causal relations are appropriately addressed in the statistical modeling. Simpson's paradox has been used to illustrate the kind of misleading results that the misuse of statistics can generate.
 
 This paper (tutorial?) by Judea Pearl consists of two parts; one is the history and introduction of Simpson's paradox, 
 
