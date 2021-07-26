@@ -102,7 +102,7 @@ Thanks the causal reading group @ MSRA for their valuable opinions on causal inf
 
 Causality-related work includes Judea Pearl's *causal graphical model*, physics-based *structural causal model* (SCM), and statistical *potential outcome framework*.
 
-Below is a collection of causal inference paper. For beginners, read *https://www.bradyneal.com/causal-inference-course*. For more papers, you can also read Prof. David Sontag's work. 
+Below is a (rather random) collection of causal inference paper, as I am a beginner and have not read them all to classify them. For beginners, read *https://www.bradyneal.com/causal-inference-course*. For more papers, you can also read Prof. David Sontag's work. 
 
 * *Understanding Simpson’s Paradox* 
 
