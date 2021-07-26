@@ -10,7 +10,7 @@
 
 4. SCIP (not scipy!) is currently the best open-source optimization solver.
 
-5. Don't use scipy in your research project; use Gurobi instead. An academic license costs $0, yet Gurobi is ~250x faster than scipy (and also more numerically stable).
+5. Don't use scipy in your research project as an optimization solver; use Gurobi instead. An academic license costs $0, yet Gurobi is ~250x faster than scipy (and also more numerically stable).
 
 6. Normally, a good solver (e.g. Gurobi) will do some numerical tricks for actions that may cause singularity.
 
