@@ -1176,3 +1176,9 @@ Find a way to get a kind of embedding from the video. A more worthwhile idea is 
 In addition to proposing empowerment, an important reference point of this article is: if the function itself is difficult to optimize, try to derive a lower bound and then optimize its lower bound. 
 
 For instance, in convex optimization, we sometimes optimize the envelope function and look for proximal mapping.
+
+# Predict + Optimization / Differentiable Argmax
+
+I have written a collection of comments on papers in this field, but I think the survey below does a much better job. See Dr. Bryan Wilder and Prof. Amos's team for updates in this field!
+
+* *End-to-End Constrained Optimization Learning: A Survey* https://arxiv.org/abs/2103.16378
