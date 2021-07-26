@@ -851,13 +851,25 @@ Temperature-based exploration auto-encoder is a method to deal with high-dimensi
 
 An improvement over VIN. An interesting observation is that *for 2-dimensional gridworld / games on a planar graph, value iteration can represented by a convolutional progress on GCN*.
 
-* *Structured Control Nets for Deep Reinforcement Learning* 把策略分为两个独立的流：线性控制和非线性控制。线性控制就是一个简单的矩阵乘法；非线性控制是一个MLP（不过不局限于MLP，其中一个实验就使用了中央模式生成器）二者的简单相加就是最后神经网络的输出。“直观地，非线性控制用于前视角和全局控制，而线性控制围绕全局控制以外的局部动态变量的稳定”。中文教程见https://www.jianshu.com/p/4f5d663803ba
+* *Structured Control Nets for Deep Reinforcement Learning* 
 
-* *Safe and efficient off-policy reinforcement learning* (NIPS 16’) 这篇文章提出了一种叫Retrace(lambda)的算法。它可以高效、“安全”地进行off-policy训练，并且它的方差很小。这是一个不需要GLIE前提就可以收敛的算法。GLIE(Greedy in the Limit with Infinite Exploration)，直白的说是在有限的时间内进行无限可能的探索。具体表现为：所有已经经历的状态行为对（state-action pair）会被无限次探索；另外随着探索的无限延伸，贪婪算法中ϵ值趋向于０。
+The strategy is divided into two independent streams: linear control and non-linear control. Linear control is a simple matrix multiplication; nonlinear control is an MLP (but not limited to MLP, one of the experiments uses a central pattern generator). 
+
+The simple addition of the two is the output of the final neural network. " Intuitively, nonlinear control is used for front view and global control, while linear control revolves around the stability of local dynamic variables other than global control.
+
+See https://www.jianshu.com/p/4f5d663803ba for a Chinese note.
+
+* *Safe and efficient off-policy reinforcement learning* (NIPS 16’) 
+
+This article proposes an algorithm called Retrace (lambda). It can perform off-policy training efficiently and "safely", and its variance is small. This is an algorithm that can converge without **the GLIE premise**. GLIE (*Greedy in the Limit with Infinite Exploration*) is the combination of the following two conditions (see technion's note for reference: https://webee.technion.ac.il/shimkin/LCS11/ch7_exploration.pdf)
+
+1.If a state is visited infinitely often, then each action in that state is chosen infinitely often (with probability 1).
+
+2. In the limit (as t → ∞), the learning policy is greedy with respect to the learned Q-function (with probability 1).
 
 * *the IQ of neural networks* (2017) An interesting paper that uses CNN to do IQ testing quizes. CNN is quite clever!
 
-* *What can neural networks reason about?* 
+* *What can neural networks reason about?* (2019)
 
 A great article, it provides insight into the theoretical basis behind the various structural modules we have designed in NN over the years, especially GNN. 
 
