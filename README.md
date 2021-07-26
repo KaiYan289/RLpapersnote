@@ -1,6 +1,8 @@
-2021/7/25更新：目前正在进行已有内容的整理工作，整理之后的内容是全英文的，补充了一些文章，并去掉了极个别暴论。更新完成后，原有的中文笔记将作为文件放在repo里，readme里放整理后的英文版笔记。现在整理好的部分已经放在repo里了。
+2021/7/27更新：原本的中文笔记可以在readme-legacy.md中找到，其主要写于2019-2020年。现在的英文版补充了一些文章，并去掉了极个别暴论。
 
-## 40 Useful Tips of the Day (updated 2021.7)
+2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
+
+# 40 Useful Tips of the Day (updated 2021.7)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -94,537 +96,1071 @@ However, such practice (the one datapoint method) may face the problem of **not 
 
 40. Use **on-policy** methods for MARL, as stationarity is not preserved!  
 
-# Predict + Optimization Papers Note
-TODO: 一个简单的预测优化文献小survey。
-* *SPO+*
-* *Melding the Decisions pipeline, AAAI 19'*
-* *Optnet*
-* *Direct Loss Minimization*
+# Causal Inference
 
-# RL Papers Note
-这是一篇阅读文献的简记。注释仅供参考（从后来的观点看有些解释不太对；解释仅供参考）。
+Thanks the causal reading group @ MSRA for their valuable opinions on causal inference! For a more thorough and professional summary, see *https://github.com/fulifeng/Causal_Reading_Group*.
 
-OpenAI spinning up：https://spinningup.openai.com/en/latest/index.html
+Causality-related work includes Judea Pearl's *causal graphical model*, physics-based *structural causal model* (SCM), and statistical *potential outcome framework*.
 
-## Sequential Decision Making
-* *A Survey of Multi-Objective Sequential Decision-Making*
+Below is a collection of causal inference paper. For beginners, read *https://www.bradyneal.com/causal-inference-course*. For more papers, you can also read Prof. David Sontag's work. 
+
+* *Understanding Simpson’s Paradox* 
+
+(Copied from wikipedia) Simpson's paradox, which also goes by several other names, is a phenomenon in probability and statistics in which a trend appears in several groups of data but disappears or reverses when the groups are combined.
+
+The paradox can be resolved when confounding variables and causal relations are appropriately addressed in the statistical modeling.[4][5] Simpson's paradox has been used to illustrate the kind of misleading results that the misuse of statistics can generate.
+
+This paper (tutorial?) by Judea Pearl consists of two parts; one is the history and introduction of Simpson's paradox, 
+
+the other is the "solution" of the paradox, which includes three parts: 1) why it is suprising, 2) when will it happen and 3) how to get the correct result. Rigorously solving the third point requires *do-calculus*, which is an important notion in today's causal inference work.
+
+* *https://amlab.science.uva.nl/meetings/causality-reading-club/*
+
+The discussion group of Prof. Joris Mooij's.
+
+* *https://causalai.net/r60.pdf* 
+
+This paper introduces the three layers of Pearl Causal Hierarchy(association, intervention, counterfact) with both the perspective of logical-probabilistic and inferential-graphical.
+
+* *ICYMI: https://diviyan-kalainathan.github.io* A Causal discovery toolbox which can be referenced to.
+
+* *WILDS: A Benchmark of in-the-Wild Distribution Shifts* A systematic distribution shift / domain generalization dataset.
+
+* *Bühlmann : Invariance, Causality and Robustness* (projecteuclid.org) (2018 Neyman Lecture)
+
+* *Treatment Effect Estimation Using Invariant Risk Minimization*
+
+* *http://www.engineering.org.cn/ch/10.1016/j.eng.2019.08.016* A Chinese survey on causal inference.
+
+* *https://qbnets.wordpress.com* Quantum Bayesian Networks.
+
+* *Unsuitability of NOTEARS for Causal Graph Discovery*
+
+* *Causality-based Feature Selection: Methods and Evaluations* 
+
+A survey on causality-based feature selection; It also proposes CausalFS, an open-source package of causal feature selection and causal (Bayesian network) structure learning.
+
+* *https://arxiv.org/abs/1906.02226* GraN-DAG (ICLR'20)
+
+* *Masked Gradient-Based Causal Structure Learning* (2019)
+
+* *A Graph Autoencoder Approach to Causal Structure Learning* (NeurIPS 19' workshop)
+
+* *DAGs with No Curl: Efficient DAG Structure Learning* (2020)
+
+* *From counterfactual simulation to causal judgement* https://escholarship.org/content/qt7kk1g3t8/qt7kk1g3t8.pdf
+
+* *A polynomial-time algorithm for learning nonparametric causal graphs* polynomial-time nonparametric causal graphs (nonparametric & minimize residual variance; NeurIPS'20)
+
+* *DiBS: Differentiable Bayesian Structure Learning* makes the non-differentiable score in score based method differentiable.
+
+* *Causal Autoregressive Flows* (2021) An application of *Neural Autoregressive Flows* (2018).
+
+* *D'ya like DAGs? A Survey on Structure Learning and Causal Discovery*
+
+* *Towards Efficient Local Causal Structure Learning* (2021)
+
+* *Efficient and Scalable Structure Learning for Bayesian Networks: Algorithms and Applications* (2020)
+
+* *Ordering-Based Causal Discovery with Reinforcement Learning* (2021) order-basewd w/ RL.
+
+Some miscellanous remarks:
+
+1. Skeleton learning is a subfield of Bayesian network sturcture learning.
+
+2. From the perspective of causality, identifying an edge is an output, while ruling out an edge is only a progress.
+
+# Experimental Papers
+
+* *Deep Reinforcement Learning and the Deadly Triad* (2018)
+
+This paper studies the convergence behavior of the Q-value, and concluded that:
+
+1) action value can commonly exhibit exponential initial growth, yet still subsequently recover to normal.
+
+2) The instability in standard epsilon-greedy scheme can be reduced by bootstrapping on a separate network & reducing overestimation bias.
+
+(Note: See "conservative Q-learning" for a recent(2020) solution; the overestimation bias is caused by the max operator. hint: E(max(x))>=max(E(x)))
+
+3) Longer bootstrap length reduces the prevalence of instabilities.
+
+4) Unrealisitic value estimation (positively) correlates with poor performance. For those cases where agents have wrong estimation yet good performance, the ranking of the values are roughly preserved.
+
+* *Deep Reinforcement Learning that Matters* (2017)
+
+This paper finishes many experiments yet concluded with a pessimism summary:
+
+1) Hyperparameters are very important;
+
+2) Variance across trials are large;
+
+3) Even different realization of the same algorithm may vary greatly on a given environment.
+
+* *Implementation Matters in Deep Policy Gradients: A Case Study on PPO and TRPO* (2020)
+
+It is interesting that PPO without optimizations actually has poor performance and no edge over TRPO. Some important notes:
+
+1) Common optimization of PPO includes value function clipping, reward scaling, orthogonal initialization & layer scaling, Adam LR annealing, observation normalization & clipping, tanh activation and gradient clipping.
+
+2) It is difficult to attribute success to different aspects of policy gradient methods without careful analysis.
+
+3) PPO and TRPO with code optimization can maintain a certain average KL-divergence (thus remain in the "trust region"), but PPO without code optimization may not.
 
 
-### Multi-arm Bandit
-* *Multi-armed bandits with switching penalties*
-* *Learning in A Changing World: Restless Multi-Armed Bandit with Unknown Dynamics*
-* *Mortal Multi-Armed Bandits* 会消逝的摇杆
+* *Are Deep Policy Gradient Algorithms Truly Policy Gradient Algorithms?* (2018)
 
-## Meta Learning Survey
-https://arxiv.org/pdf/1810.03548.pdf
-* *https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html* 优质meta learning综述。
+This paper questions DPG algorithms from principle and calls for a multi-perspective remark for RL algorithms (e.g. the ability to capture the structure of real-life problems).
 
-## Surveys and Books
- * *Deep Reinforcement Learning for Cyber Security, 19'*
- 一篇讲述DRL在网络安全中应用的综述。
- * *Deep Reinforcement Learning for Multi-Agent Systems: A Review of Challenges, Solutions and Applications,18'*
- 一篇DRL在MARL中应用的文章。
- * *Multi-Agent Reinforcement Learning: A Report on Challenges and Approaches, 18'* 7月份的文章，比上面那篇12月的要早一些。把MARL的几个分支都讲到了。应该说这一篇是基于问题导向的（上一篇则是基于算法导向的）。
- * *Autonomous Agents Modelling Other Agents:
-A Comprehensive Survey and Open Problems, 17'*
- 一篇非常全面地讲述agent modeling的文章。实际上直到这一年，agent modeling一直没有什么很大的进展，停留在提取特征和对对手过去行为做统计（fictitious learning也算），比较依赖于环境本身的信息。另一个比较新颖的思路是把对手的policy看成自动机；很不幸的是，这样不能建模非常复杂的对手，因为问题关于状态是非多项式可解的。
- * *multi-agent systems algorithmic game-theoretic and logical foundations*
- 一本涵盖了多智能体与算法、博弈论、分布式推理、强化学习、拍卖机制、社会选择等交集的作品。
- 前面提到了一些关于**异步DP，multi-agent的ABT搜索**等内容。
- 这里面提到了一些多人博弈、时序博弈中基本的概念，比如**extensive form 和normal form**。对于时序博弈，存在一个“不可信威胁”概念，就是说如果整个Nash均衡，在第一步一方打破Nash均衡后，另一方采取反制措施会让自己的reward收到损失，那么这就是“不可信”的，所以说这样的Nash均衡是不稳定的。于是提出**子游戏精炼纳什均衡**。还有**颤抖手精炼纳什均衡**，大概就是指在假设一定犯错概率的情况下达到纳什均衡。另外还有一个有意思的**无名氏定理**：如果无限次重复进行的游戏具有合适的贴现因子，同时所有人针对一个人时，会给这个人带来额外的损失，那么agent之间是可以合作的。
- 还讲到了一些人类学内容，包括言内行为，言外行为和言后行为；交流四原则（quality，quantity，politeness和relativity）。
-* *Is multiagent deep reinforcement learning the answer or the question? A brief survey 18'* 这篇文章和那篇18年12月的文章一样都是可以当成工具书使用的精良survey。作者将MARL当前的工作分成了四个方向：研究single Agent算法在MA环境下的反应；沟通协议；合作和对他人建模。
-Competitive RL最怕的就是和对手之间产生过拟合；为此常见的方法包括训练一个对mixture of policy的对策以及加噪声。对于可以建模成博弈论的情况（Normal/Extensive form），还有一个方法就是self play。
-另外这篇文章也提出了一个好的解决思路：Robust Multi-Agent Reinforcement Learning
-via Minimax Deep Deterministic Policy Gradient
+The paper suggests that the normal sampling size, the gradient and the landscape of the value function are actually far different from ground truth, and the gradient varies greatly among multiple runs; to eliminate the difference would require ~1000x more samples.
 
-* *Tutorial on Variational Autoencoders*，https://arxiv.org/pdf/1606.05908.pdf
 
-* *A Survey of Learning in Multiagent Environments: Dealing with Non-Stationarity 17'*
-five categories (in
-increasing order of sophistication): ignore, forget, respond to target models, learn models,
-and theory of mind. 
-**Policy Generating Function**
+* *Diagnosing Bottlenecks in Deep Q-learning Algorithms* (ICLR 19') 
 
-## Graph Neural Networks  
-  * *GRAPH CONVOLUTIONAL REINFORCEMENT LEARNING， ICLR 20'* 学长的文章。
+A paper that analyses deep Q-learning in practice. The paper uses three variant of DQN which are inspiring: 
+
+1) Exact FQI, which has no sampling error due to a complete traverse in the (s,a) pair tree.
+
+2) Sampled FQI, where the Bellman error is approximated with MC.
+
+3) Replay FQI, which uses a replay buffer.
+
+Some conclusions of this paper:
+ 
+1) Smaller architectures introduce significant bias in the learning process. This gap may be due to the fact that when the target is bootstrapped, we must be able to represent all Q-function along the path to the solution, and not just the final result. 
+
+2) Higher sample count leads to improved learning speed and a better final solution, confirming our hypothesis that overfitting has a significant effect on the performance of Q-learning. 
+
+3) Replay buffers and early stopping can be used to mitigate the effects of overfitting. nonstationarities in both distributions and target values, when isolated, do not cause significant stability issues. Instead, other factors such as sampling error and function approximation appear to have more significant effects on performance. 
+
+The paper proposes a better sampling method：Adversarial Feature Matching.
+
+# Game Theory
+
+Game theory is closely related to dynamic systems, where the iterative update is in coherent with a point moving in a field.  
+
+For more information on regret matching and counterfactual regret minimization, see the AGT_survey file (arXiv: 2001.06487). This paper might(?) contain error w.r.t. LOLA. 
+
+* *Multiagent Cooperation and Competition with Deep Reinforcement Learning* 
+
+Shows the feasibility of using DQN for discovering cooperating/competiting strategy. Little novelty technologically from today's perspective; furthermore, value-based method has no theoretical guarantee for Nash equlibria. See the "solution concept" part.
+
+Intrinsic motivation and automatic curricula via asymmetric self-play
+
+## Differentiable Games
+
+Differentiable Games are a special type of game where every player's reward function is known and fully determined by parameters \theta of policy; moreover, the reward function shall be differentiable w.r.t theta.
+
+Such game is useful as it is closely related to GAN.
+
+* *N-player Diffentiable Games*
+
+* *Consensus Optimization*
+
+* *Stable Opponent Shaping*
+
+See "Stable Opponent Shaping in Differentiable Games.pptx". This is an improvement of LOLA.
+
+* *Learning with Opponent Learning Awareness(LOLA)* 
+
+See "Stable Opponent Shaping in Differentiable Games.pptx" for details. This paper models the opponent as a naive learner and predicts the update of the opponent.
+
+However, such assumption will cause **arrogance** when the opponent is also a LOLA agent, which means the algorithm assumes that the opponent will comply to our update that benefits ourselves.
+
+## Security Games
 
 ### Abstract Security Games
-  * *Improving learning and adaptation in security games by exploiting information asymmetry, INFOCOM 15'*
-  考虑了在抽象security game且状态部分可见的情况下如何利用tabular minmax Q-learning（Q-learning变种）去学习。
-  * *A survey of interdependent information security games*
+
+* *Improving learning and adaptation in security games by exploiting information asymmetry* (INFOCOM 15')
+
+ It introduces tabular minmax Q-learning under an abstract security game with partial observation.
+ 
+* *A survey of interdependent information security games*
+
+* *Are security experts useful? Bayesian Nash equilibria for network security games with limited information*
+
+An interesting conclusion for layman; this paper tells us not to install too much anti-virus softwares, quote, "expert users can be not only invaluable contirbutors, but also free-riders, defectors and narcissistic opportunists."
 
 ### Network Security (Games)
-  * *Defending against distributed denial-of-service attacks with max-min fair server-centric router throttles*
-  网络攻击的经典模型之一：攻击者控制了几个初始节点（叶子）。向目标服务器发动进攻，而防守者控制着到目标服务器（树根）上某些必经之路的路由器，需要调整丢包比例让保证安全的同时最大限度让合法请求通过。这个设定被用在之后大量的DDOS相关论文中，也包括一些用MARL解决该问题的文章。
-  * *Reinforcement Learning for Autonomous Defence in Software-Defined Networking, 18'*
-  网络攻击的经典模型之二：攻击者控制了几个初始节点，并且向目标服务器发动进攻，每回合感染一些与上一回合节点相邻的服务器。防守者可以选择断开某些服务器连接、重连某些服务器、转移目标服务器数据到其他指定位置。
-  * *Adversarial Reinforcement Learning for Observer Design in Autonomous Systems under Cyber Attacks*
-  固定control policy，用self play同时训练adversarial和观察者。注意到这里controller是fixed的；训练的可以说是一个“输入扭曲器”和“输入矫正器”。文章以经典的pendulum做实验。另外，为了保证self play能收敛，文章使用了TRPO。
-### Green Security Games
-  * *Deep Reinforcement Learning for Green Security Games with Real-Time Information, AAAI 19'*
- 对Green Security Games这种特殊的安全游戏引入了一种DRL解法。Green Security Game是一个面对偷猎行为建模设计的游戏，在2D gridworld上进行。游戏分为两方，一个是偷猎者，另一个是巡逻者。偷猎者可以四处移动，或是放下偷猎工具，它每回合有一定概率爆炸，若爆炸则收获正reward（巡逻者收获负reward），并消失；巡逻者可以拆除偷猎工具，或者是抓到偷猎者以得到正reward（对应的，偷猎者收获负reward）。游戏是partial observation的。游戏在巡逻者抓住偷猎者且场上没有偷猎工具时结束。DRL本身似乎没有什么特别的。
-关于Green security games，CMU的Fang Fei在这方面做的工作是最多的。
-## Ancient RL
-### Distributed Cooperation
- * * Hysteretic Q-learning* an algorithm for decentralized reinforcement learning in cooperative multi-agent teams
-Hysteretic Q-learning是一种通过分布式训练得到一队能够合作的agents的方法。它起源于博弈论，主要研究了重复双人矩阵游戏。其实本质没有什么新东西，只不过调了调变好和变坏时的参数，使得q-value估计变高和变低时变化的速率不同。soft-update增加稳定性这个稍有常识的人都会看出的吧。This results in an optimistic update function
-which puts more weight on positive experiences, which is shown
-to be beneficial in cooperative multi-agent settings.
-* *Lenient learners in cooperative multiagent systems*
-也是一个研究cooperative的情况。文章非常短，只有3页。本质上是把Q-value方程的迭代变成模拟退火。不过呢，需要指出的是虽然方法看起来很trivial，但是它应该是有内在的道理的：这篇文章和上面的文章一样，试图解决cooperative情况下agent不会合理利用自己队友的动作。"Lenient learners store temperature values that are associated with state-action pairs. Each time a state-action pair is visited
-the respective temperature value is decayed, thereby decreasing the
-amount of leniency that the agent applies when performing a policy
-update for the state-action pair. The stored temperatures enable
-the agents to gradually transition from optimists to average reward
-learners for frequently encountered state-action pairs, allowing the
-agents to outperform optimistic and maximum based learners in
-environments with misleading stochastic rewards".
 
-### Adversarial RL
-* *Planning in the Presence of Cost Functions
-Controlled by an Adversary 03'* planning in a
-Markov Decision Process where the cost function is chosen by an adversary after we fix
-our policy
-找这篇文章看起来算是找对了。一上来举的一个例子（固定放置sensor，最小化暴露时间）就和我的一个设想不谋而合。
-它把reward表示为一个向量。把Bellman方程表示为EV+c>=0，V是每个状态的造访频率，E是policy所对应生成的矩阵（（1/1-gamma）-1）转移矩阵，c是reward向量。
-文章提出来一种叫Double Oracle的算法。它首先需要将一般的RL问题转化到基于state visitation frequency向量与环境相乘作为payoff的矩阵博弈，然后用来解决矩阵博弈问题。所谓double oracle，是指给定行玩家/列玩家任意一方的mixed strategy，都可以瞬间求出另一方的best pure strategic response。不过，response的集合一直是**有限大**的（虽然最后会收敛到minimax nash均衡点）。
-首先假设一开始双方都只能在一个有限的集合内选策略。然后计算双方的一个对之前这些策略元素的最佳mixed strategy（概率分布）。接下来假装对方会按照这个mixed strategy行事，再计算最优pure strategic response。然后将response加入决策集，重复上述过程直到决策集大小不再增加即收敛。
-* *Adversarial policies: Attacking Deep Reinforcement Learning*
-* *A Study on Overfitting in Deep Reinforcement Learning 18'* noise injection methods used in several DRL works cannot robustly detect or alleviate overfitting; In particular, the same agents and learning algorithms could have drastically different test performance, even when all of them achieve optimal rewards during training. 现有的一些方法包括：stochastic policy，random starts，sticky actions（有一定概率复读上一轮动作）和frame skipping。
+* *Defending Against Distributed Denial-of-Service Attacks with Max-min Fair Server-centric Router Throttles* (2005)
 
-## Classical DRL
-### Analysis
- * *Diagnosing Bottlenecks in Deep Q-learning Algorithms, ICLR 19'* 一篇比较全面地分析Q-learning算法在实际神经网络使用中情况的文章。除了很实用之外，文章使用的三种用于分析的策略（exact，sample和replay-FQI）也提供了一个非常好的insight。
- smaller architectures introduce significant bias in the learning process.This gap may be due to the fact that when the target is bootstrapped, we must be able to represent all Q-function along the path to the solution, and not just the final result.
- higher sample count leads to improved learning speed and a better final solution, confirming our hypothesis that overfitting has
-a significant effect on the performance of Q-learning.
-replay buffers and early stopping can be used to mitigate the effects of overfitting.
-nonstationarities in both distributions and target values, when isolated, do not cause significant stability issues. Instead, other factors such as sampling error and function approximation appear to have more significant effects on performance. 
-文章还提出了更好的sampling方法：Adversarial Feature Matching。
-* *Near-Optimal Reinforcement Learning in Polynomial Time 02'* 很经典的一篇文章，出自大佬Singh之手。文章提出了The Explicit Explore or Exploit算法，它通过定义了一个“known state”的概念，然后将算法分为两个反复的阶段——balanced wandering（当来到“unknown状态”时进入，去尝试当前尝试次数最少的动作）和offline attempted exploration/exploitation（如果当前的已知集合足够好，则在其中exploit；否则尽快跳出这个已知状态集合。如果在过程中意外来到了未知状态，则立即回到balanced wandering）。“已知”的概念是每个动作都被探索一定的次数，这个“一定”是根据理论计算得到的。
+This paper uses a typical model for network attacks: The attacker controls some initial nodes (leaves) and launches attack on the server on the root.
 
-### Algorithms
- * *DQN*
-  Q网络的拟合目标是用Q网络自己的早期版本（即target net）用Bellman方程作为结果。另外Experience Replay把时序过程中的步骤拆分出来作为训练集也是一个经典操作。
- * *Implicit Quantile Networks for Distributional Reinforcement Learning* DQN系到18年的SOTA，但是似乎不能解决POMDP。
- * *TRPO* Trust Region Policy Optimization 15' 
-  思路：要保证策略梯度得到的结果单调不降----->只要满足advantage>=0---->需要近似计算所以不能离的太远----->对KL散度有限制---->用KL散度的二阶展开近似KL散度变成凸优化问题。
- * *PPO* Proximal Policy Optimization 17'
-  简单实用的正则项动态系数调整法（系数动态调整+clip），加正则项的方法都可以借鉴它。
- * *TRPO/PPO for POMDP*
- * *DDPG* DDPG是一种难以训练的方法。虽然理论上说DDPG可以适用于gridworld这样的低维度动作环境中，但是实验表明其表现和收敛速度远不如DQN。DDPG依然算是一种面对连续/高维决策空间的无奈之举。
- * *TD3* TD3 is a direct successor of DDPG and improves it using three major tricks: clipped double Q-Learning, delayed policy update and target policy smoothing. TD3本质上可以说是一种DDPG的变种，从算法上差异也不大。它主要解决的是Q-learning中由于无法知道value的准确值导致的estimation bias问题。
- * *AC*
-  Actor-Critic从本质上说是Policy Iteration的升级版。 
- * *A2C*
- advantage Actor-critic
- * *A3C*
- 在之前的基础上加入了一个异步更新。
- * *SAC*
- * *ACER: SAMPLE EFFICIENT ACTOR-CRITIC WITH
-EXPERIENCE REPLAY , ICLR 17'*
- ACER是A3C对于off-policy的改编版本。**Controlling the variance and stability of off-policy
-estimators is notoriously hard. Importance sampling is one of the most popular approaches for off-policy learning**。
-这里面有一个非常重要的地方：许多Actor-Critic算法的实现实际上使用了replay buffer。从理论上说，这是不对的（因为梯度这个东西涉及到policy采取各个动作进行转移的概率，但是off-policy情况下actor输出的概率不再是原来那个了，对应的critic的输入会有变化（我自己在实现replay buffer的时候可以说是瞎搞，比如要在转移里随机加噪声直接给对应方向+1再归一化），应该要加重要性采样加以修正；但是重要性采样方差太大，所以有了tree back-up和retrace（lambda），以及ACER），但是从实践上说，一般是可以work的——只限于1-step TD-learning。在n-step TD-learning时，由于转移与policy高度耦合，很快就会出现巨大的误差。（一般好像也没人用buffer去做n-step TD-learning）也有观点认为，1-step TD-learning仅仅是让程序额外学了一些转移。另外，off-policy情况下buffer里的policy原则上不应该和现在的policy偏移太大。
+The defender controls some of the routers in the tree, and its action space is drop rate to maximize the throughput of legal requests while ensuring safety.
 
-下面是一篇对这些经典算法的改进：
-* *Improving Stochastic Policy Gradients in Continuous Control with Deep Reinforcement Learning using the Beta Distribution, ICLR 17'* 在输出连续动作时，我们常常假设动作的概率分布是高斯分布。但是并不是所有的场景都适合用高斯分布；这篇文章探索了使用beta分布去替代高斯分布的可能性。高斯分布有一个问题：它在处理具有边界的动作时会出现bias，因为有一些被分配了概率的动作实际上是不可能达到的（比如说，机器手的角度只能是(-30, 30)，这个时候假如输出一个均值-29的高斯分布，实际上就有相当一部分概率位于“不可行”的区域。相比之下，beta分布的支撑集是有界的，因此其在边界上是bias-free的。（应该说，高斯分布对很多对称或者近似对称的真实情况work的都很好；一种work的不好的情况是长尾分布）。
-   
-### Partly Observable RL
-* *DRQN* 把第一个全连接层换成了LSTM，其他的和DQN 完 全 一 致。
-* *DDRQN*是一个用来解决MARL中团队合作__交流__的网络结构。第一个D代表distributed。文章中提到了三个主要修改：第一个是把上一个agent的动作作为下一个时间步的输入；第二个是所有agent参数共享；第三个是**对于不稳定环境不使用experience replay**。使用soft更新（就是说加权更新target network参数而不是直接复制）。另外实验比较有意思，把帽子和开关的智力题建模成了MARL问题。
-* *RIAL&DIAL: Learning to communicate with deep multi-agent reinforcement learning* 目标是设计一个end-to-end的学习协议。RIAL是建立在DRQN的基础上的。DIAL大概的想法似乎是通过梯度的串联实现中心化训练、非中心化执行。
-DIAL allows real-valued messages to pass between agents during centralised learning, thereby treating communication
-actions as bottleneck connections between agents. As a result, gradients can be pushed through the
-communication channel, yielding a system that is end-to-end trainable even across agents. During
-decentralised execution, real-valued messages are discretised and mapped to the discrete set of
-communication actions allowed by the task. 
-architecture
-独立的Q-learning指agent互相都把对方当成环境的一部分。
-the space of protocols is extremely high-dimensional. 
-“during learning, agents can
-backpropagate error derivatives through (noisy) communication channels”
-color-digit MNIST
-中心化训练与去中心化执行。
-* *RDPG* RDPG比DDPG更难训练，更容易收敛到局部最优。但凡是带Recurrent的RL过程，其必须保存下整个trajectory用于训练（只保存每个transition的hidden state实验证明是低效的，且很难训练出来。）
-* *DRPIQN* 面对POMDP，有一种训练方法是维护一个网络对隐藏状态的“信念”（另外两种常见的方法分别是actor-critic给critic训练时额外的信息，以及LSTM记住历史）。虽然“信念”听起来很贝叶斯，但是实际上就是额外拉出一个网络分支用来预测对手的动作。
-* *RLaR: Concurrent Reinforcement Learning as a Rehearsal for
-Decentralized Planning Under Uncertainty, AAMAS 13'* RLaR是一种用来解决dec-POMDP的方法。dec-POMDP是一种特殊的MARL，它要求所有的agent共享一个global reward。Dec-POMDP是NEXP-Complete的。 **RLAR是一种认为训练时全部状态可见、执行时不可见的方法，它把训练叫做一种“rehearsal”，即排练。** 它分为两步：第一步是在完全状态下学到一个policy；第二步是agent通过探索去建立一个预测模型，根据预测模型和原policy学到新的不需要完全可见就可以work的policy。
-* *Actor-Critic Policy Optimization in Partially Observable Multiagent Environments, NIPS 18'*
-以下是三个按照时间先后排列的算法。
-* *BAD: Bayes Action Decoder* 
-* *SAD: Simplified Bayes Action Decoder*
-* *VariBAD*
+Such setting is widely used in DDOS-related papers including those with MARL solutions.
 
-## MARL
- * *MADDPG*
-   经典的Multi-agent算法。本质上说，是DDPG的扩展；它利用centralized training在训练时为critic网络给出了额外的信息，而actor则不直接利用这些信息；最后测试时只使用actor网络决策。另外它为了防止competitive情况下的overfit，训练了一堆平行的参数每次均匀随机选择。
- * *R-MADDPG*
-   R-MADDPG是MADDPG的一个拓展，它在Actor和Critic（主要是Critic）上增加了一个循环结构，用以储存过去接收的信息，处理依赖于时序的任务。实验结果表明，在critic上安装循环结构效果显著，而在actor上安装循环结构几乎没有效果。（虽然极其难训就对了）
- * *COMA*
- * *MAAC: Actor-Attention-Critic for Multi-Agent Reinforcement Learning*
- * *DP(R)IQN*在D(R)QN的基础上改进，用一个带softmax的inference分支去将对手的policy纳入考虑。
- * *Learning with opponent-learning awareness*
- * *QTRAN: Learning to Factorize with Transformation for Cooperative Multi-Agent Reinforcement Learning*
- * *QMIX*
- * *Diff-DAC: Distributed Actor-Critic for Average Multitask Deep Reinforcement Learning* 其实或许这也是一种图卷积神经网络的思想？
+* *Reinforcement Learning for Autonomous Defence in Software-Defined Networking* (2018)
 
+This paper uses another typical model for network attacks: The attacker controls some initial nodes on a graph and launches attack on the server. 
 
-### Hierarchical RL
- * *HIRO: HIerarchical Reinforcement learning with Off-policy correction*
- * *Hierarchical Actor-Critic*
- * *MCP: Learning Composable Hierarchical Control with Multiplicative Compositional Policies*
-### Communication
- * *BiCNet: Multiagent Bidirectionally-Coordinated Nets
-Emergence of Human-level Coordination in Learning to Play StarCraft Combat Game*
-As the bi-directional recurrent structure could serve not only as a communication channel but
-also as a local memory saver, each individual agent is able
-to maintain its own internal states, as well as to share the
-information with its collaborators.
-computing the backward gradients by unfolding the network
-of length N (the number of controlled agents) and then applying backpropagation through time (BPTT)
-The gradients pass to both the individual Qi function and the
-policy function.
-## Distance of Distribution
-  * *Wassenstein Reinforcement Learning*
-  不可无一不可有二的文章。作者对把RL推广到这一量度上做了很多非常用心的理论推导；但是其真的推广到这一领域能比传统RL的表现好多少是存疑的。
-  * *Wasserstein GAN*
-  Wasserstein对比KL的一大好处是不要求定义域完全重合（甚至交集为0也可以衡量两个分布之间的距离）。
-## Soft Q-learning
-算法产生的模型探索更充分，探索到有用的子模式更多。Soft Q-learning本来就是要解决exploration的问题，所以才在reward上加了一个正则项（注意它并不是神经网络的正则项，所以不一定要用到神经网络上，tabular也完全可能应用soft Q-learning）。感觉上，DQN似乎不太能解决这个问题；deterministic的决策原本就不利于做出探索。然而一个奇怪的现象是，按照我的实践经验，soft actor-critic似乎推广到离散环境时表现不好（soft Q-learning表现尚可）。
-* *Reinforcement Learning with Deep Energy-Based Policies ICML17’* https://zhuanlan.zhihu.com/p/44783057 有详细解说。
-* *Multiagent Soft Q-Learning*
-Relative overgeneralization occurs when
-a suboptimal Nash Equilibrium in the joint space of actions is preferred over an optimal Nash Equilibrium because
-each agent’s action in the suboptimal equilibrium is a better
-choice when matched with arbitrary actions from the collaborating agents.
-* *Balancing Two-Player Stochastic Games with Soft Q-Learning 18’* 
+Each turn, the attacker can infect (compromise) some of the neighbouring servers; the defender can break/reconstruct some of the links (edges), or move the data on the target server to another server.
 
-## IRL
- * *Inverse Reinforcement Learning 00'*
-  IRL开山之作，用线性规划解决问题。首次提出reward是由一些“feature”的未知系数的线性组合构成的这个概念，在后面直到deep maxent的一系列IRL工作中发挥了非常重要的作用。
- * *Apprenticeship Learning via Inverse Reinforcement Learning 04'*
-  需要明确的一点是：IRL的终极目标不是得到和原来完全一样的reward，而是可以在原reward上“表现得和原来一样好的”policy。
- * *Bayes Inverse Reinforcement
- Learning 08'*
-  不需要每次求“最优”Policy了，比较优的就可以。
- * *Maximum Entropy Inverse Reinforcement Learning 08'*
-  两个假设：一个是reward是手动设计的一些特征的线性组合，另一个是认为轨迹的概率分布（这是一个重要概念！）出现的概率是和e^reward成正比。这一篇我复现过，实际效果嘛……emmm。
- * *Maximum Entropy Deep Inverse Reinforcement Learning 10'*
-  “Deep”是用来解决上一篇中特征提取问题的。上一篇认为reward是手动设计的一些特征的线性组合，这里就变成了网络自动从地图里提取特征做任意的组合。
- * *Guided Cost Learning 15'*  
- * *A Connection Between Generative Adversarial
-Networks, Inverse Reinforcement Learning, and
-Energy-Based Models*
-  GAN，能量模型和GAIL是相通的。
- * *Generative Adversarial Imitation Learning 16'*
-  它是GAN在强化学习（实际上是模仿学习）领域的推广。分为两个不断重复的阶段：其中一个阶段是固定Generator优化Discriminator；另一个阶段是固定Discriminator以分类结果的对数似然作为Reward去训练Generator。注意学习architecture要画清楚数据流！
-   * *LEARNING ROBUST REWARDS WITH ADVERSARIAL
-INVERSE REINFORCEMENT LEARNING, ICLR 18'*
- * *AIRL: LEARNING ROBUST REWARDS WITH ADVERSARIAL
-INVERSE REINFORCEMENT LEARNING 17'*
-  * *MAGAIL：Multi-Agent Generative Adversarial Imitation Learning 18'*
-  * *Multi-Agent Adversarial Inverse Reinforcement Learning, ICML 19'* 见github里的MAAIRL.pptx。
-  * *Adversarial Imitation via Variational Inverse Reinforcement Learning， ICLR 19'* 这里面提出了一个概念：empowerment。empowerment是I(s',a|s)，它表示的是有agent有多大的可能性“影响自己的未来”。研究者认为增加这一正则项有助于防止agent过拟合到专家的demonstration上。
-  * *Asynchronous Multi-Agent Adversarial Inverse Reinforcement Learning*
-  
-## Behavior Cloning
-* *Integrating Behavior Cloning and Reinforcement Learning for Improved Performance in Dense and Sparse Reward Environments*
-* *Accelerating Online Reinforcement Learning with Offline Datasets*
-## Agent Modeling
-### Classical Modeling：Feature Engineering
-* *Player Modeling in Civilization IV*
-这个大概还是使用传统的特征工程，需要手动设计特征。Agent Modeling只有在近两年概率空间投影的policy representation才摆脱了传统方法。
-## Policy Representation
-### Divergence-based
-* *Learning Policy Representations in Multiagent Systems*
-* *Modeling Others using Oneself in Multi-Agent Reinforcement Learning*
-* *Opponent Modeling in Deep Reinforcement Learning*
-* *LEARNING ACTIONABLE REPRESENTATIONS WITH
-GOAL-CONDITIONED POLICIES*
-* *Learning Action Representations for Reinforcement Learning*
-### Encoding & Hidden State
-* *Provably efficient RL with Rich Observations via Latent State Decoding*
+* *Adversarial Reinforcement Learning for Observer Design in Autonomous Systems under Cyber Attacks* (2018)
 
-### Theory of Mind
-* *Machine Theory of Mind*
-* *Theory of Minds: Understanding Behavior in Groups Through Inverse Planning*
+This paper actually has less thing to do with "computer networks". This paper discusses the problem of defending an adversary that twists the input of a fixed RL agent by training a an agent that corrects the input.
 
-### Society of Agents
-* *Social Influence as Intrinsic Motivation for Multi-Agent Deep RL* 奖励那些在CFR下能让队友做出不一样动作（给到信息）的动作。作者指出，如果没有这种特殊的奖励，那么就会陷入一种babbling的尴尬均衡。文章使用互信息来作为衡量指标。另外，为了CFR而训练的MOA网络其实也给出了对其他agent的embedding。还有一点，这个agent训练是完全decentralized的。其实firing beam的设定我感觉也挺有道理——无名氏定理保证了在不定长的repeated games中，如果所有人联合起来可以不让一个人好过，那么就能出现某种程度的合作。
-* *Mean-field MARL* 是用“和它相关的附近的几个agent”考察一对一对的关系来降低维度。然而其限制在于，其应用环境必须满足reward能被和field内附近agent的互动很好地勾勒。
+Self-play is used here to train the adversarial and the observer in the same time. The paper uses classical pendulum as input and TRPO as the fixed RL agent.
 
-## Relational Reinforcement Learning
-似乎是符号主义和连接主义的结合。
-* *Relational Deep Reinforcement Learning, 18'* 别出心裁的定义。但是实验过于简单，实际推广的效果如何还存疑。
+###  Green Security Games
 
-## Mathematical Background
-* *Rethinking the effective sample size*
+See RL-application **anti-poaching** part.
 
-### Miscellanous
-* *Allocation of Virtual Machines in Cloud Data Centers- A survey of problem models and optimization algorithms*
-* *SEIR epidemic model with delay*（AI无关）
-* *DR-RNN: A deep residual recurrent neural network for model reduction*
-对于（如物理模型等）大规模模拟的简化，有三种主要思路。第一种是基于物理公式的简化模型（所以是heavily prior-based）；第二种是纯拟合的黑箱模型（类似于专家-学徒问题中的模仿学习）；第三种是基于投影的低秩模型（ROM）。第三种思路的前提是必须假设整个模型可以被低秩线性表出。得到投影基使用**Galerkin projection（伽辽金方法）**。几种主要算法是：Proper Orthogonal Decomposition; Krylov subspace methods; truncated balanced realization.文章提出了一种基于RNN的model reduction(?)
-* *Meta Q-learning*
-* *A survey on Federated Learning Systems: Vision, Hype and Reality for Data Privacy and Protection* 联邦学习的综述。
-* *the IQ of neural networks* 一篇还算比较有趣的文章，用CNN来做智力测试题。
-* *What can neural networks reason about?* 非常棒的文章，它为我们这些年来在NN方面设计的各种结构模块背后的理论依据提供了insight，特别是GNN。文章以PAC-learning作为基石，提出如果神经网络的模块能够和经典算法有好的alignment（即sample complexity高），那么就会有好的performance和generalization。
-* *LEARNING WHAT YOU CAN DO BEFORE DOING ANYTHING， ICLR 19'* 想办法从录像中获得一种embedding。比较值得借鉴的想法是利用互信息去衡量两个完全不同的表达方式其中一个embedding另外一个的效果，作为目标函数。
-* *Multiagent Cooperation and Competition with Deep
-Reinforcement Learning*
-这篇文章好像就是调了一下DQN的reward然后说明可以合作/竞争。没有什么太大价值，应用也不存在的。
-* *Intrinsic motivation and
-automatic curricula via asymmetric self-play*
-* *A Structured Prediction Approach of Generalization in Cooperative Multi-Agent Reinforcement Learning*
-* *Neural Logic Reinforcement Learning, ICML 19'* NLRL:少见的符号主义和连接主义的结合。用一阶逻辑表示policy。实际上早在世纪初就有用一阶逻辑表示state的尝试；但是这个需要agent对state和reward的逻辑形式有所了解(known dynamics)。
-说实话有点看不懂；它基于prolog这个逻辑型程序设计语言。感觉它就是一个从输入到输出的二值神经网络（向量只有0/1）？最后实验也比较弱，大概就是很小地图的cliff walking和砖块的放上放下。
-它的运算可以看成一组**clause**对输入的连续处理。它的优点应该是：可解释（policy可以被一些从句解释出来——其实稍微大一点就不human readable了）、不依赖于background knowledge、可移植性强（其实RL已经有很多在注意这个问题了？）。
-* *Probability Functional Descent: A Unifying Perspective on GANs, Variational Inference, and Reinforcement Learning*
-* *Variational information maximisation for intrinsically motivated reinforcement learning, NIPS 15’* 除了提出了empowerment之外，这篇文章的一个重要可借鉴的地方是：如果函数本身难以优化，就尝试推导一个下界然后去优化它的下界。在凸优化中，我们有时会优化envelope function，找proximal mapping，也就是这个道理。
-* *Are security experts useful? Bayesian Nash equilibria for network security games with limited information* 
-这篇文章从博弈论的角度告诉我们，杀毒软件不能装太多。原文abstract：“expert users can be not only invaluable contirbutors, but also free-riders, defectors and narcissistic opportunists.”
-### Evolutionary
-* *Competitive coevolution through evolutionary complexification*
-进化算法。
-* *Evolutionary Population Curriculum for Scaling Multi-agent Reinforcement Learning, ICLR 2020* 非常好的文章，在agent间沟通的权重选择、变异与进化方法上都有亮点。
+## Fictitious Play
 
-### Monte-Carlo Based
-* *Mastering the game of go without human knowledge*
-AlphaGo。
-* *Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm 17'*
-这一篇和上一篇基本上没有太大区别，只是上一篇应用的一个扩展。
-* *Emergent Complexity via Multi-Agent Competition ICLR 18'*
-这篇文章的核心思想是competition introduces a natural learning curriculum。
-一般来说避免overfit的方法包括随机抽取一个集合作为对手（同样的思路也用在了MADDPG里），给轨迹的熵加正则项（一般用在机器人控制里面，假设移动服从某种概率分布，如高斯分布）。
-这篇文章用分布式PPO训练。总的来说很吃数据量（想来也是，它完全不采取centralize的方法进行训练。）。
-这篇文章的一个小trick是它使用自己的过去作为sample，另一个是开始阶段手动设计的curriculum。
+Fictitious Play is a way to find Nash Equilibrium for games. Yet, its guarantee of convergence is greatly limited by the type of the game.
 
-### Credit Assignment
-* *Credit Assignment For Collective Multiagent RL With Global Rewards*
-* *Shapley Q-value: A Local Reward Approach to Solve Global Reward Games*
+* *Games with multiple payoffs* (1975)
 
-## Game Theory
-### Differentiable Games
-Differentiable Games是一类特殊的游戏，它要求每个人的reward函数都已知并且由每个人的action(原文为theta)完全决定且对theta可微。
-* *N-player Diffentiable Games*
-* *Consensus Optimization* 
-* *Stable Opponent Shaping* LOLA的改进。
-* *Learning with Opponent Learning Awareness(LOLA)* 把对手当成naive learner，预测对手的update。不过这样的假设在对手也是LOLA Agent的时候会导致“arrogant”的行为，即假设对手会遵从自己对我方有利的动作调整（具体阐述见上面的Stable Opponent shaping）。
-### Classic MARL
-* *Deep Q-Learning for Nash Equilibria: Nash-DQN 19’* 用线性/二阶展开逼近去求Advatange等。
-* *Coco-Q: Learning in stochastic games with side payments 13’* 一种新的solution concept，利用“给reward”的形式达成某种类似“契约”的状态。实际上，这个或许能够给reward assignment一点insight？
+"Multiple" payoff is not multi-dimensional, but a unique weighted sum decided by players.
 
+* *On the Convergence of Fictitious Play* (1998) 
 
-### Fictitious Play
-Fictitious Play是一种寻找双人博弈中Nash均衡的方法。
-* *Deep Reinforcement Learning from Self-Play in Imperfect-Information Games 16'*
-简介见下面Game theory一节。
-* *On the Convergence of Fictitious Play 98'*
-对一般的General sum游戏来说，NFSP是不收敛的；实际上，不收敛是一种常态。（但是也许会收敛到cyclic equilibrium？）
-CFP almost never converges cyclically to a mixed
-strategy equilibrium in which both players use more than two pure strategies. Thus, Shapley's example of nonconvergence is the norm rather than the exception. Mixed strategy equilibria appear to be generally unstable with respect to cyclical fictitious play processes.
-In a recent paper, Hofbauer (1994) has made a related conjecture: if CFP converges to a regular mixed strategy equilibrium, then the game is zero-sum.
-* *On the Global Convergence of Stochastic Fictitious Play* 揭示出有四种游戏是可以保证全局收敛的：games with an interior ESS（内部进化稳定点，即作为完全对称的游戏，在一个mixed-strategy邻域内是极优策略）, zero sum games, potential games（即所有人获得的reward始终相同）, and supermodular games：在超模博弈中，每个参与者增加其策略所引起的边际效用随着对手策略的递增而增加。博弈里最优反应的对应是递增的，所以参与者的策略是“策略互补的”。
+For normal general-sum game, fictitious self-play is not converging, and will **often** not converge. It  almost never converges cyclically to a mixed strategy equilibrium in which both players use more than two pure strategies.
+
+Shapley's example of nonconvergence is the norm rather than the exception.
+
+Mixed strategy equilibria appear to be generally unstable with respect to cyclical fictitious play processes.
+
+Actually, there is a conjecture by Hofbauer(1994): if CFP converges to a regular mixed strategy equilibrium, then the game is zero-sum.
+
+* *On the Global Convergence of Stochastic Fictitious Play* (2002)
+
+There are four type of games that can ensure global convergence:
+
+1) games with an interior ESS (as a fully symmetric game, be optiaml in a mixed-strategy neighbourhood);
+
+2) 0-sum games;
+
+3) potential games, where everyone's motivation can be described by a potential (Note: a good design of potential function, possibly non-Nash solution concept ones, can make things easier; e.g. Alpharank);
+
+4) supermodular games, where every participant's marginal profit by increasing their investion in strategy is increasing w.r.t. their opponent's investion.
+
 * *Full-Width Extensive Form FSP*
-理论上说extensive form也可以直接暴力展开为normal form然后使用FSP，但是那样效率太低，因为可能的决策会以指数级别增长。这篇文章证明了FSP也可以直接被用在extensive form上并且还给出了policy mix起来的方法：线性组合。
-* *Fictitious Self-Play in Extensive-Form Games 15'*
-这里就提出用网络近似best response（？）
-* *Deep Reinforcement Learning from Self-Play in Imperfect-Information Games 16'*
-它使用了NFSP。NFSP是Fictitious Self Play和Neural Network的结合，其实就是应用DQN和Behavioral Cloning分别做计算最优对策和计算对手当前对策的工作。
-* *Monte Carlo Neural Fictitious Self-Play:
-Approach to Approximate Nash Equilibrium of
-Imperfect-Information Games 19'*
-使用Monte-Carlo/异步方法做self-play，提高对局质量。要求所有的agent共享同样的参数。
 
-### Multiple Payoffs
-* *Games with multiple payoffs, 75'*
-这里面的设定是虽然multiple，但是实际上根据加权最后还是要有一个唯一的优化目标。这个加权也不是唯一固定的，它在against nature游戏中由玩家决定以最大化总收益，而在双人博弈中似乎不是固定的。
+Previous work studies self-play only for normal form. Theoretically, extensive form games can be trivially extended to normal form and applied with FSP, but as the possibility grows exponentially, this is a very low-efficiency method.
 
+This paper proves that FSP can be applied on extensive form with **linear combination** for policy mixture.
 
-## Blogs and Slides
-* *https://www.freecodecamp.org/news/an-introduction-to-policy-gradients-with-cartpole-and-doom-495b5ef2207f/* 为什么需要policy gradient？随机策略和确定性策略比起来有什么好处？
-* *http://www.cs.umd.edu/~hajiagha/474GT13/Lecture10152013.pdf* Multiple Payoff的相关课件。
-* *https://vincentherrmann.github.io/blog/wasserstein/* 关于Wassenstein GAN的一些内容，或许有助于了解Wassenstein距离。
-### Counterfactual
-目前只能用在双人零和博弈里面。CFR的一个核心在于“反事实导致的遗憾”，即如果在这个时候选择了其他动作，那么其regret相当于选这个动作所额外带来的reward。
-CFR determines an iteration’s strategy by applying any of
-several regret minimization algorithms to each infoset (Littlestone & Warmuth, 1994; Chaudhuri et al., 2009). Typically, regret matching (RM) is used as the regret minimization algorithm within CFR due to RM’s simplicity and lack of parameters.
-RM大概就是一种在正regret中根据比例选动作的简单算法。
-* *Using Counterfactual Regret Minimization to Create
-Competitive Multiplayer Poker Agents 10'*
+* *Fictitious Self-Play in Extensive-Form Games* (2015)
 
-* *Regret Minimization in Games with Incomplete Information 07’* 
-* *An Introduction to Counterfactual Regret Minimization* 一篇很好的入门教程。
-* *Regret Minimization in Non-Zero-Sum Games with Applications to Building Champion Multiplayer Computer Poker Agents 13’*
-这文章其实多少有一点玄学：证明了一个仍然是发散的界（regret与根号倍迭代轮数成正比），然后实际上训了一个还行的结果。
-* *Deep Counterfactual Regret Minimization ICML 19'*
-The goal of Deep CFR is to approximate the behavior of CFR without calculating and accumulating regrets at each infoset, by generalizing across similar infosets using function approximation
-via deep neural networks.
- One method to combat this is Monte Carlo CFR (MCCFR), in which only a portion of the game tree is traversed on each iteration (Lanctot et al.,2009). In MCCFR, a subset of nodes Qt in the game tree is traversed at each iteration, where Qt is sampled from some distribution. 
-* *Single Deep Counterfactual Regret Minimization 19'*
+* *Deep Reinforcement Learning from Self-Play in Imperfect-Information Games* (2016)
+
+This paper proposes N(eural)FSP. NFSP is an extension of FSP where DQN instead of hand-crafted solution is used for giving optimal response oracle, and a supervised-learning network is used for modeling current opponent's behavior. 
+ 
+* *Monte Carlo Neural Fictitious Self-Play: Approach to Approximate Nash Equilibrium of Imperfect-Information Games* (2019)
+
+This paper uses asynchronous Monte-carlo method for self-play for games where all agents share the same parameters.
+
+## Counterfactual Regret Minimization
+
+Current research on counterfactual regret minimization (CFR, as of 2020) mainly focuses on 2-player 0-sum game.
+
+"regret" means that the "reward brought by this action if this action **were** chosen instead of others.
+
+CFR determines an iteration’s strategy by applying any of several regret minimization algorithms to each infoset (Littlestone & Warmuth, 1994; Chaudhuri et al., 2009). Typically, regret matching (RM) is used as the regret minimization algorithm within CFR due to RM’s simplicity and lack of parameters.
+
+This somewhat relates to Pearl's 3-level hierarchy on AI and causal inference (e.g. the notion of "do" operator).
+
+Counterfactual regret minimization is one of the popular direction and frontier w.r.t. RL + game theory (as of 2020). There are, however, not much *reliable toy* deep CFR code on Github. Try *https://github.com/lcskxj/Deep_CFR* maybe?
+
+* *Using Counterfactual Regret Minimization to Create Competitive Multiplayer Poker Agents* (2010)
+
+* *Regret Minimization in Games with Incomplete Information* (2007)
+
+* *An Introduction to Counterfactual Regret Minimization* 
+
+A nice tutorial for counterfactual regret minimization.
+
+* *Regret Minimization in Non-Zero-Sum Games with Applications to Building Champion Multiplayer Computer Poker Agents* (2013) 
+
+This work gives a regret bound for non-0-sum 2-player game with CFR [The original version of comment may be erronous], and proves that CFR works empirically.
+
+* *Deep Counterfactual Regret Minimization* (2019) 
+
+The goal of Deep CFR is to approximate the behavior of CFR without calculating and accumulating regrets at each infoset, by generalizing across similar infosets using function approximation via deep neural networks. One method to combat this is Monte Carlo CFR (MCCFR), in which only a portion of the game tree is traversed on each iteration (Lanctot et al.,2009). In MCCFR, a subset of nodes Qt in the game tree is traversed at each iteration, where Qt is sampled from some distribution.
+
+* *Single Deep Counterfactual Regret Minimization* (2019)
+
 * *Efficient Monte Carlo Counterfactual Regret Minimization in Games with Many Player Actions*
-说到底，提高采样效率用到的还是老一套，比如Monte Carlo，连稍微高级一点的Gibbs/Hasting-Metropolis采样都没用到。很多算法从tabular classical向deep搬运的过程，说白了就解决了两个问题：1）大规模计算如何用function approximator等工具代替 2）如何更好地采样以代替概率。
 
-### Regret Matching
-* *A SIMPLE ADAPTIVE PROCEDURE LEADING TO CORRELATED EQUILIBRIUM 00'* CFR的基础是regret matching，本质上CFR就是regret matching延展到extensive form game的产物（至少主流的CFR是这样）。
+When you "translate" tabular classical algorithms to deep algorithm, you mainly deal with two problems:
 
-### Nash Equilibrium
-Nash这种东西在计算意义上的本质，就是反复针对对方做最优决策，然后不断迭代，希望能够达到稳定。
-* *Nash Q-Learning for General-Sum Stochastic Games 03'*  就是把Q-learning的最优下一步Q换成下一步大家都按Nash均衡行事。
-* *Actor-Critic Algorithms for Learning Nash Equilibria in N-player General-Sum Games*
-two desirable properties of any multi-agent learning algorithm
-are as follows:
-(a) Rationality: Learn to play optimally when other agents follow stationary strategies; and
-(b) Self-play convergence: Converge to a Nash equilibrium assuming all agents are using the same learning algorithm
-文章是几个印度人写的。
-为了绕过前人已经做出的结论（任何value-based方法，试图只用Q-learning不搞其他骚操作的方法，对general-sum game无法保证收敛到纳什均衡），作者写了一句“We avoid this impossibility result by searching for both values and policies instead of just values, in our proposed algorithms”。
-这个放在小字里面就很灵性……反正我没看懂什么意思，总不会是“我们这个算法本质爆搜”的意思吧？
-* *Learning Nash Equilibrium for General-Sum Markov Games from Batch Data* Markov Game（或者说Stochastic Game）是一种特殊的MDP，或者也可以理解为“回合制的”MDP。特点是决策完全由当前状态决定。它也有对应的部分可见版本，叫POSG。
-* *Markov games as a framework for multi-agent reinforcement learning* Littman的经典文章。虽然idea在现在看来都很基本，但它却是博弈论与MARL结合的先驱。
-* *Cyclic Equilibria in Markov Games* 这篇文章证明了：但凡使用Q值的值迭代算法（所以也包括DQN及其任意变种）都没法算出任意general sum game的**静态**Nash均衡。不过，作者提出一个新概念叫循环均衡——它满足任何一方单独改变策略都无法优化的条件，但是它并不满足无名氏定理，而是在一组静态策略之间循环。很多双人双状态双动作游戏都无法在value-based方法下收敛，但在几乎所有的游戏之中它们都达到了“循环均衡”。可以理解为剪刀石头布限定纯策略情况下双方在三种策略之间来回震荡，但是总的来说满足均衡条件。需要注意的是：cyclic equilibrium是一种correlated equilibrium，所以它对于competitive game还是……emmm。
-**多说一句：** 从动力系统的观点来看，循环均衡正是由每方策略优化方向决定的向量场中互相可达且（在允许无穷小误差意义下）常返的“旋涡”。这本质与alpharank的MCC类似。
-* *Actor-Critic Fictitious Play in Simultaneous Move
-Multistage Games* 一个NFSP的变种（？从年代上看和NFSP差不多，用去中心化的actor-critic方法解决了2-player 0-sum game。）
-### Robust(Minimax) Optimization
-* *Handling uncertainty of resource division in multi-agent system using game against nature*
-这篇文章是一篇很老的文章，主要就是对未知情景采用minimax来保证表现。文章解决了一类机器人合作收集物品问题。
+1）How to use function approximator to properly estimate a large value table? 
 
-## Reward Shaping
-* *Policy Invariance Under Reward Transformations： Theory and Application to Reward Shaping, ICML 99'*
-注意区分reward shaping和正则项。这二者都是改变reward函数，但reward shaping是不改变最优策略的；而正则项是会改变最优策略的。
-reward shaping的优点在于完全不会改变最优策略，缺点在于其形式必须满足一个特殊要求：对于任何(s,a,s')的转移，函数都可以写成cf(s')-f(s)，其中c为一小于1的常数。[对于只有位置具有重要性的gridworld就很有用了]
-正则项的优点在于可以加入任何东西，但它不能保证最优解。
+2）How to improve sample efficiency?
+
+## Regret Matching
+
+Regret matching is the foundation of counterfactual regret minimization(CFR); (for most cases,) CFR is regret matching for extensive form game. 
+
+Other algorithms may do, but regret matching is the most widely-used. See the AGT_survey file (arXiv: 2001.06487) for details.
+
+* *A Simple Adaptive Procedure Leading to Correlated Equlibrium* (2000) 
+
+## Solution concepts
+
+Nash equilibrium, in essence, is continuous finding best response to the opponent and expecting to find a fixed point.
+
+Nash equilibrium, though widely used, is sometimes limited, for its "max" operator has a nature of sudden changes. 
+
+Choosing bounded rationality on the other hand, has more reason than simulating real-life behavior; it may lead to an iterative balance that is more **differentiable**.  
+
+### Nash
+
+* *Nash Q-Learning for General-Sum Stochastic Games* (2003) 
+
+Simply change the optimal action in Bellman equation to Nash equilibrium. However, vanilla Nash-Q are very slow to converge (as far as my experience), and calculating Nash equilibrium itself is very costly (NP-hard; see Prof. Xiaotie Deng's work.)  
+
+* *Actor-Critic Algorithms for Learning Nash Equilibria in N-player General-Sum Games* (2014)
+
+Two desirable properties of any multi-agent learning algorithm are as follows: 
+
+(a) Rationality: Learn to play optimally when other agents follow stationary strategies; and 
+
+(b) Self-play convergence: Converge to a Nash equilibrium assuming all agents are using the same learning algorithm.
+
+To bypass the conclusion of existing work (See the paper *Cyclic Equilibria in Markov Games*), the author "avoid this impossibility result by searching for both values and policies instead of just values, in our proposed algorithms".
+
+(It is somewhat strange that this sentence is put in the footnote instead of main paper without explanation, as if the authors want to hide this point.)
+
+* *Learning Nash Equilibrium for General-Sum Markov Games from Batch Data*
+
+Markov Game（Stochastic Game）is a MDP "with rounds", which means action is purely based on current state. A partial observable counterpart of POMDP is POSG.
+
+* *Markov games as a framework for multi-agent reinforcement learning*
+ 
+Littman's classical papers, the pioneering work in MARL+game theory. 
+
+* *Cyclic Equilibria in Markov Games*
+
+ This paper proves that **no value-based method RL algorithm may calculate the static Nash equilibria of arbitrary general-sum game**.
+ 
+ However, this paper proposes a new notion called **cyclic equilibria**: It satisfies the condition that no one can optimize its strategy with only his/her policy changes. 
+ 
+ Yet, cyclic equilibria does not satisfies **folk theorem**; it cycles between a set of static strategies. (Consider rock-paper-scissors where you can only use pure strategy.)
+ 
+ Many 2-player 2-action 2-state games cannot converge under value-based method; yet, they almost always achieve cyclic equlibria. 
+ 
+ Note: **cyclic equilibrium is a correlated equilibrium**. Viewed from dynamic systems, cyclic equilibria is the **vortex** in the strategy optimization field. **This IS essentially Alpharank's MCC**.
+ 
+*  *Actor-Critic Fictitious Play in Simultaneous Move Multistage Games* 
+
+A variance of NFSP, use decentralized actor-critic to solve 2-player 0-sum game.
+
+* *Robust Multi-Agent Reinforcement Learning via Minimax Deep Deterministic Policy Gradient* (AAAI 19’)
+
+Its core idea is that during training, we force each agent to behave well even when its training opponents response in the worst way. There are two core ideas:
+
+1) for robustness, we want *minimax* response;
+
+2) to quickly calculate the inner *min* operatore, we use a linear function to approximate inner optimization problem and do a gradient descent (remember *Nash-DQN* for such approximation?)
+
+There are, however, much hyperparameters for this algorithm.
+
+### Other Novel 
+
+* *Coco-Q: Learning in stochastic games with side payments* (2013) 
+
+A novel solution concept where agents "pay" others reward to make the other sides cooperate. This gives insight to some cooperating MARL problems, such as reward assignment and communication.
+
+* *MAAIRL* See RL-inverse part.
+
+* *α-Rank: Multi-Agent Evaluation by Evolution*
+ 
+See ALPHARANK.pptx. This paper first links game theory and dynamic system in my knowledge sturcture.
+
+* *A Generalized Training Approach for Multi-agent Learning* PSRO; see ALPHARANK.pptx.
+
+* *Multiagent Evaluation under Incomplete Information* A following work of alpharank under partial observable environment.
+
+* *αα-Rank: Practically Scaling α-Rank through Stochastic Optimisation* A following work of alpharank by Huawei to improve the exponentially growing (w.r.t. # agents) random walk space.
 
 ## Deception
-* *Designing Deception in Adversarial Reinforcement Learning*
-在传统框架下设计policy让agent学会骗人。这里面提到了一个观点：欺骗是一种能够引诱对手进入某种特殊policy的技巧，有利于把对手拉进自己熟悉的子游戏并战胜之。（类似的MADDPG和18年OpenAI一篇分布式PPO的文章也做了和欺骗相关的multi-agent实验）
-* *Finding Friend and Foe in Multi-Agent Games 19’*
-有大量的prior knowledge，但是不失为好的尝试。使用CFR（见上面的Counterfactual一节）。
 
-* *Learning Existing Social Conventions via Observationally Augmented Self-Play AIES 19’(?)*
-学习民俗，以便更好地融入agent社会中（？）定义了一个偏序关系用来描述policy的相似性，这个比较有意思。总的来说是一篇比较有意思的文章。
+Deception under partly observable environment are essentially **Bayesian security game**. MADDPG also does experiment in deception.
+
+* *Designing Deception in Adversarial Reinforcement Learning* 
+
+Designing policy under traditional framework to deceive the opponents in a soccer game.
+
+This paper brings up an interesting definition on "deception": Deception is a policy to lure your opponent to adapt a special policy, and thus control the game into a favorable subgame. 
+
+* *Finding Friend and Foe in Multi-Agent Games* 
+
+A paper using CFR with much prior knowledge to let the agents learn how to play Avalon; an interesting attempt.
+
+* *Learning Existing Social Conventions via Observationally Augmented Self-Play* (AIES 19’)
+
+This paper defines a partial order relationship to define the similarity of policy.
+
+Quoting its abstract, "**conventions** can be viewed as **a choice of equilibrium** in a coordination game. We consider the problem of an agent learning a policy ... and then using this policy when it enters an existing group."
+
+(That is to say, social convention is a special type of prior knowledge learned in pretraining which is the choice of action). This could be related to **ad-hoc cooperation**; that field is led by Prof. Peter Stone @ UTexas.  
+
+* *Deceptive Reinforcement Learning Under Adversarial Manipulations on Cost Signals*
+
+This is a paper where the attacker distorts cost signals. 
+
+* *Deception in Social Learning: A Multi-Agent Reinforcement Learning Perspective* 
+
+A survey. Quoting its abstract, "Social Learning is a new class of algorithms that enables agents to reshape the reward function of other agents with the goal of promoting cooperation and achieving higher global rewards in mixed-motive games." (Does this ring a bell w.r.t. Coco-Q learning & side payment?)
+
+## Miscellanous
+
+* *Deep Q-Learning for Nash Equilibria: Nash-DQN* (2019) 
+
+This paper uses a local 1st/2nd Taylor expansion to analytically solvable optimal actions for DQN. However, value-based method RL, again, is not a good solution for finding Nash equilibrium.
+
+* *Multi-Agent Systems: Algorithmic, Game-theoretic and Logical Foundations* (A classical book!)
+
+A great book that includes multi-agent and algorithms, game theory, distributed reasoning, RL, auction and social choice. Strongly recommending this book!
+
+The book mentions some contents on asynchronous DP, ABT search for multi-agent and so on. 
+
+It also mentions the most basic notion in multi-player/sequential games, e.g. extensive form and normal form.
+
+For sequential games, there exists the notion of **"unreliable threat"**, which means, when one party breaks the Nash equilibria, the other party's reward will be more damaged if it chooses to retaliate. Such threat of keeping Nash equilibrium is not credible, and thus such Nash equilibrium is unstable. This urges us to introduce subgame-perfect equilibrium (SPE) for games.
+
+There is also the notion of **Folk theorem** (Copied from wikipedia): Any degree of cooperation, as long as it is feasible and individually rational (e.g. if everybody else is against one agent, the agent's reward will be worse than that of a cooperating agent), can be achieved for an infinite game with adequate discount factor.
+
+If the players are patient enough and far-sighted (i.e. if the discount factor , then repeated interaction can result in virtually any average payoff in an SPE equilibrium.[3] "Virtually any" is here technically defined as "feasible" and "individually rational".
+
+There are also some contents on anthropology, including *locutionary, illocutionary and perlocutionary act* (see *https://www.douban.com/note/663802620/*)；The four principles of communication (quality，quantity，politeness and relativity).
+
+* *Balancing Two-Player Stochastic Games with Soft Q-Learning* (2018)
+
+# Inverse RL
+
+## Early
+
+* *Inverse Reinforcement Learning* (2000)
+
+The first work of inverse reinforcement learning (IRL). It assumes policy optimality, and solves reward function with linear programming. 
+
+This work first proposes that reward is determined by a linear combination of "features", which is inherited in future work.
+
+* *Apprenticeship Learning via Inverse Reinforcement Learning* (2004)
+
+The final goal of apprenticeship learning is not getting an identical reward function, but a policy that works equally well with the expert.
+
+* *Bayes Inverse Reinforcement Learning* (2008)
+
+This work does not require optimal demonstration to recover reward function; suboptimal ones will do.
+
+## Maximum Entropy
+
+Maximizing the entropy of the distribution over paths subject to the feature constraints from observed data implies that we maximize the likelihood of the observed data under the maximum entropy; See *https://zhuanlan.zhihu.com/p/87442805* for a more detailed introduction. 
+
+See *https://zhuanlan.zhihu.com/p/107998641* for reference.
+
+* *Maximum Entropy Inverse Reinforcement Learning* (2008)
+
+This paper is the founding work of modern inverse reinforcement learning. This paper makes two assumptions:
+
+1) Reward function is a linear combination of some certain features (inherited from Andrew Ng's work in 2000)
+
+2) **The probability distribution of trajectories is proportional to e^r where r is the reward.**
+
+However, I have recurred the experiments and found that the recovery of reward function is not as accurate as one may imagine.   
+
+* *Modeling Interaction via the Principle of Maximum Causal Entropy* (2010)
+
+* *Infinite Time Horizon Maximum Causal Entropy Inverse Reinforcement Learning*
+
+* *Maximum Entropy Deep Inverse Reinforcement Learning* (2010) 
+
+"Deep" is used in this work to extract and combine features instead of handcrafting features and only combining them linearly. 
+
+* *Guided Cost Learning* (2015)
+
+Before this work, a main effort of MEIRL is to *estimate Z* in the denominator of maximum entropy probability distribution (Ziebart's work uses DP; there are also other works such as Laplacian approximation, value function based and sample based approximation).
+
+This work finds a sample distribution and uses importance sampling to estimate Z. It iteratively optimizes both the reward function and the sampling distribution.
+
+The goal of sampling distribution is to minimize the *KL-divergence* between the sampling distribution and the term exp(-reward_\theta(traj))/Z.
+
+* *Generative Adversarial Imitation Learning* (2016) 
+
+A generalization of GAN on imitation learning (note: unlike AIRL, GAIL cannot retrive reward function).
+
+* *LEARNING ROBUST REWARDS WITH ADVERSARIAL INVERSE REINFORCEMENT LEARNING* (ICLR 18')
+
+See MAAIRL.pptx in the github for details. Compared to GAIL, AIRL has the ability to retrieve reward function.
+
+* *Adversarial Imitation via Variational Inverse Reinforcement Learning* (ICLR 19') 
+
+The most important notion of this work is *empowerment*. Empowerment is I(s',a|s) where I represents mutual information; it describes the possiblity of agent "influencing its future".
+
+The researcher suggests that by adding this regularizer, we can prevent agent from overfitting onto demonstration policy.
+
+* *A Connection Between Generative Adversarial Networks, Inverse Reinforcement Learning, and Energy-Based Models*
+
+Highly recommending this paper. Intuitively, GAN trains a generator which generates data (which could be *sequences*) that a discriminator (classifier) cannot tell from a particular distribution, which, if substituting the "sequence" to "trajectory", is exactly what imitation learning / IRL does; 
+
+and energy-based models (with Boltzmann distribution) assign a sample with an energy value that has the same form with MEIRL.
+
+## Multi-agent
+
+* *MAGAIL：Multi-Agent Generative Adversarial Imitation Learning* (2018)
+
+* *Multi-Agent Adversarial Inverse Reinforcement Learning* (ICML 19')
+
+See MAAIRL.pptx in the github for details. This paper proposes a new solution concept called **logistic stochastic best response equilibrium** (LSBRE).
+
+MAGAIL is MaxEnt RL + Nash Equilibrium; MAAIRL is MaxEnt RL + LSBRE.
+
+* *Competitive Multi-agent Inverse Reinforcement Learning with Sub-optimal Demonstrations* (2018)
+
+* *Asynchronous Multi-Agent Generative Adversarial Imitation Learning* (2019)
+
+# Application
+
+RL is currently not very popular in deployment of production (as of 2020/2021), as the sample efficiency are low and it may have no significant edge over expert systems and traditional analytical models in real-life. 
+
+## Recommending Systems
+
+RL is used in recommending systems due to its inherent **interactive and dynamic** nature; however, the sparsity of data is the greatest pain. Both GAN and supervised-learning with importance sampling are developed to address the issue.
+
+* *Generative Adversarial User Model for Reinforcement Learning Based Recommendation System* (ICML 19')
+
+This paper propose a novel **model-based** RL (for higher sample efficiency) framework to imitate user behavior dynamics & learn reward function.
+
+The generative model yields the optimal policy (distribution over actions) given particular state and action set. With careful choice of regularizer, we can derive a closed-form solution for the generative model.
+
+(This could be related to **Fenchel-young-ization**?) Thus the distribution is determined by reward function (This form clearly relates with maximum entropy IRL.)
+
+The adversarial training is a minimax process, where one generates reward that differentiate the actual action from those generated by the generative model (serves as discriminator/outer min), the other maximizes the policy return given true state (serve as generator/inner max).
+
+Since (# candidate items) can be large, the author proposes cascading DQN. Cascading Q-network breaks the multiple-dimensional action one by one; when making decision for one dimension, we use the "optimal" Q-value for the actions that are already considered.
+
+* *Deep Reinforcement Learning for List-wise Recommendations* (2017)
+
+This paper defines the recommendation process as a sequential decision making process and uses actor-critic to implement list-wise recommendation. Not many new ideas from today's perspective.
+
+* *Reinforcement Learning to Optimize Long-term User Engagement in Recommender Systems* (2019)
+
+This paper improves the state design by considering the length of time for users staying on the page. 
+
+The common state design (including this paper) is a sequence of {u, [(item_i, action_mask_i, action_i, other_info_i) for i in range(n)]}.
+
+This paper uses a S-network for the simulation of environment. It uses an imporance-weighted loss from ground truth to mimic the real-world situation and provide samples.
+
+Note that Q-network uses multiple LSTM, as one LSTM is not enough for extracting all information. 
+
+* *Recommendations with Negative Feedback via Pairwise Deep Reinforcement Learning* (2018)
+ 
+This paper considers an important prior knowledge in recommending systems, that positive feedbacks (likes) are far more fewer than negative (dislikes) ones; it embeds both clicks and skips into the state space.
+
+The proposed DEERS framework not only minimizes TD-losses, but also maximizes the difference between Q-values of the chosen action and a proposed "competitor" a to ensure "rankings" between competing items.
+
+* *Toward Simulating Environments in Reinforcement Learning Based Recommendations*
+
+This paper also uses GAN to make up for the sparsity of data as that in the ICML 19' paper. Such method can be viewed as opponent modeling in MARL, as you imagine the customer being the "opponent" of your recommending system.
+
+See *https://zhuanlan.zhihu.com/p/77332847* for reference and a more detailed explanation.
+
+## Packet Switching
+
+Packet switching is a decision-making process which can be solved by RL.
+
+* *Neural Packet Classification*
+
+The main solution for packet switching is decision tree based on IP ranges (i.e. high-dimensional squares). 
+
+This paper uses RL to generate better decision tree; it sees each split of decision tree as an "action", and minimizes the loss weighted by time and space usage.
+
+To better parallelize the training process, the author takes the construction of each node as one episode, effectively trainining a 1-step RL agent (but not contextual bandit since those 1-steps are correlated). 
+
+* *A Deep Reinforcement Learning Perspective on Internet Congestion Control* (ICML 19')
+
+This paper presents a test suite for RL-guided congestion control based on the OpenAI Gym interface.
+
+For congestion control. actions are changes to sending rate and states are bounded histories of network statistics.
+
+## Network Intrusion Detection
+
+There are some works of RL on network intrusion by modeling the problem as a competitive MARL environment / **Bayesian security game**, but there is no technical improvement w.r.t. RL in this field. 
+
+Network intrusion detection can be divided roughly into host-based (based on log files) and network based (based on flow & packet); it can also be partitioned into signature-based and anomaly-based.
+
+* *An Overview of Flow-based and Packet-based Intrusion Detection Performance in High-Speed Networks*
+
+* *PHY-layer Spoofing Detection with Reinforcement Learning in Wireless Networks*
+
+## Anti-poaching
+
+Anti-poaching process can be viewed as a **Green security game** that is solvable by RL. Prof. Fang Fei in CMU has conducted lots of research in this field.
+
+* *Dual-Mandate Patrols: Multi-Armed Bandits for Green Security* (AAAI 21' best paper runner-up)
+
+[Under construction]
+
+* *Green Security Game with Community Engagement* (AAMAS 20')
+
+This is a game-theoretic paper, but not a RL paper.
+
+"Community" means that the defender can "recruit" informants, but the (possibly multiple) attacker may update the strategy accordingly. The informant-atacker social network forms a bipartite graph.
+
+One point worth noting is that to solve such competitive multi-agent problem, the author analyzes **the parameterized fixed point** of the game, then convert it to **bi-level optimization** problem.
+
+Such paradigm can be used in competitive MARL settings. 
+
+* *Deep Reinforcement Learning for Green Security Games with Real-Time Information* (AAAI 19')
+
+The author uses 7*7 grid for experiment; such size can serve as a sample for our experiment design. 
+
+## Traffic Control
+
+Traffic control is one of the most common applications for multi-agent RL.
+
+* *Multi-agent Deep Reinforcement Learning for Large-Scale Traffic Signal Control* (2019)
+
+Indepdendent RL agent though multi-agent environment; the state of neighbouring lights are fed into the network for communication. 
+
+* *Integrating Independent and Centralized Multi-Agent Reinforcement Learning For Traffic Signal Network Optimization*
+
+This paper makes an improvement from independent RL. 
+
+It solves a set of problem with two assumptions:
+
+1) **The credit assignment is clear** (i.e. local & global reward are apparent). This is a strong assumption in MARL;
+
+2) no agent is particular; all agents are homogeneous.
+
+It designs a global Q-value, yet every individual agent maximizes local reward; the gradient descent considers both global and local Q-value.
+
+Then, the author imposes a regularizer to limit the value difference between any local Q to global Q to maintain a "balance" between traffic lights. 
+
+## Public Health
+
+RL could be used in public health for both government control and individual agent simulation. 
+
+* *A Microscopic Epidemic Model and Pandemic Prediction Using Multi-Agent Reinforcement Learning*
+
+Individual agents can be seen as agents optimizing its rewards. However, to actually use the model, it is hard to pin down the reward function in the first place. 
+
+One point worth noting (though not RL-related) is that "microscopic" is actually not precise in this title; "agent-based" would be more accurate.
+
+* *A brief review of synthetic population generation practices in agent-based social simulation*
+
+* *Generating Realistic Synthetic Population Datasets*
+
+The above two papers are not direct applications of RL, but related to agent-based epidemic modeling.
+
+* *Reinforcement learning for optimization of covid-19 mitigation policies*
+
+A work to apply RL on Covid-19 mitigation. Nothing new technologically.
+
+## Resource Provisioning
+
+Resource provisioning requires prediction for the resource and optimization with given situation; due to the high-dimensional essence of provisioning, it is widely solved by two-stage method or differentiable optimization neural layer. 
+
+This category includes both resource distribution and mitigation strategy (i.e. handling VM error online).
+
+* *A Hierarchical Framework of Cloud Resource Allocation and Power Management Using Deep Reinforcement Learning* (2017)
+
+* *Energy-Efficient Virtual Machines Consolidation in Cloud Data Centers Using Reinforcement Learning*
+
+* *Resource Management with Deep Reinforcement Learning* (2016)
+
+A work by MIT's Hongzi Mao; one of the earliest and classic work about resource management.
+
+The paper uses policy gradient method (NOT actor-critic since return can be calculated precisely instead of bootstrapping)
+
+The state and step design is the most important point of this paper. Resource allocation in one time step can be very complicated, therefore the author models the process as filling "slots" in a square, and the execution one real timestep is modeled as a special action to move slots upward for one unit.
+
+
+* *Predictive and Adaptive Failure Mitigation to Avert Production Cloud VM Interruptions* (2020)
+
+Utilizing multi-arm bandit to optimize mitigation strategy. The core contribution of this work is the design of the MDP; there are many devils in the details when it comes to production line (e.g. data correlations; how to retrieve data efficiently as one may need long observation to determine the effect of an action?)
+
+## Autonomous Driving
+
+Yet, it could be long before RL-powered autonomous driving actually put in use.
+
+[Under construction]
+
+* *Reinforcement Learning for Autonomous Driving with Latent State Inference and Spatial-Temporal Relationships*
+
+* *Driverless Car: Autonomous Driving Using Deep Reinforcement Learning in Urban Environment*
+
+# Miscellanous
+
+## Semi-supervised Learning 
+
+* *Not All Unlabeled Data are Equal: Learning to Weight Data in Semi-supervised Learning*
+
+## Meta Learning 
+
+Survey:
+
+https://arxiv.org/pdf/1810.03548.pdf
+
+https://lilianweng.github.io/lil-log/2018/11/30/meta-learning.html 优质meta learning综述。
+
+## Federated Learning
+
+Survey: 
+
+* *A survey on Federated Learning Systems: Vision, Hype and Reality for Data Privacy and Protection*
+
+## Distance of Distribution
+
+* *Wassenstein Reinforcement Learning* 
+
+This paper gives many theoretical results about extending RL onto Wasserstein metric; however, it remains to see that if RL on Wasserstein is better than traditional RL.
+
+* *Wasserstein GAN* An advantage of Wasserstein over KL-divergence is that it does not require the support interval/set to be exactly the same. KL goes to infinity if the intersection is 0, but Wasserstein will not.
 
 ## Active Learning
+
 * *Active Classification based on Value of Classifier*
-* *Learning how to Active Learn: A Deep Reinforcement Learning Approach*
-active learning本来是一种通过分类器主动将未标记文本选择并送给专家标记的方式提高学习效率的方法。本来是将active learning用于NLP，这里把它建模成一个RL选样本作为policy的问题。而且是先在一个语言上学习policy再迁移到另一个语言上。把语料库打乱，然后认为面对一个句子有两个action：接受或不接受。如果接受，则update当前的classifier。注意到他们把当前classifier的状态建模成了一个state，所以可以认为训练是off-policy的。
 
-## Experimental
-* *Deep Reinforcement Learning and the Deadly Triad* 证明了DQN没有那么容易陷入死亡三角。另一个值得注意的结论是，如果Q-value异乎寻常的大，那么performance多半不会好。
-* *Deep Reinforcement Learning that Matters* 实验做的很充分，但结果却很悲观：甚至连不同的代码实现都会对同一算法的表现带来很大影响。
-下面是两篇专门研究PPO和TRPO的文章：
-* *Implementation Matters in Deep Policy Gradients: A Case Study on PPO and TRPO*
-不加技巧的PPO实际上performance并不好。几个重要的结论有：
-1.clip（对于advantage在\[1-epsilon,1+epsilon\]之间的截断）如果没有的话，surrogate loss里的KL散度会大一些——尽管如此，差距并不显著，甚至还基本保持在TRPO的硬性限制之内。从最终reward的差距来看也并不算显著。（或者说，允许的KL散度和似乎有一定关系）
-2.加了代码优化的PPO和TRPO都能保持某个平均KL，但不加代码优化的PPO似乎不能保持住trust region的KL差距。
+* *Learning how to Active Learn: A Deep Reinforcement Learning Approach active learning* 
 
-在humanoid2d-v2和walker2d-v2里，anneal_lr（把Adam的lr拿来退火——尽管Adam本身就是自适应算法）似乎有显著的reward提升。归一化reward有显著的reward提升。除此之外，value loss的clip和好的初始化（正交而不是xavier）可以带来微弱的reward提升。
+It was originally a method to improve learning efficiency by actively selecting unlabeled text and sending it to experts for labeling by the classifier. 
 
-* *Are Deep Policy Gradient ALgorithms Truly Policy Gradient Algorithms?* 这篇文章对DPG算法从原理层面提出了一定的质疑，并且呼吁评价RL算法应该多角度评价（比如，能不能很好地对问题进行真实的建模）。文章表明我们平常的算法采样的数量，下降的梯度以及整个value function的landscape与真实情况实际上相去甚远，而且重复跑多次之后，其梯度差异很大——至少要多三个数量级才能做到这些。
+Originally, active learning was used for NLP. Here, it is modeled as a problem of RL selecting samples as the policy. And it's about learning the policy in one language first and then migrating to another language. First disrupt the corpus, and then there are two actions in the face of a sentence: accept or not accept. 
 
-## Application
-###  Recommending Systems
-* *Generative Adversarial User Model for Reinforcement Learning Based Recommendation System， ICML 19'*
-* *Deep Reinforcement Learning for List-wise Recommendations*
-### Packet Switching
-* *Neural Packet Classification 19’* 用RL（好像还是MARL？）做packet classification。认为生成决策树的每一步是一个action，目的是在每一步最小化时间和空间综合而成的一个loss。使用actor-critic算法。
-* *A Deep Reinforcement Learning Perspective on Internet Congestion Control, ICML 19'*
-### Network Intrusion Detection
-intrusion detection可以分为host-based（基于主机的日志文件）和network-based（基于流量或包的内容）；也可以分为signature-based（固定规则）和anomaly-based。
-* *An Overview of Flow-based and Packet-based Intrusion Detection Performance in High-Speed Networks*
-* *A Flow-based Method for Abnormal Network Traffic Detection*
-* *PHY-layer Spoofing Detection with Reinforcement Learning in Wireless Networks* 这篇本质上是个security games，实际上和博弈论结合更紧密。
-### Traffic Control
-* *Multi-agent Deep Reinforcement Learning for Large-Scale Traffic Signal Control* 这个是Independent RL。
-* *Integrating Independnet and Centralized Milti-Agent Reinforcement Learning For Traffic Signal Network Optimization* 这个在independent RL的基础上做了改进，针对的是交通灯这样一种既可以方便地找到局部reward又可以找到全局reward的问题：他额外计算了一个全局Q值，这个Q值是全局reward，但是policy是每个个体最大化自己的局部reward。然后梯度下降的时候同时考虑全局Q和局部Q。不过，如果只是这样的话，那么可以想见全局Q也不过是在局部最大化这个policy下局部Q的平均，那么整个算法就是IRL；但是他还搞了一个regularizer，就是要求每个Q都不能离平均的Q太远，这里做了一个惩罚项。这里其实有一点assumption，就是没有一个agent是特别突出的。
-### Public Health
-* *A Microscopic Epidemic Model and Pandemic Prediction Using Multi-Agent Reinforcement Learning*
-* *A brief review of synthetic population generation practices in agent-based social simulation* 把这篇放在这里是因为它讲述了生成模拟人口数据的常见方法，而模拟人口数据在传染病研究里很常见。
-* *Generating Realistic Synthetic Population Datasets*
-### Cloud Computing (Resources Allocation)
-* *A Hierarchical Framework of Cloud Resource Allocation and Power Management Using Deep Reinforcement Learning* Autoencoder+全局/机器内部建模。
-* *Energy-Efficient Virtual Machines Consolidation in Cloud Data Centers Using Reinforcement Learning*
-* *Resource Management with Deep Reinforcement Learning* MIT的Hongzi Mao在这方面有一些工作，最早的就是这篇。这篇实际上是基于REINFORCE with baseline的任务调度，其中“冻结时间”把一步拆成好几步来降低动作空间的思路比较有趣。
+If accepted, update the current classifier. Note that they model the current classifier's state as a state, so it can be considered that the training is off-policy.
 
 ## Overfitting Prevention
-* *Protecting against evaluation overfitting in empirical
-reinforcement learning, AAAI 11'*
-* *Improved Empirical Methods in Reinforcement Learning Evaluation, 15'*
-* *A Unified Game-Theoretic Approach to
-Multiagent Reinforcement Learning, 17'*
-g. 
-When the model is fully known and the setting is strictly with two players, there are policy
-iteration methods based on regret minimization that scale very well when using domain-specific
-abstractions
-文章基于经典的Double Oracle算法，提出了Policy Space Response Oracle（PSRO）算法。它将policy视为一种pure strategy用来玩double oracle。区别只在于，计算best response使用的是DRL方法。我们认为这是一种比训练对mixture of policy更好的解决方案：因为它保证了收敛到minimax nash聚恒。
-Here, we introduce a new solver we call projected
-replicator dynamics (PRD)
-* *Robust Multi-Agent Reinforcement Learning
-via Minimax Deep Deterministic Policy Gradient AAAI 19’* Its core
-idea is that during training, we force each agent to behave
-well even when its training opponents response in the worst
-way.
-核心的想法有两个：第一，为了保证鲁棒性，希望对手每一步即使走出针对我们使我们表现最差的表现能够最好（即minimax）；
-第二，为了快速计算内嵌的min，用一个线性的函数去拟合内部，然后做一次梯度下降。
-不过超参是不是有点多啊。
-* *Actor-Critic Algorithms for Learning Nash Equilibria in N-player General-Sum Games*
-有纳什均衡理论背书的方法在generalization和鲁棒性上多少会好一点。
-* *Quantifying Generalization in Reinforcement Learning* OPENAI的COINRUN。考虑了很多因素，给出了一个平台，证明很多agent都会overfit。
 
-* *Exploration by random network distillation ICLR 19'* 一个鼓励exploration的文章。基本想法是拿一个预测网络，如果结果不好预测说明是未知的，就给一些奖励。文章还提到了一个经典的noisy-TV场景：一个agent在迷宫里走，遇到随机播放频道的电视就会停下来无限探索。
+* *Protecting against evaluation overfitting in empirical reinforcement learning* (AAAI 11')
+
+* *Improved Empirical Methods in Reinforcement Learning Evaluation* (2015)
+
+* *Lenient DQN* 
+
+Temperature and lenient parameter are the two important notions in Lenient DQN. 
+
+Leniency was designed to prevent relative overgeneralization, which occurs when agents gravitate towards a robust but sub-optimal joint policy due to noise induced by the mutual influence of each agent’s exploration strategy on others’ learning updates. 
+
+To some extent, competitive MARL is harder than cooperative marl, as competitive MARL needs robust but sub-optimal policy for better generalization, whereas in cooperative MARL overfitting to other opponents can be a good thing, and agents even need to reduce the noise by its teammates that causes sub-optimal behavior.
+
+Temperature-based exploration auto-encoder is a method to deal with high-dimensional / continuous (s,a) pairs. The autoencoder, consisting of convolutional, dense, and transposed convolutional layers, can be trained using the states stored in the agent’s replay memory.
+
+ It then serves as a pre-processing function д : S → R D , with a dense layer consisting of D neurons with a saturating activation function (e.g. a Sigmoid function) at the centre. 
+ 
+ SimHash, a locality-sensitive hashing (LSH) function, can be applied to the rounded output of the dense layer to generate a hash-key ϕ for a state s. 
 
 ## Novel Architectures
-* *Value Propagation Networks, ICLR 19'*  VIN的改进。一个奇妙的observation在于，二维gridworld上的value iteration可以看成是图卷积神经网络的卷积过程。
 
-* *Asynchronous Methods for Deep Reinforcement Learning* 异步DQN，类似于A3C之于A2C的改进（实际上，文章提出的是一个框架）。不过，考虑到A3C其实对于A2C也没什么改进，异步版本DQN能有什么样的性能提升也很难说。
-* *Structured Control Nets for Deep Reinforcement Learning*
-把策略分为两个独立的流：线性控制和非线性控制。线性控制就是一个简单的矩阵乘法；非线性控制是一个MLP（不过不局限于MLP，其中一个实验就使用了**中央模式生成器**）二者的简单相加就是最后神经网络的输出。“直观地，非线性控制用于前视角和全局控制，而线性控制围绕全局控制以外的局部动态变量的稳定”。中文教程见https://www.jianshu.com/p/4f5d663803ba
+* *Value Propagation Networks* (ICLR 19')
 
-* *Safe and efficient off-policy reinforcement learning NIPS 16’*
-这篇文章提出了一种叫Retrace(lambda)的算法。它可以高效、“安全”地进行off-policy训练，并且它的方差很小。这是一个不需要GLIE前提就可以收敛的算法。GLIE(Greedy in the Limit with Infinite Exploration)，直白的说是在有限的时间内进行无限可能的探索。具体表现为：所有已经经历的状态行为对（state-action pair）会被无限次探索；另外随着探索的无限延伸，贪婪算法中ϵ值趋向于０。
+An improvement over VIN. An interesting observation is that *for 2-dimensional gridworld / games on a planar graph, value iteration can represented by a convolutional progress on GCN*.
 
-* *Hindsight Experience Replay (HER)*
-HER是一个框架，可以和其他off-policy框架配合使用。
+* *Structured Control Nets for Deep Reinforcement Learning* 把策略分为两个独立的流：线性控制和非线性控制。线性控制就是一个简单的矩阵乘法；非线性控制是一个MLP（不过不局限于MLP，其中一个实验就使用了中央模式生成器）二者的简单相加就是最后神经网络的输出。“直观地，非线性控制用于前视角和全局控制，而线性控制围绕全局控制以外的局部动态变量的稳定”。中文教程见https://www.jianshu.com/p/4f5d663803ba
 
-* *Lenient DQN*
-Lenient DQN中有几个重要的概念：lenient参数和温度。Leniency was designed to prevent
-relative overgeneralization, which occurs when agents gravitate
-towards a robust but sub-optimal joint policy due to noise induced
-by the mutual influence of each agent’s exploration strategy on
-others’ learning updates. 反过来说，competitive的时候恰好需要这种robust but sub-optimal的policy才有generalization。所以可以说competitive MARL比cooperative MARL更难。
-Temperature-based exploration（模拟退火）
-Auto-encoder是一种对付高维/连续S-A pair的方法。
-The autoencoder, consisting of convolutional, dense, and transposed convolutional layers, can be trained using the states stored in
-the agent’s replay memory [30]. It then serves as a pre-processing
-function д : S → R
-D , with a dense layer consisting of D neurons
-with a saturating activation function (e.g. a Sigmoid function) at
-the centre. SimHash [9], a locality-sensitive hashing (LSH) function,
-can be applied to the rounded output of the dense layer to generate a hash-key ϕ for a state s. This hash-key is computed using a
-constant k × D matrix A with i.i.d. entries drawn from a standard
-Gaussian distribution N(0, 1) as
-ϕ(s) = sдn
-Aд(s)∈ {−1, 1}k
-where д(s) is the autoencoder pre-processing function, and k controls the granularity suc
-其实可以反过来想：cooperative的目标是减少其他agent反复的noise带来的sub-optimal,而competitive恰恰要利用这种noise，要把它适当加大到一个可以避免过拟合的程度。
-* *Deep decentralized multi-task multi-agent reinforcement learning under partial observability, ICLR 17'*
- MT-MARL， CERT
+* *Safe and efficient off-policy reinforcement learning* (NIPS 16’) 这篇文章提出了一种叫Retrace(lambda)的算法。它可以高效、“安全”地进行off-policy训练，并且它的方差很小。这是一个不需要GLIE前提就可以收敛的算法。GLIE(Greedy in the Limit with Infinite Exploration)，直白的说是在有限的时间内进行无限可能的探索。具体表现为：所有已经经历的状态行为对（state-action pair）会被无限次探索；另外随着探索的无限延伸，贪婪算法中ϵ值趋向于０。
+
+* *the IQ of neural networks* (2017) An interesting paper that uses CNN to do IQ testing quizes. CNN is quite clever!
+
+* *What can neural networks reason about?* 
+
+A great article, it provides insight into the theoretical basis behind the various structural modules we have designed in NN over the years, especially GNN. 
+
+The article takes PAC-learning as the cornerstone, and proposes that if the neural network module can have a good alignment with the classic algorithm (that is, the sample complexity is high), then there will be good performance and generalization.
+
+
+## Model Reduction
+
+* *DR-RNN: A deep residual recurrent neural network for model reduction*
+
+For model reduction of large-scale simulations (such as physical models, etc.), there are three main ideas. The first is a simplified model based on physical formulas (so it is heavily prior-based); 
+
+the second is a purely fitted black box model (similar to the imitation learning in the expert-apprentice problem); the third is a low projection based model Rank model (ROM). 
+
+The premise of the third idea is to assume that the entire model can be represented by a low-rank linear expression. To get the projection base, use Galerkin projection (Galerkin method). 
+
+Several main algorithms are: Proper Orthogonal Decomposition; Krylov subspace methods; truncated balanced realization. The article proposes a model reduction based on RNN.
+
+## Behavior Cloning
+
+* *Integrating Behavior Cloning and Reinforcement Learning for Improved Performance in Dense and Sparse Reward Environments*
+
+* *Accelerating Online Reinforcement Learning with Offline Datasets*
+
+## RL
+
+* *Hysteretic Q-learning:an algorithm for decentralized reinforcement learning in cooperative multi-agent teams*  
+
+Hysteretic Q-learning is a method of obtaining a team of cooperative agents through distributed training. It originated from game theory and mainly studied repeated two-player matrix games. In fact, there is nothing new in essence, just adjust the parameters when the modulation is good and bad, so that the rate of change when the q-value estimation becomes high and when it becomes low is different. Soft-update to increase stability is a common technique.
+
+This results in an optimistic update function which puts more weight on positive experiences, which is shown to be beneficial in cooperative multi-agent settings.
+
+* *Deep decentralized multi-task multi-agent reinforcement learning under partial observability* (ICLR 17') MT-MARL
+
+* *Neural Logic Reinforcement Learning* (ICML 19') 
+
+NLRL: A rare attempt today, aiming to combine symbolism and connectionism, it represents policy with 1st-order logic. Actually, there are attempts of representing states at the beginning of the 21st century; however, such method requires knowledge for agent about the logical form of state and reward (i.e., known dynamics), and thus is impractical.
+
+The algorithm is developed based on prolog, and can be regarded as a binary neural network; the final experiments are also very simple, including cliff walking on small gridworld and putting bricks. The calculation of policy can be regarded as processing the input with a sequence of clauses. It is "explainable" (not *human-readable* though), and do not rely on any background knowledge.
+
+* *Reinforcement Learning with Deep Energy-Based Policies* (ICML 17’) See https://zhuanlan.zhihu.com/p/44783057 for detailed explanation.
+
+* *Multiagent Soft Q-Learning*
+
+Relative overgeneralization occurs when a suboptimal Nash Equilibrium in the joint space of actions is preferred over an optimal Nash Equilibrium because each agent’s action in the suboptimal equilibrium is a better choice when matched with arbitrary actions from the collaborating agents.
+
+* *Improving Stochastic Policy Gradients in Continuous Control with Deep Reinforcement Learning using the Beta Distribution* (ICLR 17')
+
+When outputting continuous actions, we often assume that the probability distribution of actions is Gaussian. But not all scenarios are suitable for Gaussian distribution; this article explores the possibility of using beta distribution instead of Gaussian distribution. 
+
+There is a problem with the Gaussian distribution: *it will have a bias when dealing with actions with boundaries*, because some actions that have been assigned probabilities are actually impossible to achieve (for example, the angle of the robot can only be (-30, 30) ), at this time, if a Gaussian distribution with a mean value of -29 is output, a considerable part of the probability is actually located in the "infeasible" area. 
+
+In contrast, the support set of the beta distribution is bounded, so it is on the boundary Bias-free. (It should be said that the Gaussian distribution is very good for many symmetrical or nearly symmetrical real work; a bad work situation is the long-tailed distribution).
+
+* *Learning and Planning in Complex Action Spaces* (arxiv.org)
+
+https://arxiv.org/pdf/1705.05035.pdf
+
+* *Meta Q-learning*
+
+* *Relational Reinforcement Learning*
+
+* *Relational Deep Reinforcement Learning* (2018) Current attempts on logic + RL only works on very simple toy experiments.
+
+* *Diff-DAC: Distributed Actor-Critic for Average Multitask Deep Reinforcement Learning* 
+
+* *Recurrent DDPG* RDPG比DDPG更难训练，更容易收敛到局部最优。但凡是带Recurrent的RL过程，其必须保存下整个trajectory用于训练（只保存每个transition的hidden state实验证明是低效的，且很难训练出来。）
+
+### Asynchronous / Parallel
+
+* *Asynchronous Methods for Deep Reinforcement Learning* 
+
+* *A3C*
+
+* *Recurrent Experience Replay in Distributed Reinforcement Learning* (R2D2)
+
+* *IMPALA*
+
+### Hierarchical
+
+* *HIRO: HIerarchical Reinforcement learning with Off-policy correction*
+
+* *Hierarchical Actor-Critic*
+
+* *MCP: Learning Composable Hierarchical Control with Multiplicative Compositional Policies*
+
+### Surveys / Tutorials
+
+* *Deep Reinforcement Learning for Cyber Security* (2019) 
+
+* *Deep Reinforcement Learning for Multi-Agent Systems: A Review of Challenges, Solutions and Applications* (2018) A method-based survey.
+
+* *Multi-Agent Reinforcement Learning: A Report on Challenges and Approaches* (2018) Half a year earlier than the paper above (July vs. December). A problem-based survey.
+
+* *Autonomous Agents Modelling Other Agents: A Comprehensive Survey and Open Problems* (2017) 
+
+A thorough paper for agent modeling. Actually agent modeling makes no major progress until this year; it remains at feature extraction and response to statisitcal opponent models (including fictitious play) and rely on information of environment.
+
+An intriguing idea is to see your opponent's **policy as an automaton**; however, calculating response and modeling of such automaton is NP-hard.
+
+* *Is multiagent deep reinforcement learning the answer or the question? A brief survey* (2018) 
+
+This is a well-written survey that can serve as a handbook. MARL until then can be divided into 4 directions: single agent RL algorithm under MA; communication protocols; cooperation and opponent modeling.
+
+Training Competitive RL agents requires the prevention of overfitting between the agent and its opponents. Some common ideas include training a response to a mixture of policy, adding noises, and turn to game theory for help (e.g. self play / regret matching / (minimax/Nash/CoCo/...) Q-learning.
+
+* *Tutorial on Variational Autoencoders* https://arxiv.org/pdf/1606.05908.pdf The origin of VAE.
+
+* *A Survey of Learning in Multiagent Environments: Dealing with Non-Stationarity* (2017) 
+
+Five categories (in increasing order of sophistication): ignore, forget, respond to target models, learn models, and theory of mind. 
+
+### Ad-hoc teammate
+
+See Prof. Peter Stone's work. [Under construction]
+
+### Evolutionary
+
+* *Evolution-guided policy gradient in reinforcement learning* (NIPS 18')
+
+* *Proximal Distilled Evolutionary Reinforcement Learning* (AAAI 20')
+
+### Adversarial
+
+* *Planning in the Presence of Cost Functions Controlled by an Adversary 03'*
+
+Planning in a Markov Decision Process where the cost function is chosen by an adversary after we fix our policy.
+
+This paper represents reward as a vector and rewrite Bellman Equation as EV+c>=0, where V is the visiting frequence of each state, E is the transition matrix of current policy, and c is the reward.
+
+This paper uses the classical algorithm, *Double Oracle* to solve RL. It converges normal RL probelm to a matrix game with state visitation frequency times environmetn transition as payoff.
+
+The double oracle requires an oracle best pure strategical response given any other side's mixed strategy. The algorithm will finally converge to minimal Nash equilibrium; but the response set is finite, and both sides can only choose strategy from a finite set. After choosing strategy, calculate the pure strategy response.
+
+Then, put this response to the strategy set. Repeat the process until the size response set no longer grows.
+
+More current work uses DRL to train the response as an oracle (See the *PSRO* paper).
+
+* *Adversarial policies: Attacking Deep Reinforcement Learning*
+
+* *A Study on Overfitting in Deep Reinforcement Learning* (2018)
+
+noise injection methods used in several DRL works cannot robustly detect or alleviate overfitting; In particular, the same agents and learning algorithms could have drastically different test performance, even when all of them achieve optimal rewards during training. 
+
+Soem current solutions include stochastic policy，random starts，sticky actions（repeat the last action with some probability）and frame skipping。
+
+
+### Multi-agent: Credit Assignment
+
+Note: this part is a bit out-of-date and needs update.
+
+* *MAAC: Actor-Attention-Critic for Multi-Agent Reinforcement Learning*
+
+* *DP(R)IQN* Improve on the basis of D(R)QN, and use an inference branch with softmax to take the opponent's policy into consideration.
+
+* *COMA*
+
+* *QTRAN: Learning to Factorize with Transformation for Cooperative Multi-Agent Reinforcement Learning*
+
+* *QMIX*
+
+* *BiCNet: Multiagent Bidirectionally-Coordinated Nets Emergence of Human-level Coordination in Learning to Play StarCraft Combat Game*
+
+ As the bi-directional recurrent structure could serve not only as a communication channel but also as a local memory saver, each individual agent is able to maintain its own internal states, as well as to share the information with its collaborators. computing the backward gradients by unfolding the network of length N (the number of controlled agents) and then applying backpropagation through time (BPTT) The gradients pass to both the individual Qi function and the policy function.
+
+### Partly Observable 
+
+* *DRQN* 
+
+Use LSTM for recurrent strategies. Recurrent strategies are generally harder to train and more prone to oscilliate.
+
+* *DDRQN* 
+
+A NN structure that solves communication problem in cooperative MARL. The first D represents "distributed" There are three major improvements in the paper:
+
+1) take the agent's last action as the input of next step;
+
+2) parameter sharing;
+
+3) **do not use experience replay in non-stationarity environment**; use soft-update instread of duplicating between target net and eval net. 
+
+* *RIAL&DIAL: Learning to communicate with deep multi-agent reinforcement learning*
+
+The goal is to design an end-to-end learning protocol; RIAL is based on DRQN. DIAL's idea is to achieve *centralized training and decentralized execution* (a common paradigm in MARL) through the *continuous flow of gradients*.
+
+DIAL allows real-valued messages to pass between agents during centralised learning, thereby treating communication actions as bottleneck connections between agents. As a result, gradients can be pushed through the communication channel, yielding a system that is end-to-end trainable even across agents. During decentralised execution, real-valued messages are discretised and mapped to the discrete set of communication actions allowed by the task.
+
+* *DRPIQN* 
+
+For POMDP，One training method is to maintain a network's "belief" in the hidden state (the other two common methods are actor-critic to give additional information to the critic during training, and LSTM to remember the history). In practice, an extra network branch is used to predict the opponent's actions.
+
+* *RLaR: Concurrent Reinforcement Learning as a Rehearsal for Decentralized Planning Under Uncertainty* (AAMAS 13') 
+
+RLaR is a method used to solve dec-POMDP. dec-POMDP is a special POMDP that requires all agents to share a global reward. **Dec-POMDP is NEXP-Complete.** 
+
+RLAR is a method in which *all states are visible during training but not visible during execution*. 
+
+It calls training a kind of "rehearsal". It is divided into two steps: the first step is to learn a policy in an environment with visible states; the second step is for the agent to build a predictive model through exploration, and according to the predictive model and the original policy, learning a working policy under partial observation.
+
+* *Actor-Critic Policy Optimization in Partially Observable Multiagent Environments* (NIPS 18')
+
+#### Action Decoder
+
+* *Bayes Action Decoder*
+
+* *SAD: Simplified Bayes Action Decoder*
+
+* *VariBAD: A Very Good Method for Bayes-Adaptive Deep RL via Meta-Learning*
 
 ### Variance Reduction and Overestimation
-* *Reward Estimation for Variance Reduction in Deep Reinforcement Learning* 
-给DQN降低方差的技巧： average DQN和ensemble DQN。前者是用过去几次的参数做平均数得到的Q去用在bellman方程里更新，后者是希望解决前者在方差减小的同时导致计算代价增大的问题——同时维护和更新k套参数。
-* *Issues in using function approximation for reinforcement learning.* 很老的一篇文章，提出了为什么Q-value经常会overestimate的理由——因为bellman方程中的max operator会捕捉和放大那些偏大的Q值估计；这样会导致花费很多时间去探索那些实际上不好的(s,a)pair。一个关键的observation是，在reward固定且deterministic转移的情况下，假定Q(s,a)-Q*(s,a)期望为0，其所造成的误差是gamma*(max_a Q - max_a Q*)，这个值的期望往往是大于0的（不严谨地说，当所有Q一样且落到0两侧的概率相等时，误差为正的概率是1-(1/2)^|a|；Q不一样但落到0两侧概率相等时，那些Q\*值小一点的贡献也会小一些。）
-gamma太高的时候容易导致q-learning fail。
-Stochastic Variance Reduction for Deep Q-learning, AAMAS 19’ 把SVRG用在了DQN中。
 
-## Safe RL
-### RL with Constraint
-* *First order Constrained Optimization in Policy Space*是下面那篇projection-based的改进，它可以不用计算二阶导数。
+* *Reward Estimation for Variance Reduction in Deep Reinforcement Learning* 
+
+Techniques to reduce variance for DQN: average DQN and ensemble DQN. The former is to use the Q obtained by averaging the past several parameters to be updated in the Bellman equation, and the latter is to solve the problem of the former that causes the calculation cost to increase while the variance is reduced-while maintaining and updating k sets of parameters .
+
+* *Issues in using function approximation for reinforcement learning* 
+
+An very old article, answering the question why Q-value often overestimate; it is because the max operator in the Bellman equation will capture and amplify those Q value estimates that are too large (**E max_a Q(s, a)>= max_a EQ(s, a)**); 
+
+This will lead to spending a lot of time exploring those (s, a) pairs that are actually bad. A key observation is that in the case of fixed reward and deterministic transfer, assuming that Q(s,a)-Q\*(s,a) is expected to be 0, the error caused by it is gamma\*(max_a Q-max_a Q\*), 
+
+the expectation of this value is often greater than 0 (not strictly speaking, when all Qs are the same and the probability of falling on both sides of 0 is equal, the probability of the error being positive is 1-(1/2)^|a|; When Q is different but the probability of falling to both sides of 0 is equal, the contribution of those with a smaller Q* value will be smaller.) 
+
+When the gamma is too high, it is easy to cause q-learning fail.
+
+*Stochastic Variance Reduction for Deep Q-learning* (AAMAS 19’)
+
+Uses SVRG in DQN.
+
+### Safe RL
+
+"Safe" is actually a complicated notion; it is closely related to constrainted RL, for safety concerns can be modeled as hard constraint. However, safe can also mean "not forgetting old knowledge", which is related to meta-learning / transfer learning.
+
+See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for a comprehensive survey on multiple definitions of "safe".
+
+*Prof. Andrea Krause* at ETHZ is adept at this field.
+
 * *Projection-based Constrainted Policy Optimization*
 
-## Evolutionary RL
-* *Evolution-guided policy gradient in reinforcement learning* NIPS 18'
-* *Proximal Distilled Evolutionary Reinforcement Learning* AAAI 20' 
+* *First order Constrained Optimization in Policy Space* An improvement of the paper above which does not require calculating 2nd-order derivation.
 
+### Agent Modeling for MARL
+
+According to the survey *A Survey of Learning in Multiagent Environments: Dealing with Non-Stationarity* , there are five levels of opponent modeling: 1) ignore (with fixed algorithm), 2) update (adapt to the environment including opponent), 3) assume (e.g. minimax), 4) modeling (assume your opponent is naive and will not model you) and 5) theory of mind (your opponent may be also modeling you).  
+
+#### Classical Modeling：Feature Engineering
+
+* *Player Modeling in Civilization IV* a traditional feature-engineering work with handcrafted features. 
+
+#### Policy Representation
+
+##### Divergence-based
+
+* *Learning Policy Representations in Multiagent Systems*
+
+* *Modeling Others using Oneself in Multi-Agent Reinforcement Learning*
+
+* *Opponent Modeling in Deep Reinforcement Learning*
+
+* *Learning Actionable Representation with Goal-Conditioned Policies*
+
+* *Learning Action Representations for Reinforcement Learning*
+
+##### Encoding & Hidden State
+
+* *Provably efficient RL with Rich Observations via Latent State Decoding*
+
+#### Theory of Mind
+
+* *Machine Theory of Mind*
+
+* *Theory of Minds: Understanding Behavior in Groups Through Inverse Planning*
+
+#### Society of Agents
+
+* *Social Influence as Intrinsic Motivation for Multi-Agent Deep RL* 
+
+Reward those actions that allow teammates to make different actions (giving information) under CFR. The author pointed out that if there is no such special reward, then it will fall into *babbling* awkward equilibrium (saying something useless that is taken care by neither agent) 
+
+The article uses mutual information as a measure. In addition, the network trained for CFR actually also gives embedding to other agents. Another point is that this agent training is completely decentralized. In fact, I think the setting of firing beam is quite reasonable. The Folk Theorem guarantees that in repeated games of indefinite length, if everyone unites to prevent one person from living well, then a certain degree of cooperation can occur.
+
+## Other
+
+* *Mean-field MARL*  The limitation of mean-field MARL is that its application must satisfy the assumption that reward can be well-described by agent in the neighbouring field. 
+
+* *https://zhuanlan.zhihu.com/p/146065711* A introduction of transformer and DETR.
+
+* *Discrete Optimization: beyond REINFORCE* https://medium.com/mini-distill/discrete-optimization-beyond-reinforce-5ca171bebf17
+
+* *Differentiable Top-k Operator with Optimal Transport*
+
+* *LEARNING WHAT YOU CAN DO BEFORE DOING ANYTHING* (ICLR 19') 
+
+Find a way to get a kind of embedding from the video. A more worthwhile idea is to use mutual information to measure the effect of one embedding and the other of two completely different expressions as an objective function.
+
+* *A Structured Prediction Approach of Generalization in Cooperative Multi-Agent Reinforcement Learning*
+
+* *Probability Functional Descent: A Unifying Perspective on GANs, Variational Inference, and Reinforcement Learning*
+
+[Under Construction]
+
+* *Variational information maximisation for intrinsically motivated reinforcement learning* (NIPS 15’)
+ 
+In addition to proposing empowerment, an important reference point of this article is: if the function itself is difficult to optimize, try to derive a lower bound and then optimize its lower bound. 
+
+For instance, in convex optimization, we sometimes optimize the envelope function and look for proximal mapping.
