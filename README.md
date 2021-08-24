@@ -1119,9 +1119,10 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 * *First order Constrained Optimization in Policy Space* An improvement of the paper above which does not require calculating 2nd-order derivation.
 
 
-### State-Conditioned Action Prior
+### State-Conditioned 
 
-The common point of the following three papers is: they train a high-level skill policy π(z|s) whose outputs get **decoded into executable actions using the pre-trained skill decoder**. You can say that RL outputs a *preliminary action*, or it is running on a different MDP which should be simpler, or view it from a hierarchical learning perspective, where z is a high-level action and a is a low-level one.
+
+The common point of the following three papers is: they train a high-level skill policy π(z|s) whose outputs get **decoded into executable actions using the pre-trained skill decoder**. You can say that RL outputs a *preliminary action*, or it is running on a different MDP which should be simpler, or view it from a hierarchical learning perspective, where z is a high-level action and a is a low-level one. The first paper is from the first perspective, while the latter two papers are from the second perspective.
 
 * *PARROT: DATA-DRIVEN BEHAVIORAL PRIORS FOR REINFORCEMENT LEARNING*
 
