@@ -1253,3 +1253,50 @@ For instance, in convex optimization, we sometimes optimize the envelope functio
 I have written a collection of comments on papers in this field, but I think the survey below does a much better job. See Dr. Bryan Wilder and Prof. Amos's team for updates in this field!
 
 * *End-to-End Constrained Optimization Learning: A Survey* https://arxiv.org/abs/2103.16378
+
+# Feature Extraction
+
+A well-studied field in few-shot learning.
+
+
+The two papers below both mentions the idea of "trainable weight of combination", which is in coherent with the paper *Not All Unlabeled Data are Equal*.
+
+* *Selecting Relevant Features from a Multi-domain Representation for Few-shot Classification* (2020)
+
+Note: I always feel curious about how "different" are the datasets will make the method of finding common feature extraction to fail. Is there any theoretical guidance?
+
+selecting features from a fixed set is an easier problem than learning a feature transformation. This paper is pretty similar to the next one, where you first train one parametric network family to obtain multi-domain representations, then combine them with linear weights.
+
+* *Learning a Universal Template for Few-shot Dataset Generalization* (2021)
+
+This paper proposes a novel model, FLUTE, for few shot learning tasks. It aims to capture the universal template that represents multiple feature extractors. This architecture uses FiLM as its basis, and try to initialize a set of new FiLM parameters for each evaluation task when plugged into the universal template.
+
+The "Universal Template" here is the ResNet-18 feature extractor. In short, you would like some parts of your NN to be fixed, which is the "universal template", while the other parts to be a "selector" on the basis of NN.
+
+The new FiLM parameters comes from a convex combination of the training datasets' FiLM params, and the weight is the "compatibility", which is the output of a dataset classifier.
+
+Step 1: Train the feature extractor jointly over all training datasets, as well as many different FiLM parameters.
+
+Step 2: train a dataset classifier by randomly sampling a training dataset and try to minimize the cross entropy loss (as a supervised learning where THE dataset is a label). The classifier is fixed then.
+
+Step 3: use the support set (i.e. training set of this subtask) to find the blending factor.
+
+Step 4: with the trained extractor, use NCC to give the result. The probability of an example belonging to a class is proportional to the exponential of cosine similarity between the feature and the class centroid. Give argmax as result.
+
+Note: NCC, **nearest centroid classifier**, is a classifier building upon an established feature representation. It computes the average of each sample's representation in a category, which is the centroid, and classify an object to a specific category with the nearest distance (e.g. cosine similarity).
+
+
+ 
+<!--
+(Idea: substituting FiLM by some flow?)
+The discriminator is not simplified here somehow?
+-->
+
+
+* *FiLM: Visual Reasoning with a General Conditioning Layer*
+
+FiLM is a structure proposed to solve the problem of visual reasoning. a single FiLM layer is a very simple structure: an affine combination of original input, where the affine coefficient is extracted from the NLP part. Intuitively, NLP part gets to directly alter the features of CNN with a good property (from their experiment) that add and sub operations can be taken in a word-embedding-like style. FiLM is a very simple yet effective architecture; it does not have much parameters and thus is cheap to train.
+
+FiLM can be viewed as a generalization of Conditional Normalization (CN) methods. See this blog for a brief introduction of CN: https://blog.csdn.net/Arthur_Holmes/article/details/103934892
+
+The name "Conditional" comes from the dependency of the coefficient of affine transformation on the naive batch normalization basis. It is first proposed, also, in a vision-reasoning paper (VQA: Visual Question Answering). Conditional normalization is also used across different categories, which is called categorical conditional batch normalization, as the different category of data is sometimes unsuitable to do normalization together.
