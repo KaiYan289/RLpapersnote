@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 40 Useful Tips of the Day (updated 2021.7)
+# 42 Useful Tips of the Day (updated 2021.9)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -95,6 +95,10 @@ However, such practice (the one datapoint method) may face the problem of **not 
 39. Significance tests are usually conducted in traditional statistic works for hypotheses, especially where test set does not exist. 
 
 40. Use **on-policy** methods for MARL, as stationarity is not preserved!  
+
+41. When you are imitating someone else's code but failed, a useful debugging method is to take his code, and changing his code into yours function by function (instead of  changing yours onto his). You can try the differnet versions of code in parallel to quicker iterate.
+
+42. Batchnorm is influenced by eval/train! By default, the running_stats is on. Then for training, the normalization is conducted with batch statistics; but for evaluation, the normalization is conducted with a fixed mean and variance estimate kept with a momentum of 0.1. This could have a VERY BIG influence if you ignore the difference.
 
 # Causal Inference
 
@@ -233,6 +237,8 @@ Some conclusions of this paper:
 3) Replay buffers and early stopping can be used to mitigate the effects of overfitting. nonstationarities in both distributions and target values, when isolated, do not cause significant stability issues. Instead, other factors such as sampling error and function approximation appear to have more significant effects on performance. 
 
 The paper proposes a better sampling method：Adversarial Feature Matching.
+
+* *Meta-World: A Benchmark and Evaluation for Multi-Task and Meta Reinforcement Learning* A benchmark for meta-RL and multi-task RL. There are 50 tasks of manipulating the robotic arms, such as opening the door or manipulating a ball; in meta-training scenario, 45 tasks are used for training and 5 for evaluation.
 
 # Game Theory
 
@@ -529,6 +535,8 @@ If the players are patient enough and far-sighted (i.e. if the discount factor ,
 There are also some contents on anthropology, including *locutionary, illocutionary and perlocutionary act* (see *https://www.douban.com/note/663802620/*)；The four principles of communication (quality，quantity，politeness and relativity).
 
 * *Balancing Two-Player Stochastic Games with Soft Q-Learning* (2018)
+
+* *Off-Policy Deep Reinforcement Learning Without Exploration* (2019) An algorithm learning from offline batches. One problem of learning offline is that it has *extrapolation error*, which are caused by three issues: absent data, model bias and training mismatch.
 
 # Inverse RL
 
