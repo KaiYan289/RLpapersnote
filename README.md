@@ -100,6 +100,10 @@ However, such practice (the one datapoint method) may face the problem of **not 
 
 42. Batchnorm is influenced by eval/train! By default, the running_stats is on. Then for training, the normalization is conducted with batch statistics; but for evaluation, the normalization is conducted with a fixed mean and variance estimate kept with a momentum of 0.1. This could have a VERY BIG influence if you ignore the difference.
 
+# Useful Linux Debugging Commands
+
+[Under Construction]
+
 # Causal Inference
 
 Thanks the causal reading group @ MSRA for their valuable opinions on causal inference! For a more thorough and professional summary, see *https://github.com/fulifeng/Causal_Reading_Group*.
@@ -238,7 +242,15 @@ Some conclusions of this paper:
 
 The paper proposes a better sampling method：Adversarial Feature Matching.
 
-* *Meta-World: A Benchmark and Evaluation for Multi-Task and Meta Reinforcement Learning* A benchmark for meta-RL and multi-task RL. There are 50 tasks of manipulating the robotic arms, such as opening the door or manipulating a ball; in meta-training scenario, 45 tasks are used for training and 5 for evaluation.
+* *Meta-World: A Benchmark and Evaluation for Multi-Task and Meta Reinforcement Learning*
+
+A benchmark for meta-RL and multi-task RL. There are 50 tasks of manipulating the robotic arms, such as opening the door or manipulating a ball; in meta-training scenario, 45 tasks are used for training and 5 for evaluation.
+
+* *ACCELERATED METHODS FOR DEEP REINFORCEMENT LEARNING*
+
+This paper proposes a framework for fast RL training with highly parallel sampling and huge batch sizes. In this framework, multiple simulators are run per core to mitigate synchronization losses and hides NN inference time;
+I think this could be particularly useful for companies using RL such as Google, Deepmind, etc., but not so useful for researchers.
+
 
 # Game Theory
 
@@ -794,6 +806,20 @@ Yet, it could be long before RL-powered autonomous driving actually put in use.
 * *Driverless Car: Autonomous Driving Using Deep Reinforcement Learning in Urban Environment*
 
 # Miscellanous
+## Transfer Learning
+
+* *A Comprehensive Survey on Transfer Learning* (2019)
+
+homogeneous transfer learning v.s. heterogeneous one (differ in feature space);
+
+Many transfer learning approaches absorb the technology of semi-supervised
+learning;
+
+Domain adaptation refers to the
+process that adapting one or more source domains to transfer knowledge and improve the performance of the target
+learner.
+
+[Under Construction]
 
 ## Semi-supervised Learning 
 
