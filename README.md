@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 42 Useful Tips of the Day (updated 2021.9)
+# 43 Useful Tips of the Day (updated 2021.10)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -99,6 +99,8 @@ However, such practice (the one datapoint method) may face the problem of **not 
 41. When you are imitating someone else's code but failed, a useful debugging method is to take his code, and changing his code into yours function by function (instead of  changing yours onto his). You can try the differnet versions of code in parallel to quicker iterate.
 
 42. Batchnorm is influenced by eval/train! By default, the running_stats is on. Then for training, the normalization is conducted with batch statistics; but for evaluation, the normalization is conducted with a fixed mean and variance estimate kept with a momentum of 0.1. This could have a VERY BIG influence if you ignore the difference.
+
+43. You can try to feed feature^2 besides feature into MLP to get better expressivity, which works particularly well in fitting near-quadratic functions. 
 
 # Useful Linux Debugging Commands
 
