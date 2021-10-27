@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 43 Useful Tips of the Day (updated 2021.10)
+# 44 Useful Tips of the Day (updated 2021.10)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -101,6 +101,8 @@ However, such practice (the one datapoint method) may face the problem of **not 
 42. Batchnorm is influenced by eval/train! By default, the running_stats is on. Then for training, the normalization is conducted with batch statistics; but for evaluation, the normalization is conducted with a fixed mean and variance estimate kept with a momentum of 0.1. This could have a VERY BIG influence if you ignore the difference.
 
 43. You can try to feed feature^2 besides feature into MLP to get better expressivity, which works particularly well in fitting near-quadratic functions. 
+
+44. torch implementations such as **logsumexp** are numerically stable, and should be used instead of self-implemented vanilla code.
 
 # Useful Linux Debugging Commands
 
