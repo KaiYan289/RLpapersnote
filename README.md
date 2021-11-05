@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 44 Useful Tips of the Day (updated 2021.10)
+# 45 Useful Tips of the Day (updated 2021.10)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -103,6 +103,8 @@ However, such practice (the one datapoint method) may face the problem of **not 
 43. You can try to feed feature^2 besides feature into MLP to get better expressivity, which works particularly well in fitting near-quadratic functions. 
 
 44. torch implementations such as **logsumexp** are numerically stable, and should be used instead of self-implemented vanilla code.
+
+45. Be patient when you are training a large network. For a classifier, the training loss may be not decreasing in a relatively long period at the beginning of the training (although the output is changing greatly), but the loss will decrease quicker in the later training process. 
 
 # Useful Linux Debugging Commands
 
