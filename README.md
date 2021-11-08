@@ -291,6 +291,10 @@ The anchor and the positive observations are two different augmentations of the 
 
 Model-free RL algorithm often uses stack of frames instead of single frames as input to learn both spatial and temporal discriminative features.
 
+* *Generalization in Reinforcement Learning by Soft Data Augmentation*
+
+An auxiliary task to minimize the difference of output by extractor between input without augmentation and with augmentation. The "input without augmentation" part uses exponential moving average of the "with augmentation" part.
+
 # Contrastive Learning
 Contrastive learning can be understood as learning a differentiable dictionary look-up task. Given a query q, set of keys K and a known partition of keys K = K+ \cup K\K+, contrastive learning aims to ensure that q matches K+ more than any keys in K\K+ (quote from CURL paper). q is called **anchor**, K is called **targets**, K+ is called **positive samples** and K\K+ is called **negative samples**.
 
