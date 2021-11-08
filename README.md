@@ -257,6 +257,42 @@ A benchmark for meta-RL and multi-task RL. There are 50 tasks of manipulating th
 This paper proposes a framework for fast RL training with highly parallel sampling and huge batch sizes. In this framework, multiple simulators are run per core to mitigate synchronization losses and hides NN inference time;
 I think this could be particularly useful for companies using RL such as Google, Deepmind, etc., but not so useful for researchers.
 
+# Improving RL Efficiency
+
+## Model-based RL
+
+* *Model-Ensemble Trust-Region Policy Optimization*
+
+### World Models
+
+World models are a special type of model-based RL
+
+* *Dream to Control: Learning Behaviors by Latent Imagination* (Dreamer)
+
+This paper increases RL data efficiency by constructing world models. The world model is estimated with trajectories gained from interaction with ground truth environment. policy and value function are then optimized with trajectories running on the "imagined" world model. Finally, the trained policy is used to interact with ground truth environment. The training of world model and interatciton with ground truth environment is done iteravtively. Unlike PlaNet which uses MPC, Dreamer is RL-based and can be plugged onto any model-free RL algorithm. The world model of Dreamer is different from PLaNet in that it encourages mutual information between model states and observations by predicting the states from the images, which is estimated via NCELoss. 
+
+**NCELoss** is a common metric that turns multi-label classifier into a binary classifier. It breaks each data point (x,y) as a "positive" (real) pair and some noisy negative pairs, to *bypass the process of calculating the normalizing term at the denominator for the probability*, as it may be very expensive or even intractible.
+
+**InfoNCELoss** is first presented in the paper *Representation Learning with Contrastive Predictive Coding*. It learns a function that is proportional to p(x|c)/p(x).
+
+* *Learning Latent Dynamics for Planning from Pixels* (PLaNet)
+
+This is also a work with world models to increase RL sampel efficiency, which is the previous work of Dreamer. The world model is parameterized "representation" p(s_t|s_t-1, a_t-1,o_t) and "transition" q(s_t|s_t-1,a_t-1); there can also be observation model q(o_t|s_t) and reward model q(r_t|s_t). An interesting point is that world models are not optimized with MSELoss; instead, they are optimized to increase the **variational lower bound** (ELBO) or **variational information bottleneck** (VIB). 
+
+It uses MPC to solve the planning task. For every step it takes in the real environment, it looks into its transition/reward model for the best trajectory, and conduct the first step of that trajectory. Therefore, it needs its world model to run in the ground truth environment. 
+
+## Auxiliary Tasks
+
+* *CURL: Contrastive Unsupervised Representations for Reinforcement Learning*
+
+CURL proposes a jointly trained auxiliary task to help the RL agent to learn a robust vision. The auxiliary task is a contrastive unsupervised learning, which uses InfoNCELoss. For each batch of transition, observations are data-augmented twice to form query and key observations, which are then encoded with the query and key encoders respectively. The queries are passed to the RL algorithm, while the query-key pairs are passed to the contrastive learning objective. The key encoder weights are the moving average (EMA) of the query weights.
+
+The anchor and the positive observations are two different augmentations of the same image, while negatives come from other images.
+
+Model-free RL algorithm often uses stack of frames instead of single frames as input to learn both spatial and temporal discriminative features.
+
+# Contrastive Learning
+Contrastive learning can be understood as learning a differentiable dictionary look-up task. Given a query q, set of keys K and a known partition of keys K = K+ \cup K\K+, contrastive learning aims to ensure that q matches K+ more than any keys in K\K+ (quote from CURL paper). q is called **anchor**, K is called **targets**, K+ is called **positive samples** and K\K+ is called **negative samples**.
 
 # Game Theory
 
@@ -1157,7 +1193,6 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 * *Projection-based Constrainted Policy Optimization*
 
 * *First order Constrained Optimization in Policy Space* An improvement of the paper above which does not require calculating 2nd-order derivation.
-
 
 ### State-Conditioned 
 
