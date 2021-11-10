@@ -298,6 +298,9 @@ An auxiliary task to minimize the difference of output by extractor between inpu
 # Contrastive Learning
 Contrastive learning can be understood as learning a differentiable dictionary look-up task. Given a query q, set of keys K and a known partition of keys K = K+ \cup K\K+, contrastive learning aims to ensure that q matches K+ more than any keys in K\K+ (quote from CURL paper). q is called **anchor**, K is called **targets**, K+ is called **positive samples** and K\K+ is called **negative samples**.
 
+Tutorial: https://lilianweng.github.io/lil-log/2021/05/31/contrastive-representation-learning.html
+
+
 # Game Theory
 
 Game theory is closely related to dynamic systems, where the iterative update is in coherent with a point moving in a field.  
