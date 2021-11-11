@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 45 Useful Tips of the Day (updated 2021.10)
+# 46 Useful Tips of the Day (updated 2021.10)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -321,6 +321,10 @@ One technique of auxiliary task is to only consider auxiliary task gradient when
 
 # Contrastive Learning
 Contrastive learning can be understood as learning a differentiable dictionary look-up task. Given a query q, set of keys K and a known partition of keys K = K+ \cup K\K+, contrastive learning aims to ensure that q matches K+ more than any keys in K\K+ (quote from CURL paper). q is called **anchor**, K is called **targets**, K+ is called **positive samples** and K\K+ is called **negative samples**.
+
+* *A Theoretical Analysis of Contrastive Unsupervised Representation learning* 
+
+This paper proposes a theortical framework that proves, if for a contrastive learning task, the downstream task is a supervised classification task with a linear classifier (y=Wx) and hinge/logistic loss, then it is guaranteed that downstream classification loss with optimal representation learned from contrastive learning is bounded by a linear term of contrastive learning loss with any representations, plus generalization loss that can be bounded with the number of classes with a high probability (1-\delta).
 
 Tutorial: https://lilianweng.github.io/lil-log/2021/05/31/contrastive-representation-learning.html
 
