@@ -106,7 +106,14 @@ However, such practice (the one datapoint method) may face the problem of **not 
 
 45. Be patient when you are training a large network. For a classifier, the training loss may be not decreasing in a relatively long period at the beginning of the training (although the output is changing greatly), but the loss will decrease quicker in the later training process. 
 
+46. One technique for serious outliers in a dataset is to clip the loss to a constant, e.g. minimize max(-log(y|x), 0.1); this effectively "rejects" the gradient from the outliers and upper bounds the loss.
+
 # Useful Linux Debugging Commands
+
+Checking CPU/cache config: lscpu
+Checking GPU status (with nvidia): nvidia-smi
+Checking memory usage: htop
+Checking the disk space taken up by subfolders in the directory: cd some_directory; du -h --max-depth=1  
 
 [Under Construction]
 
@@ -294,6 +301,20 @@ Model-free RL algorithm often uses stack of frames instead of single frames as i
 * *Generalization in Reinforcement Learning by Soft Data Augmentation*
 
 An auxiliary task to minimize the difference of output by extractor between input without augmentation and with augmentation. The "input without augmentation" part uses exponential moving average of the "with augmentation" part.
+
+One interesting thing is that auxiliary task for RL is not a new thing; however, this paper still contributes something by looking at the realm of pixel input, which is not well-solved enough, with CV techniques. It seems that it is important to know *what is an interesting question to solve for today*; this is as important as finding a good architecture or algorithm.
+
+* *https://www.borealisai.com/en/blog/tutorial-4-auxiliary-tasks-deep-reinforcement-learning/* A survey for early auxiliary tasks in reinforcement learning.
+
+The auxiliary tasks can be roughly divided into the following types:
+
+1. terminal prediction;
+2. agent modeling (in MARL);
+3. reward prediction;
+4. CV prediction (depth prediction / data augmentation on images + contrastive learning)
+5. intrinsic reward, usually for better exploration (e.g. maximizing pixel change such as UNREAL agent https://www.borealisai.com/en/blog/tutorial-4-auxiliary-tasks-deep-reinforcement-learning/)
+
+One technique of auxiliary task is to only consider auxiliary task gradient when the dot product of such task and main objective is larger than 0 (i.e., not conflicting). 
 
 # Contrastive Learning
 Contrastive learning can be understood as learning a differentiable dictionary look-up task. Given a query q, set of keys K and a known partition of keys K = K+ \cup K\K+, contrastive learning aims to ensure that q matches K+ more than any keys in K\K+ (quote from CURL paper). q is called **anchor**, K is called **targets**, K+ is called **positive samples** and K\K+ is called **negative samples**.
