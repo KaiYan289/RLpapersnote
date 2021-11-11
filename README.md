@@ -111,8 +111,11 @@ However, such practice (the one datapoint method) may face the problem of **not 
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
+
 Checking GPU status (with nvidia): nvidia-smi
+
 Checking memory usage: htop
+
 Checking the disk space taken up by subfolders in the directory: cd some_directory; du -h --max-depth=1  
 
 [Under Construction]
