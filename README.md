@@ -267,7 +267,21 @@ A benchmark for meta-RL and multi-task RL. There are 50 tasks of manipulating th
 This paper proposes a framework for fast RL training with highly parallel sampling and huge batch sizes. In this framework, multiple simulators are run per core to mitigate synchronization losses and hides NN inference time;
 I think this could be particularly useful for companies using RL such as Google, Deepmind, etc., but not so useful for researchers.
 
+# Domain Randomization
+
 # Improving RL Efficiency
+
+* *DARLA: Improving Zero-shot Transfer in Reinforcement Learning*
+
+## Better Visual Representations
+
+* *Reinforcement Learning with Augmented Data* (RAD)
+
+* *Image Augmentation is All You Need: Regularizing Deep Reinforcement Learning from Pixels* (DRQ)
+
+The two works above are almost done in the same time; for DRQ, if we set the number of augmented samples to be 1, then it is RAD.
+
+
 
 ## Model-based RL
 
@@ -1099,6 +1113,8 @@ Training Competitive RL agents requires the prevention of overfitting between th
 * *A Survey of Learning in Multiagent Environments: Dealing with Non-Stationarity* (2017) 
 
 Five categories (in increasing order of sophistication): ignore, forget, respond to target models, learn models, and theory of mind. 
+
+* *Self-supervised Learning: Generative or Contrastive*
 
 ### Ad-hoc teammate
 
