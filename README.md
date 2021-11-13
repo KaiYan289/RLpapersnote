@@ -279,6 +279,8 @@ This paper tries to learn a RL policy with visual inputs that can be transferred
 
 * *Reinforcement Learning with Augmented Data* (RAD)
 
+RAD takes a particular data augmentation within the same batch and feed the result into the RL agent's input. The result shows that this achieves SOTA result and even comparable to that with proprieceptive states. It seems that random cropping is the most effective to do data augmentation, as this forces the CNN to focus on the "robot body" manipulated by the agent. 
+
 * *Image Augmentation is All You Need: Regularizing Deep Reinforcement Learning from Pixels* (DRQ)
 
 The two works above are almost done in the same time; for DRQ, if we set the number of augmented samples to be 1, then it is RAD. DRQ claims that the Q-values should be the same before and after different data augmentations on states given by images, and thus it samples multiple data augmentations to "average the Q-values" among them.
