@@ -273,15 +273,15 @@ I think this could be particularly useful for companies using RL such as Google,
 
 * *DARLA: Improving Zero-shot Transfer in Reinforcement Learning*
 
+This paper tries to learn a RL policy with visual inputs that can be transferred onto another environment with different state space but the same action space with structurally similar transition and reward functions. To do this, the author assumes a "latent" (hidden) MDP where states from both domains roots from its state space, and tries to learn a beta-VAE that can recover the states on this state space. The author uses beta-VAE to do this, claiming that beta>1 can limit the expressivity of the encoder and forces better grasp of the essence of MDP. Instead of using normal MSE reconstruction loss, to grasp global semantics, the author uses another pretrained DAE and tries to compare the reconstruction loss in the DAE-abstracted latent space.
+
 ## Better Visual Representations
 
 * *Reinforcement Learning with Augmented Data* (RAD)
 
 * *Image Augmentation is All You Need: Regularizing Deep Reinforcement Learning from Pixels* (DRQ)
 
-The two works above are almost done in the same time; for DRQ, if we set the number of augmented samples to be 1, then it is RAD.
-
-
+The two works above are almost done in the same time; for DRQ, if we set the number of augmented samples to be 1, then it is RAD. DRQ claims that the Q-values should be the same before and after different data augmentations on states given by images, and thus it samples multiple data augmentations to "average the Q-values" among them.
 
 ## Model-based RL
 
