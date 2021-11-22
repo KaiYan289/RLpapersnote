@@ -118,6 +118,8 @@ Checking memory usage: htop
 
 Checking the disk space taken up by subfolders in the directory: cd some_directory; du -h --max-depth=1  
 
+Checking the location of an installed package: import xxx; print(xxx.__file__)
+
 [Under Construction]
 
 # Causal Inference
