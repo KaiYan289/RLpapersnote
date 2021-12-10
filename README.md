@@ -303,7 +303,13 @@ The metric is evaluated on gridworld and Atari games.
 * *Contrastive Behavioral Similarity Embeddings for Generalization in Reinforcement Learning* (ICLR 21')
 
 The following work of the last paper.
-[TBD]
+
+This paper proposes a novel policy similarity metric (PSM) and uses SIMCLR (a contrastive learning method) to learn an embedding of policy difference for better generalizability. Instead of using reward as the first term of iteration operator, this paper uses the distance between action probability distributions. The theoretical bound thus is not related to value function, but to the distribution of trajectories. 
+
+The embedding is trained by sampling pairs of training MDPs and updates a neural network to calculate metrics (?)
+
+One important thing is that the paper mentioned that metric based on the reward is usually either too restrict (when the policies are the same but the obtained rewards are not) or permissive (when the policies are different but the rewards are the same) and has bad generalizability.  
+
 
 * *Offline Reinforcement Learning with Pseudometric Learning* (ICML 21')
 
