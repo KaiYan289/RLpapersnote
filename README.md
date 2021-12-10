@@ -198,6 +198,10 @@ Some miscellanous remarks:
 
 # Experimental Papers
 
+https://github.com/clvrai/awesome-rl-envs has many RL testbeds.
+
+* *Neural MMO: A Massively Multiagent Game Environment for Training and Evaluating Intelligent Agents* (2019) A testbed for massive number of agents for MARL.
+
 * *Deep Reinforcement Learning and the Deadly Triad* (2018)
 
 This paper studies the convergence behavior of the Q-value, and concluded that:
@@ -1054,7 +1058,21 @@ Several main algorithms are: Proper Orthogonal Decomposition; Krylov subspace me
 
 * *Accelerating Online Reinforcement Learning with Offline Datasets*
 
-## RL
+## Multimodel RL (e.g. Gaussian Mixture)
+
+Many multimodel RL uses navigation / goal-based task with multiple goals to illustrate the multimodality learned by the model.
+
+* *Reinforcement Learning with Deep Energy-Based Policies* SQL paper.
+* *Distributional Deep Reinforcement Learning with a Mixture of Gaussians* It has a prior work of C51.
+* *Learning a Multi-Modal Policy via Imitating Demonstrations with Mixed Behaviors* (NeurIPS 18') it uses LSTM to learn a discrete latent variable for each trajectory (every trajectory has a fixed discrete latent variable), and use a decoder to feed current state and this latent variable as input to recover current action.
+* *Multimodal Policy Search using Overlapping Mixtures of Sparse Gaussian Process Prior* (ICRA 19')
+* *Confidence-Based Policy Learning from Demonstration Using Gaussian Mixture Models* (AAMAS 07')
+
+## Bayesian RL
+Bayesian RL is usually used for multi-tasking, where it believes that some factor of the environment (it could be opponent in MARL, or type of environment) is controlled by a latent variable. However, Bayesian RL does not necessarily means multimodel RL.
+* *Multi-Task Reinforcement Learning: A Hierarchical Bayesian Approach* (ICML 07') 
+
+## Other RL
 
 * *Hysteretic Q-learning:an algorithm for decentralized reinforcement learning in cooperative multi-agent teams*  
 
