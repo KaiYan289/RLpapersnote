@@ -783,6 +783,11 @@ MAGAIL is MaxEnt RL + Nash Equilibrium; MAAIRL is MaxEnt RL + LSBRE.
 
 RL is currently not very popular in deployment of production (as of 2020/2021), as the sample efficiency are low and it may have no significant edge over expert systems and traditional analytical models in real-life. 
 
+## Power Systems
+
+* *Multi-Agent Reinforcement Learning for Active Voltage Control on Power Distribution Networks* (NeurIPS 21')
+
+
 ## Recommending Systems
 
 RL is used in recommending systems due to its inherent **interactive and dynamic** nature; however, the sparsity of data is the greatest pain. Both GAN and supervised-learning with importance sampling are developed to address the issue.
