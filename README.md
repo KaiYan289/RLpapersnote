@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 46 Useful Tips of the Day (updated 2021.10)
+# 47 Useful Tips of the Day (updated 2021.12)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -665,6 +665,11 @@ This is a paper where the attacker distorts cost signals.
 A survey. Quoting its abstract, "Social Learning is a new class of algorithms that enables agents to reshape the reward function of other agents with the goal of promoting cooperation and achieving higher global rewards in mixed-motive games." (Does this ring a bell w.r.t. Coco-Q learning & side payment?)
 
 ## Miscellanous
+* *Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion* 
+
+A classical paper that has 6000+ citations; it helps in understanding what "reconstruction" is, starting from a perspective of mutual information and manifold learning. PCA is essentially Affine encoder and decoder without any nonlinearity and a squared error loss. The corruption and learning with robustness process is to project the data points back on a low-dimensional manifold.
+
+This paper is not interested in denoising itself, but rather investigating denoising as a training criterion for learning to extract useful features.
 
 * *Deep Q-Learning for Nash Equilibria: Nash-DQN* (2019) 
 
