@@ -109,6 +109,9 @@ However, such practice (the one datapoint method) may face the problem of **not 
 46. One technique for serious outliers in a dataset is to clip the loss to a constant, e.g. minimize max(-log(y|x), 0.1); this effectively "rejects" the gradient from the outliers and upper bounds the loss.
 
 47. Note: Pytorch passes address, so if you want to only pass value to a function, make sure that you use clone() function! (e.g. for normalizing flows) 
+
+48. Do not trust "manual design" too much against randomization in deep learning. (e.g. permutations of channels in normalizing flows)
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
