@@ -787,6 +787,22 @@ RL is currently not very popular in deployment of production (as of 2020/2021), 
 
 * *Multi-Agent Reinforcement Learning for Active Voltage Control on Power Distribution Networks* (NeurIPS 21')
 
+This paper mainly focuses on the formulation of the problem and have not much novelty on MARL; it simply try a lot of RL algorithms. However, the idea of why using MARL on this problem is interesting (quote from the paper):
+
+The active voltage control problem has many interesting properties. 
+
+(1) It is a combination of local and global problem, i.e., the voltage of each node is influenced by the powers (real and reactive) of all other nodes but the impact recedes with increasing distance between nodes.
+
+(2) It is a constrained optimisation problem where the constraint is the voltage threshold and the objective is the total power loss, but there is no explicit relationship between the constraint and the control action. (hard to be formulated as a constrained optimization problem) 
+(3) A distribution network has a radial topology involving a rich structure that can be taken as prior knowledge for control, but the node-branch parameters of the topology
+may be significantly uncertain. (prior knowledge is of limit use)
+(4) Voltage control has a relatively large tolerance and less severe consequences if the control fails to meet standard requirements. (lenient for occasional failure)
+
+Di Cao, Weihao Hu, Junbo Zhao, Qi Huang, Zhe Chen, and Frede Blaabjerg's team has many works in this area, mainly published on IEEE transactions on smart grid / power systems. See citation [13-16] of this paper.
+
+* *Reinforcement learning and its applications in modern power and energy systems: A review* (2020)
+
+A large collection (~100) papers of RL for energy systems. Such papers usually publish on IEEE transactions instead of conferences.
 
 ## Recommending Systems
 
