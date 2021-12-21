@@ -126,6 +126,10 @@ Checking the location of an installed package: import xxx; print(xxx.\_\_file\_\
 
 [Under Construction]
 
+# Robotics 
+
+See "robotics.md" in the repo. Thanks prof. Sauragh Gupta for his ECE598SG class!
+
 # Causal Inference
 
 Thanks the causal reading group @ MSRA for their valuable opinions on causal inference! For a more thorough and professional summary, see *https://github.com/fulifeng/Causal_Reading_Group*.
