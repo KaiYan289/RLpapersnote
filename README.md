@@ -128,7 +128,7 @@ Checking the location of an installed package: import xxx; print(xxx.\_\_file\_\
 
 # Robotics 
 
-See "robotics.md" in the repo. Thanks prof. Sauragh Gupta for his ECE598SG class!
+See "robotics.md" in the repo. Thanks prof. Gupta for his wonderful class!
 
 # Causal Inference
 
