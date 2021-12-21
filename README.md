@@ -1120,6 +1120,14 @@ Bayesian RL is usually used for multi-tasking, where it believes that some facto
 
 ## Other RL
 
+* *Offline Reinforcement Learning as One Big Sequence Modeling Problem* (NeurIPS 21' spotlight)
+
+A very interesting idea by Sergey Levine's group, to see (s_1, a_1, r_1, s_2, a_2, r_2, ...) as a big sequence (dimensions are flattened to ensure it is still a 1-dimensional "sequence"), and use transformer & NLP techniques to try to learn sequence modeling problem. The paper aims to convert the quality of RL to the quality of sequence representation; however, it remains to be seen whether this idea is scalable, since the experiments are kind of too simple.
+
+With a transformer, the authors uses **beam search** to solve imitation learning, goal-based RL and offline RL. For imitation learning, the goal is to maximize log likelihood of states; for goal-based RL, the trajectory can be decoded with probability of a state conditioned on past states; for offline RL, we can replace the log-prob of token predictions with the predicted reward signal, effectively replacing transition's logprob in beam search with logprob of optimality. To avoid myopic behavior, the transition is augmented.
+
+Another interesting thing is that the authors mentioned that a specific pattern the transformer learned is to focus more on past action instead of states, which resembles action smoothing in some optimization algorithms. 
+
 * *Hysteretic Q-learning:an algorithm for decentralized reinforcement learning in cooperative multi-agent teams*  
 
 Hysteretic Q-learning is a method of obtaining a team of cooperative agents through distributed training. It originated from game theory and mainly studied repeated two-player matrix games. In fact, there is nothing new in essence, just adjust the parameters when the modulation is good and bad, so that the rate of change when the q-value estimation becomes high and when it becomes low is different. Soft-update to increase stability is a common technique.
