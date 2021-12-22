@@ -208,6 +208,19 @@ Some miscellanous remarks:
 
 https://github.com/clvrai/awesome-rl-envs has many RL testbeds.
 
+* *Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour* This paper gives some interesting ideas on tuning the neural network training.
+
+1) **Linear Scaling Rule**: When the minibatch size is multiplied by k, multiply the learning rate by k.
+
+2) For large minibatches, the linear scaling rule breaks down when the network is changing rapidly, which commonly occurs in early stages of training. **This issue can be alleviated by a properly designed warmup**, namely, a strategy of using less aggressive learning rates at the start of training. (See paper "Deep residual learning
+for image recognition".)
+
+3) One thing worth noting for minibatch normalization is that changes in minibatch size change the underlying definition of the loss function being optimized. Therefore, different worker threads should not share the same normalization parameters. However, you should normalize the per-worker loss by total minibatch size kn, not per-worker size n.
+
+4) Weight decay is actually the outcome of the gradient of an L2-regularization term in the loss function.  Scaling the cross-entropy loss is **not** equivalent to scaling the learning rate.
+
+5) Use a single random shuffling of the training data (per epoch) that is divided amongst all k workers.
+
 * *Neural MMO: A Massively Multiagent Game Environment for Training and Evaluating Intelligent Agents* (2019) A testbed for massive number of agents for MARL.
 
 * *Deep Reinforcement Learning and the Deadly Triad* (2018)
