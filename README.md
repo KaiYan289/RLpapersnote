@@ -124,6 +124,8 @@ Checking the disk space taken up by subfolders in the directory: cd some_directo
 
 Checking the location of an installed package: import xxx; print(xxx.\_\_file\_\_)
 
+Creating conda environment from old ones: conda create -n new_env --clone old_env
+
 [Under Construction]
 
 # Robotics 
