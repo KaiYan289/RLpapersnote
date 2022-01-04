@@ -1062,6 +1062,12 @@ If accepted, update the current classifier. Note that they model the current cla
 
 * *Improved Empirical Methods in Reinforcement Learning Evaluation* (2015)
 
+* *A Max-min Entropy Network for Reinforcement Learning* (NeurIPS 21') 
+
+This paper digs into the problem of **saturation** of SAC exploration. Consider a pure exploration scenario where there is no reward; the SAC agent, ideally, should learn uniform action to maximize the entropy. However, Q-value difference made by randomized initialization will force the agent to visit the states with higher Q-value, and further increase the Q-value there by optimization. This makes the agent stay in a small part of the observation space. To solve this, the authors propose to segregate the Q-value for exploration and the Q-value for optimization. 
+
+By reversing the sign of entropy in the soft Q-function update, the result drives the policy to visit states with low entropy, and increase the entropy there. This set of Q is separated from original reward of the MDP, and the final update equation adds Q for reward and Q for exploration together to form a new Q value.
+
 * *Lenient DQN* 
 
 Temperature and lenient parameter are the two important notions in Lenient DQN. 
