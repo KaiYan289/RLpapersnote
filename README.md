@@ -225,6 +225,11 @@ for image recognition".)
 
 * *Neural MMO: A Massively Multiagent Game Environment for Training and Evaluating Intelligent Agents* (2019) A testbed for massive number of agents for MARL.
 
+* *Continual World: A Robotic Benchmark For Continual Reinforcement Learning* (NeurIPS 21')
+
+Continual learning (CL) — the ability to continuously learn, building on previously acquired knowledge — is a natural requirement for long-lived autonomous
+reinforcement learning (RL) agents. 
+
 * *Deep Reinforcement Learning and the Deadly Triad* (2018)
 
 This paper studies the convergence behavior of the Q-value, and concluded that:
