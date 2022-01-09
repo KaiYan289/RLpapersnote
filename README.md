@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 47 Useful Tips of the Day (updated 2021.12)
+# 49 Useful Tips of the Day (updated 2022.1)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -111,6 +111,8 @@ However, such practice (the one datapoint method) may face the problem of **not 
 47. Note: Pytorch passes address, so if you want to only pass value to a function, make sure that you use clone() function! (e.g. for normalizing flows) 
 
 48. Do not trust "manual design" too much against randomization in deep learning. (e.g. permutations of channels in normalizing flows)
+
+49. Note that torch.KLDivLoss(q.log(), p) = KL(p||q).
 
 # Useful Linux Debugging Commands
 
