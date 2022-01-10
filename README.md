@@ -212,6 +212,10 @@ Some miscellanous remarks:
 
 https://github.com/clvrai/awesome-rl-envs has many RL testbeds.
 
+* *Visualizing the Loss Landscape of Neural Nets* 
+
+An illustration of how the art of network architecture refining matters. [TBD]
+
 * *Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour* This paper gives some interesting ideas on tuning the neural network training.
 
 1) **Linear Scaling Rule**: When the minibatch size is multiplied by k, multiply the learning rate by k.
@@ -419,6 +423,15 @@ Contrastive learning can be understood as learning a differentiable dictionary l
 This paper proposes a theortical framework that proves, if for a contrastive learning task, the downstream task is a supervised classification task with a linear classifier (y=Wx) and hinge/logistic loss, then it is guaranteed that downstream classification loss with optimal representation learned from contrastive learning is bounded by a linear term of contrastive learning loss with any representations, plus generalization loss that can be bounded with the number of classes with a high probability (1-\delta).
 
 Tutorial: https://lilianweng.github.io/lil-log/2021/05/31/contrastive-representation-learning.html
+
+
+# Attention & Transformers
+
+There are two tutorials that is suitable for layman (technology tree: RNN -> bidirectional RNN -> attention -> self-attention -> vanilla transformer (attention is all you need) -> variants of transformer)
+
+https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html#self-attention
+
+https://lilianweng.github.io/lil-log/2020/04/07/the-transformer-family.html
 
 
 # Game Theory
