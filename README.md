@@ -739,6 +739,10 @@ There are also some contents on anthropology, including *locutionary, illocution
 
 # Inverse RL
 
+* *Robust Inverse Reinforcement Learning under Transition Dynamics Mismatch* (NeurIPS 21')
+
+[TBD]
+
 ## Early
 
 * *Inverse Reinforcement Learning* (2000)
