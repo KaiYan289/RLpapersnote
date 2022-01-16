@@ -1318,14 +1318,16 @@ Note: this part is a bit out-of-date and needs update.
 
 * *QMIX*
 
+QMIX is a decent, robust and tried-and-true baseline in cooperate MARL.
+
 * *BiCNet: Multiagent Bidirectionally-Coordinated Nets Emergence of Human-level Coordination in Learning to Play StarCraft Combat Game*
 
  As the bi-directional recurrent structure could serve not only as a communication channel but also as a local memory saver, each individual agent is able to maintain its own internal states, as well as to share the information with its collaborators. computing the backward gradients by unfolding the network of length N (the number of controlled agents) and then applying backpropagation through time (BPTT) The gradients pass to both the individual Qi function and the policy function.
  
- * *MAVEN: Multi-Agent Variational Exploration*
+ * *MAVEN: Multi-Agent Variational Exploration* (2019)
+Quote: "Single agent RL can avoid convergence to suboptimal policies using various strategies like increasing the exploration rate () or policy variance, ensuring optimality in the limit. However ... both theoretically and empirically, ... the same is not possible in decentralised MARL."
 
-[TBD]
- 
+"The reliance of QMIX on epsilon-greedy action selection prevents it from engaging in committed exploration, in which a precise sequence of actions must be chosen in order to reach novel, interesting parts of the state space". 
 
 ### Partly Observable 
 
