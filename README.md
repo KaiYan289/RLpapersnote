@@ -1321,6 +1321,11 @@ Note: this part is a bit out-of-date and needs update.
 * *BiCNet: Multiagent Bidirectionally-Coordinated Nets Emergence of Human-level Coordination in Learning to Play StarCraft Combat Game*
 
  As the bi-directional recurrent structure could serve not only as a communication channel but also as a local memory saver, each individual agent is able to maintain its own internal states, as well as to share the information with its collaborators. computing the backward gradients by unfolding the network of length N (the number of controlled agents) and then applying backpropagation through time (BPTT) The gradients pass to both the individual Qi function and the policy function.
+ 
+ * *MAVEN: Multi-Agent Variational Exploration*
+
+[TBD]
+ 
 
 ### Partly Observable 
 
