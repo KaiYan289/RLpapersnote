@@ -1173,6 +1173,9 @@ Bayesian RL is usually used for multi-tasking, where it believes that some facto
 
 ## Other RL
 
+* *Augmenting Reinforcement Learning with Behavior Primitives for Diverse Manipulation Tasks* (2021) 
+This paper proposes MAPLE, a learning framework that augments standard reinforcement learning algorithms with a pre-defined library of behavior primitives. This falls under the established reinforcement learning framework of **Parameterized Action MDPs** (PAMDPs), in which the agent executes a parameterized primitive at each decision-making step. Note that the pre-defined library is **hardcoded**; the difficulty lies in which to choose and what parameter (e.g. moving location) to apply.
+
 * *Offline Reinforcement Learning as One Big Sequence Modeling Problem* (NeurIPS 21' spotlight)
 
 A very interesting idea by Sergey Levine's group, to see (s_1, a_1, r_1, s_2, a_2, r_2, ...) as a big sequence (dimensions are flattened to ensure it is still a 1-dimensional "sequence"), and use transformer & NLP techniques to try to learn sequence modeling problem. The paper aims to convert the quality of RL to the quality of sequence representation; however, it remains to be seen whether this idea is scalable, since the experiments are kind of too simple.
