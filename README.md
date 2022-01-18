@@ -1405,6 +1405,21 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 * *First order Constrained Optimization in Policy Space* An improvement of the paper above which does not require calculating 2nd-order derivation.
 
+### Demonstration-Guided RL
+
+* *PARROT: DATA-DRIVEN BEHAVIORAL PRIORS FOR REINFORCEMENT LEARNING* See below "state-conditioned" section.
+
+* *Demonstration-Guided Reinforcement Learning with Learned Skills* (SKILD)
+
+* *Hierarchical Few-Shot Imitation with Skill Transition Models* (2021)
+
+This paper addresses the few-shot imitation learning problem by proposing a novel architecture called FIST. They first train a VAE to extract skills in the latent space, with LSTM as encoder and MLP as decoder; then they train a skill posterior that takes states in the first and the last step as input and minimizes the KL divergence between this prior and the encoder. (**Note this is a common architecture; the difference between this and SKILD is that they additionally take the last step's state as input in the posterior. But this is a core difference, as, quote, "conditioning on future will make it more informative."**) Also, they did not use two sets of models; they instead fine-tune the whole model learned on task-agnostic dataset with task-speicfic dataset.
+
+In deploy time, this "state from future" is picked by a lookahead module where we find the closest state to the current state according to the distance metric. This distance metric is learned by optimizing an encoder using InfoNCE loss, such that states that are H steps in the future are close to the current state while all other states are further away.
+
+
+
+
 ### State-Conditioned 
 
 
