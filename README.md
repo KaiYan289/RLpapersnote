@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 49 Useful Tips of the Day (updated 2022.1)
+#50 Useful Tips of the Day (updated 2022.1)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -113,6 +113,8 @@ However, such practice (the one datapoint method) may face the problem of **not 
 48. Do not trust "manual design" too much against randomization in deep learning. (e.g. permutations of channels in normalizing flows)
 
 49. Note that torch.KLDivLoss(q.log(), p) = KL(p||q).
+
+50. When you are tuning performance, try keep observing the curve for the first run if possible; this takes a little time, but it helps you to grab a sense of what is happening, and what epoch is the best. Also, try to run your code **through** before starting a long experiment (e.g. set epoch to 1 to see if the model can save correctly).
 
 # Useful Linux Debugging Commands
 
