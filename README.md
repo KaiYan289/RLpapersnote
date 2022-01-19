@@ -1204,8 +1204,7 @@ Bayesian RL is usually used for multi-tasking, where it believes that some facto
 
 ## Other RL
 
-* *Augmenting Reinforcement Learning with Behavior Primitives for Diverse Manipulation Tasks* (2021) 
-This paper proposes MAPLE, a learning framework that augments standard reinforcement learning algorithms with a pre-defined library of behavior primitives. This falls under the established reinforcement learning framework of **Parameterized Action MDPs** (PAMDPs), in which the agent executes a parameterized primitive at each decision-making step. Note that the pre-defined library is **hardcoded**; the difficulty lies in which to choose and what parameter (e.g. moving location) to apply.
+### RL as Sequence Modeling
 
 * *Decision Transformer: Reinforcement Learning via Sequence Modeling* (2021)
 
@@ -1218,6 +1217,19 @@ A very interesting idea by Sergey Levine's group, to see (s_1, a_1, r_1, s_2, a_
 With a transformer, the authors uses **beam search** to solve imitation learning, goal-based RL and offline RL. For imitation learning, the goal is to maximize log likelihood of states; for goal-based RL, the trajectory can be decoded with probability of a state conditioned on past states; for offline RL, we can replace the log-prob of token predictions with the predicted reward signal, effectively replacing transition's logprob in beam search with logprob of optimality. To avoid myopic behavior, the transition is augmented.
 
 Another interesting thing is that the authors mentioned that a specific pattern the transformer learned is to focus more on past action instead of states, which resembles action smoothing in some optimization algorithms. 
+
+
+
+### PAMDP
+
+* *Augmenting Reinforcement Learning with Behavior Primitives for Diverse Manipulation Tasks* (2021) 
+This paper proposes MAPLE, a learning framework that augments standard reinforcement learning algorithms with a pre-defined library of behavior primitives. This falls under the established reinforcement learning framework of **Parameterized Action MDPs** (PAMDPs), in which the agent executes a parameterized primitive at each decision-making step. Note that the pre-defined library is **hardcoded**; the difficulty lies in which to choose and what parameter (e.g. moving location) to apply.
+
+* *Accelerating Robotic Reinforcement Learning via Parameterized Action Primitives* (2021)
+
+Similar to the last paper, this paper uses a predefined and hard-coded library, and try to choose actions from the experts.
+
+
 
 * *Hysteretic Q-learning:an algorithm for decentralized reinforcement learning in cooperative multi-agent teams*  
 
