@@ -1209,7 +1209,7 @@ This paper proposes MAPLE, a learning framework that augments standard reinforce
 
 * *Decision Transformer: Reinforcement Learning via Sequence Modeling* (2021)
 
-Similar to the paper below; quote, "Unlike prior approaches to RL that fit value functions or compute policy gradients, Decision Transformer simply outputs the optimal actions by leveraging a causally masked Transformer". The difference is that Sergey et al.'s work see the transformer in a (relatively) static perspective. In that paper, the algorithm deals with goal-based RL, imitation learning and offline RL, and **predicts everything including rewards and states** as the generated sequence, using beam-search to make decisions; this paper only produces action.
+Similar to the paper below; quote, "Unlike prior approaches to RL that fit value functions or compute policy gradients, Decision Transformer simply outputs the optimal actions by leveraging a causally masked Transformer". In the paper below, the algorithm deals with goal-based RL, imitation learning and offline RL, and **predicts everything including rewards and states** as the generated sequence, using beam-search to make decisions; this paper only produces action.
 
 * *Offline Reinforcement Learning as One Big Sequence Modeling Problem* (NeurIPS 21' spotlight)
 
