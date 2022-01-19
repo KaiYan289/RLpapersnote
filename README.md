@@ -345,8 +345,36 @@ The embedding is trained by sampling pairs of training MDPs and updates a neural
 
 One important thing is that the paper mentioned that metric based on the reward is usually either too restrict (when the policies are the same but the obtained rewards are not) or permissive (when the policies are different but the rewards are the same) and has bad generalizability.  
 
+* *Behavioral Priors and Dynamics Models: Improving Performance and Domain Transfer in Offline RL* (MABE)
 
-* *Behavioral Priors and Dynamics Models: Improving Performance and Domain Transfer in Offline RL*
+1. MOPO: MOPO [21] is an uncertainty-based offline MBRL algorithm. MOPO uses MBPO
+[31], an off-policy Dyna-style RL algorithm where a replay buffer is populated with synthetic
+samples from a learned dynamics model and used to train an Soft Actor Critic (SAC) [38]
+agent. MOPO build on MBPO by penalizing the reward experienced by an agent with a
+penalty proportional to the prediction uncertainty of the dynamics model. MABE is also
+built on top of MBPO and thus MOPO is the most directly competing baseline.
+
+2. MOReL: MOReL [20] is also an uncertainty-based offline MBRL algorithm. The primary
+difference between MOReL and MOPO is that MOReL uses an on-policy algorithm, TRPO
+[64], as its backbone. Otherwise, MOPO and MOReL are similar - both penalize the reward
+with a term proportional to the forward model uncertainty. The performance differences
+between MOPO and MOReL on D4RL are mainly due to the performance of the backbone
+algorithm, SAC and TRPO respectively. SAC outperforms TRPO on the mujoco Cheetah environment while TRPO outperforms TRPO in the Hopper environment, and these
+differences are also evident in the offline RL results for MOPO and MOReL.
+
+3. CQL: Conservative Q-Learning (CQL) [17] is a leading offline model-free baselines. CQL
+learns Q-functions so that the expected value of a policy under the learned Q-function is a
+lower-bound of the true policy value. CQL modifies the standard Bellman error with a term
+that minimizes the Q-function under the policy distribution while maximizing it under the
+offline data distribution. CQL does not leverage behavioral priors.
+
+4. BRAC-v: BRAC-v is another leading model-free RL algorithm that utilizes behavioral
+priors to learn a conservative policy. BRAC-v is the model-free algorithm most similar to
+MABE. Like MABE, BRAC-v learns a behavioral prior by fitting a Gaussian distribution to
+the offline data and regularizing a Gaussian evaluation policy with respect to the behavioral
+data. Unlike MABE, BRAC-v does not weigh the behavioral prior with the advantage and
+instead treats all data points equally regardless of the reward achieved.
+
 
 * *Offline Reinforcement Learning with Pseudometric Learning* (ICML 21')
 
