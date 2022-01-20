@@ -1471,7 +1471,7 @@ In deploy time, this "state from future" is picked by a lookahead module where w
 
 * *TRAIL: NEAR-OPTIMAL IMITATION LEARNING WITH SUBOPTIMAL DATA* (2021)
 
-[TBD]
+This paper solves the problem where we have an expert dataset and a sub-optimal dataset (traj with (s, a)-pairs) where the action is drawn **uniformly at random**. The authors propose that, even if the uniform task-agnostic dataset is highly unrelated with our current task, it serves as a way to build transition models of the world. Thus, the author propose to learn a factorized structure, one half for transition model (given current state S and current latent action space Z and map to a probability distribution of S), the other half for learning latent action space. The author gives a fancy result that their method can provably give a boost to RL process by utilizing an existing conclusion in behavior cloning and factorize their algorithm to multiple steps with essentially the same form of objective.
 
 
 ### State-Conditioned 
