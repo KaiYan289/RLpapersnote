@@ -1459,9 +1459,15 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 ### Demonstration-Guided RL
 
+* *Learning to Weight Imperfect Demonstrations* This paper from ICML 21' gives weight for datapoints in GAIL.
+
+* *Importance Weighted Transfer of Samples in Reinforcement Learning* ICML 18'
+
 * *PARROT: DATA-DRIVEN BEHAVIORAL PRIORS FOR REINFORCEMENT LEARNING* See below "state-conditioned" section.
 
 * *Demonstration-Guided Reinforcement Learning with Learned Skills* (SKILD)
+
+The following work of SPiRL. It assumes that there are two sets of demonstrations: task-specific, which is the particular downstream's task's demonstration; and task-agnostic, which is related but not the particular downstream task's demonstration. It trains two set of priors using SPiRL and use a discriminator to combine them.
 
 * *Hierarchical Few-Shot Imitation with Skill Transition Models* (2021)
 
