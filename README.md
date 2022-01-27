@@ -136,6 +136,12 @@ Creating conda environment from old ones: conda create -n new_env --clone old_en
 
 See "robotics.md" in the repo. Thanks prof. Gupta for his wonderful class!
 
+# Semi-Supervised Learning
+
+* *Not All Unlabeled Data are Equal: Learning to Weight Data in Semi-supervised Learning* (2020) [TBD]
+
+* *Unsupervised Data Augmentation for Consistency Training* (2019) [TBD]
+
 # Causal Inference
 
 Thanks the causal reading group @ MSRA for their valuable opinions on causal inference! For a more thorough and professional summary, see *https://github.com/fulifeng/Causal_Reading_Group*.
