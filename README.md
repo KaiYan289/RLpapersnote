@@ -142,6 +142,8 @@ See "robotics.md" in the repo. Thanks prof. Gupta for his wonderful class!
 
 * *Unsupervised Data Augmentation for Consistency Training* (2019) [TBD]
 
+* *Fixmatch: Simplifying semi-supervised learning with consistency and confidence*
+
 # Causal Inference
 
 Thanks the causal reading group @ MSRA for their valuable opinions on causal inference! For a more thorough and professional summary, see *https://github.com/fulifeng/Causal_Reading_Group*.
