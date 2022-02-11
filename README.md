@@ -748,6 +748,9 @@ This is a paper where the attacker distorts cost signals.
 A survey. Quoting its abstract, "Social Learning is a new class of algorithms that enables agents to reshape the reward function of other agents with the goal of promoting cooperation and achieving higher global rewards in mixed-motive games." (Does this ring a bell w.r.t. Coco-Q learning & side payment?)
 
 ## Miscellanous
+
+* *Learning to Utilize Shaping Rewards: A New Approach of Reward Shaping* (2020) TBD.
+
 * *Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion* 
 
 A classical paper that has 6000+ citations; it helps in understanding what "reconstruction" is, starting from a perspective of mutual information and manifold learning. PCA is essentially Affine encoder and decoder without any nonlinearity and a squared error loss. The corruption and learning with robustness process is to project the data points back on a low-dimensional manifold.
@@ -1328,6 +1331,8 @@ Training Competitive RL agents requires the prevention of overfitting between th
 Five categories (in increasing order of sophistication): ignore, forget, respond to target models, learn models, and theory of mind. 
 
 * *Self-supervised Learning: Generative or Contrastive*
+
+* *A Divergence Minimization Perspective on Imitation Learning Methods* (2019) TBD.
 
 ### Ad-hoc teammate
 
