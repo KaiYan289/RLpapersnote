@@ -749,6 +749,8 @@ A survey. Quoting its abstract, "Social Learning is a new class of algorithms th
 
 ## Miscellanous
 
+* *Keep doing what worked: Behavioral modelling priors for offline reinforcement learning* TBD.
+
 * *Learning to Utilize Shaping Rewards: A New Approach of Reward Shaping* (2020) TBD.
 
 * *Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion* 
