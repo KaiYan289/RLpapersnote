@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 50 Useful Tips of the Day (updated 2022.1)
+# 51 Useful Tips of the Day (updated 2022.2)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -115,6 +115,20 @@ However, such practice (the one datapoint method) may face the problem of **not 
 49. Note that torch.KLDivLoss(q.log(), p) = KL(p||q).
 
 50. When you are tuning performance, try keep observing the curve for the first run if possible; this takes a little time, but it helps you to grab a sense of what is happening, and what epoch is the best. Also, try to run your code **through** before starting a long experiment (e.g. set epoch to 1 to see if the model can save correctly).
+
+51. Use the following code to fix your pytorch random seeds, preferably at the beginning of main process:
+
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed) \# when using multiple GPUs
+    torch.cuda.manual_seed(seed)     
+    np.random.seed(seed)
+    random.seed(seed)
+    torch.backends.cudnn.deterministic = True 
+    \# torch.use_deterministic_algorithms(True) use with caution; this line of code changes many behavior of program. 
+    torch.backends.cudnn.benchmark = False \# CUDNN will try different methods and use an optimal one if this is set to true. This could be harmful if your input size / architecture is changing.
+    
+Note: once the random seed is set anywhere in this process (regardless of which file it is in), the seed remain fixed (unless implicitly set by other libraries).
+
 
 # Useful Linux Debugging Commands
 
