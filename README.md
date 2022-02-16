@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 51 Useful Tips of the Day (updated 2022.2)
+# 52 Useful Tips of the Day (updated 2022.2)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -129,6 +129,7 @@ However, such practice (the one datapoint method) may face the problem of **not 
     
 Note: once the random seed is set anywhere in this process (regardless of which file it is in), the seed remain fixed (unless implicitly set by other libraries).
 
+52. You should reduce the learning rate if you are using batchnorm. Batchnorm changes the landscape.
 
 # Useful Linux Debugging Commands
 
