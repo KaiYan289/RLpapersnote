@@ -840,7 +840,7 @@ However, I have recurred the experiments and found that the recovery of reward f
 
 * *Infinite Time Horizon Maximum Causal Entropy Inverse Reinforcement Learning*
 
-* *Maximum Entropy Deep Inverse Reinforcement Learning* (2010) 
+* *Maximum Entropy Deep Inverse Reinforcement Learning* (NIPS2015 workshop) 
 
 "Deep" is used in this work to extract and combine features instead of handcrafting features and only combining them linearly. 
 
