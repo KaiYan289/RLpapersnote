@@ -1349,7 +1349,18 @@ Five categories (in increasing order of sophistication): ignore, forget, respond
 
 * *Self-supervised Learning: Generative or Contrastive*
 
-* *A Divergence Minimization Perspective on Imitation Learning Methods* (2019) TBD.
+* *A Divergence Minimization Perspective on Imitation Learning Methods* (2019)
+
+In this paper, the author proposes a f-max framework that unifies the two main components in imitation learning, which are behavior cloning and inverse RL. AIRL is an example of f-max, and f-max is a subset of GAIL. BC, AIRL and GAIL can all be unified into a minimization of some f-metric over the generated data and the expert dataset; it could be KL, reverse KL, JS or other things. One very interesting thing about this paper is that it proposes two hypothesis:
+
+1) in MDP of usual interest, the reward function depends more on state than action;
+2) Being mode-seeking is more beneficial than mode-covering, especially in the low-data regime.
+
+A very interesting thing: "optimization using the forward KL divergence results in distributions with a mode-covering behaviour, whereas using the reverse KL results in mode-seeking behaviour".
+
+Some following-up papers on mode-seeking and mode-covering:
+https://arxiv.org/pdf/1805.01045.pdf
+Minka, Tom. Divergence measures and message passing. Technical report, Technical report, Microsoft Research, 2005.
 
 ### Ad-hoc teammate
 
