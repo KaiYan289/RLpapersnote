@@ -768,7 +768,21 @@ A survey. Quoting its abstract, "Social Learning is a new class of algorithms th
 
 * *Keep doing what worked: Behavioral modelling priors for offline reinforcement learning* TBD.
 
-* *Learning to Utilize Shaping Rewards: A New Approach of Reward Shaping* (2020) TBD.
+* *Learning to Utilize Shaping Rewards: A New Approach of Reward Shaping* (2020) 
+
+This paper proposes to get adequate reward shaping value by bi-level optimization; in the outer loop, the objective is the final reward, and in the inner loop, the objective is the shaped reward.
+
+An important thing about this paper is that it summarizes the progress in reward shaping: 
+
+PBRS, the vanilla reward shaping proposed by Andrew Ng; \phi(s)-\gamma * \phi(s')
+
+PBA (advice), include action in the shaping function \gamma * \phi(s', a') - \phi(s, a)
+
+D(dynamics)PBA, include a time dimension in the state that allows for dynamic reward shaping (or, "recurrent shaping policy").
+
+Another thing worth noting is that this bi-level optimization method is actually quite common; e.g. prediction+optimization, not all labeled data are equal paper. You get an auxiliary factor that you don't know in the inner-level optimization and in the outside optimize the original objective. The hardest point here is to calculate the gradient of outer loop variables w.r.t. inner-loop optimal solution.
+
+The author proposes two lines of methods: explicit mapping, which is to expand the state and let shaping value become part of the state; (incremental) meta-gradient learning, which is set the approximated gradient as a new variable and try to estimate it.
 
 * *Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion* 
 
