@@ -1516,6 +1516,10 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 * *PARROT: DATA-DRIVEN BEHAVIORAL PRIORS FOR REINFORCEMENT LEARNING* See below "state-conditioned" section.
 
+* *Skill-based Meta-Reinforcement Learning (SIMPL)*
+
+Another following work of SPiRL, also done by Karl Pertsch's team in USC. They inherit the skill extraction module of SPiRL and the idea of reward shaping. They learn a meta-task embedding. (TBD)
+
 * *Demonstration-Guided Reinforcement Learning with Learned Skills* (SKILD)
 
 The following work of SPiRL. It assumes that there are two sets of demonstrations: task-specific, which is the particular downstream's task's demonstration; and task-agnostic, which is related but not the particular downstream task's demonstration. It trains two set of priors using SPiRL and use a discriminator to combine them.
