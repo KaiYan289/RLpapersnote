@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 53 Useful Tips of the Day (updated 2022.2)
+# 54 Useful Tips of the Day (updated 2022.2)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -133,6 +133,15 @@ Note: once the random seed is set anywhere in this process (regardless of which 
 
 53. What is the difference between optimizing KL and reverse KL? Mode-seeking (reverse) and mode-covering (forward)! See https://www.tuananhle.co.uk/notes/reverse-forward-kl.html for a brief explanation.
 
+54. You can use the following code to visualize your RL episode:
+
+In your gym step: 
+    img = env.render(mode='rgb_array')
+    IMG.append(img)
+and at the end of the episode, you write
+
+ imageio.mimsave(name+'.mp4', IMG, fps=25)
+    
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
