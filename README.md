@@ -1189,6 +1189,10 @@ Temperature-based exploration auto-encoder is a method to deal with high-dimensi
 
 ## Novel Architectures
 
+* *Imbedding Deep Neural Networks* (ICLR 22' spotlight)
+
+This paper proposes a novel architecutre called InImNet which improves over neural ODE. (TBD)
+
 * *Value Propagation Networks* (ICLR 19')
 
 An improvement over VIN. An interesting observation is that *for 2-dimensional gridworld / games on a planar graph, value iteration can represented by a convolutional progress on GCN*.
@@ -1415,6 +1419,11 @@ noise injection methods used in several DRL works cannot robustly detect or alle
 
 Soem current solutions include stochastic policy，random starts，sticky actions（repeat the last action with some probability）and frame skipping。
 
+### Multi-agent: Emergent Communication
+
+The classic model for MARL in emergent communication is Levis game, which consists of a speaker and a listener, where the listener must make choices according to a picture (or other input) that is only visible to the speaker. The speaker and the listener shares the reward if the choice is made correctly.
+
+* *Emergent Communication at Scale* (ICLR 22' spotlight)
 
 ### Multi-agent: Credit Assignment
 
@@ -1518,6 +1527,10 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 * *First order Constrained Optimization in Policy Space* An improvement of the paper above which does not require calculating 2nd-order derivation.
 
 ### Demonstration-Guided RL
+
+* *Reinforcement Learning with Sparse Rewards using Guidance from Offline Demonstration* (ICLR 22' spotlight)
+
+This paper proposes LOGO, which is based on TRPO and limit the policy to be similar to demonstrations by constraints. It is surprising that this work does not mention either PARROT or SPiRL/SKiLD/FIST line of work. [TBD]
 
 * *Learning to Weight Imperfect Demonstrations* This paper from ICML 21' gives weight for datapoints in GAIL.
 
