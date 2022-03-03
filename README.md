@@ -1536,9 +1536,9 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 TBD
 
-* *Error Bounds of Imitating Policies and Environments*
+* *Error Bounds of Imitating Policies and Environments* (NeurIPS 20')
  
-TBD 
+GAIL can achieve a linear dependency on the effective horizon while BC has a quadratic dependency. The effective horizon is 1 / (1 - \gamma).
 
 **BC is minimax optimal in the offline setting, which implies no method is better than BC in the worst case.**
 
