@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 54 Useful Tips of the Day (updated 2022.2)
+# 55 Useful Tips of the Day (updated 2022.3)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -141,6 +141,8 @@ In your gym step:
 and at the end of the episode, you write
 
  imageio.mimsave(name+'.mp4', IMG, fps=25)
+ 
+55. If you need to change distribution in expectation in your derivation, try importance sampling. But as this introduces a possibly instable denominator, you may need surrogates to stabilize the whole thing.  
     
 # Useful Linux Debugging Commands
 
@@ -1528,13 +1530,41 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 ### Demonstration-Guided RL
 
+#### Theory on Imitation Learning
+
+* *Toward the fundamental limits of imitation learning* (NeurIPS 20')
+
+TBD
+
+* *Error Bounds of Imitating Policies and Environments*
+ 
+TBD 
+
+**BC is minimax optimal in the offline setting, which implies no method is better than BC in the worst case.**
+
+#### Others
+
+* *DemoDICE: Offline Imitation Learning with Supplementary Imperfect Demonstrations* (ICLR 22')
+
+This paper assumes that we have two datasets, one is optimal and the other is of unknown degree of optimality. It tries to give a weighted sum to the minimization of KL divergence between current policy and optimal dataset & KL divergence between current policy and suboptimal dataset in behavioral cloning, with the Bellman flow constraint (see "tutorial" https://yuanz.web.illinois.edu/teaching/IE498fa19/lec_15.pdf for the definition of Bellman flow constraint).
+
+The author then consider the dual problem of the objective, which is a bilevel optimization. The author proves that, with adequate derivation (including importance sampling to change the expectation and surrogate for numerical stability), the problem has a closed-form solution, from which we can extract the policy with the maximum entropy assumption.
+
+**Occupancy measure of MDP** is the (stationary?) distribution of state-action pairs that an agent encounters when navigating the environment with its model.
+
+They test their result on mujoco environment, such as hopper and cheetah. 
+ 
+Note: this paper is somewhat questioned by a reader on openreview.
+
 * *Reinforcement Learning with Sparse Rewards using Guidance from Offline Demonstration* (ICLR 22' spotlight)
 
-This paper proposes LOGO, which is based on TRPO and limit the policy to be similar to demonstrations by constraints. It is surprising that this work does not mention either PARROT or SPiRL/SKiLD/FIST line of work. Since TRPO is not suitable for sparse reward (as the policy won't change much and it is hard to gain any meaningful reward signal), the author add a step after each policy update step with original reward. The new step minimizes the KL divergence between current policy and offline dataset on the offline dataset. To calculate the KL divergence, we try to estimate the ratio of \pi(s, a) for current policy and for offline dataset by fist training a discriminator, then use the trained discriminator's output as the ratio result, as the discriminator's form matches at the optimal point of the discriminator.
+This paper proposes LOGO, which is based on TRPO and limit the policy to be similar to demonstrations by constraints. It is surprising that this work does not mention either PARROT or SPiRL/SKiLD/FIST line of work. Since TRPO is not suitable for sparse reward (as the policy won't change much and it is hard to gain any meaningful reward signal), the author add a step after each policy update step with original reward. The new step minimizes the KL divergence between current policy and offline dataset on the offline dataset. To calculate the KL divergence, we try to estimate the ratio of \pi(s, a) for current policy and for offline dataset by fist training a discriminator, then use the trained discriminator's output as the ratio result, as the discriminator's form matches at the optimal point of the discriminator. **This technique is also known as distribution matching, which leads to many important progresses in imitation learning.**
 
 The paper gives theoretical bounds on performance.
 
-* *Learning to Weight Imperfect Demonstrations* This paper from ICML 21' gives weight for datapoints in GAIL.
+* *Learning to Weight Imperfect Demonstrations* 
+
+This paper from ICML 21' gives weight for datapoints in GAIL. Through mathematical derivations, it gives an upper bound to the weighted objective which is equivalent to GAIL with another unknown policy that can be estimated by importance sampling.
 
 * *Importance Weighted Transfer of Samples in Reinforcement Learning* ICML 18'
 
