@@ -1530,7 +1530,9 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 * *Reinforcement Learning with Sparse Rewards using Guidance from Offline Demonstration* (ICLR 22' spotlight)
 
-This paper proposes LOGO, which is based on TRPO and limit the policy to be similar to demonstrations by constraints. It is surprising that this work does not mention either PARROT or SPiRL/SKiLD/FIST line of work. [TBD]
+This paper proposes LOGO, which is based on TRPO and limit the policy to be similar to demonstrations by constraints. It is surprising that this work does not mention either PARROT or SPiRL/SKiLD/FIST line of work. Since TRPO is not suitable for sparse reward (as the policy won't change much and it is hard to gain any meaningful reward signal), the author add a step after each policy update step with original reward. The new step minimizes the KL divergence between current policy and offline dataset on the offline dataset. To calculate the KL divergence, we try to estimate the ratio of \pi(s, a) for current policy and for offline dataset by fist training a discriminator, then use the trained discriminator's output as the ratio result, as the discriminator's form matches at the optimal point of the discriminator.
+
+The paper gives theoretical bounds on performance.
 
 * *Learning to Weight Imperfect Demonstrations* This paper from ICML 21' gives weight for datapoints in GAIL.
 
