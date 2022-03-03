@@ -1540,9 +1540,13 @@ The paper gives theoretical bounds on performance.
 
 * *PARROT: DATA-DRIVEN BEHAVIORAL PRIORS FOR REINFORCEMENT LEARNING* See below "state-conditioned" section.
 
-* *Skill-based Meta-Reinforcement Learning (SIMPL)*
+* *Skill-based Meta-Reinforcement Learning (SIMPL)* (ICLR 22' Spotlight)
 
-Another following work of SPiRL, also done by Karl Pertsch's team in USC. They inherit the skill extraction module of SPiRL and the idea of reward shaping. They learn a meta-task embedding. (TBD)
+Another following work of SPiRL, also done by Karl Pertsch's team in USC. They inherit the skill extraction module of SPiRL; the difference is that, after extracting skills with SPiRL, they try to learn a task encoder with meta-task information, and use both the output of this encoder as well as the "prior" in SPiRL to train a high-level policy (which outputs skill z) for a particular task with the policy decoder in SPiRL frozen; then, for the transfered task, they freeze both task-encoder and skill-decoder, and fine-tune high-level policy.
+
+Step 1: SPiRL, skill encoder, skill decoder and prior that mimics skill encoder
+Step 2: high-level policy with task-encoder and prior's input as the input and output z to skill decoder. The skill decoder is frozen.
+Step 3: fine-tune high-level policy with task-encoder and skill-decoder frozen.
 
 * *Demonstration-Guided Reinforcement Learning with Learned Skills* (SKILD)
 
