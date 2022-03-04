@@ -1191,6 +1191,8 @@ Temperature-based exploration auto-encoder is a method to deal with high-dimensi
 
 ## Novel Architectures
 
+* *On Layer Normalization in the Transformer Architecture* https://arxiv.org/pdf/2002.04745.pdf (TBD)
+
 * *Imbedding Deep Neural Networks* (ICLR 22' spotlight)
 
 This paper proposes a novel architecutre called InImNet which improves over neural ODE. (TBD)
