@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 55 Useful Tips of the Day (updated 2022.3)
+# 56 Useful Tips of the Day (updated 2022.3)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -143,7 +143,17 @@ and at the end of the episode, you write
  imageio.mimsave(name+'.mp4', IMG, fps=25)
  
 55. If you need to change distribution in expectation in your derivation, try importance sampling. But as this introduces a possibly instable denominator, you may need surrogates to stabilize the whole thing.  
+
+56. If you are encountering strange problems in python import (e.g. missing .so), there are a few possible things that you can do:
+
+1) check if the import path is wrong. For example, is your python importing a package from /.local/lib/python3.x/site-packages instead of your conda directory? 
+
+2) check both pip and conda envrionment, especially where there is a version mismatch between python xxx.\_\_version\_\_ and pip list / conda list. https://www.anaconda.com/blog/using-pip-in-a-conda-environment Actually, you may want to avoid using pip and conda together.
     
+3) check your python, linux, and some system library version (e.g. MPI) under different settings. Sometimes the problem comes from version mismatch.
+
+4) DO NOT try to copy-paste a file from another version into this version and simply change its name for a quick fix, unless you absolutely know what you are doing. While sometimes it can fix the problem, this creates an environment that is hard to reproduce and would be questioned by future readers of your papers.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
@@ -154,9 +164,13 @@ Checking memory usage: htop
 
 Checking the disk space taken up by subfolders in the directory: cd some_directory; du -h --max-depth=1  
 
+Checking free space: df -h
+
 Checking the location of an installed package: import xxx; print(xxx.\_\_file\_\_)
 
 Creating conda environment from old ones: conda create -n new_env --clone old_env
+
+Removing conda environment: conda env remove -n old_env
 
 [Under Construction]
 
