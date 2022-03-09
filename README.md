@@ -288,6 +288,8 @@ for image recognition".)
 Continual learning (CL) — the ability to continuously learn, building on previously acquired knowledge — is a natural requirement for long-lived autonomous
 reinforcement learning (RL) agents. 
 
+* *Breaking the Deadly Triad with a Target Network* (ICML 21')
+
 * *Deep Reinforcement Learning and the Deadly Triad* (2018)
 
 **Deadly Triad** is a phenomenon in deep reinforcement learning where RL algorithms could diverge given the following three factors:
