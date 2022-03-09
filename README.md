@@ -290,6 +290,23 @@ reinforcement learning (RL) agents.
 
 * *Deep Reinforcement Learning and the Deadly Triad* (2018)
 
+**Deadly Triad** is a phenomenon in deep reinforcement learning where RL algorithms could diverge given the following three factors:
+
+1) bootstrapping (using any sort of TD-learning, e.g. TD(0));
+
+2) function approximator;
+
+3) off-policy.
+
+The problem that leads to the deadly triad is: 
+
+a) With a function approximator, **V(s) or Q(s,a) from adjacent states become related**;
+
+b) With bootstrapping, the function is sometimes trained with a wrongly estimated target (if there is no bootstrapping, then every update in expectation leads to ground truth)
+
+c) With off-policy, the function is not update in correspondence to the visiting probability, thus adding **a false weight** on the Bellman equation, breaching the contract mapping property to converge; and since there is a function approximator, we cannot let each state to converge at a separate speed.
+
+
 This paper studies the convergence behavior of the Q-value, and concluded that:
 
 1) action value can commonly exhibit exponential initial growth, yet still subsequently recover to normal.
