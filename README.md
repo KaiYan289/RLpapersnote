@@ -1571,6 +1571,10 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 With offline dataset, for any learner algorithm, there exists a MDP instance where the regret is lower-bounded by min(H, |S|H^2/N), where H is the length of episode, |S| is the number of states, and N is the number of trajectories. On the other hand, behavior cloning can reach such level of suboptimality, which means in the worst case, all algorithms are as bad as behavior cloning.
 
+The core of this proof is to convert possible loss into the discrepancy of the probability of visiting states, and subsequently invoking Ross's result (see DAGGER paper). For the states that are not visited, the best thing an expert could do is to act uniformly randomly.
+
+Note: This paper does not take the similarity of states into account; it treats states as totally different, only with a label attached on each state.
+
 * *Error Bounds of Imitating Policies and Environments* (NeurIPS 20')
  
 GAIL can achieve a linear dependency on the effective horizon while BC has a quadratic dependency. The effective horizon is 1 / (1 - \gamma).
