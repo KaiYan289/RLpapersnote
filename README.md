@@ -267,8 +267,15 @@ https://github.com/clvrai/awesome-rl-envs has many RL testbeds.
 
 * *When should agents explore* (ICLR 22')
 
-switching between modes.
-TBD
+This paper conducts an extensive research into the exploration of the agents, including exploration in step (epsilon-greedy), intra-episode, episode (warmup) and experiment-level (intrinsic reward). It also investigates the best way to switch between exploration and exploitation mode, e.g., **value-promised discrepancy**, which is the difference between value k-steps ago and the discounted value for now plus actual discounted return (i.e. discounted bootstrapped return) during the k-steps. 
+
+The paper is mainly based on Atari environment. The conclusion is twofold:
+
+1) Intra-episodic exploration is a promising direction for future exploration policy.
+
+2) the huge design space of the proposed family of methods cannot be
+reduced to simplistic metrics, such as pX.Jointly using two bandits across factored dimensions is very adaptive, but can sometimes be harmful
+when they decrease the signal-to-noise ratio in each other’s learning signal. Also, the choice of the uncertainty-based trigger should be informed by the switching modes.
 
 * *Visualizing the Loss Landscape of Neural Nets* 
 
