@@ -264,6 +264,12 @@ Some miscellanous remarks:
 
 https://github.com/clvrai/awesome-rl-envs has many RL testbeds.
 
+
+* *When should agents explore* (ICLR 22')
+
+switching between modes.
+TBD
+
 * *Visualizing the Loss Landscape of Neural Nets* 
 
 An illustration of how the art of network architecture refining matters. [TBD]
