@@ -1156,7 +1156,19 @@ Yet, it could be long before RL-powered autonomous driving actually put in use.
 * *Driverless Car: Autonomous Driving Using Deep Reinforcement Learning in Urban Environment*
 
 # Miscellanous
-## Transfer Learning
+## Transfer Learning / Multi-task Learning
+
+* *RotoGrad: Gradient Homogenization in Multitask Learning* (ICLR 22')
+
+There are usually two problems in multitask learning: graident magnitude conflict and direction conflict. The phenomenon that sharing parameters across tasks leads to worse result is called **negative transfer**.
+
+Quote: "RotoGrad addresses the gradient magnitude discrepancies by re-weighting task gradients at each step of the learning, while encouraging learning those tasks that have converged the least thus far."
+
+For gradient magnitude: equalizing gradient magnitudes amounts to finding weights that normalize and scale each gradient; the core idea is that each task should converge at a similar rate. Therefore, the authors set the sum of all tasks' weight to be 1, and each weight to be proportional to its current task's graident norm ratio, compared with the first gradient step of this task. This is a resemblance of Normalized Gradient Descent in multi-task learning. A good point of this method is that it is a hyper-parameter-free approach which does not need tuning.
+
+For gradient direction: try to rotate the feature space to decrease conflicts; more specifically, find a rotation matrix to the last shared feature vector and apply to it. Such matrix is learned, and optimized by maximize the batch-wise cosine similarity of gradient. This rotation optimization, as "follower", forms a **stackelberg game** with the main optimization process in each step. For scalability, only a small subset of dimensions are rotated each step.
+
+**Note that the rotation matrix SO(n) is a Lie group; The optimization of rotation matrix can be done by considering parameterization via exponential maps on the Lie algebra of SO(n).** See the paper *Cheap Orthogonal Constraints in Neural Networks: A Simple Parametrization of the Orthogonal and Unitary Group*.
 
 * *A Comprehensive Survey on Transfer Learning* (2019)
 
