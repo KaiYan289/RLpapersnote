@@ -1569,7 +1569,7 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 * *Toward the fundamental limits of imitation learning* (NeurIPS 20')
 
-TBD
+With offline dataset, for any learner algorithm, there exists a MDP instance where the regret is lower-bounded by min(H, |S|H^2/N), where H is the length of episode, |S| is the number of states, and N is the number of trajectories. On the other hand, behavior cloning can reach such level of suboptimality, which means in the worst case, all algorithms are as bad as behavior cloning.
 
 * *Error Bounds of Imitating Policies and Environments* (NeurIPS 20')
  
