@@ -1251,6 +1251,19 @@ Temperature-based exploration auto-encoder is a method to deal with high-dimensi
 
 * *On Layer Normalization in the Transformer Architecture* https://arxiv.org/pdf/2002.04745.pdf (TBD)
 
+* *THE HIDDEN CONVEX OPTIMIZATION LANDSCAPE OF REGULARIZED TWO-LAYER RELU NETWORKS: AN EXACT CHARACTERIZATION OF OPTIMAL SOLUTIONS* (ICLR 22' oral)
+
+**All globally optimal two-layer ReLU neural networks can be performed by solving a convex optimization program with cone constraints.**
+
+Wang & Lin (2021) showed that with an explicit regularizer based on the scaled variation norm, overparametrization is generally harmless to two-layer ReLU networks.
+
+The authors assume that the loss is a convex one (e.g. hinge) plus a L2 regularization.
+
+Nguyen & Hein (2017) showed that no spurious minima occur provided that one of the layer’s inner width exceeds n and under additional non-degeneracy conditions.
+
+* *Harmless Overparametrization in Two-layer Neural Networks* (2021)
+
+
 * *Imbedding Deep Neural Networks* (ICLR 22' spotlight)
 
 This paper proposes a novel architecutre called InImNet which improves over neural ODE. (TBD)
