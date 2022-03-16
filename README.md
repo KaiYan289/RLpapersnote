@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 56 Useful Tips of the Day (updated 2022.3)
+# 59 Useful Tips of the Day (updated 2022.3)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -153,6 +153,12 @@ and at the end of the episode, you write
 3) check your python, linux, and some system library version (e.g. MPI) under different settings. Sometimes the problem comes from version mismatch.
 
 4) DO NOT try to copy-paste a file from another version into this version and simply change its name for a quick fix, unless you absolutely know what you are doing. While sometimes it can fix the problem, this creates an environment that is hard to reproduce and would be questioned by future readers of your papers.
+
+57. There are many people write ML code, but many of them do not write the code well. Make sure you have seen others' code and wisely referred to them for your own code; you should not easily believe in one single reference, even if it has many stars.
+
+58. Whenever you see a exp() function, ask yourself: can you substitute it with a log?
+
+59. When using remote Python debugger with pycharm, you can close "attach to subprocess" option if you witness strange bugs. (At settings -> build, execution, deployment -> Python debugger)
 
 # Useful Linux Debugging Commands
 
