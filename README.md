@@ -1265,7 +1265,11 @@ Wang & Lin (2021) showed that with an explicit regularizer based on the scaled v
 
 The authors assume that the loss is a convex one (e.g. hinge) plus a L2 regularization.
 
+* *The loss surface of deep and wide neural networks* (2017)
+
 Nguyen & Hein (2017) showed that no spurious minima occur provided that one of the layer’s inner width exceeds n and under additional non-degeneracy conditions.
+
+Almost all local minima are globally optimal, for a fully connected network with squared loss and analytic activation function given that the number of hidden units of one layer of the network is larger than the number of training points and the network structure from this layer on is pyramidal.
 
 * *Harmless Overparametrization in Two-layer Neural Networks* (2021)
 
