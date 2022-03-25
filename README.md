@@ -162,7 +162,7 @@ and at the end of the episode, you write
 
 60. When developing a new architecture for deep learning, you cannot simply considering throwing a dart randomly and hoping it can work. You should deviate from original design gradually, or, stand on the shoulders of the giants.
 
-61. You should never use gradient descent along with weight decay. The gradient descent take effect **Before** weight decay, thus greatly amplifying the weight decay factor and cause the training to be weird.
+61. You should never use gradient clipping along with weight decay. The gradient clipping take effect **Before** weight decay, thus greatly amplifying the weight decay factor and cause the training to be weird.
 
 # Useful Linux Debugging Commands
 
