@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 59 Useful Tips of the Day (updated 2022.3)
+# 61 Useful Tips of the Day (updated 2022.3)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -159,6 +159,10 @@ and at the end of the episode, you write
 58. Whenever you see a exp() function, ask yourself: can you substitute it with a log?
 
 59. When using remote Python debugger with pycharm, you can close "attach to subprocess" option if you witness strange bugs. (At settings -> build, execution, deployment -> Python debugger)
+
+60. When developing a new architecture for deep learning, you cannot simply considering throwing a dart randomly and hoping it can work. You should deviate from original design gradually, or, stand on the shoulders of the giants.
+
+61. You should never use gradient descent along with weight decay. The gradient descent take effect **Before** weight decay, thus greatly amplifying the weight decay factor and cause the training to be weird.
 
 # Useful Linux Debugging Commands
 
