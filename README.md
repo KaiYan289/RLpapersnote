@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 61 Useful Tips of the Day (updated 2022.3)
+# 62 Useful Tips of the Day (updated 2022.3)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -163,6 +163,8 @@ and at the end of the episode, you write
 60. When developing a new architecture for deep learning, you cannot simply considering throwing a dart randomly and hoping it can work. You should deviate from original design gradually, or, stand on the shoulders of the giants.
 
 61. You should never use gradient clipping along with weight decay. The gradient clipping take effect **Before** weight decay, thus greatly amplifying the weight decay factor and cause the training to be weird.
+
+62. You should not copy models by iterating through parameters(), as parameters() does not contain parameters from the batchnorm layers. Use copy.deepcopy() or load_state_dict() instead.
 
 # Useful Linux Debugging Commands
 
