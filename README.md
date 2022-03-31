@@ -160,7 +160,7 @@ and at the end of the episode, you write
 
 59. When using remote Python debugger with pycharm, you can close "attach to subprocess" option if you witness strange bugs. (At settings -> build, execution, deployment -> Python debugger)
 
-60. When developing a new architecture for deep learning, you cannot simply considering throwing a dart randomly and hoping it can work. You should deviate from original design gradually, or, stand on the shoulders of the giants.
+60. When developing a new architecture for deep learning, you cannot simply considering throwing a dart randomly and hoping it can work. You should deviate from original design gradually, that is, stand on the shoulders of the giants.
 
 61. You should never use gradient clipping along with weight decay. The gradient clipping take effect **Before** weight decay, thus greatly amplifying the weight decay factor and cause the training to be weird.
 
@@ -1280,9 +1280,23 @@ Almost all local minima are globally optimal, for a fully connected network with
 * *Harmless Overparametrization in Two-layer Neural Networks* (2021)
 
 
+### Neural ODE
+* *IMPLICIT NORMALIZING FLOWS* (ICLR 21')
+
+* *Continuous-in-depth Neural Networks* (2020)
+
+* *Neural Ordinary Differential Equations* (2018)
+
 * *Imbedding Deep Neural Networks* (ICLR 22' spotlight)
 
 This paper proposes a novel architecutre called InImNet which improves over neural ODE. (TBD)
+
+An interesting direction nowadays is to combine neural network (especially resnet) and ODE, which is called neural ODE. Neural ODE sees network depth as the variable in the ODE, and the output of neural network is the value of the ODE system with depth being a particular integer. 
+
+The potential advantages of neural ODE are:
+1) stronger expressivity. If we view resnet as a discretized ODE, then it is less expressive than neural ODE. Actually, there are some functions that neural ODE can approximate easily, but resnet is hard to approximate.
+2) More freedom for tuning. The depth of the neural network now can be any real numbers!
+3) smaller storage space. The whole network can be described by a parameterized ODE, which could be much simpler.
 
 * *Value Propagation Networks* (ICLR 19')
 
