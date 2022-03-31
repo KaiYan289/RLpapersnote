@@ -1635,6 +1635,8 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 #### Theory on Imitation Learning
 
+* *The information Geometry of Unsupervised Reinforcement Learning* [TBD]
+
 * *Toward the fundamental limits of imitation learning* (NeurIPS 20')
 
 With offline dataset, for any learner algorithm, there exists a MDP instance where the regret is lower-bounded by min(H, |S|H^2/N), where H is the length of episode, |S| is the number of states, and N is the number of trajectories. On the other hand, behavior cloning can reach such level of suboptimality, which means in the worst case, all algorithms are as bad as behavior cloning.
@@ -1650,6 +1652,10 @@ GAIL can achieve a linear dependency on the effective horizon while BC has a qua
 **BC is minimax optimal in the offline setting, which implies no method is better than BC in the worst case.**
 
 #### Others
+
+* *Relay Policy Learning: Solving Long-Horizon Tasks via Imitation and Reinforcement learning* (CoRL 19')
+
+[TBD]
 
 * *DemoDICE: Offline Imitation Learning with Supplementary Imperfect Demonstrations* (ICLR 22')
 
