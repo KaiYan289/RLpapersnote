@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 62 Useful Tips of the Day (updated 2022.3)
+# 64 Useful Tips of the Day (updated 2022.4)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -158,13 +158,17 @@ and at the end of the episode, you write
 
 58. Whenever you see a exp() function, ask yourself: can you substitute it with a log?
 
-59. When using remote Python debugger with pycharm, you can close "attach to subprocess" option if you witness strange bugs. (At settings -> build, execution, deployment -> Python debugger)
+59. When using remote Python debugger with pycharm professional, you can close "attach to subprocess" option if you witness strange bugs. (At settings -> build, execution, deployment -> Python debugger)
 
 60. When developing a new architecture for deep learning, you cannot simply considering throwing a dart randomly and hoping it can work. You should deviate from original design gradually, that is, stand on the shoulders of the giants.
 
 61. You should never use gradient clipping along with weight decay. The gradient clipping take effect **Before** weight decay, thus greatly amplifying the weight decay factor and cause the training to be weird.
 
 62. You should not copy models by iterating through parameters(), as parameters() does not contain parameters from the batchnorm layers. Use copy.deepcopy() or load_state_dict() instead.
+
+63. If you are confronting strange problems in installing a package with "pip install -e .", take a look at the setup.py, especially if you cannot find any version. Sometimes, authors will use "git+git@xxxx" to fetch dependency posts. you should change it to git+https://xxxx ... as you are not collaborator / author of the repo.
+
+64. If you cannot run "git submodule update --init --recursive", you should check .gitmodule file to see if there is problem, especially that mentioned in 63. After that, "run git submodule sync" and the problem should be fixed.
 
 # Useful Linux Debugging Commands
 
