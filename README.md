@@ -172,6 +172,8 @@ and at the end of the episode, you write
 
 65. Even the smallest library/package version change can cause a big difference in a particular environment. For example, mpi4py 3.1.1 and 3.1.3, though seemingly no big difference in the update log, can decide whether a program is runnable or not.
 
+66. Different version of GPU (e.g. Nvidia A6000 and RTX 2080Ti) and different computation platform (e.g. GPU and CPU) could lead to non-egligible value difference when doing matrix multiplication! See https://forums.developer.nvidia.com/t/cpu-and-gpu-floating-point-calculations-results-are-different/18175 for details.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
