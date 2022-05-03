@@ -196,9 +196,13 @@ Removing conda environment: conda env remove -n old_env
 
 [Under Construction]
 
+# Tensor Decomposition / Neural Network Compression
+
+See "tensor.md" in the repo.
+
 # Robotics 
 
-See "robotics.md" in the repo. Thanks prof. Gupta for his wonderful class!
+See "robotics.md" in the repo. 
 
 # Semi-Supervised Learning
 
