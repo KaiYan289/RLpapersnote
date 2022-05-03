@@ -989,6 +989,10 @@ MAGAIL is MaxEnt RL + Nash Equilibrium; MAAIRL is MaxEnt RL + LSBRE.
 
 RL is currently not very popular in deployment of production (as of 2020/2021), as the sample efficiency are low and it may have no significant edge over expert systems and traditional analytical models in real-life. 
 
+## Tensor Decomposition
+
+*A novel rank selection scheme in tensor ring decomposition based on reinforcement learning for deep neural networks* (ICASSP 20')
+
 ## Software Engineering
 
 * *Assessing and Accelerating Coverage in Deep Reinforcement Learning* (2020)
