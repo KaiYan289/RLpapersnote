@@ -28,32 +28,26 @@
 
 **Ultimate tensorization: compressing convolutional and fc layers alike** (2016) prior work studied!
 
-**Efficient and accurate approximations of nonlinear convolutional networks** (2015)
+**Sharing residual units through collective tensor factorization in deep neural networks** prior work studied!
 
-**Sharing residual units through collective tensor factorization in deep neural networks**
+**Tensor regression networks** (2017) prior work studied!
 
-**Tensor regression networks** (2017)
+**Learning efficient tensor representations with ring structure networks** (2017) prior work studied!
 
-**Learning efficient tensor representations with ring structure networks** (2017)
+**Tensorial Neural Networks: Generalization of Neural Networks and Application to Model Compression** (2019) prior work studied!
 
-**Tensorized spectrum preserving compression for neural networks** (2019)
+**LTNN: A layerwise tensorized compression of multilayer neural network** (2018) prior work studied!
 
-**LTNN: A layerwise tensorized compression of multilayer neural network** (2018)
-
-**Bt-nets: Simplifying deep neural networks via block term decomposition** (2017)
-
-**Speeding up convolutional neural networks with low rank expansions** (2014)
+**Bt-nets: Simplifying deep neural networks via block term decomposition** (2017) prior work studied!
 
 Application: DNN hardware
 
-**An energy efficient machine learning accelerator on 3d cmos-rram for layer-wise tensorized neural network** (SOCC 17')
+**An energy efficient machine learning accelerator on 3d cmos-rram for layer-wise tensorized neural network** (SOCC 17') prior work studied!
 
 **Tie: energy-efficient tensor train-based inference engine for deep neural network** TT (ISCA 19') prior work studied!
 
 **Deepeye: A deeply tensor-compressed neural network hardware accelerator** (ICCAD 19') prior work studied!
 
-
-**A novel rank selection scheme in tensor ring decomposition based on reinforcement learning for deep neural networks** (ICASSP 20')
 
 dimensions:
 
