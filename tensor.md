@@ -1,8 +1,14 @@
 **Stable Low-rank Tensor Decomposition for Compression of Convolutional Neural Network** (ECCV 20')   prior work studied! combination of CPD and TKD
 
+instability issue: CPD-TKD
+
 **CP-decomposition with tensor power method for convolutional neural networks compression** (BigComp 17') CPD prior work studied!
 
+instability issue: finetuning
+
 **Speeding-up convolutional neural networks using fine-tuned CP-decomposition** (ICLR 15') CPD prior work studied!
+
+
 
 **Exploiting linear structure within convolutional networks for efficient evaluation. In: Advances in Neural Information Processing Systems** First works of CPD; prior work studied!
 
