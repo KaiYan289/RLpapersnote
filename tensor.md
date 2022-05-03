@@ -53,8 +53,6 @@ dimensions:
 
 CPD / TKD / TT / TR
 
-RNN / CNN
-
 possible problems:
 
 CPD:stability / degeneracy
