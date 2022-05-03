@@ -49,9 +49,7 @@ Application: DNN hardware
 **Deepeye: A deeply tensor-compressed neural network hardware accelerator** (ICCAD 19') prior work studied!
 
 
-dimensions:
-
-CPD / TKD / TT / TR
+dichotomy: CPD / TKD / TT / TR
 
 possible problems:
 
