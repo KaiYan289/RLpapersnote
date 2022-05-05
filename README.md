@@ -1663,6 +1663,8 @@ The core of this proof is to convert possible loss into the discrepancy of the p
 
 Note: This paper does not take the similarity of states into account; it treats states as totally different, only with a label attached on each state.
 
+* *Provably Breaking the Quadratic Error Compounding Barrier in Imitation Learning, Optimally* (2021) The extension of the work above. 
+
 * *Error Bounds of Imitating Policies and Environments* (NeurIPS 20')
  
 GAIL can achieve a linear dependency on the effective horizon while BC has a quadratic dependency. The effective horizon is 1 / (1 - \gamma).
