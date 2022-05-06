@@ -2,15 +2,18 @@
 
 instability issue: CPD-TKD
 
+cited 
+
 **CP-decomposition with tensor power method for convolutional neural networks compression** (BigComp 17') CPD prior work studied!
 
 instability issue: finetuning
 
 **Speeding-up convolutional neural networks using fine-tuned CP-decomposition** (ICLR 15') CPD prior work studied!
 
+naive CP decomposition; earliest work of CP
 
 
-**Exploiting linear structure within convolutional networks for efficient evaluation. In: Advances in Neural Information Processing Systems** First works of CPD; prior work studied!
+**Exploiting linear structure within convolutional networks for efficient evaluation** (2014) NIPS. First work; CP; prior work studied!
 
 **Automated multi-stage compression of neural networks** (ICCVW 2019) TKD prior work studied!
 
@@ -26,25 +29,25 @@ instability issue: finetuning
 
 **Learning compact recurrent neural networks with block-term tensor decomposition** (2017) prior work studied!
 
-**Towards efficient tensor decomposition-based dnn model compression with optimization framework** (CVPR 21') prior work studied! 
+**Towards efficient tensor decomposition-based dnn model compression with optimization framework** (CVPR 21') TT prior work studied! 
 
 **Tensortrain recurrent neural networks for video classification** (ICML 17') TT prior work studied!
 
 **Compressing recurrent neural networks with tensor ring for action recognition** (AAAI 19') TR prior work studied!
 
-**Ultimate tensorization: compressing convolutional and fc layers alike** (2016) prior work studied!
+**Ultimate tensorization: compressing convolutional and fc layers alike** (2016)  TT prior work studied!
 
-**Sharing residual units through collective tensor factorization in deep neural networks** prior work studied!
+**Sharing residual units through collective tensor factorization in deep neural networks** block term; prior work studied!
 
-**Tensor regression networks** (2017) prior work studied!
+**Tensor regression networks** (2017) special: weights with constraints. prior work studied!
 
-**Learning efficient tensor representations with ring structure networks** (2017) prior work studied!
+**Learning efficient tensor representations with ring structure networks** (2017) (what is TR?) prior work studied!
 
-**Tensorial Neural Networks: Generalization of Neural Networks and Application to Model Compression** (2019) prior work studied!
+**Tensorial Neural Networks: Generalization of Neural Networks and Application to Model Compression** (2019) special: approximating layers. prior work studied!
 
 **LTNN: A layerwise tensorized compression of multilayer neural network** (2018) prior work studied!
 
-**Bt-nets: Simplifying deep neural networks via block term decomposition** (2017) prior work studied!
+**Bt-nets: Simplifying deep neural networks via block term decomposition** block term decomposition. (2017) prior work studied!
 
 Application: DNN hardware
 
