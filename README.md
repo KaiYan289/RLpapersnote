@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 67 Useful Tips of the Day (updated 2022.4)
+# 69 Useful Tips of the Day (updated 2022.5)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -177,6 +177,10 @@ and at the end of the episode, you write
 67. If we decrease the number of steps in the diffusion model, for each sampled diffusion timestep t, on average, the product of \alpha, which is \bar{\alpha} will increase as there are less terms less than 1. As we are fitting epsilon, this leads to lower signal-noise-ratio for epsilon and higher MSEloss. Therefore, fewer number of steps requires higher beta. (https://arxiv.org/pdf/2006.11239.pdf)
 
 68. Remember to save your powerpoint every time you made a slide, and add a timestamp to your experiment results.
+
+69. You can use the following code to output all attributes in args from argparse:
+
+for arg in vars(args): f.write(str(arg)+" "+str(getattr(args, arg))+"\n")
 
 # Useful Linux Debugging Commands
 
