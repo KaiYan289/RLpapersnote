@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 69 Useful Tips of the Day (updated 2022.5)
+# 76 Useful Tips of the Day (updated 2022.6)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -192,7 +192,10 @@ for arg in vars(args): f.write(str(arg)+" "+str(getattr(args, arg))+"\n")
 
 74. Parenthesis around sum symbols should be at least as large as the sum symbols.
 
-75.
+75. Beware of any presence of your identification in the code of paper, including absolute path and platform username (e.g. for wandb)!
+
+76. Figures and its captions should be self-contained, especially in appendix where the space is unlimited; put settings and brief conclusion there.
+
 
 # Useful Linux Debugging Commands
 
