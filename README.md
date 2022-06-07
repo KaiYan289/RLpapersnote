@@ -1684,7 +1684,13 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 #### Theory on Imitation Learning
 
-* *The information Geometry of Unsupervised Reinforcement Learning* [TBD]
+* *The information Geometry of Unsupervised Reinforcement Learning* (2021)
+
+**This work focuses on infinite horizon MDP.**
+
+This paper studies unsupervised skill learning, which tries to learn a policy that maximizes the mutual information between state and some latent variable (expected difference of logprob between occupancy measure given and not given the latent vairable). This latent variable is the combination of policy and additional input. In this sense, skill learning is assigning different probabilities to different policies; most of the probabilities are 0. Those policies that are given non-zero probabilities are the "skills". This learning paradigm does not cover all possible optimal policies, but provides the best state distribution for learning policies to optimize an adversarially-chosen reward.
+
+Geometry: if we view each occupancy measure on each state (0 to 1) as a dimension, then a policy is a point on the n-1 dimensional probability simplex. **For any convex combination of valid state occupancy masures, there exists a Markovian policy that has the state occupancy measure. Policy search happens inside a convec polytope.** For state-dependent reward functions, the final reward is the dot product between the state marginal distribution and the reward vector.
 
 * *Toward the fundamental limits of imitation learning* (NeurIPS 20')
 
