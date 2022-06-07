@@ -531,6 +531,12 @@ The two works above are almost done in the same time; for DRQ, if we set the num
 
 * *Model-Ensemble Trust-Region Policy Optimization*
 
+* *Deepmdp: Learning continuous latent space models for representation learning* (ICML 19') [TBD]
+
+* *DREAM TO CONTROL: LEARNING BEHAVIORS BY LATENT IMAGINATION* (ICLR 20')
+
+Dreamer has a complicated latent dynamics, including representation model, transition model and reward model.
+
 ### World Models
 
 World models are a special type of model-based RL
@@ -1260,6 +1266,8 @@ This paper gives many theoretical results about extending RL onto Wasserstein me
 
 * *Wasserstein GAN* An advantage of Wasserstein over KL-divergence is that it does not require the support interval/set to be exactly the same. KL goes to infinity if the intersection is 0, but Wasserstein will not.
 
+* *Munchausen Reinforcement Learning* (2020) SOTA (as of ICML 22') on Atari games. [TBD]
+
 ## Active Learning
 
 * *Active Classification based on Value of Classifier*
@@ -1674,13 +1682,34 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 * *Discriminator-Weighted Offline Imitation Learning from Suboptimal Demonstrations* (ICML 22') [TBD]
 
-* *Continuous Control with Action Quantization from Demonstrations* (ICML 22') [TBD]
+* *Continuous Control with Action Quantization from Demonstrations* (ICML 22') 
 
-* *Align-RUDDER: Learning From Few Demonstrations by Reward Redistribution* (ICML 22') [TBD]
+This paper proposes AQuaDem, which learns a discretization of continuous action spaces which can be installed on RL with demonstrations, RL with play data and imitation learning. The agent learns a set of K actions for each state by minimizing a loss extended from BC loss, and only utilizes that set of actions; this can be understood in the perspective of Gaussian mixture. The multiple models are used for multimodality. A temperature controls the probability distribution; the lower the temperature is, the more likely the loss will only impose a single candidate action.
+
+* *Learning latent plans from play* (CoRL 20') [TBD]
+
+* *Align-RUDDER: Learning From Few Demonstrations by Reward Redistribution* (ICML 22')
+
+Align-RUDDER is a improvement from RUDDER (see below), where the safe explorations and lessons replay buffer of RUDDER are replaced by demonstrations with high reward (which is a commonly used skill - yet is only with limited effectiveness), and the LSTM of RUDDER is subtituted by a profile model acquired from sequence alignment of the demonstrations. Align-RUDDER identifies (s,a)-pairs that are indicative for high reward, and redistribute reward to them, thus making the algorithm "almost greedy".
+
+**Profile model** is commonly used in bioinformatics to score new sequences w.r.t. the aligned sequences; the conservation score indicates the degree of consensus reached in multiple subsequences and is used for reward redistribution. The intuition is: if every demonstration does the same thing here, then I should do the same thing. 
+
+The reward redistribution using profile model can be done in 5 steps: 1) defining events in demonstrations (clusters of (s,a)-pairs) using successor representation which gives a similarity matrix based on how connected 2 states are given a policy. The clustering is done by affinity propagation. 
+
+One possible setback of this method is that the consensus-based algorithm might not handle noisy environments. Also, affinity propagation could suffer the risk of creating a very large cluster. 
+
 
 * *Learning from Demonstration: Provably Efficient Adversarial Policy Imitation with Linear Function Approximation* (ICML 22') [TBD]
 
+
 * *Imitation Learning by Estimating Expertise of Demonstrators* (ICML 22') [TBD]
+
+The author proproses ILEED, in which an imitation learning framework that accounts for the varying levels of suboptimality in large offline datasets by leveraging information about demonstrator identities is designed. The identities is learned in an unsupervised manner. Expertise level of a demonstrator is calculated by the inner product of an embedding of state and some learned weight vector, normalized by sigmoid. The demonstrator's action distribution at a state can be described as a function of the expertise level; more specifically, it is interpolated between a theoratically optimal policy and random policy.
+
+However, the optimal policy cannot be acquired directly; thus we need to learn best policy, state embedding in expertise level and weight in expertise level jointly.
+
+One limitation of the theoretical part is that they assume all demonstrators explore all states with non-zero probability, which is not always the case in real-life applications.
+
 
 #### Theory on Imitation Learning
 
@@ -1712,7 +1741,7 @@ GAIL can achieve a linear dependency on the effective horizon while BC has a qua
 
 * *Relay Policy Learning: Solving Long-Horizon Tasks via Imitation and Reinforcement learning* (CoRL 19')
 
-[TBD]
+Relay policy learning divide an episode into different episodes; then hierarchically, the short episodes are learned by imitation learning, and the long episode is learned by RL.
 
 * *DemoDICE: Offline Imitation Learning with Supplementary Imperfect Demonstrations* (ICLR 22')
 
