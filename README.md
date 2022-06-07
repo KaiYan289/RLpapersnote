@@ -182,6 +182,18 @@ and at the end of the episode, you write
 
 for arg in vars(args): f.write(str(arg)+" "+str(getattr(args, arg))+"\n")
 
+70. Use the same color for the same method throughout the paper of your work, and same notation for the same thing as well. 
+
+71. Keep the citations nice, neat and simple for your papers. Just keep the platform of publication (e.g. ICML, Nature), paper name, year and author on it and don't put the pages / publishers etc.
+
+72. Use grammarly to check the writing of your paper, but do not overly rely on it. It may not recognize terms in your field and make mistakes.
+
+73. You can use a plain notation in Python for elementwise multiplication (Hadamard product), but need to state elementwise clearly when writing papers.
+
+74. Parenthesis around sum symbols should be at least as large as the sum symbols.
+
+75.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
