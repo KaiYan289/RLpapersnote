@@ -1672,6 +1672,16 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 ### Demonstration-Guided RL
 
+* *Discriminator-Weighted Offline Imitation Learning from Suboptimal Demonstrations* (ICML 22') [TBD]
+
+* *Continuous Control with Action Quantization from Demonstrations* (ICML 22') [TBD]
+
+* *Align-RUDDER: Learning From Few Demonstrations by Reward Redistribution* (ICML 22') [TBD]
+
+* *Learning from Demonstration: Provably Efficient Adversarial Policy Imitation with Linear Function Approximation* (ICML 22') [TBD]
+
+* *Imitation Learning by Estimating Expertise of Demonstrators* (ICML 22') [TBD]
+
 #### Theory on Imitation Learning
 
 * *The information Geometry of Unsupervised Reinforcement Learning* [TBD]
