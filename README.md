@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 76 Useful Tips of the Day (updated 2022.6)
+# 77 Useful Tips of the Day (updated 2022.6)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -196,6 +196,7 @@ for arg in vars(args): f.write(str(arg)+" "+str(getattr(args, arg))+"\n")
 
 76. Figures and its captions should be self-contained, especially in appendix where the space is unlimited; put settings and brief conclusion there.
 
+77. The most important hyperparam for PPO is #update epoch and update interval (# env steps).
 
 # Useful Linux Debugging Commands
 
