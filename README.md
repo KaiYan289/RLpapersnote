@@ -311,6 +311,9 @@ Some miscellanous remarks:
 
 https://github.com/clvrai/awesome-rl-envs has many RL testbeds.
 
+* *Rethinking the Implementation Tricks and Monotonicity Constraint in Cooperative Multi-Agent Reinforcement Learning* (ICML 22') [TBD]
+
+
 
 * *When should agents explore* (ICLR 22')
 
@@ -1018,11 +1021,20 @@ MAGAIL is MaxEnt RL + Nash Equilibrium; MAAIRL is MaxEnt RL + LSBRE.
 
 # Application
 
-RL is currently not very popular in deployment of production (as of 2020/2021), as the sample efficiency are low and it may have no significant edge over expert systems and traditional analytical models in real-life. 
+RL is currently not very popular in deployment of production (as of 2020/2021), as the sample efficiency are low and it may have no significant 
+edge over expert systems and traditional analytical models in real-life. 
+
+## Economy
+
+* *Welfare Maximization in Competitive Equilibrium: Reinforcement Learning for Markov Exchange Economy* (ICML 22') [TBD]
+
+* *Pessimism meets VCG: Learning Dynamic Mechanism Design via Offline Reinforcement Learning* (ICML 22') [TBD]
 
 ## Tensor Decomposition
 
-*A novel rank selection scheme in tensor ring decomposition based on reinforcement learning for deep neural networks* (ICASSP 20')
+* *Optimizing Tensor Network Contraction Using Reinforcement Learning* (ICML 22') [TBD]
+
+* *A novel rank selection scheme in tensor ring decomposition based on reinforcement learning for deep neural networks* (ICASSP 20')
 
 ## Software Engineering
 
