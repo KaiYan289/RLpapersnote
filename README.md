@@ -1270,7 +1270,13 @@ This paper gives many theoretical results about extending RL onto Wasserstein me
 
 * *Wasserstein GAN* An advantage of Wasserstein over KL-divergence is that it does not require the support interval/set to be exactly the same. KL goes to infinity if the intersection is 0, but Wasserstein will not.
 
-* *Munchausen Reinforcement Learning* (2020) SOTA (as of ICML 22') on Atari games. [TBD]
+* *Munchausen Reinforcement Learning* (2020) 
+
+SOTA (as of ICML 22') on Atari games. It modifies a little on energy-based DQN (soft Q-learning) by adding a positive reward for entropy (note: SAC modified the value function!) By adding this term, Munchausen DQN implicitly does KL regularization between successive policies, and increases the action-gap by a quantifiable amount which also helps dealing with approximation errors.
+
+**A softmax is the maximizer of the Legendre-Fenchel transform of the entropy.** https://en.wikipedia.org/wiki/Legendre_transformation
+
+
 
 ## Active Learning
 
@@ -1312,7 +1318,12 @@ Temperature-based exploration auto-encoder is a method to deal with high-dimensi
 
 ## Novel Architectures
 
-* *On Layer Normalization in the Transformer Architecture* https://arxiv.org/pdf/2002.04745.pdf 
+* *Implicit Quantile Networks for Distributional Reinforcement Learning* (ICML 18')
+
+In distributional RL, the **distribution** over returns is considered instead of the scalar value function that is its expectation. This is beneficial for theoretical analysis.
+
+
+* *On Layer Normalization in the Transformer Architecture* (2020) https://arxiv.org/pdf/2002.04745.pdf 
 
 Pre-LN is much easier to train than Post-LN! 
 
@@ -1703,6 +1714,8 @@ The policy pi, besides mimicking expert action, also tries to maximize the discr
 This paper proposes AQuaDem, which learns a discretization of continuous action spaces which can be installed on RL with demonstrations, RL with play data and imitation learning. The agent learns a set of K actions for each state by minimizing a loss extended from BC loss, and only utilizes that set of actions; this can be understood in the perspective of Gaussian mixture. The multiple models are used for multimodality. A temperature controls the probability distribution; the lower the temperature is, the more likely the loss will only impose a single candidate action.
 
 * *Learning latent plans from play* (CoRL 20') [TBD]
+
+plan proposal & plan recognition
 
 * *Align-RUDDER: Learning From Few Demonstrations by Reward Redistribution* (ICML 22')
 
