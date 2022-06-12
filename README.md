@@ -1006,6 +1006,14 @@ Highly recommending this paper. Intuitively, GAN trains a generator which genera
 
 and energy-based models (with Boltzmann distribution) assign a sample with an energy value that has the same form with MEIRL.
 
+* *Discriminator-actor-critic: Addressing sample inefficiency and reward bias in adversarial imitation learning* (ICLR 19') [TBD]
+
+* *Imitation learning via off-policy distribution matching* (ICLR 20') [TBD]
+
+* *On computation and generalization of generative adversarial imitation learning* (ICLR 20') [TBD]
+
+* *Generative adversarial imitation learning with neural networks: Global optimality and convergence rate* (2020)
+ 
 ## Multi-agent
 
 * *MAGAIL：Multi-Agent Generative Adversarial Imitation Learning* (2018)
@@ -1019,6 +1027,8 @@ MAGAIL is MaxEnt RL + Nash Equilibrium; MAAIRL is MaxEnt RL + LSBRE.
 * *Competitive Multi-agent Inverse Reinforcement Learning with Sub-optimal Demonstrations* (2018)
 
 * *Asynchronous Multi-Agent Generative Adversarial Imitation Learning* (2019)
+
+
 
 # Application
 
@@ -1062,9 +1072,13 @@ Di Cao, Weihao Hu, Junbo Zhao, Qi Huang, Zhe Chen, and Frede Blaabjerg's team ha
 
 A large collection (~100) papers of RL for energy systems. Such papers usually publish on IEEE transactions instead of conferences.
 
-## Recommending Systems
+## Recommender Systems
 
 RL is used in recommending systems due to its inherent **interactive and dynamic** nature; however, the sparsity of data is the greatest pain. Both GAN and supervised-learning with importance sampling are developed to address the issue.
+
+* *Environment reconstruction with hidden confounders for reinforcement learning based recommendation* (KDD 19') [TBD]
+
+* *Virtual-taobao: Virtualizing real-world online retail environment for reinforcement learning* (AAAI 19') [TBD]
 
 * *Generative Adversarial User Model for Reinforcement Learning Based Recommendation System* (ICML 19')
 
@@ -1744,7 +1758,7 @@ One possible setback of this method is that the consensus-based algorithm might 
 
 PUGAIL
 
-* *Learning from Demonstration: Provably Efficient Adversarial Policy Imitation with Linear Function Approximation* (ICML 22') [TBD]
+* *Learning from Demonstration: Provably Efficient Adversarial Policy Imitation with Linear Function Approximation* (ICML 22')
 
 This paper studies GAIL in both online / offline settings with linear function approximation (both transition & reward are linear in the feature map), and propose some generative adversarial policy optimization theorem that has provable bounds.
 
@@ -1758,6 +1772,16 @@ One limitation of the theoretical part is that they assume all demonstrators exp
 
 
 #### Theory on Imitation Learning
+
+* *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* (AISTATS 11') [TBD]
+
+* *A Reduction from Apprenticeship Learning to Classification* (NIPS 10') [TBD]
+
+* *Error Bounds of Imitating Policies and Environments* (NeurIPS 20') [TBD]
+
+* *Provable Representation Learning for Imitation with Contrastive Fourier Features* (NeurIPS 21') [TBD]
+
+infinite horizon on why GAIL is better than BC (note: a paper in the same conference stated that BC is the minimax at finite horizon setting? Is there any contradictory between the two papers?)
 
 * *The information Geometry of Unsupervised Reinforcement Learning* (2021)
 
