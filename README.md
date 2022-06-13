@@ -1347,6 +1347,10 @@ Temperature-based exploration auto-encoder is a method to deal with high-dimensi
 
 ## Novel Architectures
 
+* *Sub-Goal Trees – a Framework for Goal-Based Reinforcement Learning* (ICML 20') [TBD]
+
+Redefining the framework of reinforcement learning!
+
 * *Implicit Quantile Networks for Distributional Reinforcement Learning* (ICML 18')
 
 In distributional RL, the **distribution** over returns is considered instead of the scalar value function that is its expectation. This is beneficial for theoretical analysis.
