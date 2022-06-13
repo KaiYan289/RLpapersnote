@@ -312,7 +312,9 @@ Some miscellanous remarks:
 
 https://github.com/clvrai/awesome-rl-envs has many RL testbeds.
 
-* *Rethinking the Implementation Tricks and Monotonicity Constraint in Cooperative Multi-Agent Reinforcement Learning* (ICML 22') [TBD]
+* *Rethinking the Implementation Tricks and Monotonicity Constraint in Cooperative Multi-Agent Reinforcement Learning* (ICML 22')
+
+It is surprising that, among so many methods proposed, QMIX is still the most tried-and-true algorithm. The monotonicity matters as indicated by this paper.
 
 * *Cliff Diving: Exploring Reward Surfaces in Reinforcement Learning Environments* (ICML 22') 
 
