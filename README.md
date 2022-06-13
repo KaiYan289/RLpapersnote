@@ -314,7 +314,9 @@ https://github.com/clvrai/awesome-rl-envs has many RL testbeds.
 
 * *Rethinking the Implementation Tricks and Monotonicity Constraint in Cooperative Multi-Agent Reinforcement Learning* (ICML 22') [TBD]
 
+* *Cliff Diving: Exploring Reward Surfaces in Reinforcement Learning Environments* (ICML 22') 
 
+This paper investigates the reward landscape of RL agent on some classic gym environments and confirmed that there exists some "cliffs" in the reward landscape w.r.t. existing randomized-direction-gradient plotting methods (see another landscape paper in this collection). This paper also confirms that such cliffs have a negative impact on agent performance, which supports PPO/TRPO's motivations.
 
 * *When should agents explore* (ICLR 22')
 
