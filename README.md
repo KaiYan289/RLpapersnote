@@ -1762,9 +1762,9 @@ The reward redistribution using profile model can be done in 5 steps: 1) definin
 
 One possible setback of this method is that the consensus-based algorithm might not handle noisy environments. Also, affinity propagation could suffer the risk of creating a very large cluster. 
 
-* *POSITIVE-UNLABELED REWARD LEARNING* (2019) [TBD]
+* *POSITIVE-UNLABELED REWARD LEARNING* (2019) 
 
-PUGAIL
+PU learning is a way to do semi-supervised learning when there only exists positive and unlabeled data. The core insight of PU learning relies on an **accurate prior estimation**; if the proportion of positive and negative data is known, then we can assume that the average loss of unlabeled data is a weighted sum of average loss of positive and negative data. Thus, the loss of negative data (which is not present) can be substituted by the weighted sum of loss of unlabeled+positive data.
 
 * *Learning from Demonstration: Provably Efficient Adversarial Policy Imitation with Linear Function Approximation* (ICML 22')
 
