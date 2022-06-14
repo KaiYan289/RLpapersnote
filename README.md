@@ -1080,9 +1080,13 @@ A large collection (~100) papers of RL for energy systems. Such papers usually p
 
 RL is used in recommending systems due to its inherent **interactive and dynamic** nature; however, the sparsity of data is the greatest pain. Both GAN and supervised-learning with importance sampling are developed to address the issue.
 
-* *Environment reconstruction with hidden confounders for reinforcement learning based recommendation* (KDD 19') [TBD]
+* *Environment reconstruction with hidden confounders for reinforcement learning based recommendation* (KDD 19') 
 
-* *Virtual-taobao: Virtualizing real-world online retail environment for reinforcement learning* (AAAI 19') [TBD]
+GAIL that adds a "confounder agent" representing the confounding variable in causal inference, which means it has three policies and thus two GANs to learn jointly.
+
+* *Virtual-taobao: Virtualizing real-world online retail environment for reinforcement learning* (AAAI 19') 
+
+A reward designed for more realisitic simulator, a multi-agent GAIL (there are also other papers for MAGAIL/MAAIRL), and a GAN that learns distributional output (instead of a particular value).
 
 * *Generative Adversarial User Model for Reinforcement Learning Based Recommendation System* (ICML 19')
 
