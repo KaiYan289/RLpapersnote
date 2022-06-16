@@ -222,6 +222,10 @@ Removing conda environment: conda env remove -n old_env
 
 See "tensor.md" in the repo.
 
+# Imitation Learning with Observation / Visual Imitation
+
+See "IfO-VI.md" in the repo.
+
 # Robotics 
 
 See "robotics.md" in the repo. 
