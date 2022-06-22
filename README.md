@@ -1361,6 +1361,8 @@ Temperature-based exploration auto-encoder is a method to deal with high-dimensi
 
 ## Novel Architectures
 
+* *MMD GAN: Towards Deeper Understanding of Moment Matching Network* Measure Matching (NIPS 17')
+
 * *Sub-Goal Trees – a Framework for Goal-Based Reinforcement Learning* (ICML 20') [TBD]
 
 Redefining the framework of reinforcement learning!
