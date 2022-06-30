@@ -1058,6 +1058,8 @@ This is the most popular direction in recent years (since 2019). This line of wo
 
 * *Softdice for imitation learning: Rethinking off-policy distribution matching* (2021)
 
+ValueDICE is biased when estimated in minibatch (log E ...) and assume the MDP is ergodic; this work uses earth-mover's distance and use maximum entropy (least commitment like GAIL) in their derivations.
+
 * *DemoDICE: Offline imitation learning with supplementary imperfect demonstrations* (2022)
 
 Online.
