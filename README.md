@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 77 Useful Tips of the Day (updated 2022.6)
+# 80 Useful Tips of the Day (updated 2022.6)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -197,6 +197,12 @@ for arg in vars(args): f.write(str(arg)+" "+str(getattr(args, arg))+"\n")
 76. Figures and its captions should be self-contained, especially in appendix where the space is unlimited; put settings and brief conclusion there.
 
 77. The most important hyperparam for PPO is #update epoch and update interval (# env steps).
+
+78. Boil down your slides (in mind); nobody will parse a slide that is full of text.
+
+79. BC is a good baseline if a complete trajectory presents, and if the initial position is of small variance. On discrete MDP, the best BC result is simply counting transitions and do random action if current state is never witnessed.
+
+80. Continuing from 79, you should be pessimistic in offline RL / IL, so that you policy does not astray from what you have witnessed. 
 
 # Useful Linux Debugging Commands
 
@@ -1040,7 +1046,33 @@ MAGAIL is MaxEnt RL + Nash Equilibrium; MAAIRL is MaxEnt RL + LSBRE.
 
 * *Asynchronous Multi-Agent Generative Adversarial Imitation Learning* (2019)
 
+## DICE (DistrIbution Corrected Estimation)
 
+This is the most popular direction in recent years (since 2019). This line of work tries to minimize the state / state-action occupancy between learner and expert distribution. 
+
+* *Imitation Learning via Off-Policy Distribution Matching* (ICLR 20') ValueDice
+
+* *Optidice: Offline policy optimization via stationary distribution correction estimation.* (ICML 21')
+
+* *Smodice: Versatile offline imitation learning via state occupancy matching* (2022)
+
+* *Softdice for imitation learning: Rethinking off-policy distribution matching* (2021)
+
+* *DemoDICE: Offline imitation learning with supplementary imperfect demonstrations* (2022)
+
+Online.
+
+* *RETHINKING VALUEDICE: DOES IT REALLY IMPROVE PERFORMANCE?* (ICLR 22' blog)
+
+BC is good enough in many cases if a complete trajectory is presented.
+
+If there were only expert 1 trajectory and in offline settings, BC optimal is ValueDICE optimal.
+
+Weight decay for BC can prevent overfitting to some extent.
+
+* *LOBSDICE: OFFLINE IMITATION LEARNING FROM OBSERVATION VIA STATIONARY DISTRIBUTION CORRECTION ESTIMATION* (2022)
+
+Offline.
 
 # Application
 
