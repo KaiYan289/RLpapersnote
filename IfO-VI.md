@@ -1,6 +1,8 @@
 # Imitation Learning from Observation (RL perspective), or Visual Imitation (robotic perspective)
 
-[Under Construction]
+For a neat dichotomy, see imitation-formal.ppt in the repo.
+
+
 
 1.Provable Representation Learning for Imitation Learning via Bi-level Optimization
 The current paper proposes a bi-level optimization framework to formulate and analyze representation learning for imitation learning using multiple demonstrators
