@@ -1089,6 +1089,8 @@ edge over expert systems and traditional analytical models in real-life.
 
 ## Tensor Decomposition
 
+* *DECORE: Deep Compression with Reinforcement Learning* (CVPR 22')
+
 * *Optimizing Tensor Network Contraction Using Reinforcement Learning* (ICML 22') [TBD]
 
 * *A novel rank selection scheme in tensor ring decomposition based on reinforcement learning for deep neural networks* (ICASSP 20')
@@ -1115,6 +1117,8 @@ may be significantly uncertain. (prior knowledge is of limit use)
 Di Cao, Weihao Hu, Junbo Zhao, Qi Huang, Zhe Chen, and Frede Blaabjerg's team has many works in this area, mainly published on IEEE transactions on smart grid / power systems. See citation [13-16] of this paper.
 
 * *Reinforcement learning and its applications in modern power and energy systems: A review* (2020)
+
+
 
 A large collection (~100) papers of RL for energy systems. Such papers usually publish on IEEE transactions instead of conferences.
 
