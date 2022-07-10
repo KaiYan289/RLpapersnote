@@ -1836,7 +1836,13 @@ However, the optimal policy cannot be acquired directly; thus we need to learn b
 
 One limitation of the theoretical part is that they assume all demonstrators explore all states with non-zero probability, which is not always the case in real-life applications.
 
-* *DISCRIMINATOR-ACTOR-CRITIC: ADDRESSING SAMPLE INEFFICIENCY AND REWARD BIAS IN ADVERSARIAL IMITATION LEARNING*
+* *DISCRIMINATOR-ACTOR-CRITIC: ADDRESSING SAMPLE INEFFICIENCY AND REWARD BIAS IN ADVERSARIAL IMITATION LEARNING* (2018)
+
+* *An Imitation from Observation Approach to Transfer Learning with Dynamics Mismatch* (NeurIPS 21')
+
+* *Wasserstein Adversarial Imitation Learning* (2019)
+
+* *Primal Wasserstein Imitation Learning* (2020)
 
 
 #### Theory on Imitation Learning
