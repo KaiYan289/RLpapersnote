@@ -1048,13 +1048,17 @@ MAGAIL is MaxEnt RL + Nash Equilibrium; MAAIRL is MaxEnt RL + LSBRE.
 
 ## DICE (DistrIbution Corrected Estimation)
 
-This is the most popular direction in recent years (since 2019). This line of work tries to minimize the state / state-action occupancy between learner and expert distribution. 
+This is the most popular direction in recent years (since 2019). This line of work tries to minimize the state / state-action occupancy between learner and expert distribution, and turn the problem into a convex optimization. Compared to prior works, this line of work does not require iterative update. 
 
 * *Imitation Learning via Off-Policy Distribution Matching* (ICLR 20') ValueDice
 
 * *Optidice: Offline policy optimization via stationary distribution correction estimation.* (ICML 21')
 
 * *Smodice: Versatile offline imitation learning via state occupancy matching* (2022)
+
+SMODICE and DemoDICE/LOBSDICE are the state-of-the-art as of middle 2022. It optimizes an upper bound of state-occupancy KL divergence. 
+
+"Despite its generality, naively optimizing the stateoccupancy matching objective would result in an actor-critic style IL algorithm akin to prior work due to the entangled nature of actor and critic learning, leading to erroneous value bootstrapping."
 
 * *Softdice for imitation learning: Rethinking off-policy distribution matching* (2021)
 
@@ -1074,7 +1078,7 @@ Weight decay for BC can prevent overfitting to some extent.
 
 * *LOBSDICE: OFFLINE IMITATION LEARNING FROM OBSERVATION VIA STATIONARY DISTRIBUTION CORRECTION ESTIMATION* (2022)
 
-Offline.
+Offline version of DemoDICE.
 
 # Application
 
@@ -1641,6 +1645,8 @@ In this paper, the author proposes a f-max framework that unifies the two main c
 1) in MDP of usual interest, the reward function depends more on state than action;
 2) Being mode-seeking is more beneficial than mode-covering, especially in the low-data regime.
 
+* *Offline Reinforcement Learning: Tutorial, Review, and Perspectives on Open Problems* (2020)
+
 ### Ad-hoc teammate
 
 See Prof. Peter Stone's work. [Under construction]
@@ -1829,6 +1835,8 @@ The author proproses ILEED, in which an imitation learning framework that accoun
 However, the optimal policy cannot be acquired directly; thus we need to learn best policy, state embedding in expertise level and weight in expertise level jointly.
 
 One limitation of the theoretical part is that they assume all demonstrators explore all states with non-zero probability, which is not always the case in real-life applications.
+
+* *DISCRIMINATOR-ACTOR-CRITIC: ADDRESSING SAMPLE INEFFICIENCY AND REWARD BIAS IN ADVERSARIAL IMITATION LEARNING*
 
 
 #### Theory on Imitation Learning
