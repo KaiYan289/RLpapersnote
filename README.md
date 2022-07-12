@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 80 Useful Tips of the Day (updated 2022.6)
+# 81 Useful Tips of the Day (updated 2022.7)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -202,7 +202,9 @@ for arg in vars(args): f.write(str(arg)+" "+str(getattr(args, arg))+"\n")
 
 79. BC is a good baseline if a complete trajectory presents, and if the initial position is of small variance. On discrete MDP, the best BC result is simply counting transitions and do random action if current state is never witnessed.
 
-80. Continuing from 79, you should be pessimistic in offline RL / IL, so that you policy does not astray from what you have witnessed. 
+80. Continuing from 79, you should be pessimistic in offline RL / IL, so that you policy does not astray from what you have witnessed.
+
+81. Wasserstein distance is a much "weaker" distance than f-divergences (e.g. KL divergence), which means in many scenario, the f-divergence method will give either a infinite value / being invalid, or being uncontinuous, or losing a gradient. Intuitively, this is because Wasserstein distance represents a much "weaker" norm in topology (see WGAN paper for details). Wasserstein-1 distance is also called earth mover's distance.
 
 # Useful Linux Debugging Commands
 
