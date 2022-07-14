@@ -1082,6 +1082,30 @@ Weight decay for BC can prevent overfitting to some extent.
 
 Offline version of DemoDICE.
 
+## Wasserstein
+
+Wasserstein distance, compared to f-divergences such as KL, is a much "weaker" distance, which means intuitively, it will be more smooth and have better property in many cases, such as those where two distributions have no intersection.
+
+People either consider primal form, where we need to find a better joint probability, or dual form, where we need to find a best f(x) that discriminates x drawn from two samplers. The dual form is easier because it provides a paradigm of iteratively updating reward and actor. 
+
+* *PRIMAL WASSERSTEIN IMITATION LEARNING* (ICLR 21')
+
+This paper proposes a "greedy matching" surrogate for Wasserstein distance, which aims to decouple Wasserstein distance from functions of current policy (?). It is also the only work in this field which works on the primal form.
+
+* *Wasserstein Adversarial Imitation Learning*
+
+Iteratively updating reward in dual form and actor.
+
+* *State Alignment-based Imitation Learning* (ICLR 20')
+
+Wasserstein + local VAE / inverse dynamic model for alignment.
+
+* *Cross-Domain Imitation Learning via Optimal Transport* (ICLR 22')
+
+Aiming to solve embodiment difference.
+
+* *Wasserstein Distance guided Adversarial Imitation Learning with Reward Shape Exploration* (DDCLS 20') 
+
 # Application
 
 RL is currently not very popular in deployment of production (as of 2020/2021), as the sample efficiency are low and it may have no significant 
