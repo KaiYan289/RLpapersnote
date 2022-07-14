@@ -206,6 +206,8 @@ for arg in vars(args): f.write(str(arg)+" "+str(getattr(args, arg))+"\n")
 
 81. Wasserstein distance is a much "weaker" distance than f-divergences (e.g. KL divergence), which means in many scenario, the f-divergence method will give either a infinite value / being invalid, or being uncontinuous, or losing a gradient. Intuitively, this is because Wasserstein distance represents a much "weaker" norm in topology (see WGAN paper for details). Wasserstein-1 distance is also called earth mover's distance.
 
+82. If you have a score model which estimates the gradient of log probability of some unknown distribution, you can sample from the distribution using **Langevin dynamics**. This is score matching method.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
