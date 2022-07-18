@@ -2168,5 +2168,6 @@ The name "Conditional" comes from the dependency of the coefficient of affine tr
 * *Parametric Adversarial Divergences are Good Losses for Generative Modeling* (2017)
 
 KL divergence, JS divergence,  TV and Chi-square can all be regarded as the f-divergence formulation; MMD is different.
-
+ 
+* *Faster Wasserstein Distance Estimation with the Sinkhorn Divergence* (2020)
 
