@@ -2162,3 +2162,11 @@ FiLM is a structure proposed to solve the problem of visual reasoning. a single 
 FiLM can be viewed as a generalization of Conditional Normalization (CN) methods. See this blog for a brief introduction of CN: https://blog.csdn.net/Arthur_Holmes/article/details/103934892
 
 The name "Conditional" comes from the dependency of the coefficient of affine transformation on the naive batch normalization basis. It is first proposed, also, in a vision-reasoning paper (VQA: Visual Question Answering). Conditional normalization is also used across different categories, which is called categorical conditional batch normalization, as the different category of data is sometimes unsuitable to do normalization together.
+
+# ML Theory
+
+* *Parametric Adversarial Divergences are Good Losses for Generative Modeling* (2017)
+
+KL divergence, JS divergence,  TV and Chi-square can all be regarded as the f-divergence formulation; MMD is different.
+
+
