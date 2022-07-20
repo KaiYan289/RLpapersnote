@@ -208,6 +208,14 @@ for arg in vars(args): f.write(str(arg)+" "+str(getattr(args, arg))+"\n")
 
 82. If you have a score model which estimates the gradient of log probability of some unknown distribution, you can sample from the distribution using **Langevin dynamics**. This is score matching method.
 
+83. The notion of spaces:
+
+A normed space is a special metric space, which means elements have the notion of "large / small" by norm. A complete normed space is called a **Banach space**; by "complete" it means the limit of a Cauchy sequence is still in the space (counterexample: rational number Q)
+
+A Euclidean space is a finite-dimenisional linear space with an inner product. A **Hilbert space** is an expansion of Euclidean space; it means a complete inner product space, but can be infinite dimensional and not confined to real numbers.
+
+84. By Mercer theorem, any semi-positive definite function can be a kernel function.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
