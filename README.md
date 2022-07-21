@@ -2173,9 +2173,63 @@ The name "Conditional" comes from the dependency of the coefficient of affine tr
 
 # ML Theory
 
+## Wasserstein distance
+
+The limitation of Wasserstein distance is that the Wasserstein distance between two continuous distributions cannot be estimated by a polynomial number (w.r.t. number of dimensions) of samples; i.e. the empirical estimation is a very bad choice for Wasserstien distance between continuous distributions. 
+
 * *Parametric Adversarial Divergences are Good Losses for Generative Modeling* (2017)
 
-KL divergence, JS divergence,  TV and Chi-square can all be regarded as the f-divergence formulation; MMD is different.
+KL divergence, JS divergence,  TV and Chi-square can all be regarded as the f-divergence formulation; MMD is different. Interestingly, this paper claims that parametric Wasserstein distance (dual form with Lipschitz constraint) is better than non-parametric Wasserstein distance (e.g. Sinkhorn), which is overturned by later papers.
  
+* *Generative model based on minimizing exact empirical Wasserstein distance* (2019)
+
+A rejected paper by ICLR, of which the review is very helpful. This paper try to optimize Wasserstein distance by solving linear programming, and use plug-in estimators for continuous distributions (which is a bad choice).
+
+* *Estimation of Wasserstein distances in the Spiked Transport Model* (2019) 
+
 * *Faster Wasserstein Distance Estimation with the Sinkhorn Divergence* (2020)
+
+A better (but still bad) empirical estimator of Wasserstein distance between continuous distributions; from exponential to dimension to exponential to dimension / 2. This estimator is unbiased; the plug-in estimator is biased.
+
+* *Wasserstein GANs Work Because They Fail (to Approximate the Wasserstein Distance)*  (2021)
+
+None of the WGAN variants successfully estimate the Wasserstein distance.
+
+* *Kantorovich Strikes Back! Wasserstein GANs are not Optimal Transport?* (2022)
+
+Similar to the last paper.
+
+* *Fairness with Continuous Optimal Transport* (2021)
+
+optimizing Wasserstein distance for continuous domain on the Hilbert space (which is essentially optimizing the coefficient of basis functions) with dual form. This is the mainstream method till now.
+
+* *Online Sinkhorn: Optimal Transport distances from sample streams* (NeurIPS 20')
+
+exponentially decay Sinkhorn algorithm.
+
+* *Efficient Wasserstein and Sinkhorn Policy Optimization* (2021)
+
+* *THE CRAMÉR DISTANCE AS A SOLUTION TO BIASED WASSERSTEIN GRADIENTS* (2018) Another "a little bit better" Wasserstein empirical estimator (unbiased).
+
+* *Sinkhorn Distances: Lightspeed Computation of Optimal Transport* (2013)
+
+Sinkhorn distance is an entropy-regularized Wasserstein distance, which can be quicker solved than Hungarian by block optimization. Wasserstein distance can be solved in either primal, semi-dual or dual form.
+
+* *FAST SINKHORN I: AN O(N) ALGORITHM FOR THE WASSERSTEIN-1 METRIC* (2022)
+
+* *Differential Properties of Sinkhorn Approximation for Learning with Wasserstein Distance* (2018)
+
+* *Quantifying the Empirical Wasserstein Distance to a Set of Measures: Beating the Curse of Dimensionality* (2020)
+
+Claim to beat the curse of dimensionality (?)
+
+* *Exact rate of convergence of the expected W2 distance between the empirical and true Gaussian distribution* (2020)
+
+* *An Efficient Earth Mover’s Distance Algorithm for Robust Histogram Comparison* (ECCV 06')
+
+* *A Fast Proximal Point Method for Computing Exact Wasserstein Distance* (2018)
+
+* *Stochastic Optimization for Large-scale Optimal Transport* (NIPS 16')
+
+Optimizing semi-dual form on reproducing kernel Hilbert space (RKHS).
 
