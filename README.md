@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 81 Useful Tips of the Day (updated 2022.7)
+# 85 Useful Tips of the Day (updated 2022.7)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -215,6 +215,8 @@ A normed space is a special metric space, which means elements have the notion o
 A Euclidean space is a finite-dimenisional linear space with an inner product. A **Hilbert space** is an expansion of Euclidean space; it means a complete inner product space, but can be infinite dimensional and not confined to real numbers.
 
 84. By Mercer theorem, any semi-positive definite function can be a kernel function.
+
+85. You should not put plotting plt and ax inside an object and make it a property of other object, especially one that is not a singleton (e.g. solver class for a ML solution). Remember that plt settings are global; object duplication will ruin your plotting.
 
 # Useful Linux Debugging Commands
 
