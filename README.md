@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 85 Useful Tips of the Day (updated 2022.7)
+# 89 Useful Tips of the Day (updated 2022.8)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -217,6 +217,24 @@ A Euclidean space is a finite-dimenisional linear space with an inner product. A
 84. By Mercer theorem, any semi-positive definite function can be a kernel function.
 
 85. You should not put plotting plt and ax inside an object and make it a property of other object, especially one that is not a singleton (e.g. solver class for a ML solution). Remember that plt settings are global; object duplication will ruin your plotting.
+
+86. Be wary of the subtle constraints on Lagrange multipliers when you try to derive the dual problem (without them the optimal value could be unbounded; e.g. when you derive dual for linear programming). You should be extra careful when you only apply Lagrange on part of the constraints; when the other part of constraints is a bounded closed set, the problem might be much harder to discover. 
+
+87. Be very careful when you try to explain something with a toy example but change cases (e.g. when talking about something for continuous space, use discrete space as an example). 
+
+88. In a rebuttal, write in a way that is considerate for the reviewers:
+
+1) Answer the question clearly with a few words at the beginning of the problem;
+
+2) Do not show them that you are lazy typing, but you are helping them (e.g. for brevity -> for readability);
+
+3) If possible, do not force the reviewer to get back to the paper. List the points briefly besides reference to the paper. Similarly, avoid reference to the other reviewers;
+
+4) Do not simply write "We will change this", but show them "how we will change this" (and in the case where you can update pdf, do it) and invite them for advice on further modification;
+
+5) Reply after everything is ready, but immediately beyond that point.
+
+89. Do not assume that the battle is over until the authors are not expected to say anything (e.g. reviewer-metareviewer discussion). For NeurIPS, finishing rebuttal period is only half-way there; there are still much work to do at author-reviewer discussion period.
 
 # Useful Linux Debugging Commands
 
