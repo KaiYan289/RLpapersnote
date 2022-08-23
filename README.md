@@ -1459,6 +1459,20 @@ Temperature-based exploration auto-encoder is a method to deal with high-dimensi
 
 ## Novel Architectures
 
+### Transformer in RL
+
+https://zhuanlan.zhihu.com/p/389748472 
+
+https://zhuanlan.zhihu.com/p/384458362
+
+* *Decision Transformer: Reinforcement Learning via Sequence Modeling* (2021)
+
+* *Reinforcement Learning as One Big Sequence Modeling Problem* (2021)
+
+* *Distributional Hamilton-Jacobi-Bellman Equations for Continuous-Time Reinforcement Learning* (ICML 22')
+
+Change of distributions over a continuous interval of time.
+
 * *MMD GAN: Towards Deeper Understanding of Moment Matching Network* Measure Matching (NIPS 17')
 
 * *Sub-Goal Trees – a Framework for Goal-Based Reinforcement Learning* (ICML 20') [TBD]
@@ -1579,6 +1593,12 @@ Bayesian RL is usually used for multi-tasking, where it believes that some facto
 
 ## Other RL
 
+### Symbolic Planning Models
+
+* *Leveraging Approximate Symbolic Models for Reinforcement Learning via Skill Diversity* (ICML 22') Symbolic model can be seen as an abstract and formal version of RL with NLP. However, the problem for symbolic model is that users may give partly correct / inaccurate demands; the robot must find useful guidances. This paper constructs a partial ordering between symbolic state sequences, and then learns a "minimum viable task representation" model that gives a symbolic planning model which allows for success in some trajectories. The model is then used to extract landmark, which is the partition of tasks, and then a low-level model is trained as skills for reaching from one landmark to the next. The high-level agent, metacontroller, is a standard Q-learning. This work only tests toy scenarios.
+
+* *LM-Nav: Robotic Navigation with Large Pre-Trained Models of Language, Vision, and Action* (2022)
+ 
 ### RL as Sequence Modeling
 
 * *Decision Transformer: Reinforcement Learning via Sequence Modeling* (2021)
@@ -1846,6 +1866,24 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 * *First order Constrained Optimization in Policy Space* An improvement of the paper above which does not require calculating 2nd-order derivation.
 
+### State-Action Occupancy
+
+* *A State-Distribution Matching Approach to Non-Episodic Reinforcement Learning* (ICML 22')
+
+This work learns two sets of policy, one is called forward policy and the other is called backward policy. The forward policy optimizes the task reward; the backward policy tries to match the state occupancy (the ratio between expert and learner is estimated by an discriminator). One interesting finding of this paper is that sampling initial state from the expert state occupancy is much better than that from the initial state, which is why the backward policy is applied if the forward policy cannot achieve the goal within a certain number of steps. The backward and forward policy, thus, is updated iteratively, and every few steps, the discriminator is updated independently.
+
+This somehow reminds me of iterative update in the Lagrange update of occupancy matching algorithm in imitation learning.
+
+### Autonomous RL
+
+* *AUTONOMOUS REINFORCEMENT LEARNING: FORMALISM AND BENCHMARKING* (ICLR 22')
+
+Continual, non-episodic setting. Also the MDP need to be reversible (one connected component in MDP.)
+
+Conventional RL algorithms substantially depreciate in performance when applied in non-episodic settings.
+
+The author provides some benchmark for autonomous RL.
+
 ### Demonstration-Guided RL (and imitation learning)
 
 * *Discriminator-Weighted Offline Imitation Learning from Suboptimal Demonstrations* (ICML 22')
@@ -1951,7 +1989,9 @@ This paper assumes that we have two datasets, one is optimal and the other is of
 
 The author then consider the dual problem of the objective, which is a bilevel optimization. The author proves that, with adequate derivation (including importance sampling to change the expectation and surrogate for numerical stability), the problem has a closed-form solution, from which we can extract the policy with the maximum entropy assumption.
 
-**Occupancy measure of MDP** is the (stationary?) distribution of state-action pairs that an agent encounters when navigating the environment with its model.
+**Occupancy measure of MDP** 
+
+is the (stationary?) distribution of state-action pairs that an agent encounters when navigating the environment with its model.
 
 They test their result on mujoco environment, such as hopper and cheetah. 
  
