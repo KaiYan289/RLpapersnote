@@ -579,6 +579,11 @@ This paper tries to learn a RL policy with visual inputs that can be transferred
 
 ## Better Visual Representations
 
+* *DRIBO: Robust Deep Reinforcement Learning via Multi-View Information Bottleneck* (ICML 22')
+
+"train RL agents from pixels with this auxiliary objective to learn robust representations that can compress away task-irrelevant information and are predictive of
+task-relevant dynamics". Multi-view is gained by random augmentation on the original visual observation. The objective is designed with mutual information.
+
 * *Reinforcement Learning with Augmented Data* (RAD)
 
 RAD takes a particular data augmentation within the same batch and feed the result into the RL agent's input. The result shows that this achieves SOTA result and even comparable to that with proprieceptive states. It seems that random cropping is the most effective to do data augmentation, as this forces the CNN to focus on the "robot body" manipulated by the agent. 
@@ -1136,6 +1141,8 @@ Aiming to solve embodiment difference.
 
 * *Wasserstein Distance guided Adversarial Imitation Learning with Reward Shape Exploration* (DDCLS 20') 
 
+* *Curriculum Reinforcement Learning via Constrained Optimal Transport* (ICML 22')
+
 # Application
 
 RL is currently not very popular in deployment of production (as of 2020/2021), as the sample efficiency are low and it may have no significant 
@@ -1593,11 +1600,16 @@ Bayesian RL is usually used for multi-tasking, where it believes that some facto
 
 ## Other RL
 
+* *LM-Nav: Robotic Navigation with Large Pre-Trained Models of Language, Vision, and Action* (2022)
+
+### Bandits
+
+Langevin Monte Carlo for Contextual Bandits (ICML 22')
+
 ### Symbolic Planning Models
 
 * *Leveraging Approximate Symbolic Models for Reinforcement Learning via Skill Diversity* (ICML 22') Symbolic model can be seen as an abstract and formal version of RL with NLP. However, the problem for symbolic model is that users may give partly correct / inaccurate demands; the robot must find useful guidances. This paper constructs a partial ordering between symbolic state sequences, and then learns a "minimum viable task representation" model that gives a symbolic planning model which allows for success in some trajectories. The model is then used to extract landmark, which is the partition of tasks, and then a low-level model is trained as skills for reaching from one landmark to the next. The high-level agent, metacontroller, is a standard Q-learning. This work only tests toy scenarios.
 
-* *LM-Nav: Robotic Navigation with Large Pre-Trained Models of Language, Vision, and Action* (2022)
  
 ### RL as Sequence Modeling
 
@@ -1789,6 +1801,8 @@ QMIX is a decent, robust and tried-and-true baseline in cooperate MARL.
 Quote: "Single agent RL can avoid convergence to suboptimal policies using various strategies like increasing the exploration rate () or policy variance, ensuring optimality in the limit. However ... both theoretically and empirically, ... the same is not possible in decentralised MARL."
 
 "The reliance of QMIX on epsilon-greedy action selection prevents it from engaging in committed exploration, in which a precise sequence of actions must be chosen in order to reach novel, interesting parts of the state space". 
+
+* *Deconfounded Value Decomposition for Multi-Agent Reinforcement Learning* (DVD) (ICML 22')
 
 ### Partly Observable 
 
