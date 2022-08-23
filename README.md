@@ -254,6 +254,8 @@ Creating conda environment from old ones: conda create -n new_env --clone old_en
 
 Removing conda environment: conda env remove -n old_env
 
+* *The Linux Command Line*, William Shouts*
+
 [Under Construction]
 
 # Tensor Decomposition / Neural Network Compression
@@ -1365,6 +1367,13 @@ Yet, it could be long before RL-powered autonomous driving actually put in use.
 * *Driverless Car: Autonomous Driving Using Deep Reinforcement Learning in Urban Environment*
 
 # Miscellanous
+
+## Continuous Learning
+
+* *Understanding Catastrophic Forgetting and Remembering in Continual Learning with Optimal Relevance Mapping*
+
+A paper that talks about **Catastrophic forget/remebering**. However, the solution offered by the paper itself ("authentic" solution for continual learning) is not so helpful in my opinion. After all, what is the difference between "use different parts of NN" and "adding new layers for each task" besides notion? I can put every layer for every task there in the first place and freeze them unless working on the corresponding task.
+
 ## Transfer Learning / Multi-task Learning
 
 * *RotoGrad: Gradient Homogenization in Multitask Learning* (ICLR 22')
@@ -2307,3 +2316,6 @@ Claim to beat the curse of dimensionality (?)
 
 Optimizing semi-dual form on reproducing kernel Hilbert space (RKHS).
 
+* *Curriculum Reinforcement Learning via Constrained Optimal Transport* (ICML 22')
+
+People use KL divergence for interpolation between tasks as a curriculum in the past. This is problematic. The paper proves why and gives a solution that uses Wasserstein distance for interpolation between tasks.
