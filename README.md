@@ -1475,6 +1475,20 @@ Temperature-based exploration auto-encoder is a method to deal with high-dimensi
 
 ## Novel Architectures
 
+### Diffusion Model in RL
+
+* *Planning with Diffusion for Flexible Behavior Synthesis* (ICML 22')
+
+This paper considers the RL as a trajectory generation task and thus apply diffusion model to the whole trajectory. For each denoising step, a parameterized Gaussian noise is added onto the trajectory.
+
+A small reception field enforces the model to have local consistency during a single diffusion step.
+
+The diffusion target is a 2-dimensional array, with one column per timestep. 
+
+The method is tested on maze2D environment and block stacking environment - both are common for skill-based robotic papers such as SPiRL / SKiLD.
+
+Comment: if the quality of generated trajectory is not good enough, we will not get a feasible policy (not even a suboptimal one) because some actions are literally impossible?
+
 ### Transformer in RL
 
 https://zhuanlan.zhihu.com/p/389748472 
@@ -1608,6 +1622,20 @@ Bayesian RL is usually used for multi-tasking, where it believes that some facto
 * *Multi-Task Reinforcement Learning: A Hierarchical Bayesian Approach* (ICML 07') 
 
 ## Other RL
+
+* *OFFLINE REINFORCEMENT LEARNING WITH IMPLICIT Q-LEARNING* (ICLR 22')
+
+SARSA, but learn the optimal policy by only querying state-action pairs in the dataset.
+
+The method uses expectile regression, a variant for quantile regression. They substitute the MSE error in Bellman residual with the expectile regression.
+
+One thing worth noting is that the authors use another value function that approximates an expectile only w.r.t. the action distribution which is to avoid "lucky" sample where a large target value is acquired because the agent happens to have transitioned into a good state.
+
+Comment: can we use this in general settings and substitute mean square error with expectile objective everywhere?
+
+* *Distributional Reinforcement Learning with Quantile Regression* (AAAI 18')
+
+See this paper for expectile / quantile regression in RL.
 
 * *LM-Nav: Robotic Navigation with Large Pre-Trained Models of Language, Vision, and Action* (2022)
 
