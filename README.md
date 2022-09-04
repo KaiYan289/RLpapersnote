@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 89 Useful Tips of the Day (updated 2022.8)
+# 90 Useful Tips of the Day (updated 2022.8)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -235,6 +235,10 @@ A Euclidean space is a finite-dimenisional linear space with an inner product. A
 5) Reply after everything is ready, but immediately beyond that point.
 
 89. Do not assume that the battle is over until the authors are not expected to say anything (e.g. reviewer-metareviewer discussion). For NeurIPS, finishing rebuttal period is only half-way there; there are still much work to do at author-reviewer discussion period.
+
+90. For L-BFGS, increasing the history hyperparam will increase the stability of iteration. Also, you should use line search with 'strong wolfe' in pytorch.
+
+L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. It might be invoked multiple times in one timestep, sometimes with gradient and sometimes without. That's why you will sometimes get backward second time error if you do not put everything in the closure() function. Here are two examples: https://gist.github.com/tuelwer/0b52817e9b6251d940fd8e2921ec5e20#file-pytorch-lbfgs-example-py-L27; http://sagecal.sourceforge.net/pytorch/index.html.
 
 # Useful Linux Debugging Commands
 
