@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 92 Useful Tips of the Day (updated 2022.8)
+# 92 Useful Tips of the Day (updated 2022.9)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -243,6 +243,8 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 91. Be very careful when you try to generate dataset with some tricks (e.g. manipulate the distribution so that the states are guaranteed to be covered) and handling the "default value" for corner case. They might lead to very counter-intuitive behavior if not considered properly.
 
 92. Gurobi max (gp.max_) operator can only take constant and variable (that is, no expressions such as x+1) as of Sept. 2022.
+
+93.  torch.nn.parameter.Parameter(a.double(), requires_grad=True) is correct; torch.nn.parameter.Parameter(a, requires_grad=True).double() is not.
 
 # Useful Linux Debugging Commands
 
