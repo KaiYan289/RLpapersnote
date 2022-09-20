@@ -366,6 +366,22 @@ Some miscellanous remarks:
 
 https://github.com/clvrai/awesome-rl-envs has many RL testbeds.
 
+* *TRANSIENT NON-STATIONARITY AND GENERALISATION IN DEEP REINFORCEMENT LEARNING* (ICLR 21')
+
+This paper proposes alternative hypothesis besides classic catastrophic forgetting: NN exhibit a memory effect in their learned representations which
+can harm generalisation permanently if the data-distribution changed over the course of training (catastrophic memory? This is also mentioned by another paper "Understanding Catastrophic Forgetting and Remembering in Continual Learning with Optimal Relevance Mapping").
+
+By the result of  this paper, it seems that the non-stationarity (use the same network for changing distribution as data stream flows) which is present in many deep RL algorithms might lead to impaired generalisation on held-out test environments. To mitigate this and improve generalisation to previously unseen states, the author proposes Iterated Relearning (ITER), which periodically distills old teacher network into new student network by imposing KL divergence on actor, MSEloss on critic, and policy gradient / TD loss for updating the actor & critic.
+
+* *Learning Dynamics and Generalization in Reinforcement Learning* (ICML 22')
+(Quotes from the paper)
+
+NN trained with TD algorithms on dense reward tasks exhibit weaker generalization between states than randomly initialized networks and networks trained with policy gradient methods. On the good side, it is better for the agents' stability; on the bad side, it runs the risk of observational overfitting.
+
+Non-smooth components of a predicted value function, while contributing smaller to MC error, contribute disproportionately to the TD error, providing in incentive to fit them early in training. 
+
+Post-training distillation can improve robustness and generalization.
+
 * *Rethinking the Implementation Tricks and Monotonicity Constraint in Cooperative Multi-Agent Reinforcement Learning* (ICML 22')
 
 It is surprising that, among so many methods proposed, QMIX is still the most tried-and-true algorithm. The monotonicity matters as indicated by this paper.
@@ -502,7 +518,14 @@ I think this could be particularly useful for companies using RL such as Google,
 
 # Domain Transfer for RL
 
-Domain Transfer has close relations with Sim2real, a subfield that is very useful for robotics.
+Domain Transfer has close relations with Sim2real, a subfield that is very useful for robotics. 
+
+## Embodiment Difference
+
+e.g. transfer human demonstration & skills to robot, or between robots of different kinetics.
+
+* *REvolveR: Continuous Evolutionary Models for Robot-to-robot Policy Transfer* (ICML 22')*
+
 
 ## Domain Randomization
 
@@ -1632,6 +1655,14 @@ Bayesian RL is usually used for multi-tasking, where it believes that some facto
 * *Multi-Task Reinforcement Learning: A Hierarchical Bayesian Approach* (ICML 07') 
 
 ## Other RL
+
+* *Distilling Policy Distillation* (ICLR 19')
+
+Policy distillation is the transfer of knowledge from one policy to another, enabling the training of agents based on already trained policies / human examples.
+
+Consider the general problem of extracting knowledge from a teacher policy, π, and transferring it to a different student policy, πθ, using trajectories.
+
+many widely used methods do not correspond to valid gradient vector fields, and thus may be susceptible to non-convergent learning dynamics.
 
 * *OFFLINE REINFORCEMENT LEARNING WITH IMPLICIT Q-LEARNING* (ICLR 22')
 
