@@ -526,6 +526,15 @@ e.g. transfer human demonstration & skills to robot, or between robots of differ
 
 * *REvolveR: Continuous Evolutionary Models for Robot-to-robot Policy Transfer* (ICML 22')*
 
+Continuous evolutionary models for robotic policy transfer!
+
+Common kinematic tree. The matching is simply a weighted sum of kinetic parameters from both robots, and implemented by editing the robots' URDF / MJCF files in Mujoco. The weight parameter is the "robot evolution parameter".
+
+The idea is as follows: you start from the original robot, where the parameter is 1 for source robot and 0 for target robot. Then, you randomly add some value (non-negative) to current evolutionary parameter, and try to optimize with the corresponding robot. You sample & train multiple robots with different "evolutionary progress", and then step forward the lower bound of "evolution" a little, until you reach "evolutionary progress" of 1, which is exactly the target robot.
+
+I think this can be called some sort of domain randomization + curriculum learning; it is not so "evolutionary". To be "evolutionary", you should be selecting the best progress with the highest reward to step into, instead of using a fixed evolutionary progress step length.
+
+One interesting thing is that it applies bigger reward for robots with larger evolution progress.
 
 ## Domain Randomization
 
@@ -1655,6 +1664,10 @@ Bayesian RL is usually used for multi-tasking, where it believes that some facto
 * *Multi-Task Reinforcement Learning: A Hierarchical Bayesian Approach* (ICML 07') 
 
 ## Other RL
+
+* *Learning to Control Self-Assembling Morphologies: A Study of Generalization via Modularity* (NeurIPS 19')
+
+Use DGN for a MARL task where agents can assemble into a larger one and complete task. A very interesting task!
 
 * *Distilling Policy Distillation* (ICLR 19')
 
