@@ -526,7 +526,7 @@ Domain Transfer has close relations with Sim2real, a subfield that is very usefu
 
 e.g. transfer human demonstration & skills to robot, or between robots of different kinetics.
 
-* *REvolveR: Continuous Evolutionary Models for Robot-to-robot Policy Transfer* (ICML 22')*
+* *REvolveR: Continuous Evolutionary Models for Robot-to-robot Policy Transfer* (ICML 22')
 
 Continuous evolutionary models for robotic policy transfer!
 
@@ -537,6 +537,8 @@ The idea is as follows: you start from the original robot, where the parameter i
 I think this can be called some sort of domain randomization + curriculum learning; it is not so "evolutionary". To be "evolutionary", you should be selecting the best progress with the highest reward to step into, instead of using a fixed evolutionary progress step length.
 
 One interesting thing is that it applies bigger reward for robots with larger evolution progress.
+
+ * *Translating robot skills learning unsupervised skill correspondences across robots* (ICML 22')
 
 ## Domain Randomization
 
@@ -1992,6 +1994,16 @@ Conventional RL algorithms substantially depreciate in performance when applied 
 The author provides some benchmark for autonomous RL.
 
 ### Demonstration-Guided RL (and imitation learning)
+
+#### Skill Diversity
+
+* *Leveraging Approximate Symbolic Models for Reinforcement Learning via Skill Diversity* (ICML 22')
+
+
+
+* *Policy Improvement via Imitation of Multiple Oracles* (NeurIPS 20')
+
+* *Plan Your Target And Learn Your Skills: Transferable State-Only Imitation Learning via Decoupled Policy Optimization* (ICML 22')
 
 * *Discriminator-Weighted Offline Imitation Learning from Suboptimal Demonstrations* (ICML 22')
 
