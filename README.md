@@ -2005,6 +2005,12 @@ The author provides some benchmark for autonomous RL.
 
 * *Plan Your Target And Learn Your Skills: Transferable State-Only Imitation Learning via Decoupled Policy Optimization* (ICML 22')
 
+Explicitly decouples the policy as a high-level state planner and an inverse dynamics model. This architecture is becoming popular recently; see FIST (ICLR 22') and CEIP (NeurIPS 22'). But its state planner is a parametric method, which tries to minimize the KL difference between the expert dataset and expected output. 
+
+* *Internal Model from Observations for Reward Shaping* (2018)
+
+Another work that uses a predictor for future state. Quite popular I suppose (also used in SAIL https://arxiv.org/pdf/1911.10947.pdf).
+
 * *Discriminator-Weighted Offline Imitation Learning from Suboptimal Demonstrations* (ICML 22')
 
 This paper tries to solve offline imitation learning problem where only a small task-specific near-optimal transition dataset from expert and a large task-agnostic (could be very) sub-optimal transition dataset. It proposes a generalized BC objective (NLL loss with some weight f(s,a)) that contains many prior work, such as the two works listed below (ICLR 21' / 2020). Different from prior work, this works trains a discriminator to get weights. To pick out the "good" transitions in the task-agnostic dataset, **Positive-unlabeled (PU) learning** is used. PU learning re-weights different losses for positive and unlabeled data to obtain an estimate of model loss on negative samples that is not directly available.
