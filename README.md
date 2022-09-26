@@ -532,7 +532,7 @@ Continuous evolutionary models for robotic policy transfer!
 
 Common kinematic tree. The matching is simply a weighted sum of kinetic parameters from both robots, and implemented by editing the robots' URDF / MJCF files in Mujoco. The weight parameter is the "robot evolution parameter".
 
-The idea is as follows: you start from the original robot, where the parameter is 1 for source robot and 0 for target robot. Then, you randomly add some value (non-negative) to current evolutionary parameter, and try to optimize with the corresponding robot. You sample & train multiple robots with different "evolutionary progress", and then step forward the lower bound of "evolution" a little, until you reach "evolutionary progress" of 1, which is exactly the target robot.
+The idea is as follows: you start from the original robot, where the parameter is 0 for source robot and 1 for target robot. Then, you randomly add some value (non-negative) to current evolutionary parameter, and try to optimize with the corresponding robot. You sample & train multiple robots with different "evolutionary progress", and then step forward the lower bound of "evolution" a little, until you reach "evolutionary progress" of 1, which is exactly the target robot.
 
 I think this can be called some sort of domain randomization + curriculum learning; it is not so "evolutionary". To be "evolutionary", you should be selecting the best progress with the highest reward to step into, instead of using a fixed evolutionary progress step length.
 
