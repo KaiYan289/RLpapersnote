@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 94 Useful Tips of the Day (updated 2022.9)
+# 95 Useful Tips of the Day (updated 2022.9)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -247,6 +247,8 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 93.  torch.nn.parameter.Parameter(a.double(), requires_grad=True) is correct; torch.nn.parameter.Parameter(a, requires_grad=True).double() is not.
 
 94. Wasserstein-1 distance with hamming distance metric is total variation distance.
+
+95. If you are doing stochastic gradient descent by sampling some pairs of variables (e.g. uniformly sampling (i,j) for x_i+x_j), you'd better sample each pair independently, instead of sampling two state uniformly and then select all pairs of chosen states. In the latter case, you cannot break the correlation between (i,j) and (i,*), (i,j) and (j, *), as they are always updated together.
 
 # Useful Linux Debugging Commands
 
