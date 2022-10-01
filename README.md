@@ -1137,6 +1137,10 @@ MAGAIL is MaxEnt RL + Nash Equilibrium; MAAIRL is MaxEnt RL + LSBRE.
 
 This is the most popular direction in recent years (since 2019). This line of work tries to minimize the state / state-action occupancy between learner and expert distribution, and turn the problem into a convex optimization. Compared to prior works, this line of work does not require iterative update. 
 
+* *Constrained Offline Policy Optimization* (ICML 22')
+
+safe RL. RL with cost regularization; keep projecting reward-feasible policy into cost-feasible area. Use DICE algorithm to find such reward-feasible solution.
+
 * *Imitation Learning via Off-Policy Distribution Matching* (ICLR 20') ValueDice
 
 * *Optidice: Offline policy optimization via stationary distribution correction estimation.* (ICML 21')
