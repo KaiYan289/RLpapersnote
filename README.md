@@ -250,6 +250,8 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 
 95. If you are doing stochastic gradient descent by sampling some pairs of variables (e.g. uniformly sampling (i,j) for x_i+x_j), you'd better sample each pair independently, instead of sampling two state uniformly and then select all pairs of chosen states. In the latter case, you cannot break the correlation between (i,j) and (i,*), (i,j) and (j, *), as they are always updated together.
 
+96. While there is a rule of thumb that choices the learning rate, it really depends on your scale of the loss and batch size. Be open to rare learning rates when you finetune your algorithm. 
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
