@@ -254,6 +254,8 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 
 97. Remember to "git add" your new file when you are using git to do version control, especially writing script to auto-commit things. otherwise, you may find that your modifications are all untracked.
 
+98. You can use gym.spaces.MultiBinary(n=10) for one-hot observation space.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
