@@ -256,6 +256,8 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 
 98. You can use gym.spaces.MultiBinary(n=10) for one-hot observation space.
 
+99. torch.multinomial and torch.Categorical supports batch sampling, which means you only need to get a input of batchsize * n tensor and it will sample batchsize different groups of samples for you. You don't have to go over the whole array! And use F.one_hot(m, num_classes=n) if neccessary.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
