@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 97 Useful Tips of the Day (updated 2022.10)
+# 99 Useful Tips of the Day (updated 2022.10)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -1535,6 +1535,8 @@ Temperature-based exploration auto-encoder is a method to deal with high-dimensi
 
 ## Novel Architectures
 
+* *HYPERBOLIC DEEP REINFORCEMENT LEARNING* (2022)
+
 ### Diffusion Model in RL
 
 * *Planning with Diffusion for Flexible Behavior Synthesis* (ICML 22')
@@ -1995,7 +1997,9 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 This work learns two sets of policy, one is called forward policy and the other is called backward policy. The forward policy optimizes the task reward; the backward policy tries to match the state occupancy (the ratio between expert and learner is estimated by an discriminator). One interesting finding of this paper is that sampling initial state from the expert state occupancy is much better than that from the initial state, which is why the backward policy is applied if the forward policy cannot achieve the goal within a certain number of steps. The backward and forward policy, thus, is updated iteratively, and every few steps, the discriminator is updated independently.
 
-This somehow reminds me of iterative update in the Lagrange update of occupancy matching algorithm in imitation learning.
+This somehow reminds me of iterative update in the Lagrange update of occupancy matching algorithm in imitation learning. 
+
+The thought of this paper is very similar to the following paper: * *Go-Explore: a New Approach for Hard-Exploration Problems* (2019). In this paper, the agent is encouraged to "return to a promising state" that have given the agent intrinsic reward before exploring unknown states. The paper mentions a hypothetical problem in intrinsic-reward based exploration, where an agent tries to explore a labyrinth of two branches; it happens to jump from one branch to another before the end of the path is reached, and cannot return to the original state because the intrinsic reward is decreased with exploration. 
 
 ### Autonomous RL
 
@@ -2008,6 +2012,8 @@ Conventional RL algorithms substantially depreciate in performance when applied 
 The author provides some benchmark for autonomous RL.
 
 ### Demonstration-Guided RL (and imitation learning)
+
+
 
 #### Skill Diversity
 
@@ -2079,6 +2085,17 @@ One limitation of the theoretical part is that they assume all demonstrators exp
 
 * *Primal Wasserstein Imitation Learning* (2020)
 
+#### Imitation Learning Pretrain + RL finetune
+
+* *Awac: Accelerating online reinforcement learning with offline datasets.* (2020)
+
+* *Offline reinforcement learning with implicit q-learning*  (IQL) (2021)
+
+* *Conservative q-learning for offline reinforcement learning* (CQL) (2020)
+
+* *Jump Start Reinforcement Learning* (JSRL) (2022)
+
+A reasonable starting policy does not by itself readily provide an initial **value function** of comparable performance. So how to jump-start **value-function** based method? One way to do this is to let the expert do most of the previous steps before success, and only let the exploration policy learn the last, short MDP. Then we gradually increase the MDP that the learner value-based algorithm needs to learn, until the RL agent learns a good policy for the complete task. It is some sort of curriculum learning, but with theoretical guarantees.
 
 #### Theory on Imitation Learning
 
