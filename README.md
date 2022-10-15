@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 99 Useful Tips of the Day (updated 2022.10)
+# 101 Useful Tips of the Day (updated 2022.10)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -257,6 +257,17 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 98. You can use gym.spaces.MultiBinary(n=10) for one-hot observation space.
 
 99. torch.multinomial and torch.Categorical supports batch sampling, which means you only need to get a input of batchsize * n tensor and it will sample batchsize different groups of samples for you. You don't have to go over the whole array! And use F.one_hot(m, num_classes=n) if neccessary.
+
+100. Some points on making slides: [Under Construction]
+
+1)
+
+2)
+
+3)
+
+101. self-made dataloader based on torch.randperm could be much faster than torch dataloader, especially if the data is stored in dict for each dataset. torch dataloader need to concatenate them every time and that can be very slow.
+
 
 # Useful Linux Debugging Commands
 
