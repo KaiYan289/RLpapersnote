@@ -547,6 +547,12 @@ Domain Transfer has close relations with Sim2real, a subfield that is very usefu
 
 e.g. transfer human demonstration & skills to robot, or between robots of different kinetics.
 
+* *Translating Robot Skills: Learning Unsupervised Skill Correspondences Across Robots* (ICML 22')
+
+The authors use GMM to explicitly get the log probability of the skill distribution in the latent space (so why not normalizing flow)? They try to match the target distribution and the transformed source distribution by the encoder, by sampling one distribution (transformed source / target) and estimate logprob on the other distribution (target / transformed source) and then optimize both log likelihood. This somehow makes me think of something like JS divergence.
+
+Current domain transfer in robotics & graphics methods are: paired data (need label for pairing!), morphological transfer by modularity in policy, state-based, motion retargetting, and unsupervised action correspondence.
+
 * *REvolveR: Continuous Evolutionary Models for Robot-to-robot Policy Transfer* (ICML 22')
 
 Continuous evolutionary models for robotic policy transfer!
