@@ -2008,6 +2008,8 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 
 * *First order Constrained Optimization in Policy Space* An improvement of the paper above which does not require calculating 2nd-order derivation.
 
+* *Robot Reinforcement Learning on the Constraint Manifold* (ICML 22')
+
 ### State-Action Occupancy
 
 * *A State-Distribution Matching Approach to Non-Episodic Reinforcement Learning* (ICML 22')
