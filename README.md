@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 101 Useful Tips of the Day (updated 2022.10)
+# 102 Useful Tips of the Day (updated 2022.10)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -260,14 +260,23 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 
 100. Some points on making slides: [Under Construction]
 
-1)
+1) Text size should be unified across all slides and inside figure. Don't be lazy and just using existing figures; draw a nice figure that expands as your presentation progresses. And change text instead of font size to fit in spaces.
 
-2)
+2) The shorter the presentation is, the more rigorous logic your slides must have because you don't have too much time to do "overviews" to remind people what you are discussing.  
 
-3)
+3) You can align the elements on your slides by choosing items and selecting "align". 
+
+4) You can make changing text w.r.t. time by animation with time delay. No need to make a video using video edit tools.
+
+5) Use animations to avoid making your slides to be overwhelming. Let the slide be filled gradually as your speak progresses.
+
+6) Always introduce math symbols first before using them, even the most common-sense ones in the subfield (e.g. state s in reinforcement learning). You should use as less symbols as possible in a short presentation.
+
+7) Colors and shapes matter; they can be a strong indicator in the figure. Ask yourself why use this color for this color / this shape?  
 
 101. self-made dataloader based on torch.randperm could be much faster than torch dataloader, especially if the data is stored in dict for each dataset. torch dataloader need to concatenate them every time and that can be very slow.
 
+102. If you are trying to overfit behavior cloning on a small dataset to debug, remember to add variance clip to avoid spikes.
 
 # Useful Linux Debugging Commands
 
@@ -1227,6 +1236,16 @@ Aiming to solve embodiment difference.
 RL is currently not very popular in deployment of production (as of 2020/2021), as the sample efficiency are low and it may have no significant 
 edge over expert systems and traditional analytical models in real-life. 
 
+## Feature Selection
+
+* *Feature and Instance Joint Selection: A Reinforcement Learning Perspective* (IJCAI 22')
+
+RL is used to select the most useful dimensions and samples in the dataset. There are two agents performing cooerpative MARL: the first agent is "instance agent", and the second agent is "feature agent". Consider a matrix where the row is instances and columns are features. For one step, instance agent move one sample down, and feature agent move one sample right. The agents can choose to "select" or "deselect" one dimension of feature / sample. A convolution is used to calculate the state and reward. (Warning: though the authors do not mention, I think the order should be randomized from time to time to avoid correlation on particular combination of feature and instance. Also you might not visit all combinations if you do not randomize.)
+
+This is not a "canon" MARL as they train their agent with independent DQN.
+
+Both RL agents are aided with **random forest/isolated forest** advisor, which could be an interesting idea to adopt. But it is only forced to take advice at the beginning of exploration to fill up the buffer - couldn't there be better choices such as PARROT-like algorithms?
+
 ## Economy
 
 * *Welfare Maximization in Competitive Equilibrium: Reinforcement Learning for Markov Exchange Economy* (ICML 22') [TBD]
@@ -1553,6 +1572,8 @@ Temperature-based exploration auto-encoder is a method to deal with high-dimensi
 ## Novel Architectures
 
 * *HYPERBOLIC DEEP REINFORCEMENT LEARNING* (2022)
+
+A special type of state embedding; in this embedding, the LCA of states stands between them(?).
 
 ### Diffusion Model in RL
 
@@ -2032,7 +2053,33 @@ The author provides some benchmark for autonomous RL.
 
 ### Demonstration-Guided RL (and imitation learning)
 
+#### VAE-based skill abstration architecture
 
+* *ASPiRe: Adaptive Skill Priors for Reinforcement Learning*
+
+Bagging of SPiRL, unsurprising.
+
+* *Skill-based Meta-Reinforcement Learning (SIMPL)* (ICLR 22' Spotlight)
+
+Another following work of SPiRL, also done by Karl Pertsch's team in USC. They inherit the skill extraction module of SPiRL; the difference is that, after extracting skills with SPiRL, they try to learn a task encoder with meta-task information, and use both the output of this encoder as well as the "prior" in SPiRL to train a high-level policy (which outputs skill z) for a particular task with the policy decoder in SPiRL frozen; then, for the transfered task, they freeze both task-encoder and skill-decoder, and fine-tune high-level policy.
+
+Step 1: SPiRL, skill encoder, skill decoder and prior that mimics skill encoder
+Step 2: high-level policy with task-encoder and prior's input as the input and output z to skill decoder. The skill decoder is frozen.
+Step 3: fine-tune high-level policy with task-encoder and skill-decoder frozen.
+
+* *Demonstration-Guided Reinforcement Learning with Learned Skills* (SKILD)
+
+The following work of SPiRL. It assumes that there are two sets of demonstrations: task-specific, which is the particular downstream's task's demonstration; and task-agnostic, which is related but not the particular downstream task's demonstration. It trains two set of priors using SPiRL and use a discriminator to combine them.
+
+* *Hierarchical Few-Shot Imitation with Skill Transition Models* (2021)
+
+This paper addresses the few-shot imitation learning problem by proposing a novel architecture called FIST. They first train a VAE to extract skills in the latent space, with LSTM as encoder and MLP as decoder; then they train a skill posterior that takes states in the first and the last step as input and minimizes the KL divergence between this prior and the encoder. (**Note this is a common architecture; the difference between this and SKILD is that they additionally take the last step's state as input in the posterior. But this is a core difference, as, quote, "conditioning on future will make it more informative."**) Also, they did not use two sets of models; they instead fine-tune the whole model learned on task-agnostic dataset with task-speicfic dataset.
+
+In deploy time, this "state from future" is picked by a lookahead module where we find the closest state to the current state according to the distance metric. This distance metric is learned by optimizing an encoder using InfoNCE loss, such that states that are H steps in the future are close to the current state while all other states are further away.
+
+* *Accelerating Reinforcement Learning with Learned Skill Priors* (CoRL 20')
+
+The founding paper of this line of work, working on task-agnostic dataset alone.
 
 #### Skill Diversity
 
@@ -2185,24 +2232,6 @@ This paper from ICML 21' gives weight for datapoints in GAIL. Through mathematic
 * *Importance Weighted Transfer of Samples in Reinforcement Learning* ICML 18'
 
 * *PARROT: DATA-DRIVEN BEHAVIORAL PRIORS FOR REINFORCEMENT LEARNING* See below "state-conditioned" section.
-
-* *Skill-based Meta-Reinforcement Learning (SIMPL)* (ICLR 22' Spotlight)
-
-Another following work of SPiRL, also done by Karl Pertsch's team in USC. They inherit the skill extraction module of SPiRL; the difference is that, after extracting skills with SPiRL, they try to learn a task encoder with meta-task information, and use both the output of this encoder as well as the "prior" in SPiRL to train a high-level policy (which outputs skill z) for a particular task with the policy decoder in SPiRL frozen; then, for the transfered task, they freeze both task-encoder and skill-decoder, and fine-tune high-level policy.
-
-Step 1: SPiRL, skill encoder, skill decoder and prior that mimics skill encoder
-Step 2: high-level policy with task-encoder and prior's input as the input and output z to skill decoder. The skill decoder is frozen.
-Step 3: fine-tune high-level policy with task-encoder and skill-decoder frozen.
-
-* *Demonstration-Guided Reinforcement Learning with Learned Skills* (SKILD)
-
-The following work of SPiRL. It assumes that there are two sets of demonstrations: task-specific, which is the particular downstream's task's demonstration; and task-agnostic, which is related but not the particular downstream task's demonstration. It trains two set of priors using SPiRL and use a discriminator to combine them.
-
-* *Hierarchical Few-Shot Imitation with Skill Transition Models* (2021)
-
-This paper addresses the few-shot imitation learning problem by proposing a novel architecture called FIST. They first train a VAE to extract skills in the latent space, with LSTM as encoder and MLP as decoder; then they train a skill posterior that takes states in the first and the last step as input and minimizes the KL divergence between this prior and the encoder. (**Note this is a common architecture; the difference between this and SKILD is that they additionally take the last step's state as input in the posterior. But this is a core difference, as, quote, "conditioning on future will make it more informative."**) Also, they did not use two sets of models; they instead fine-tune the whole model learned on task-agnostic dataset with task-speicfic dataset.
-
-In deploy time, this "state from future" is picked by a lookahead module where we find the closest state to the current state according to the distance metric. This distance metric is learned by optimizing an encoder using InfoNCE loss, such that states that are H steps in the future are close to the current state while all other states are further away.
 
 * *TRAIL: NEAR-OPTIMAL IMITATION LEARNING WITH SUBOPTIMAL DATA* (2021)
 
