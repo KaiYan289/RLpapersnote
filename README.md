@@ -276,7 +276,9 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 
 101. self-made dataloader based on torch.randperm could be much faster than torch dataloader, especially if the data is stored in dict for each dataset. torch dataloader need to concatenate them every time and that can be very slow.
 
-102. If you are trying to overfit behavior cloning on a small dataset to debug, remember to add variance clip to avoid spikes.
+102. If you are trying to overfit behavior cloning on a small dataset to debug, remember to add variance lower bound (e.g. clip / tanh) to avoid spikes.
+
+103. If you are training an action distribution on a closed set (e.g. in behavior cloning in gym environment), and you are using Gaussian / GMM / normalizing flow. One thing you could try to optimize log probability a lot is to use tanh to converge your output into a bounded one. And probability tractable will still be tractable.
 
 # Useful Linux Debugging Commands
 
