@@ -2055,7 +2055,7 @@ The author provides some benchmark for autonomous RL.
 
 #### VAE-based skill abstration architecture
 
-* *ASPiRe: Adaptive Skill Priors for Reinforcement Learning*
+* *ASPiRe: Adaptive Skill Priors for Reinforcement Learning* (NeurIPS 22')
 
 Bagging of SPiRL, unsurprising.
 
