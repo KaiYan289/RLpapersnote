@@ -663,6 +663,12 @@ This works borrows the idea of pseudomeric to define a new lookup based bonus, w
 
 This paper tries to learn a RL policy with visual inputs that can be transferred onto another environment with different state space but the same action space with structurally similar transition and reward functions. To do this, the author assumes a "latent" (hidden) MDP where states from both domains roots from its state space, and tries to learn a beta-VAE that can recover the states on this state space. The author uses beta-VAE to do this, claiming that beta>1 can limit the expressivity of the encoder and forces better grasp of the essence of MDP. Instead of using normal MSE reconstruction loss, to grasp global semantics, the author uses another pretrained DAE and tries to compare the reconstruction loss in the DAE-abstracted latent space.
 
+* *Towards Applicable Reinforcement Learning: Improving the Generalization and Sample Effciency with Policy Ensemble* (IJCAI 22')
+
+This idea of ensemble is a bit popular recently it seems. Another paper in NeurIPS 22' also uses ensemble for policy prior https://arxiv.org/abs/2209.15205.
+
+* *CCLF: A Contrastive-Curiosity-Driven Learning Framework for Sample-Efficient Reinforcement Learning* (IJCAI 22')
+
 ## Better Visual Representations
 
 * *DRIBO: Robust Deep Reinforcement Learning via Multi-View Information Bottleneck* (ICML 22')
@@ -677,6 +683,12 @@ RAD takes a particular data augmentation within the same batch and feed the resu
 * *Image Augmentation is All You Need: Regularizing Deep Reinforcement Learning from Pixels* (DRQ)
 
 The two works above are almost done in the same time; for DRQ, if we set the number of augmented samples to be 1, then it is RAD. DRQ claims that the Q-values should be the same before and after different data augmentations on states given by images, and thus it samples multiple data augmentations to "average the Q-values" among them.
+
+* *Self-Predictive Dynamics for Generalization of Vision-based Reinforcement Learning* (IJCAI 22')
+
+Another work of auxiliary task besides RL using data augmentation. The difference is that this work tries to add a forward dynamics to the system. There is a weak data augmentation and a strong data augmentation.
+
+* *Don’t Touch What Matters: Task-Aware Lipschitz Data Augmentation for Visual Reinforcement Learning* (IJCAI 22')
 
 ## Model-based RL
 
@@ -1268,6 +1280,8 @@ Both RL agents are aided with **random forest/isolated forest** advisor, which c
 
 ## Power Systems
 
+* *Exploring the Vulnerability of Deep Reinforcement Learning-based Emergency Control for Low Carbon Power Systems* (IJCAI 22')
+
 * *Multi-Agent Reinforcement Learning for Active Voltage Control on Power Distribution Networks* (NeurIPS 21')
 
 This paper mainly focuses on the formulation of the problem and have not much novelty on MARL; it simply try a lot of RL algorithms. However, the idea of why using MARL on this problem is interesting (quote from the paper):
@@ -1392,6 +1406,8 @@ The author uses 7*7 grid for experiment; such size can serve as a sample for our
 ## Traffic Control
 
 Traffic control is one of the most common applications for multi-agent RL.
+
+* *Multi-Agent Reinforcement Learning for Traffic Signal Control through Universal Communication Method* (IJCAI 22')
 
 * *Multi-agent Deep Reinforcement Learning for Large-Scale Traffic Signal Control* (2019)
 
@@ -1850,6 +1866,10 @@ https://arxiv.org/pdf/1705.05035.pdf
 * *MCP: Learning Composable Hierarchical Control with Multiplicative Compositional Policies*
 
 ### Surveys / Tutorials
+
+* *Abstraction for Deep Reinforcement Learning* (IJCAI 22') foundamental problem of reinforcement learning today.
+
+
 
 * *https://yang-song.github.io/blog/2021/score/* An introduction to score matching model, Langevin dynamics and etc.
 
