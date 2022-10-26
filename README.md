@@ -2075,6 +2075,22 @@ The author provides some benchmark for autonomous RL.
 
 ### Demonstration-Guided RL (and imitation learning)
 
+* *Bridge Data: Boosting Generalization of Robotic Skills with Cross-Domain Datasets* (RSS 22')
+
+TBD
+
+* *Pre-Training for Robots: Offline RL Enables Learning New Tasks from a Handful of Trials* (2022)
+
+TBD
+
+* *Generalization with Lossy Affordances: Leveraging Broad Offline Data for Learning Visuomotor Tasks* (CoRL 22' Oral)
+
+TBD
+
+* *GNM: A General Navigation Model to Drive Any Robot* (2022)
+
+TBD
+
 #### VAE-based skill abstration architecture
 
 * *ASPiRe: Adaptive Skill Priors for Reinforcement Learning* (NeurIPS 22')
