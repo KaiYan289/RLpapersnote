@@ -588,6 +588,8 @@ One interesting thing is that it applies bigger reward for robots with larger ev
 
 ## Others
 
+* *CUP: Critic-Guided Policy Reuse* (NeurIPS 22') TBD
+
 * *An Analysis of Frame-skipping in Reinforcement Learning* (TBD)
 
 Theoretical analysis of frame-skipping!
