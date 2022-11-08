@@ -2087,11 +2087,11 @@ TBD
 
 * *Generalization with Lossy Affordances: Leveraging Broad Offline Data for Learning Visuomotor Tasks* (CoRL 22' Oral)
 
-TBD
+Imitation learning where the embedding of current state and embedding of "plans" (from start and goal image) serve as input to generate final policy; a novel imitation learning architecture.
 
 * *GNM: A General Navigation Model to Drive Any Robot* (2022)
 
-TBD
+It seems that it is just large visual dataset pretrain.
 
 #### VAE-based skill abstration architecture
 
