@@ -2087,11 +2087,27 @@ TBD
 
 * *Generalization with Lossy Affordances: Leveraging Broad Offline Data for Learning Visuomotor Tasks* (CoRL 22' Oral)
 
-Imitation learning where the embedding of current state and embedding of "plans" (from start and goal image) serve as input to generate final policy; a novel imitation learning architecture.
+Imitation learning where the embedding of current state and embedding of "plans" (from start and goal image) serve as input to generate final policy; a novel imitation learning architecture. The planning in the embedding space is done by **affordance model**.
+
+
 
 * *GNM: A General Navigation Model to Drive Any Robot* (2022)
 
 It seems that it is just large visual dataset pretrain.
+
+#### Affordance Model
+
+A new model proposed by Sergey Levine in 2022.
+
+* *Planning to practice: Efficient online fine-tuning by composing goals in latent space* (2022)
+
+"planning over subgoals for a goal-conditioned policy"
+
+* *What can i do here? learning new skills by imagining visual affordances* (ICRA 21')
+
+learn skills with a small amount of online exploration on novel objects.
+
+They use VQVAE as the embedding model. VQVAE is VAE with a codebook, using nearest neighbour. The gradient is stopped as nearest neighbour is not differentiable.
 
 #### VAE-based skill abstration architecture
 
