@@ -1,0 +1,68 @@
+Offline Multi-agent Reinforcement Learning with Knowledge Distillation
+VRL3: A data-driven framework for visual deep reinforcement learning
+codeRL: mastering code generation through pretrained models and deep reinforcement learning
+discovered policy optimization
+truly deterministic policy optimization
+confident approximate policy iteartion for efficient local planning in q^pi realizable MDPs
+planning to hte information horizon of BAMDPs via epistemic state abstraction
+anchor-changing regularized natural polict gradient for multi-objective reinforcement learning
+a deep reinforcement learning framework for column generation
+pre-trained language models for interactive decision-making
+monte carlo augmented actor-critic for sparse reward deep reinforcement learning from suboptimal demonstrations
+robust reinforcement learning using offline data
+...composition for iterative design of reinforcement learning agents
+beyond rewards: a hierarchical prespective on offline multiagent behavioral analysis
+reinforcement learning in a birth and death process: breaking the dependence on the state space
+when to ask for help: proactive interventions in autonomous reinforcement learning
+contrastive learning as goal-conditioned reinforcement learning
+off-policy evaluation for episodic partially observable markov decision processes under non-parametric models
+incrementally bidding via reinforcement learning under mixed and delayed reward
+trajectory-guided control prediction for end-to-end autonomous driving: a simple yet strong baseline
+planning for sample efficient imitation learning
+non-deep networks
+RAMBO-RL: robust adversarial model-based offline reinforcement learning
+ZSON: zero-shot objective goal navigation using multimodal goal embeddings
+safebench: a benchmarking platform for safety evaluation of autonomous vehicles
+envpool: a highly parallel reinforcement learning environment execution engine
+reinforcement learning with neural radiance fields
+understanding the evolution of linear regions in deep reinforcement learning
+model-based lifelong reinforcement learning with bayesian exploration
+curriculum reinforcement learning using optimal transport via gradual domain adaptation
+unpacking reward shaping: understanding the benefits of reward engineering on sample complexity
+leveraging factored action spaces for efficient offline reinforcement learning in healthcare
+learning to branch with tree MDPs
+on the statistical efficiency of reward-free exploration in non-linear RL
+effects of safety state augmentation on safe exploration
+uncertainty-aware reinforcement learning for risk-sensitive player evaluation in sports game
+Rethinking value function learning for generalization in reinforcement learning
+off team learning
+max-min off-policy actor-critic methods: focusing on worst cases robustness to model misspecification
+challenging common assumptions in convex reinforcement learning
+reinforcement learning with a terminator
+curious exploration via structured world models yields zero-shot object manipulation
+... alphazero agents robust to adversarial perturbation
+aspire: adaptive skill priors for reinforcement learning
+distributionaly adaptive meta reinforcement learning
+evaluation beyond task performance: analyzing concepts in alphazero in hex
+the impact of task underspecification in evaluating deep reinforcement learning
+why so pessimistic? estiamting uncertainties for offline RL through ensembles, and why their independence matters
+model-based RL with optimistic posterior sampling: structural conditions and sample complexity
+off-policy evaluation with deficient support using side information
+learning distributed and fair policies for network load balancing as markov potential game
+a few expert queries suffices for sample efficient RL with resets and linear value approximation
+
+... learning with logarithmic regret and policy switches
+when privacy meets partial information: a refined analysis of differentially private bandits
+finding correlated equilibrium of constrained markov game: a primal-dual approach
+on gap-dependent bounds for offline reinforcement learning
+increamentally bidding via reinforcement learning under mixed and delayed reward
+
+hierarchical representation learning by chunking
+end-to-end stochastic optimization with energy-based model
+is integer arithmetic enough for deep learning?
+data driven offline decision ... invariant representation
+temporally-consistent survival analysis
+rare gems: finding lottery tickets at initialization
+decision-focused learning without differentiable optimization: learning locally optimized decision loss
+flexible diffusion modeling of ...
+branch & learn for recursively and iteratively solvable problems in predict+optimize
