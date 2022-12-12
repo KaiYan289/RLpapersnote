@@ -50,6 +50,18 @@ model-based RL with optimistic posterior sampling: structural conditions and sam
 off-policy evaluation with deficient support using side information
 learning distributed and fair policies for network load balancing as markov potential game
 a few expert queries suffices for sample efficient RL with resets and linear value approximation
+policy optimization for markov games: unified framework and faster convergence
+improving policy learning via language dynamics distillation
+provable defense against backdoor policies in RL
+deepfoids: adaptive bio-inspired fish simulation with deep reinforcement learning
+avalon: ... generalization using proce...
+...e decision transformer...
+towards safe reinforcement learning with a safety editor policy
+Does self-supervised learning really improve reinforcement learning from pixels?
+unsupervise adaptation from repeated trav... autonomous driving
+generalizating goal-conditioned reinforcement learning with vairational causal reasoning (GRADER)
+GRASP: navigating retrosynthetic planning with goal-driven policy
+
 
 ... learning with logarithmic regret and policy switches
 when privacy meets partial information: a refined analysis of differentially private bandits
@@ -66,3 +78,9 @@ rare gems: finding lottery tickets at initialization
 decision-focused learning without differentiable optimization: learning locally optimized decision loss
 flexible diffusion modeling of ...
 branch & learn for recursively and iteratively solvable problems in predict+optimize
+procthor
+forecasting future world events with neural networks
+truncated emphatic temporal difference methods for prediction and control
+bidirectional learning for offline infinite-width model-based optimization
+savi++ towards end-to-end object-centric learning from real-world videos
+rethinking and scaling up graph contrastive learning：an extremely efficient approach with group discrimination
