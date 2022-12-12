@@ -61,6 +61,45 @@ Does self-supervised learning really improve reinforcement learning from pixels?
 unsupervise adaptation from repeated trav... autonomous driving
 generalizating goal-conditioned reinforcement learning with vairational causal reasoning (GRADER)
 GRASP: navigating retrosynthetic planning with goal-driven policy
+A boosting approach to reinforcement learning
+dual generator offline reinforcement learning
+PAC: assisted value-factorization with counterfactual predictions in multi-agent reinforcement learning
+receding horizon inverse reinforcement learning
+score-based fiffusion meets annealed importance sampling
+learn to scaffold: optimizing model explanation for teaching
+DOPE: doubly optimistic and pesismistic exploration for safe reinforcement learning
+...robust on-policy sampling for data-efficient ... evaluation in reinforcement learning
+learn what matters: cross domain imitation learning with task-relevant embeddings
+dynamic inverse reinforcement learning for characterizing animal behavior
+SHAQ: incorporating shapley value theory into multi-agent Q-learning
+skill regularized task decomposition for multi-task offline reinforcement learning
+a mean-field game approach to cloud resource management with function approximation
+learn to follow instructions in text-based games
+pragmatically learning from pedagogical demonstrations
+on the approximation of heterogeneous cooperative MARL via MFC
+learning based motion planning in dynamic environments using GNNs and temporal encoding
+proximal learning with opponent-learning awareness
+markovian interference in experiments
+S2P: state-conditioned image synthesis for data augmentation in offline reinforcement learning
+online deep equilibrium learning for regularization by denoising
+constrained GPI for zero-shot transfer in reinforcement learning
+distrbutional reward estimation for effective multi-agent deep reinforcement learning
+when does return-conditioned uspervised learning work for offline reinforcement learning?
+no-regret learning in games with noisy feedback: faster rates and adaptivity via learning rate separation
+near-optimal multi-agent learning for safe ...
+DHRL: a graph-based approach for long-horizon and sparse hierarchical reinforcement learning
+trust region polict optimization with optimal transport discrepancis: duality and algorithm for continuous actions
+amortized optimal optimization
+adaptive interestfor emphatic reinforcement learning
+ELIGN: expectation alignment as a multi-agent intrinsic reward
+the nature of temporal difference errors in multi-step distributional reinforcement learning
+reinforcement learning in a birth and death process: breaking the dependence in the state space
+semi-supervised with decision trees: graph laplacian tree alternating optimization
+asynchronous actor-critic for multi-agent reinforcement learning
+on the effectiveness of fine-tuning vs meta reinforcement learning
+reincarnating reinforcement learning
+off-policy evaluation with policy-dependent optimization response
+when are offline two-player zero-sum markov games solvable?
 
 
 ... learning with logarithmic regret and policy switches
@@ -69,6 +108,7 @@ finding correlated equilibrium of constrained markov game: a primal-dual approac
 on gap-dependent bounds for offline reinforcement learning
 increamentally bidding via reinforcement learning under mixed and delayed reward
 
+graph neural netowkrs are dynamic programmers
 hierarchical representation learning by chunking
 end-to-end stochastic optimization with energy-based model
 is integer arithmetic enough for deep learning?
@@ -84,3 +124,6 @@ truncated emphatic temporal difference methods for prediction and control
 bidirectional learning for offline infinite-width model-based optimization
 savi++ towards end-to-end object-centric learning from real-world videos
 rethinking and scaling up graph contrastive learning：an extremely efficient approach with group discrimination
+mutual information divergence: a unified metric for multimodal generative model
+an implementation of fair robust learning
+deep differentiable logic gate networks
