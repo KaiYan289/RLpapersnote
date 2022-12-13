@@ -100,15 +100,65 @@ on the effectiveness of fine-tuning vs meta reinforcement learning
 reincarnating reinforcement learning
 off-policy evaluation with policy-dependent optimization response
 when are offline two-player zero-sum markov games solvable?
+computationally efficient horizon-free reinforcement learning for linear mixture MDPs
+near-optimal goal-oriented reinforcement learning in stationary environments
+a scalable deterministic global optimization algorithm for trianing optimal decision tree
+recursive reinforcement learning
+human-AI shared control via polict dissection
+PDsketch: integrated domain programming, learning, and planning
+semi-supervised generative models for multiagent trajectories
+E-MAPP: efficient multi-agent reinforcement learning with parallel program guidance
+BYOL-explore: exploration by bootstrapped prediction
+blade: robust exploration via diffusion models
+ver: scaling on-policy RL leads to the emergence of navigation in embodied rearrangement
+eager: asking and answering questions for automatic reward shaping in language-guided RL
+large-scale retrieval for reinforcement learning
+chain of thought imitation with procedure cloning
+honor of kings arena: an environment for generalization with competitive reinforcement learning
+TASIL: taylor series imitation learning
+s4d: on the parameterization and initialization of diagonal state space models
+near-optimal multi-agent learning for safe coverage control
 
+[Workshop]
+Bayesian Q-learning with imperfect expert demonstrations
+does zero-shot reinforcement learning exists?
+ABC: adversarial behavioral cloning for offline mode-seeking imitation learning
+towards data-driven offline simulations for online reinforcement learning
+hierarchical abstraction for combinatorial generalization in object rearrangement
+the provable benefits of representations transfer in RL
+benchmarking offline reinforcement learning algorithms for e-commerce order fraud evaluation
+choreographer: learning and adapting skills in imagination
+revisiting bellman errors for offline model selection
+can active sampling reduce causal confusion in offline reinforcement learning?
+train offline, test online: a real robot learning benchmark
+real world offline reinforcement learning with realistic data source
+scaling marginalized importance sampling to high-dimensional state-spaces via state abstraction
+MAEA: multimodal attributions for embodied AI
+sim-to-lab-to-real: safe reinforcement learning with shielding and generalization guarantee
+lilgym: natural language visual reasoning with reinforcement learning
+SCERL: a benchmark for intersecting language and safe reinforcement learning
+language-guided task adaptation for imitation learning
+understanding redundancy in discrete multi-agent communication
+toward semantic history compression for reinforcement learning
+hierarchical agents by combining language generalization and semantic goal directed RL
+LAD: language augmented diffusion for reinforcement learning
+how to talk so AI will learn: instructions, descriptions, and pragmatics
 
 ... learning with logarithmic regret and policy switches
 when privacy meets partial information: a refined analysis of differentially private bandits
 finding correlated equilibrium of constrained markov game: a primal-dual approach
 on gap-dependent bounds for offline reinforcement learning
 increamentally bidding via reinforcement learning under mixed and delayed reward
+diffusion prior for online decision making: a case study of thompson sampling
 
-graph neural netowkrs are dynamic programmers
+convergence of score-based generative modeling for general data distributions
+sampling is as easy as learning the score: theory for diffusion models with minimal data assumption
+rhino: deep causal temporal relationship learning with history-dependent noise
+collaborating with language models for embodied reasoning
+generating synthetic datasets in interpolating along generalized geodesics
+understanding aesthetics with language: a photo critique dataset for aesthetic assessment
+clever-humans: describing physical and causal events the human way
+graph neural networks are dynamic programmers
 hierarchical representation learning by chunking
 end-to-end stochastic optimization with energy-based model
 is integer arithmetic enough for deep learning?
