@@ -298,6 +298,8 @@ Creating conda environment from old ones: conda create -n new_env --clone old_en
 
 Removing conda environment: conda env remove -n old_env
 
+Removing file from path that is older than a specific time: find model -type f -not -newermt "2022-12-03 11:11:11" -delete (if remove delete then show file)
+
 * *The Linux Command Line*, William Shouts*
 
 [Under Construction]
