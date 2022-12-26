@@ -732,7 +732,19 @@ Dreamer has a complicated latent dynamics, including representation model, trans
 
 ### World Models
 
-World models are a special type of model-based RL
+World models are a special type of model-based RL.
+
+* *BLaDE: Robust Exploration via Diffusion Models* (NeurIPS 22')
+
+BLaDE is a direct successor of BYOL-Explore, which is also a publication in NeurIPS 22'.
+
+This paper focuses on two types of stochasticity: 1) noise from sensor noise and independent to the underlying dynamics; and 2) stochasticity at the action level due to imperfect actor / stochastic dynamics, e.g. sticky actions.
+
+TV noise problem is difficult for vanilla count-based methods.
+
+Ensemble methods are common to deal with stochasticity, but it is hard to train and scale.
+
+* *BYOL-Explore: Exploration by Bootstrapped Prediction* (NeurIPS 22')
 
 * *Dream to Control: Learning Behaviors by Latent Imagination* (Dreamer)
 
