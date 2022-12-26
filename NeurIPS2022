@@ -143,6 +143,34 @@ toward semantic history compression for reinforcement learning
 hierarchical agents by combining language generalization and semantic goal directed RL
 LAD: language augmented diffusion for reinforcement learning
 how to talk so AI will learn: instructions, descriptions, and pragmatics
+Tackling Alfworld with action attention and common sense from pretrained LMs
+Towards an enhanced, faithful, and adaptable web interaction environment
+Crowdplay: crowdsourcing human data for offline learning
+reinforcement learning for traffic signal control under missing data
+MARLIM: multi-agent reinforcement learning for inventory management
+reinforcement learning-based air traffic deconfliction
+function approximation reinforcement learning controller for wave energy converters
+Imitation is not enough: robustifying imitation with reinforcement learning for challenging driving scenarios
+safe real-world autonomous driving by learning to predict and plan with a mixture of experts
+designing biological sequences via meta-reinforcement learning and bayesian optimization
+on the feasibility of cross-task transfer with model-based reinforcement learning
+CLaP: conditional latent planners for offline reinforcement learning
+transformers are better history encoders than RNNs for partially observable RL
+active acquisition for multimodal temporal data a challenging decision making task
+... strong backbone in ... deep RL
+supervised Q-learning is a strong baseline for continuous control
+collaborating with language models for embodied reasoning
+...compression in RL
+proto-value networks: scaling representation learning with auxiliary tasks
+PDDL planning with pretrained large language models
+Skill decision transformer
+Wall street tree search: risk-aware planning for offline reinforcement learning
+In-context reinforcement learning with algorithm distillation
+hyper-decision transformer for efficient online adaptation
+solving math world problems with process-based and outcome-based feedback
+meta-learning of black box solvers using deep reinforcement learning
+offline model-based reinforcement learning for tokamak control
+
 
 ... learning with logarithmic regret and policy switches
 when privacy meets partial information: a refined analysis of differentially private bandits
