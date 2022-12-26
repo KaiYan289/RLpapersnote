@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 102 Useful Tips of the Day (updated 2022.10)
+# 116 Useful Tips of the Day (updated 2022.12)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -279,6 +279,34 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 102. If you are trying to overfit behavior cloning on a small dataset to debug, remember to add variance lower bound (e.g. clip / tanh) to avoid spikes.
 
 103. If you are training an action distribution on a closed set (e.g. in behavior cloning in gym environment), and you are using Gaussian / GMM / normalizing flow. One thing you could try to optimize log probability a lot is to use tanh to converge your output into a bounded one. And probability tractable will still be tractable.
+
+104. Wasserstein distance in the Rubinstein-Kantorovich form assumes the underlying metric to be Euclidean, unless the definition of 1-Lipschitz is modified.
+
+105. The sample complexity of Wasserstein distance is bad, but for MMD it is good. Sinkhorn Divergence stands between them, and have a corresponding sample complexity. They are all called integral probability methods.
+
+106. Do not undo commit in github desktop unless you are absolutely certain! Undoing commit makes you lose all the progresses during this commit. 
+
+107. You need to use clf() instead of cla() to remove the old colorbar in your last figure in matplotlib. However, after that you need ax = fig.add_subplot() to re-insert subfigures in order to draw anything more on the canvas. 
+
+108. If you feel lost about why your method is not working while the baseline is, a way out is to implement your method inside the codebase of the baseline. In that way, you can make your method to be as similar to the baseline as possible, and to rule out the factors that does not matter one by one.
+
+109. Be bold and aggressive when you first try to tune your algorithm; often it takes longer than expected to train / bolder choice of hyperparameter than your expecation to make your algorithm work.
+
+110. Do read the experiment details of your baselines, and make sure of how they set up their experiment, especially what do they do to their dataset (e.g. merging). You do not want to waste time on settings that is unnecessarily harder / easier than prior work.
+
+111. When you don't know where is the problem of your algorithm, go and check if your dataset has problems.
+
+112. If you are working optimizations of f-divergences on a probability simplex, consider Fenchel conjugate; consider Donsker-Varadhan representation and https://people.lids.mit.edu/yp/homepage/data/LN_fdiv.pdf Thm 7.14. 
+
+113. Continuing from 112: when considering relaxing optimization (e.g. use Lagrange multiplier to relax some constraints), relax as less constraint as possible (as long as you can solve it). Relax to probability simplex is better than relax to positivity constraint.
+
+114. remember to set CUDA_LAUNCH_BLOCKING=1 whenever you meet a device-side assert triggered error.
+
+115. If you don't know what parameter to tune, try to do the following two things:
+1) check very closely on your direct baseline to see how they solve the problem;
+2) retry factors excluded before last bug fix. Sometimes bug fixes will make factors behave very differently and you may overlook some crucial factors.
+
+116. For RL evaluation, you should try to use deterministic action (mean as output) as stochastic ones are often with fairly high variance and cannot do well, especially in those environments requiring accurate actions.
 
 # Useful Linux Debugging Commands
 
