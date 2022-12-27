@@ -2095,7 +2095,7 @@ Uses SVRG in DQN.
 
 ### Safe RL
 
-"Safe" is actually a complicated notion; it is closely related to constrainted RL, for safety concerns can be modeled as hard constraint. However, safe can also mean "not forgetting old knowledge", which is related to meta-learning / transfer learning.
+"Safe" is actually a complicated notion; it is closely related to constrainted RL, for safety concerns can be modeled as hard constraint. However, safe can also mean "not forgetting old knowledge", which is related to meta-learning / transfer learning. Or, safe can mean prevent triggering some "backdoor" policy.
 
 See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for a comprehensive survey on multiple definitions of "safe".
 
@@ -2106,6 +2106,10 @@ See Garcia's *A Comprehensive Survey on Safe Reinforcement Learning* (2015) for 
 * *First order Constrained Optimization in Policy Space* An improvement of the paper above which does not require calculating 2nd-order derivation.
 
 * *Robot Reinforcement Learning on the Constraint Manifold* (ICML 22')
+
+* *Provable Defense against Backdoor Policies in Reinforcement Learning* (NeurIPS 22')
+
+This work assumes the presence of "trigger", which is a amortizally bounded offset onto the observation such that the observation can be push into a "dangerous" subspace where dangerous policy hidden in this subspace is performed.
 
 ### State-Action Occupancy
 
