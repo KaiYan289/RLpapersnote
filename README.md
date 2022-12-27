@@ -618,6 +618,14 @@ One interesting thing is that it applies bigger reward for robots with larger ev
 
 ## Others
 
+* *MAXIMUM A POSTERIORI POLICY OPTIMISATION* (MPO) (ICLR 18')
+
+MPO assumes that there is a variable for "the event of success", and then use ELBO to get a objective quite similar to SAC: reward plus temperature parameter times some f-divergences. However, SAC uses entropy, while MPO uses "auxiliary distribution over trajectories" which turns the algorithm into the optimization of expecation of modified reward from the auxiliary distribution. Then a closed-form distribution w.r.t. a different set of Q function is assumed for q, which turns the problem into an optimization of the separate Q function and E-M optimization of the policy (essentially, maximimization of log likelihood with a KL regularization term with the auxiliarty distribution Q.)
+
+* *V-MPO: ON-POLICY MAXIMUM A POSTERIORI POLICY OPTIMIZATION FOR DISCRETE AND CONTINUOUS CONTROL* (ICLR 20')
+
+Introduce MPO to the on-policy setting, and relies on a learned state-value function instread of the state-action Q.
+
 * *CUP: Critic-Guided Policy Reuse* (NeurIPS 22') TBD
 
 * *An Analysis of Frame-skipping in Reinforcement Learning* (TBD)
@@ -745,6 +753,8 @@ TV noise problem is difficult for vanilla count-based methods.
 Ensemble methods are common to deal with stochasticity, but it is hard to train and scale.
 
 * *BYOL-Explore: Exploration by Bootstrapped Prediction* (NeurIPS 22')
+
+
 
 * *Dream to Control: Learning Behaviors by Latent Imagination* (Dreamer)
 
