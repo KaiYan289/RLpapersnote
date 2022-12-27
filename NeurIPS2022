@@ -41,7 +41,7 @@ challenging common assumptions in convex reinforcement learning
 reinforcement learning with a terminator
 curious exploration via structured world models yields zero-shot object manipulation
 ... alphazero agents robust to adversarial perturbation
-aspire: adaptive skill priors for reinforcement learning
+<del>aspire: adaptive skill priors for reinforcement learning</del>
 distributionaly adaptive meta reinforcement learning
 evaluation beyond task performance: analyzing concepts in alphazero in hex
 the impact of task underspecification in evaluating deep reinforcement learning
@@ -108,8 +108,8 @@ human-AI shared control via polict dissection
 PDsketch: integrated domain programming, learning, and planning
 semi-supervised generative models for multiagent trajectories
 E-MAPP: efficient multi-agent reinforcement learning with parallel program guidance
-BYOL-explore: exploration by bootstrapped prediction
-blade: robust exploration via diffusion models
+<del>BYOL-explore: exploration by bootstrapped prediction</del>
+<del>blade: robust exploration via diffusion models</del>
 ver: scaling on-policy RL leads to the emergence of navigation in embodied rearrangement
 eager: asking and answering questions for automatic reward shaping in language-guided RL
 large-scale retrieval for reinforcement learning
