@@ -308,6 +308,11 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 
 116. For RL evaluation, you should try to use deterministic action (mean as output) as stochastic ones are often with fairly high variance and cannot do well, especially in those environments requiring accurate actions.
 
+117. If you need to send your computer to repair, make sure you have copied everything you need out of it. **Especially the private keys for the server.**
+
+118. If you need to copy datasets to different folders on your server, consider soft links; this saves your disk space and frees you from copying everytime you change your dataset. 
+
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
