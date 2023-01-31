@@ -312,6 +312,11 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 
 118. If you need to copy datasets to different folders on your server, consider soft links; this saves your disk space and frees you from copying everytime you change your dataset. 
 
+119. If you were to build up a desktop, remember that do not throw the boxes until you have lighten up the machine. There might be some important information or some material (e.g. screws, cables) in the boxes.
+
+120. When building up your desktop, remember to observe the minimal principle: use only as least as possible components to light up your mainboard first. Do not haste to install the extra memory / disk / graphics card.
+
+121. Make sure to check the debugging light and code on your mainboard to figure out the problem.
 
 # Useful Linux Debugging Commands
 
