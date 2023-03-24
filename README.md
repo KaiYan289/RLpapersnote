@@ -1101,7 +1101,13 @@ This is a paper where the attacker distorts cost signals.
 
 A survey. Quoting its abstract, "Social Learning is a new class of algorithms that enables agents to reshape the reward function of other agents with the goal of promoting cooperation and achieving higher global rewards in mixed-motive games." (Does this ring a bell w.r.t. Coco-Q learning & side payment?)
 
+
+## Human-Involved
+
+* *Human-AI Shared Control via Policy Dissection* (NeurIPS 22')
+
 ## Miscellanous
+
 
 * *Planning for Sample Efficient Imitation Learning* (NeurIPS 22') TBD
 
