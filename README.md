@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 116 Useful Tips of the Day (updated 2022.12)
+# 121 Useful Tips of the Day (updated 2023.3)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -1559,6 +1559,18 @@ Yet, it could be long before RL-powered autonomous driving actually put in use.
 * *Reinforcement Learning for Autonomous Driving with Latent State Inference and Spatial-Temporal Relationships*
 
 * *Driverless Car: Autonomous Driving Using Deep Reinforcement Learning in Urban Environment*
+
+# RL with Novel Architectures
+
+## LM/LLM
+
+* *IS REINFORCEMENT LEARNING (NOT) FOR NATURAL LANGUAGE PROCESSING: BENCHMARKS, BASELINES, AND BUILDING BLOCKS FOR NATURAL LANGUAGE POLICY OPTIMIZATION * (ICLR 23')
+
+* *On the Effect of Pre-training for Transformer in Different Modality on Offline Reinforcement Learning* (NeurIPS 22')
+
+## Diffusion Models
+
+* *Is Conditional Generative Modeling all you need for Decision Making?* (ICLR 23')
 
 # Miscellanous
 
