@@ -318,6 +318,8 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 
 121. Make sure to check the debugging light and code on your mainboard to figure out the problem.
 
+122. When swapping an element in an array and its index in python, be very careful: a[a[0]], a[0] = a[0], a[a[0]] might not behave the expected way. A better choice is to use a, b = copy.deepcopy(b), copy.deepcopy(a), or use the tmp variable. 
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
