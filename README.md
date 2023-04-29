@@ -320,6 +320,8 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 
 122. When swapping an element in an array and its index in python, be very careful: a[a[0]], a[0] = a[0], a[a[0]] might not behave the expected way. A better choice is to use a, b = copy.deepcopy(b), copy.deepcopy(a), or use the tmp variable. 
 
+123. (Pytorch official hint) If you need to move a model to GPU via .cuda() , please do so before constructing optimizers for it. Parameters of a model after .cuda() will be different objects with those before the call. In general, you should make sure that optimized parameters live in consistent locations when optimizers are constructed and used.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
