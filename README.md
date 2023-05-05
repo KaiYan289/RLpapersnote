@@ -1276,6 +1276,10 @@ Weight decay for BC can prevent overfitting to some extent.
 
 Offline version of DemoDICE.
 
+* *MAHALO: Unifying Offline RL and IL from Observations* (2023) unification of offline RL/IL.
+
+* *Imitation from Arbitrary Experience: A Dual Unification of Reinforcement and Imitation Learning Methods* (2023) Unification of offline RL/IL.
+
 ## Wasserstein
 
 Wasserstein distance, compared to f-divergences such as KL, is a much "weaker" distance, which means intuitively, it will be more smooth and have better property in many cases, such as those where two distributions have no intersection.
