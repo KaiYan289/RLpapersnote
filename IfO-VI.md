@@ -6,39 +6,52 @@ For a neat dichotomy, see imitation-formal.ppt in the repo.
 
 1.Provable Representation Learning for Imitation Learning via Bi-level Optimization
 The current paper proposes a bi-level optimization framework to formulate and analyze representation learning for imitation learning using multiple demonstrators
+
 2.Recent Advances in Imitation Learning from Observation
+
 3.Provably Efficient Imitation Learning from Observation Alone
 Reduce Lfo into a sequence of minimax problems, one per time-step. Cannot share data across different time steps, not data efficient; only works for discrete actions; 
 Still GAIL-based architecture
+
 4.MobILE: Model-Based Imitation Learning From Observation Alone
 Dynamics model learning by executing current policy online; design a bonus to incentivize exploration; do a imitation-exploration tradeoff surrogate to update policy. Inverse dynamics isn’t well defined except MDP dynamics is injective (no two actions could lead to the same next state from the current state)
 Forward model is always unique and well-defined
 With bounded loss, continuous action space
+
 5.Sequential robot imitation learning from observations (cannot get pdf)
 Invariant segment from visual observation sequenced together (skill?) motion2vec; image from same segment is together, from others are pushed away (contrastive learning)
+
 6.Imitation from observation: Learning to imitate behaviors from raw video via context translation 
 TRPO / guided policy search; context translation model for training an encoder
+
 7.Learning invariant feature spaces to transfer skills with reinforcement learning
 Learn shared feature space by means of proxy task  p(f(ss_p,r))=p(g(st_p,r))
 Optimize \pi by directly mimicking the distribution over f(ss_p,r)
+
 8.Reinforcement learning with videos: Combining offline observations with interaction.
 RL get inverse dynamic model + human demo approx. imitation learning
+
 9.Third-person imitation learning
 Finally, the classes probabilities that were computed using this domain-agnostic feature vector are utilized as a cost signal in TRPO; which is subsequently utilized to train the novice policy to take expert-like actions and collect further rollouts.
 GAIL-like state-matching-only approach
+
 10.Playing hard exploration games by watching youtube
 Temporal distance classification (how far two demonstration segments are apart?)
 Cross-modal temporal distance classification (what are the important events?)
 Use a learned auxiliary reward to guide exploration
+
 11.Imitation learning from observations by minimizing inverse dynamics disagreement.
 inverse dynamics disagreement minimization (the discrepancy between the inverse dynamics models of the expert and the agent)
 Inverse dynamics prediction the inverse dynamics disagreement is defined as the KL divergence between the inverse dynamics models of the expert and the agent. Still GAIL-based but with a surrogate loss
 the key challenge in LfO comes from the absence of action information, which prevents it from applying typical actioninvolved imitation learning approaches like behavior cloning [33, 3, 12, 31, 32] or apprenticeship learning [25, 1, 40]. Actually, action information can be implicitly encoded in the state transition (s, s0 ). 
+
 12.Neural Task Graphs: Generalizing to Unseen Tasks from a Single Video Demonstration
 https://rpl.cs.utexas.edu/talks/visual_imitation_learning_rss2020.pdf
 One-of-a-kind, a symbolism work
 Produce a graph, and then localize current node & 
+
 13.A Geometric Perspective on Visual Imitation Learning (see following slides) (?)
+
 14.Visual Imitation Learning for Robot Manipulation
 MS thesis; learn a hand keypoint detection, feature, object detector
 Goal-based reward; LQR (not deep RL!)
@@ -173,5 +186,7 @@ Pseudo-labeling inverse dynamic model
 
 51.Imitation learning from video by leveraging proprioception
 Plain AIRL without action but with multiple (two) actions
+
+52. A Strong Baseline for Batch Imitation Learning
 
 ![image](https://user-images.githubusercontent.com/30424816/174714876-576c9872-a310-4656-a4d8-419765966f4b.png)
