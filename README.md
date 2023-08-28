@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 121 Useful Tips of the Day (updated 2023.5)
+# 126 Useful Tips of the Day (updated 2023.8)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -323,6 +323,10 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 123. (Pytorch official hint) If you need to move a model to GPU via .cuda() , please do so before constructing optimizers for it. Parameters of a model after .cuda() will be different objects with those before the call. In general, you should make sure that optimized parameters live in consistent locations when optimizers are constructed and used.
 
 124. GLFW might be problematic on headless machines (i.e. servers); to fix this, try set MUJOCO_GL environment variable to egl or osmesa.
+
+125. When you are using np.linalg.norm, make sure you know you are operating on a vector or matrix; they have very different behavior.
+
+126. If you want to make modifications to a decision transformer, make sure your sequence is still one-way logical (always induce the terms on the right from the terms on the left).
 
 # Useful Linux Debugging Commands
 
