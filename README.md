@@ -1692,6 +1692,10 @@ https://zhuanlan.zhihu.com/p/389748472
 
 https://zhuanlan.zhihu.com/p/384458362
 
+* *Q-learning Decision Transformer: Leveraging Dynamic Programming for Conditional Sequence Modelling in Offline RL* (ICML 23')
+
+* *Future-conditioned Unsupervised Pretraining for Decision Transformer* (ICML 23')
+
 * *Decision Transformer: Reinforcement Learning via Sequence Modeling* (2021)
 
 * *Reinforcement Learning as One Big Sequence Modeling Problem* (2021)
