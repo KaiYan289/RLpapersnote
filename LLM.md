@@ -16,7 +16,11 @@ Self-consistency: Self-Consistency Improves Chain of Thought Reasoning in Langua
 
 Tree of thought: Tree of Thoughts: Deliberate Problem Solving with Large Language Models. In ArXiv, 2023.
 
-Graph of thought: Graph of Thoughts: Solving Elaborate Problems with Large Language Model. In ArXiv, 2023.
+Graph of thought: 
+
+Graph of Thoughts: Solving Elaborate Problems with Large Language Model. In ArXiv, 2023.
+
+Cumulative Reasoning With Large Language Models. In ArXiv, 2023.
 
 
 
