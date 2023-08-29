@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 126 Useful Tips of the Day (updated 2023.8)
+# 127 Useful Tips of the Day (updated 2023.8)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -327,6 +327,8 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 125. When you are using np.linalg.norm, make sure you know you are operating on a vector or matrix; they have very different behavior.
 
 126. If you want to make modifications to a decision transformer, make sure your sequence is still one-way logical (always induce the terms on the right from the terms on the left).
+
+127. The problem of beam search is that top-K choices may only include a very small portion of probability. You need to set K to be very large to include most possibility.
 
 # Useful Linux Debugging Commands
 
