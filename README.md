@@ -330,6 +330,8 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 
 127. The problem of beam search is that top-K choices may only include a very small portion of probability. You need to set K to be very large to include most possibility.
 
+128. If torch.save cannot save because of errors like some local variables in class, try cloudpickle.dump(). example: cloudpickle.dump(agent, open("model/"+NAME+"/agent-iter"+str(i)+".pkl", mode="wb"))
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
