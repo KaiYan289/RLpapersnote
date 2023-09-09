@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 127 Useful Tips of the Day (updated 2023.8)
+# 130 Useful Tips of the Day (updated 2023.9)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -331,6 +331,10 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 127. The problem of beam search is that top-K choices may only include a very small portion of probability. You need to set K to be very large to include most possibility.
 
 128. If torch.save cannot save because of errors like some local variables in class, try cloudpickle.dump(). example: cloudpickle.dump(agent, open("model/"+NAME+"/agent-iter"+str(i)+".pkl", mode="wb"))
+
+129. Remember that decision transformer is a transformer, so as long as the timestep, state and attention mask are correctly matched and in the correct order, it does not matter where you put the paddings (front or latter). Remember, decision transformer can be used for unordered set once the positional encoding is removed, so it does not really matter if it is front-padded or latter-padded. 
+
+130. GPT2 in huggingface is causal, and decision transformer is based on GPT2. It does not matter what padding action you are putting into the place where attention mask is 0.
 
 # Useful Linux Debugging Commands
 
