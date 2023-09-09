@@ -336,6 +336,9 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 
 130. GPT2 in huggingface is causal, and decision transformer is based on GPT2. It does not matter what padding action you are putting into the place where attention mask is 0.
 
+131. Remember that AWR's implementation has a weight clipping of 20, and it is normal that initially there are either weight 20 or 0. Also, AWR is quite sensitive to buffer size; buffer size too small (50K recommended) will make the algorithm overfit to the dataset.
+
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
