@@ -142,7 +142,7 @@ and at the end of the episode, you write
 
  imageio.mimsave(name+'.mp4', IMG, fps=25)
  
-55. If you need to change distribution in expectation in your derivation, try importance sampling. But as this introduces a possibly instable denominator, you may need surrogates to stabilize the whole thing.  
+55. If you need to change distribution in expectation in your derivation, try importance sampling. But as this introduces a possibly instable denominator, you may need surrogates to stabilize the whole thing. If you feel improtance sampling is bad, try state occupancy ratio (see DualDICE) and sampling importance resampling (SIR). 
 
 56. If you are encountering strange problems in python import (e.g. missing .so), there are a few possible things that you can do:
 
