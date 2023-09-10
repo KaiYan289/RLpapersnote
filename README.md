@@ -338,7 +338,8 @@ L-BFGS needs optimizer.step(closure()) where closure() gives the loss function. 
 
 131. Remember that AWR's implementation has a weight clipping of 20, and it is normal that initially there are either weight 20 or 0. Also, AWR is quite sensitive to buffer size; buffer size too small (50K recommended) will make the algorithm overfit to the dataset.
 
-132. '''
+132.
+```
 import time
 from tqdm import tqdm
 lst, lst2, lst3, lst4 = [], [], [], []
@@ -357,7 +358,7 @@ for i in tqdm(range(100000)):
 t2 = time.time()
 
 print("[0]:", t1 - t0, "reshape:", t2-t1)
-'''
+```
 The result is [0]: 1.9272778034210205 reshape: 0.3856058120727539. The latter is 5x faster than the former! 
 
 # Useful Linux Debugging Commands
