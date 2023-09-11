@@ -363,6 +363,8 @@ The result is [0]: 1.9272778034210205 reshape: 0.3856058120727539. The latter is
 
 133. When you find that the training curve is strange, make sure to check whether you sampling process is fine; your program might only be trained on a small subset due to code bug.
 
+134. remember torch.distributions.Normal takes **standard deviation** as input, but torch.distributions.multivariate_normal.MultivariateNormal takes **variance** (covariance) as input!
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
