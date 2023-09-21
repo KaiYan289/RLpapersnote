@@ -1126,7 +1126,8 @@ A survey. Quoting its abstract, "Social Learning is a new class of algorithms th
 
 ## Miscellanous
 
-
+* *A Connection Between One-Step RL and Critic Regularization in Reinforcement Learning* (ICML 23')
+ 
 * *Planning for Sample Efficient Imitation Learning* (NeurIPS 22') TBD
 
 * *Mastering Atari Games with Limited Data* (NeurIPS 21') TBD
