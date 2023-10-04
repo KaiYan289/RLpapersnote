@@ -365,6 +365,10 @@ The result is [0]: 1.9272778034210205 reshape: 0.3856058120727539. The latter is
 
 134. remember torch.distributions.Normal takes **standard deviation** as input, but torch.distributions.multivariate_normal.MultivariateNormal takes **variance** (covariance) as input!
 
+135. remember to check the original code by the author; there might be some special tricks in it or different hyperparams that are not specified in the paper.
+
+136. Be very careful when you use xxx if yyy else zzz; adding () at the edge of the expressions is always a good practice.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
