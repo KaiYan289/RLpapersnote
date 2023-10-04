@@ -359,7 +359,7 @@ t2 = time.time()
 
 print("[0]:", t1 - t0, "reshape:", t2-t1)
 ``` 
-The result is [0]: 1.9272778034210205 reshape: 0.3856058120727539. The latter is 5x faster than the former! 
+The result is [0]: 1.9272778034210205 reshape: 0.3856058120727539. The latter is 5x faster than the former! (torch.stack is even faster!)
 
 133. When you find that the training curve is strange, make sure to check whether you sampling process is fine; your program might only be trained on a small subset due to code bug.
 
