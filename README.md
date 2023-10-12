@@ -446,6 +446,42 @@ class SquashedNormal(pyd.transformed_distribution.TransformedDistribution):
 
 ```
 
+138. A simple way to write a dataset for iteration:
+
+```
+class RepeatedDataset:
+    def __init__(self, datas, batch_size, start_with_random=True):
+        self.datas = []
+        for data in datas: # list of arrays with the same first dimension.
+            self.datas.append(data.clone())
+        self.counter, self.idx, self.batch_size = 0, torch.randperm(self.datas[0].shape[0]), batch_size
+        if start_with_random:
+            for _ in range(len(self.datas)):
+                print("shape:", self.datas[_].shape)
+                self.datas[_] = self.datas[_][self.idx]
+    
+    def __len__(self):
+        return self.datas[0].shape[0] // self.batch_size    
+    
+    def getitem(self):
+        if self.counter + self.batch_size > len(self.idx):
+            self.counter, self.idx = 0, torch.randperm(self.datas[0].shape[0])
+            for _ in range(len(self.datas)):
+                self.datas[_] = self.datas[_][self.idx]
+        ret = []
+        for _ in range(len(self.datas)):
+            ret.append(self.datas[_][self.counter:self.counter+self.batch_size])
+        self.counter += self.batch_size
+        """
+        print(self.counter, self.counter+self.batch_size)
+        
+        for _ in range(len(self.datas)):
+            print(self.datas[_][self.counter:self.counter+self.batch_size])
+        """
+        if len(self.datas) == 1: return ret[0]
+        else: return ret
+```
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
