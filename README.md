@@ -484,7 +484,7 @@ class RepeatedDataset:
 
 139. You should not use multiprocessing in dataloader while loading tensors, or you might get a CUDA initialization error. Make sure that your torch.dataloader only loads numpy arrays instead of tensors. (besides, if the data is on GPU, why bother loading it via multiprocessing?)
 
-140. use next(iter(dataloader)) to get the next batch in the torch dataloader.
+140. use dataload = iter(dataloader); next(dataload) to get the next batch in the torch dataloader. (do not use next(iter()) as it is very slow!)
 
 # Useful Linux Debugging Commands
 
