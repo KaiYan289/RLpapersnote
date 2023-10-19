@@ -482,6 +482,9 @@ class RepeatedDataset:
         else: return ret
 ```
 
+139. You should not use multiprocessing in dataloader while loading tensors, or you might get a CUDA initialization error. Make sure that your torch.dataloader only loads numpy arrays instead of tensors. (besides, if the data is on GPU, why bother loading it via multiprocessing?)
+
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
