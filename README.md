@@ -486,6 +486,8 @@ class RepeatedDataset:
 
 140. use dataload = iter(dataloader); next(dataload) to get the next batch in the torch dataloader. (do not use next(iter()) as it is very slow!)
 
+141. You must do right-padding for pretrained LLM models, because LLMs are decoder-only architectures and are not trained to continue from padding tokens! (https://huggingface.co/docs/transformers/main/en/llm_tutorial#wrong-padding-side)
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
