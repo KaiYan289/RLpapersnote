@@ -1,5 +1,7 @@
 https://www.promptingguide.ai/
 
+# 
+
 # Chain of Thought
 
 Vanilla: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. In NeurIPS, 2022.
@@ -16,9 +18,13 @@ Self-consistency: Self-Consistency Improves Chain of Thought Reasoning in Langua
 
 Tree of thought: Tree of Thoughts: Deliberate Problem Solving with Large Language Models. In ArXiv, 2023.
 
-Graph of thought: 
+Graph of thought: Graph of Thoughts: Solving Elaborate Problems with Large Language Model. In ArXiv, 2023.
 
-Graph of Thoughts: Solving Elaborate Problems with Large Language Model. In ArXiv, 2023.
+Algorithm-of-Thought: Algorithm of Thoughts: Enhancing Exploration of Ideas in Large Language Models. In ArXiv, 2023.
+
+Skeleton-of-thought: 
+
+
 
 Cumulative Reasoning With Large Language Models. In ArXiv, 2023.
 
