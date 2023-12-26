@@ -488,6 +488,8 @@ class RepeatedDataset:
 
 141. You must do **left-padding** for pretrained LLM models, because LLMs are decoder-only architectures and are not trained to continue from padding tokens! (https://huggingface.co/docs/transformers/main/en/llm_tutorial#wrong-padding-side)
 
+142. If your self-implemented SAC algorithm is diverging, you should check whether the entropy sign is correct. If the entropy term is wrong, then the Q value will certainly diverge (which is different from other cases where the entropy is not involved in the TD function).
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
