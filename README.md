@@ -490,6 +490,8 @@ class RepeatedDataset:
 
 142. If your self-implemented SAC algorithm is diverging, you should check whether the entropy sign is correct. If the entropy term is wrong, then the Q value will certainly diverge (which is different from other cases where the entropy is not involved in the TD function).
 
+143. next(it), it=iter(dataloader) is very slow, probably because it does not use the parallelization of the torch dataloader; try iterate in a for loop instead.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
