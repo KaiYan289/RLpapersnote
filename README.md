@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 138 Useful Tips of the Day (updated 2024.1)
+# 144 Useful Tips of the Day (updated 2024.1)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -491,6 +491,8 @@ class RepeatedDataset:
 142. If your self-implemented SAC algorithm is diverging, you should check whether the entropy sign is correct. If the entropy term is wrong, then the Q value will certainly diverge (which is different from other cases where the entropy is not involved in the TD function).
 
 143. next(it), it=iter(dataloader) is very slow, probably because it does not use the parallelization of the torch dataloader; try iterate in a for loop instead.
+
+144. If you find that the CPU usage of pytorch coed is very high, try use torch.set_num_threads(1) (to reduce thread communication cost) or pin_memory=False (if you have ever explicitly set it to true). 
 
 # Useful Linux Debugging Commands
 
