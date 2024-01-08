@@ -492,7 +492,7 @@ class RepeatedDataset:
 
 143. next(it), it=iter(dataloader) is very slow, probably because it does not use the parallelization of the torch dataloader; try iterate in a for loop instead.
 
-144. If you find that the CPU usage of pytorch coed is very high, try use torch.set_num_threads(1) (to reduce thread communication cost) or pin_memory=False (if you have ever explicitly set it to true). 
+144. If you find that the CPU usage of pytorch code is very high, try use torch.set_num_threads(1) (to reduce thread communication cost) or pin_memory=False (if you have ever explicitly set it to true). 
 
 # Useful Linux Debugging Commands
 
