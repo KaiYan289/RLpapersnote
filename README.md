@@ -494,6 +494,8 @@ class RepeatedDataset:
 
 144. If you find that the CPU usage of pytorch code is very high, try use torch.set_num_threads(1) (to reduce thread communication cost) or pin_memory=False (if you have ever explicitly set it to true). 
 
+145. When making slides, the front "dot" recommendation: unicode 2022 (in custom), 100% height
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
