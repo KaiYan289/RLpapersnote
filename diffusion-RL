@@ -1,0 +1,26 @@
+Diffuser
+
+Chen et al., OFFLINE REINFORCEMENT LEARNING VIA HIGH FIDELITY GENERATIVE BEHAVIOR MODELING, ICLR 2023
+
+Liang et al., AdaptDiffuser: Diffusion Models as Adaptive Self-evolving Planners, ICML 2023
+
+Zhou et al., ChainedDiffuser: Unifying Trajectory Diffusion and Keypose Prediction for Robotic Manipulation, CoRL 2023
+
+Wang et al., Cold Diffusion on the Replay Buffer: Learning to Plan from Known Good States, CoRL 2023
+
+Carvalho et al., Motion Planning Diffusion: Learning and Planning of Robot Motions with Diffusion Models, 2023
+
+Diffusion policy:Visuo motor policy learning via action diffusion
+
+Imitating human behaviour with diffusion models
+
+Goal-conditioned imitation learningusingscore-869 based diffusion policies
+
+Nomad: Goal masked diffusion policies for navigation and exploration.
+
+Diffusion policies as an expressive policy class for offline reinforcement learning.
+
+Learning universal policies via text-guided video generation
+
+Planning with diffusion for flexible behavior synthesis.
+
