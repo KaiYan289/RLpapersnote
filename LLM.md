@@ -42,3 +42,20 @@ explore in the vicinity: Semi-Offline Reinforcement Learning for Optimized Text 
 
 Reasoning with Language Model is Planning with World Model. In ArXiv, 2023.
 
+## In-context RL
+
+In-context Reinforcement Learning with Algorithm Distillation. In NeurIPS, 2022.
+
+Transformers as Decision Makers: Provable In-Context Reinforcement Learning via Supervised Pretraining
+
+Emergent agentic transformer from chain of hindsight experience
+
+Emergence of In-Context Reinforcement Learning from Noise Distillation
+
+AMAGO: Scalable In-Context Reinforcement Learning for Adaptive Agents
+
+In-Context Reinforcement Learning for Variable Action Spaces
+
+Supervised Pretraining Can Learn In-Context Reinforcement Learning, in NeurIPS, 2023.
+
+In-context Exploration-Exploitation for Reinforcement Learning
