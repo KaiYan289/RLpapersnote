@@ -2,6 +2,8 @@ https://www.promptingguide.ai/
 
 https://github.com/rxlqn/awesome-llm-self-reflection
 
+UPRISE: Universal Prompt Retrieval for Improving Zero-Shot Evaluation
+
 # 
 
 # Chain of Thought
