@@ -496,6 +496,12 @@ class RepeatedDataset:
 
 145. When making slides, the front "dot" recommendation: unicode 2022 (in custom), 100% height
 
+146. Be very careful when you adapt random agents to deterministic algorithms (e.g. TD3 to ODT). You probably run the risk of not initiating exploration noise, which does not have to exist when it was a stochastic agent.
+
+147. Be close to standard D4RL format; it is better that your program directly read from get_dataset() such that you have better reproducibility.
+
+148. Transformer RL agents might have very different hyperparameters from MLP ones (e.g. critic learning rate).
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
