@@ -187,6 +187,12 @@ Pseudo-labeling inverse dynamic model
 51.Imitation learning from video by leveraging proprioception
 Plain AIRL without action but with multiple (two) actions
 
+52. Align Your Intents: Offline Imitation Learning via Optimal Transport (2024)
+
+53. CLUE: Calibrated Latent Guidance (2023)
+
+54. Imitation Learning from Observation with Automatic Discount Scheduling (2024)
+
 52. A Strong Baseline for Batch Imitation Learning
 
 ![image](https://user-images.githubusercontent.com/30424816/174714876-576c9872-a310-4656-a4d8-419765966f4b.png)
