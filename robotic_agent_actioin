@@ -1,0 +1,7 @@
+Creating Multimodal Interactive Agents with Imitation and Self-Supervised Learning. arxiv 2112.03763.
+Improving Multimodal Interactive Agents with Reinforcement Learning from Human Feedback. arxiv 2211.11602.
+Robotic Offline RL from Internet Videos via Value-Function Pre-Training. arxiv 2309.13041. - two stage pretrain, has bridge data
+GENSIM: GENERATING ROBOTIC SIMULATION TASKS VIA LARGE LANGUAGE MODELS. ICLR 2024. - LLM for data augmentation
+Open X-Embodiment: Robotic Learning Datasets and RT-X Models https://github.com/google-deepmind/open_x_embodiment
+WORLD MODEL ON MILLION-LENGTH VIDEO AND LANGUAGE WITH BLOCKWISE RINGATTENTION
+Video as the New Language for Real-World Decision Making
