@@ -502,6 +502,8 @@ class RepeatedDataset:
 
 148. Transformer RL agents might have very different hyperparameters from MLP ones (e.g. critic learning rate).
 
+149. If you are confronting weird critic divergence, check your data; if not a single state is "terminal" (i.e. all timeout), remember to set one to terminal.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
