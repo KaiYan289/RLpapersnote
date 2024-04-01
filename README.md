@@ -558,6 +558,9 @@ See "robotics.md" in the repo.
 
 ## LLM for RL
 
+* *GAIA-1: A Generative World Model for Autonomous Driving* A new thought of "decision-making" by grand world model
+
+
 # Causal Inference
 
 Thanks the causal reading group @ MSRA for their valuable opinions on causal inference! For a more thorough and professional summary, see *https://github.com/fulifeng/Causal_Reading_Group*.
