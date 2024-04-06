@@ -504,6 +504,8 @@ class RepeatedDataset:
 
 149. If you are confronting weird critic divergence, check your data; if not a single state is "terminal" (i.e. all timeout), remember to set one to terminal.
 
+150. If your RL agent is diverging due to strange reasons, try layernorm on the critic. However, adding layernorm to the critic is not always the best choice; sometimes (e.g. mujoco) it slows down the learning process, but sometimes (e.g. adroit) it is magical.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
