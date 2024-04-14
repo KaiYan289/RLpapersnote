@@ -1270,6 +1270,8 @@ A survey. Quoting its abstract, "Social Learning is a new class of algorithms th
 
 ## Miscellanous
 
+* *Don’t Change the Algorithm, Change the Data: Exploratory Data for Offline Reinforcement Learning* (EXORL) (2022)
+
 * *RLIF: INTERACTIVE IMITATION LEARNING AS REINFORCEMENT LEARNING* (2023)
 
 * *A Connection Between One-Step RL and Critic Regularization in Reinforcement Learning* (ICML 23')
