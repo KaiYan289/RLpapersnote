@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 144 Useful Tips of the Day (updated 2024.5)
+# 153 Useful Tips of the Day (updated 2024.5)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -507,6 +507,10 @@ class RepeatedDataset:
 150. If your RL agent is diverging due to strange reasons, try layernorm on the critic. However, adding layernorm to the critic is not always the best choice; sometimes (e.g. mujoco) it slows down the learning process, but sometimes (e.g. adroit) it is magical.
 
 151. If you are wondering how people solve antmaze: they (CQL, IQL) sub reward by 1, making a sparse reward env becoming a dense one.
+
+152. Make sure that you use \left and \right before the parentheses for complicated contents in the formula (e.g. \\exp\\left(\\frac\{a\}\{b\}\\right) ).
+
+153. Remember that "by \[4\]" is not correct in writing papers; instead, you should write "by xxx et al. \[4\]".
 
 # Useful Linux Debugging Commands
 
