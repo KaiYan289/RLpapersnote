@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 153 Useful Tips of the Day (updated 2024.5)
+# 154 Useful Tips of the Day (updated 2024.5)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -511,6 +511,8 @@ class RepeatedDataset:
 152. Make sure that you use \left and \right before the parentheses for complicated contents in the formula (e.g. \\exp\\left(\\frac\{a\}\{b\}\\right) ).
 
 153. Remember that "by \[4\]" is not correct in writing papers; instead, you should write "by xxx et al. \[4\]".
+
+154. Remember to use \eqref instead of \ref for equations.
 
 # Useful Linux Debugging Commands
 
