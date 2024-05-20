@@ -514,6 +514,8 @@ class RepeatedDataset:
 
 154. Remember to use \eqref instead of \ref for equations.
 
+155. Remember to use vector graph (i.e., pdf) for figures in the paper.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
