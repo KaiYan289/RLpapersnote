@@ -516,6 +516,8 @@ class RepeatedDataset:
 
 155. Remember to use vector graph (i.e., pdf) for figures in the paper.
 
+156. When you are updating posts in Jekyll, make sure that you add posts from a past point of time. The future posts will be skipped by Jekyll. To check this, use jekyll build --verbose. 
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
