@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 156 Useful Tips of the Day (updated 2024.6)
+# 156 Useful Tips of the Day (updated 2024.8)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -516,7 +516,9 @@ class RepeatedDataset:
 
 155. Remember to use vector graph (i.e., pdf) for figures in the paper.
 
-156. When you are updating posts in Jekyll, make sure that you add posts from a past point of time. The future posts will be skipped by Jekyll. To check this, use jekyll build --verbose. 
+156. When you are updating posts in Jekyll, make sure that you add posts from a past point of time. The future posts will be skipped by Jekyll. To check this, use jekyll build --verbose.
+
+157. Remember that openreview requires "\_" for latex formulas that are "_" in overleaf. https://docs.openreview.net/reference/openreview-tex/common-issues-with-latex-code-display
 
 # Useful Linux Debugging Commands
 
