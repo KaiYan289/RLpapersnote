@@ -520,6 +520,10 @@ class RepeatedDataset:
 
 157. Remember that openreview requires "\_" for latex formulas that are "_" in overleaf. https://docs.openreview.net/reference/openreview-tex/common-issues-with-latex-code-display
 
+158. Check for the success file when you use hdfs to download items.
+
+
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
