@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 156 Useful Tips of the Day (updated 2024.8)
+# 156 Useful Tips of the Day (updated 2024.11)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -522,7 +522,9 @@ class RepeatedDataset:
 
 158. Check for the success file when you use hdfs to download items.
 
+159. You should be very careful when you are building a benchmark about data quality.
 
+160. If you are encountering problems such as "ValueError: Unable to create tensor, you should probably activate truncation and/or padding with 'padding=True' 'truncation=True' to have batched tensors with the same length. Perhaps your features (`labels` in this case) have excessive nesting (inputs type `list` where type `int` is expected)." but you are sure you processed it, check if it is the problem of your new dataset containing previous items that has not been processed. https://github.com/huggingface/transformers/issues/15505
 
 # Useful Linux Debugging Commands
 
