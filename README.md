@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 161 Useful Tips of the Day (updated 2024.11)
+# 164 Useful Tips of the Day (updated 2024.12)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -527,6 +527,14 @@ class RepeatedDataset:
 160. If you are encountering problems such as "ValueError: Unable to create tensor, you should probably activate truncation and/or padding with 'padding=True' 'truncation=True' to have batched tensors with the same length. Perhaps your features (`labels` in this case) have excessive nesting (inputs type `list` where type `int` is expected)." but you are sure you processed it, check if it is the problem of your new dataset containing previous items that has not been processed. https://github.com/huggingface/transformers/issues/15505
 
 161. How to set up a language model for regression with transformer library: https://discuss.huggingface.co/t/how-to-set-up-trainer-for-a-regression/12994 (i.e. set up a single label for classification and set loss to be MSE).
+
+162. BitsandBytes seem ot handle the problem of bfloat16 vs. float by its own. When you are not using it to finetune LLMs, be very careful about the dtype of the parameters vs. data; there will be subtle errors. (In other words, you should check this if you met subtle errors in finetuning LLMs). 
+
+163. Remember that most BERT's context length is only 512 tokens!
+
+164. When you are using dmc2gym to finetune image-based RL environments on headless machine, you might meet the problem of X11 host error by glfw. Remember to set rendering with osmesa / egl!
+
+165. Remember to do pixel normalization (0 to 255 -> -1 to 1) when you are doing visual RL!
 
 # Useful Linux Debugging Commands
 
