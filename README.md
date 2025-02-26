@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 164 Useful Tips of the Day (updated 2024.12)
+# 167 Useful Tips of the Day (updated 2025.2)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -535,6 +535,10 @@ class RepeatedDataset:
 164. When you are using dmc2gym to finetune image-based RL environments on headless machine, you might meet the problem of X11 host error by glfw. Remember to set rendering with osmesa / egl!
 
 165. Remember to do pixel normalization (0 to 255 -> -1 to 1) when you are doing visual RL!
+
+166. Process reward models are not as beautiful as it seems, though it might be attractive for RL people - read deepseek R1 paper for details.
+
+167. Do not inject too many human-made rules in the early stages of LLM training pipeline (e.g. careful selecting data for pretraining), which might limit the final upper bound of the model.
 
 # Useful Linux Debugging Commands
 
