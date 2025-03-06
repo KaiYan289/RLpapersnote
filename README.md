@@ -540,6 +540,8 @@ class RepeatedDataset:
 
 167. Do not inject too many human-made rules in the early stages of LLM training pipeline (e.g. careful selecting data for pretraining), which might limit the final upper bound of the model.
 
+168. If you are using sglang or vllm, try to set --mem-fraction-static (sglang) / --gpu-memory-utilization (vllm) to 0.8 as a good starting point for both. You should not set this value too small for sglang (you can do this for vllm though it will be inefficient). Be sure to check whether there are zombie processes taking your GPU memories!
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
