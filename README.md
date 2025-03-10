@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 167 Useful Tips of the Day (updated 2025.2)
+# 167 Useful Tips of the Day (updated 2025.3)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -541,6 +541,8 @@ class RepeatedDataset:
 167. Do not inject too many human-made rules in the early stages of LLM training pipeline (e.g. careful selecting data for pretraining), which might limit the final upper bound of the model.
 
 168. If you are using sglang or vllm, try to set --mem-fraction-static (sglang) / --gpu-memory-utilization (vllm) to 0.8 as a good starting point for both. You should not set this value too small for sglang (you can do this for vllm though it will be inefficient). Be sure to check whether there are zombie processes taking your GPU memories!
+
+169. This is wrong: df['input'] = str(df['input_output'].apply(lambda x: json.loads(x)['inputs'])); instead, you should use f['input_output'].apply(lambda x: json.loads(x)['outputs']).apply(lambda x: str(x)).
 
 # Useful Linux Debugging Commands
 
