@@ -544,6 +544,8 @@ class RepeatedDataset:
 
 169. This is wrong: df['input'] = str(df['input_output'].apply(lambda x: json.loads(x)['inputs'])); instead, you should use f['input_output'].apply(lambda x: json.loads(x)['outputs']).apply(lambda x: str(x)).
 
+170. Be sure to first backup any file that is possibly being written by the current running scripts when you are killing the script. You don't want your data to be corrupted!
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
