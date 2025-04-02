@@ -546,6 +546,8 @@ class RepeatedDataset:
 
 170. Be sure to first backup any file that is possibly being written by the current running scripts when you are killing the script. You don't want your data to be corrupted!
 
+171. Be very careful when you are consistently writing logs in a github repo; if you keep writing it without configuring gitignore properly, you will see the running becomes slower and slower because of the github lfs tracker in the background.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
