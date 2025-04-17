@@ -8,6 +8,12 @@ UPRISE: Universal Prompt Retrieval for Improving Zero-Shot Evaluation
 
 # New Papers
 
+**Demystifying Long Chain-of-Thought Reasoning in LLMs (2405.09798)**
+
+**Magnet: Multi-turn Tool-use Data Synthesis and Distillation via Graph Translation (2503.07826)**
+
+**The N+ Implementation Details of RLHF with PPO: A Case Study on TL;DR Summarization (2403.17031)**
+
 ## Many-shot
 
 ## Self-train
