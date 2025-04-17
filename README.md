@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 167 Useful Tips of the Day (updated 2025.3)
+# 173 Useful Tips of the Day (updated 2025.4)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -547,6 +547,10 @@ class RepeatedDataset:
 170. Be sure to first backup any file that is possibly being written by the current running scripts when you are killing the script. You don't want your data to be corrupted!
 
 171. Be very careful when you are consistently writing logs in a github repo; if you keep writing it without configuring gitignore properly, you will see the running becomes slower and slower because of the github lfs tracker in the background.
+
+172. When trained on a particular task, even 7b small models can exhibit quite impressive performance. If you feel your model has low reward during RL on the task (even if it is fairly complicated), go and check your models.
+
+173. The best way to debug LLM training is to look at the output it produce.
 
 # Useful Linux Debugging Commands
 
