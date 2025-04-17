@@ -8,6 +8,10 @@ UPRISE: Universal Prompt Retrieval for Improving Zero-Shot Evaluation
 
 # New Papers
 
+**What’s Behind PPO’s Collapse in Long-CoT? Value Optimization Holds the Secret (2503.01491)**
+
+**The Evolution of LLM Adoption in Industry Data Curation Practices (2503.01491)**
+
 **Demystifying Long Chain-of-Thought Reasoning in LLMs (2405.09798)**
 
 **Magnet: Multi-turn Tool-use Data Synthesis and Distillation via Graph Translation (2503.07826)**
