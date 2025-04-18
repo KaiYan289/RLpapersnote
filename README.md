@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 173 Useful Tips of the Day (updated 2025.4)
+# 174 Useful Tips of the Day (updated 2025.4)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -551,6 +551,8 @@ class RepeatedDataset:
 172. When trained on a particular task, even 7b small models can exhibit quite impressive performance. If you feel your model has low reward during RL on the task (even if it is fairly complicated), go and check your models.
 
 173. The best way to debug LLM training is to look at the output it produce.
+
+174. Be sure to check your config if you are using gradient checkpointing first when you got a GPU OOM error during training!
 
 # Useful Linux Debugging Commands
 
