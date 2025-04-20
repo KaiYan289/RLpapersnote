@@ -8,6 +8,12 @@ UPRISE: Universal Prompt Retrieval for Improving Zero-Shot Evaluation
 
 # New Papers
 
+**Reason-RFT: Reinforcement Fine-Tuning for Visual Reasoning (2503.20752)**
+
+**A Minimalist Approach to LLM Reasoning: from Rejection Sampling to Reinforce (2504.11343)**
+
+**TRUST REGION PREFERENCE APPROXIMATION: A SIMPLE AND STABLE REINFORCEMENT LEARNING ALGORITHM FOR LLM REASONING (2504.04524)**
+
 **What’s Behind PPO’s Collapse in Long-CoT? Value Optimization Holds the Secret (2503.01491)**
 
 **The Evolution of LLM Adoption in Industry Data Curation Practices (2503.01491)**
@@ -17,6 +23,8 @@ UPRISE: Universal Prompt Retrieval for Improving Zero-Shot Evaluation
 **Magnet: Multi-turn Tool-use Data Synthesis and Distillation via Graph Translation (2503.07826)**
 
 **The N+ Implementation Details of RLHF with PPO: A Case Study on TL;DR Summarization (2403.17031)**
+
+**UNA: UNIFYING ALIGNMENTS OF RLHF/PPO, DPO AND KTO BY A GENERALIZED IMPLICIT REWARD FUNCTION (2408.15339)**
 
 ## Many-shot
 
