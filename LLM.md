@@ -8,6 +8,8 @@ UPRISE: Universal Prompt Retrieval for Improving Zero-Shot Evaluation
 
 # New Papers
 
+**CLIMB: CLustering-based Iterative Data Mixture Bootstrapping for Language Model Pre-training (2504.13161)**
+
 **Reason-RFT: Reinforcement Fine-Tuning for Visual Reasoning (2503.20752)**
 
 **A Minimalist Approach to LLM Reasoning: from Rejection Sampling to Reinforce (2504.11343)**
