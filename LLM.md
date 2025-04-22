@@ -23,7 +23,7 @@ ReTool: Reinforcement Learning for Strategic Tool Use in LLMs (see related work 
 
 ### Survey
 
-Tool learning with large language models: A survey (2405.17935)
+Tool learning with large language models: A survey (2405.17935) -> see Fig. 1-2 to papers before 2024Q2.
 
 **Tool Learning with Foundation Models (2304.08354)**
 
@@ -35,7 +35,7 @@ Beyond collecting real API data, we developed a Tool Self-Evolution
 Synthesis (TSS) module that synthesizes API definitions with various data types and constraints.
 Specifically, we utilize pretraining data to extract an API context tree
  
-Toolalpaca: Generalized tool learning for language models with 3000 simulated cases. 
+**Toolalpaca: Generalized tool learning for language models with 3000 simulated cases.(2306.05301)**
 
 Toolllm: Facilitating large language models to master 16000+ real-world apis
 
@@ -47,7 +47,19 @@ APIGen: Automated PIpeline for Generating Verifiable and Diverse Function-Callin
 
 TravelPlanner: A Benchmark for Real-World Planning with Language Agents (sandbox)
 
+Toolformer: Language Models Can Teach Themselves to Use Tools
+
+τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains
+
+StableToolBench: Towards Stable Large-Scale Benchmarking on Tool Learning of Large Language Models
+
+On the Tool Manipulation Capability of Open-source Large Language Models (toolbench)
+
+RestGPT: Connecting Large Language Models with Real-World RESTful APIs
+
 ### evaluation
+
+ToolQA: A Dataset for LLM Question Answering with External Tools
 
 MINT: EVALUATING LLMS IN MULTI-TURN INTERACTION WITH TOOLS AND LANGUAGE FEEDBACK
 
@@ -57,11 +69,38 @@ ToolEyes: Fine-Grained Evaluation for Tool Learning Capabilities of Large Langua
 
 Planning, Creation, Usage: Benchmarking LLMs for Comprehensive Tool Utilization in Real-World Complex Scenarios (2401.17167)
 
+T-Eval: Evaluating the Tool Utilization Capability of Large Language Models Step by Step
+
+ToolSword: Unveiling Safety Issues of Large Language Models in Tool Learning Across Three Stages (2402.10753)
+
+ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval (2403.06551)
+
+AppWorld: A Controllable World of Apps and People for Benchmarking Interactive Coding Agents
+
+Seal-tools: Self-instruct tool learning dataset for agent tuning and detailed benchmark
+
+Identifying the risks of lm agents with an lm-emulated sandbox.
+
+Gta: A benchmark for general tool agents
+
+Sciagent: Tool-augmented language models for scientific reasoning
+
+Ctooleval: A chinese benchmark for llm-powered agent evaluation in realworld api interactions
+
+Taskbench: Benchmarking
+large language models for task automation.
+
+Toolsandbox: A
+stateful, conversational, interactive evaluation benchmark for llm tool use capabilities.
+
 ### Training
 
 iTool: Boosting Tool Use of Large Language Models via Iterative
 Reinforced Fine-Tuning
 
+Let Me Do It For You: Towards LLM Empowered Recommendation via Tool Learning (2405.15114)
+
+AnyTool: Self-Reflective, Hierarchical Agents for Large-Scale API Calls (2402.04253)
 
 ### Data synthesis
 
@@ -71,16 +110,35 @@ Magnet: Multi-turn Tool-use Data Synthesis and Distillation via Graph Translatio
 
 **Visual ChatGPT: Talking, Drawing and Editing with Visual Foundation Models (2303.04671)**
 
+ToolChain\*: Efficient Action Space Navigation in Large Language Models with A\* Search
+
+Critic: Large language models can self-correct with tool-interactive critiquing
+
+### Tool Creation
+
+CREATOR: Tool Creation for Disentangling Abstract and Concrete Reasoning of Large Language Models
+
+Large Language Models as Tool Makers (2305.17126)
+
+### Early
+
+**ViperGPT: Visual Inference via Python Execution for Reasoning (2303.08128)**
+
+
+
+TALM: Tool Augmented Language Models
+
+ToolkenGPT: Augmenting Frozen Language Models with Massive Tools via Tool Embeddings
+
+Making Language Models Better Tool Learners with Execution Feedback
 
 ### Uncategorized
 
 GPT4Tools: Teaching Large Language Model to Use Tools via Self-instruction
 
+Learning to use tools via cooperative and interactive agents.
 
 ---
-
-
-
 
 
 **CLIMB: CLustering-based Iterative Data Mixture Bootstrapping for Language Model Pre-training (2504.13161)**
