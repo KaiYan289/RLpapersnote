@@ -8,6 +8,81 @@ UPRISE: Universal Prompt Retrieval for Improving Zero-Shot Evaluation
 
 # New Papers
 
+
+
+
+## Tool Use
+
+
+### Tool for other tasks
+
+TORL: Scaling Tool-Integrated RL
+
+ReTool: Reinforcement Learning for Strategic Tool Use in LLMs (see related work of this paper)
+
+
+### Survey
+
+Tool learning with large language models: A survey (2405.17935)
+
+**Tool Learning with Foundation Models (2304.08354)**
+
+### Datasets
+
+**ToolACE: Winning the Points of LLM Function Calling (2409.00920)**
+
+Beyond collecting real API data, we developed a Tool Self-Evolution
+Synthesis (TSS) module that synthesizes API definitions with various data types and constraints.
+Specifically, we utilize pretraining data to extract an API context tree
+ 
+Toolalpaca: Generalized tool learning for language models with 3000 simulated cases. 
+
+Toolllm: Facilitating large language models to master 16000+ real-world apis
+
+Gorilla: Large language model connected with massive apis
+
+API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs
+
+APIGen: Automated PIpeline for Generating Verifiable and Diverse Function-Calling Datasets
+
+TravelPlanner: A Benchmark for Real-World Planning with Language Agents (sandbox)
+
+### evaluation
+
+MINT: EVALUATING LLMS IN MULTI-TURN INTERACTION WITH TOOLS AND LANGUAGE FEEDBACK
+
+NESTFUL: A Benchmark for Evaluating LLMs on Nested Sequences of API Calls
+
+ToolEyes: Fine-Grained Evaluation for Tool Learning Capabilities of Large Language Models in Real-world Scenarios
+
+Planning, Creation, Usage: Benchmarking LLMs for Comprehensive Tool Utilization in Real-World Complex Scenarios (2401.17167)
+
+### Training
+
+iTool: Boosting Tool Use of Large Language Models via Iterative
+Reinforced Fine-Tuning
+
+
+### Data synthesis
+
+Magnet: Multi-turn Tool-use Data Synthesis and Distillation via Graph Translation
+
+### Prompt Engineering
+
+**Visual ChatGPT: Talking, Drawing and Editing with Visual Foundation Models (2303.04671)**
+
+
+### Uncategorized
+
+GPT4Tools: Teaching Large Language Model to Use Tools via Self-instruction
+
+
+---
+
+
+
+
+
 **CLIMB: CLustering-based Iterative Data Mixture Bootstrapping for Language Model Pre-training (2504.13161)**
 
 **Reason-RFT: Reinforcement Fine-Tuning for Visual Reasoning (2503.20752)**
