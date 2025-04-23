@@ -23,7 +23,7 @@ ReTool: Reinforcement Learning for Strategic Tool Use in LLMs (see related work 
 
 ### Survey
 
-Tool learning with large language models: A survey (2405.17935) -> see Fig. 1-2 to papers before 2024Q2.
+**Tool learning with large language models: A survey (2405.17935)** -> see Fig. 1-2 to papers before 2024Q2.
 
 **Tool Learning with Foundation Models (2304.08354)**
 
@@ -37,19 +37,19 @@ Specifically, we utilize pretraining data to extract an API context tree
  
 **Toolalpaca: Generalized tool learning for language models with 3000 simulated cases.(2306.05301)**
 
-Toolllm: Facilitating large language models to master 16000+ real-world apis
+**Toolllm: Facilitating large language models to master 16000+ real-world apis (2307.16789)**
 
-Gorilla: Large language model connected with massive apis
+**Gorilla: Large language model connected with massive apis (2305.15334)**
 
-API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs
+**API-Bank: A Comprehensive Benchmark for Tool-Augmented LLMs (2304.08244)**
 
-APIGen: Automated PIpeline for Generating Verifiable and Diverse Function-Calling Datasets
+**APIGen: Automated PIpeline for Generating Verifiable and Diverse Function-Calling Datasets (2406.18518)**
 
-TravelPlanner: A Benchmark for Real-World Planning with Language Agents (sandbox)
+**TravelPlanner: A Benchmark for Real-World Planning with Language Agents (sandbox) (2402.01622)**
 
-Toolformer: Language Models Can Teach Themselves to Use Tools
+**Toolformer: Language Models Can Teach Themselves to Use Tools (2302.04761)**
 
-τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains
+**τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains (2406.12045)**
 
 StableToolBench: Towards Stable Large-Scale Benchmarking on Tool Learning of Large Language Models
 
@@ -59,6 +59,8 @@ RestGPT: Connecting Large Language Models with Real-World RESTful APIs
 
 ### evaluation
 
+BFCL: https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html
+
 ToolQA: A Dataset for LLM Question Answering with External Tools
 
 MINT: EVALUATING LLMS IN MULTI-TURN INTERACTION WITH TOOLS AND LANGUAGE FEEDBACK
@@ -66,6 +68,8 @@ MINT: EVALUATING LLMS IN MULTI-TURN INTERACTION WITH TOOLS AND LANGUAGE FEEDBACK
 NESTFUL: A Benchmark for Evaluating LLMs on Nested Sequences of API Calls
 
 ToolEyes: Fine-Grained Evaluation for Tool Learning Capabilities of Large Language Models in Real-world Scenarios
+
+Wtu-eval: A whether-or-not tool usage evaluation benchmark for large language models.
 
 Planning, Creation, Usage: Benchmarking LLMs for Comprehensive Tool Utilization in Real-World Complex Scenarios (2401.17167)
 
@@ -75,25 +79,43 @@ ToolSword: Unveiling Safety Issues of Large Language Models in Tool Learning Acr
 
 ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval (2403.06551)
 
+Towards completeness-oriented tool retrieval for large language models
+
 AppWorld: A Controllable World of Apps and People for Benchmarking Interactive Coding Agents
+
+Metatool benchmark for large language models: Deciding whether to use tools and which to use (2310.03128)
 
 Seal-tools: Self-instruct tool learning dataset for agent tuning and detailed benchmark
 
 Identifying the risks of lm agents with an lm-emulated sandbox.
 
+m&m’s: Abenchmark to evaluate tool-use for multi-step multimodal tasks.
+
 Gta: A benchmark for general tool agents
 
 Sciagent: Tool-augmented language models for scientific reasoning
 
+Metatoolbenchmark for large language models: Deciding whether to use tools and which to use.
+
 Ctooleval: A chinese benchmark for llm-powered agent evaluation in realworld api interactions
 
-Taskbench: Benchmarking
-large language models for task automation.
+Taskbench: Benchmarking large language models for task automation.
 
-Toolsandbox: A
-stateful, conversational, interactive evaluation benchmark for llm tool use capabilities.
+Toolsandbox: A stateful, conversational, interactive evaluation benchmark for llm tool use capabilities.
+
+Injecagent: Benchmarking indirect prompt injections in toolintegrated large language model agents.
 
 ### Training
+
+**WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models (2401.13919)**
+
+ADC: Enhancing Function Calling Via Adversarial Datasets and Code Line-Level Feedback (2412.17754)
+
+Look before you leap: Towards decision-aware and generalizable tool-usage for large language models.
+
+Toolverifier: Generalization to new tools via self-verification
+
+Llms in the imaginarium: Tool learning through simulated trial and error.
 
 iTool: Boosting Tool Use of Large Language Models via Iterative
 Reinforced Fine-Tuning
@@ -122,9 +144,11 @@ Large Language Models as Tool Makers (2305.17126)
 
 ### Early
 
+**Internetaugmented language models through few-shot prompting for open-domain question answering (2203.05115)**
+
 **ViperGPT: Visual Inference via Python Execution for Reasoning (2303.08128)**
 
-
+**TaskMatrix.AI: Completing Tasks by Connecting Foundation Models with Millions of APIs (2303.16434)**
 
 TALM: Tool Augmented Language Models
 
@@ -134,9 +158,17 @@ Making Language Models Better Tool Learners with Execution Feedback
 
 ### Uncategorized
 
+Tool-lmm: A large multimodal model for tool agent learning.
+
 GPT4Tools: Teaching Large Language Model to Use Tools via Self-instruction
 
 Learning to use tools via cooperative and interactive agents.
+
+Openagi: When llm meets domain experts.
+
+A solution-based llm apiusing methodology for academic information seeking.
+
+Advancing tool-augmented large language models: Integrating insights from errors in inference trees
 
 ---
 
