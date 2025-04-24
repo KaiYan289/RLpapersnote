@@ -123,28 +123,53 @@ Rapid. Rapid api, 2023. https://rapidapi.com/
 
 **AGENTBENCH: EVALUATING LLMS AS AGENTS (2308.03688)**
 
+**An LLM compiler for parallel function calling. （2312.04511）**
+
+重要！fc complier可能和我们的CI有关。
+
 ### Training
 
 **WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models (2401.13919)**
 
-Genegpt: Augmenting large language modelswith domain tools for improved access to biomedical information.
+**Genegpt: Augmenting large language modelswith domain tools for improved access to biomedical information （2304.09667）**
 
-ADC: Enhancing Function Calling Via Adversarial Datasets and Code Line-Level Feedback (2412.17754)
+**ADC: Enhancing Function Calling Via Adversarial Datasets and Code Line-Level Feedback (2412.17754)**
 
-Look before you leap: Towards decision-aware and generalizable tool-usage for large language models.
+CodeAlpaca [3] uses 21 seed tasks and generates a 20k
+dataset via self-instruct [4], while Wizardcoder [5], MagicCoder [6], and WaveCoder [7] apply advanced heuristics and
+novel data generation processes based on open-source code
+snippets and code instruction data to enhance the complexity
+of initial code instructions
 
-Toolverifier: Generalization to new tools via self-verification
+CodeNet [23], which comprises approximately 14
+million code snippets, and POJ104 [24], a smaller dataset
+consisting of 52,000 code snippets focused on 104 algorithmic problems
 
-Llms in the imaginarium: Tool learning through simulated trial and error.
+**Efficient and scalable estimation of tool representations in vector space (2409.02141)**
 
-Mllm-tool: A multimodal large language model for tool agent learning
+**Look before you leap: Towards decision-aware and generalizable tool-usage for large language models (2402.16696)** (tooldeer)
 
-iTool: Boosting Tool Use of Large Language Models via Iterative
-Reinforced Fine-Tuning
+**Toolverifier: Generalization to new tools via self-verification（2402.14158）**
 
-Let Me Do It For You: Towards LLM Empowered Recommendation via Tool Learning (2405.15114)
+**Llms in the imaginarium: Tool learning through simulated trial and error. (2403.04746)**
 
-AnyTool: Self-Reflective, Hierarchical Agents for Large-Scale API Calls (2402.04253)
+**Mllm-tool: A multimodal large language model for tool agent learning (2401.10727)**
+
+**iTool: Boosting Tool Use of Large Language Models via Iterative Reinforced Fine-Tuning (2501.09766)**
+
+**Let Me Do It For You: Towards LLM Empowered Recommendation via Tool Learning (2405.15114)**
+
+**AnyTool: Self-Reflective, Hierarchical Agents for Large-Scale API Calls (2402.04253)**
+
+**Hammer: Robust function-calling for on-device language models via function masking (2410.04587)**
+
+重要！这个里面的内容可以参考一下。
+
+**Facilitating multiturn function calling for llms via compositional instruction tuning （2410.12952）**
+
+重要！这个里面的内容可以参考一下。
+
+Enhancing tool retrieval with iterative feedback from large language models
 
 Confucius: Iterative Tool Learning from Introspection Feedback by Easy-to-Difficult Curriculum. 
 
@@ -153,6 +178,8 @@ Magicoder: Source code is all you need.
 Hugginggpt: Solving ai tasks with chatgpt and its friends in huggingface.
 
 . Executable code actions elicit better llm agents
+
+watt-tool
 
 ### Data synthesis
 
@@ -188,6 +215,8 @@ CREATOR: Tool Creation for Disentangling Abstract and Concrete Reasoning of Larg
 Large Language Models as Tool Makers (2305.17126)
 
 Craft: Customizing llms by creating and retrieving from specialized toolsets.
+
+EASYTOOL: Enhancing LLM-based agents with concise tool instruction
 
 ### Early
 
