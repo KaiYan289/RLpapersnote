@@ -554,6 +554,10 @@ class RepeatedDataset:
 
 174. Be sure to check your config if you are using gradient checkpointing first when you got a GPU OOM error during training!
 
+175. Be very careful when you use numbers for the start of the name of a folder; be sure to check if there is any exec() that uses the folder name as a function (e.g. Berkeley function call leaderboard). Similarly, be very careful on the choice of "_" vs. "-".
+
+176. Pretrain determines the upper bound of a LLM, and RL makes the best out of the model. Do not apply too much man-made constraints in training data, especially in early training stages of LLM.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
