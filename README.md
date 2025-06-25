@@ -558,6 +558,11 @@ class RepeatedDataset:
 
 176. Pretrain determines the upper bound of a LLM, and RL makes the best out of the model. Do not apply too much man-made constraints in training data, especially in early training stages of LLM.
 
+177. There is some subtle bug with deepspeed zero with Qwen that causes nan. You might want to use FSDP instead.
+
+178. Always remember to check temperature if you are training LLM and find that its generalized result does not make sense.
+
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
