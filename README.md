@@ -562,6 +562,17 @@ class RepeatedDataset:
 
 178. Always remember to check temperature if you are training LLM and find that its generalized result does not make sense.
 
+179. Add this to the end of ~/.bash_profile if you have trouble in tmux finding conda after installing it:
+
+# If running bash
+if [ -n "$BASH_VERSION" ]; then
+    # Include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+fi 
+
+
 
 # Useful Linux Debugging Commands
 
