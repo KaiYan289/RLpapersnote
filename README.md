@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 174 Useful Tips of the Day (updated 2025.4)
+# 180 Useful Tips of the Day (updated 2025.7)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -573,6 +573,7 @@ if [ -n "$BASH_VERSION" ]; then
 fi 
 ```
 
+180. There might be a generalization gap between rendered pictures and real-life pictures by VLM.
 
 # Useful Linux Debugging Commands
 
