@@ -575,6 +575,8 @@ fi
 
 180. There might be a generalization gap between rendered pictures and real-life pictures by VLM.
 
+181. A good way to debug whether the output discrepancy (at temperature 0) is caused by bug or hardware: check logits; try to curate a very small, homogenous dataset and look at the output.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
