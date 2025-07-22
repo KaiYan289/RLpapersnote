@@ -579,6 +579,34 @@ fi
 
 182. It is always a good idea to double-check whether the distribution and aggregation of your dataset is correct especially when you are evaluating on multiple GPUs. A good way to do this is to output the total count of items.
 
+183. DO NOT train a model with flashattention but load and evaluate it and use regular SDPA attention. This could cause very large performance difference!
+
+184. How to aggregate result when using torch.distributed run:
+
+```
+torch.distributed.barrier() # can also use "with barrier_guard(before=True, after=True):""
+local_rollouts = self.collect_rollouts(iteration, is_evaluation=True)
+torch.distributed.barrier()
+all_rollouts = [None] * torch.distributed.get_world_size()
+torch.distributed.all_gather_object(all_rollouts, local_rollouts)
+if rank_zero_only(self.rank):
+    all_rollouts = list(itertools.chain.from_iterable(all_rollouts))
+    self.log_metrics(all_rollouts, is_ood_eval=True)
+```
+
+185. How to debug multi-GPU LLM job:
+     1) Follow point 181 and 182.
+     2) check if the temperature is set to 0 / do_sample is False. there could be minor difference even with these, but the performance should not be wildly different.
+     3) check point 183.
+     4) check model precision and quantization: are you using float32 or bfloat16?
+     5) check input sizes: is it too large? (e.g. too large image for vlm)?
+     6) output input token and output logits for a single data for comparison
+     7) Be very careful to check whether your result is properly aggregated across GPUs instead of showing result only from one GPU.
+     8) check padding length. This should not lead to that different performance but still worth checking.
+     9) check if your model.eval() is on.
+     10) check environment version (e.g. version of python and transformer).
+     11) A 1-2% performance difference is OK; a 5% performance difference is alarming.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
