@@ -607,6 +607,8 @@ if rank_zero_only(self.rank):
      10) check environment version (e.g. version of python and transformer).
      11) A 1-2% performance difference is OK; a 5% performance difference is alarming.
 
+186. Your git merge only works with local target branch. Make sure you have git pulled before you merge.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
