@@ -575,7 +575,9 @@ fi
 
 180. There might be a generalization gap between rendered pictures and real-life pictures by VLM.
 
-181. A good way to debug whether the output discrepancy (at temperature 0) is caused by bug or hardware: check logits and raw input token / pixel values; try to curate a very small, homogenous dataset and look at the output. Oftentimes even with temperature=0, you cannot replicate everything due to GPU / precision / different package issues / using liger. This can sometimes cause a 5% performance difference. Also, if you want to evaluate your model out of the transformer training loop, be very cautious with model.eval().
+181. A good way to debug whether the output discrepancy (at temperature 0) is caused by bug or hardware: check logits and raw input token / pixel values; try to curate a very small, homogenous dataset and look at the output. Oftentimes even with temperature=0, you cannot replicate everything due to GPU / precision / different package issues / using liger. But this usually just case 1-2% performance difference. Also, if you want to evaluate your model out of the transformer training loop, be careful if model.eval() is missing.
+
+182. It is always a good idea to double-check whether the distribution and aggregation of your dataset is correct especially when you are evaluating on multiple GPUs. A good way to do this is to output the total count of items.
 
 # Useful Linux Debugging Commands
 
