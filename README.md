@@ -609,6 +609,176 @@ if rank_zero_only(self.rank):
 
 186. Your git merge only works with local target branch. Make sure you have git pulled before you merge.
 
+187. How to build your custom evaluation over HF evaluate():
+```
+class QwenSFTTrainer(Trainer):
+    """
+    def training_step(self, model, inputs, num_items=None):
+        # Run standard training step
+        model.train()
+        inputs = self._prepare_inputs(inputs)
+
+        with self.compute_loss_context_manager():
+            loss = self.compute_loss(model, inputs)
+
+        if self.args.gradient_accumulation_steps > 1:
+            loss = loss / self.args.gradient_accumulation_steps
+
+        loss.backward()
+
+        # Log gradient stats
+        max_grad = 0.0
+        has_nan = False
+        has_inf = False
+
+        for name, param in model.named_parameters():
+            if param.grad is not None:
+                grad = param.grad
+                if torch.isnan(grad).any():
+                    print(f"[WARNING] NaN in gradients of parameter: {name}")
+                    has_nan = True
+                if torch.isinf(grad).any():
+                    print(f"[WARNING] Inf in gradients of parameter: {name}")
+                    has_inf = True
+                param_max = torch.max(torch.abs(grad)).item()
+                if param_max > max_grad:
+                    max_grad = param_max
+
+        print(f"[Max Gradient Element] {max_grad:.6f} | NaN: {has_nan} | Inf: {has_inf}")
+
+        return loss.detach()
+    """
+    def __init__(self, *args, **kwargs):
+        self.image_path = kwargs.pop("image_path", None)
+        super(QwenSFTTrainer, self).__init__(*args, **kwargs)
+        #print("args:", args)
+        #print("kwargs:", kwargs)
+        training_args = kwargs.get("args", None)
+        # print("training_Args:", training_args, "image_path:", self.image_path)
+        self.experiment_name = getattr(training_args, "experiment_name", "trained")
+        if training_args is not None:
+            self.eval_reward_data_path = getattr(training_args, "eval_reward_data_path", None)
+        else:
+            self.eval_reward_data_path = None
+        with open(self.eval_reward_data_path, "r") as f:
+            self.eval_reward_data = json.load(f)
+            # print(self.eval_reward_data_path, str(self.eval_reward_data[:100]))
+            if training_args.override_system_prompt != 'no':
+                with open(training_args.override_system_prompt, "r") as f:
+                    self.system_prompt = f.read()
+                    print("system prompt overrided!")
+            else: self.system_prompt = self.eval_reward_data['system_prompt']
+            self.eval_reward_data = self.eval_reward_data['data']# [:BS*N_GPU]
+            # assert len(self.eval_reward_data) == 256, "Error!"
+            keys = self.eval_reward_data[0].keys()
+            self.eval_reward_data = {k: [str(self.eval_reward_data[i][k]) for i in range(len(self.eval_reward_data))] for k in ['ground_truth_location', 'answer', 'user_prompt', 'partial_reward_perceive', 'type', 'image_path', 'tag']}
+            self.eval_reward_data = Dataset.from_dict(self.eval_reward_data)
+        
+
+    def evaluate(self, eval_dataset=None, ignore_keys=None, metric_key_prefix: str="eval"):
+        metrics = super().evaluate(eval_dataset, ignore_keys=ignore_keys, metric_key_prefix=metric_key_prefix)
+        
+        # Create distributed sampler for proper data sharding across GPUs
+        # Use the same pattern as HuggingFace Trainer's _get_eval_sampler
+        if self.args.local_rank != -1:  # Distributed training
+            sampler = torch.utils.data.DistributedSampler(
+                self.eval_reward_data,
+                num_replicas=self.args.world_size,
+                rank=self.args.process_index if hasattr(self.args, 'process_index') else self.args.local_rank,
+                shuffle=False,
+            )
+        else:
+            sampler = torch.utils.data.SequentialSampler(self.eval_reward_data)
+        
+        custom_eval_dataloader = DataLoader(
+            self.eval_reward_data,
+            batch_size=BS,
+            sampler=sampler,
+            collate_fn=list_data_collator,
+            drop_last=False,
+            num_workers=self.args.dataloader_num_workers,
+            pin_memory=self.args.dataloader_pin_memory,
+        )
+        
+        # For DeepSpeed, we don't need to prepare the dataloader with accelerator
+        # Just move it to the correct device if needed
+        
+        # Debug info
+        num_batches_per_gpu = len(custom_eval_dataloader)
+        if hasattr(sampler, '__len__'):
+            num_samples_per_gpu = len(sampler)
+        else:
+            num_samples_per_gpu = len(self.eval_reward_data)
+            
+        if self.args.local_rank <= 0:  # Print only from main process
+            print("Starting custom evaluation on all GPUs...")
+        
+        print(f"GPU {self.args.local_rank}: "
+              f"Full dataset size = {len(self.eval_reward_data)}, "
+              f"Samples on this GPU = {num_samples_per_gpu}, "
+              f"Batches on this GPU = {num_batches_per_gpu}")
+        
+        # Run evaluation on ALL processes (each GPU processes its shard)
+        custom_metrics = eval_reward_withCI(
+            custom_eval_dataloader, 
+            self.model, 
+            self.tokenizer, 
+            system_prompt=self.system_prompt, 
+            global_step=self.state.global_step, 
+            image_path=self.image_path, 
+            name_prefix=self.experiment_name
+        )
+        
+        # Add prefix to metrics
+        custom_metrics_prefixed = {f"{metric_key_prefix}/{k}": v for k, v in custom_metrics.items()}
+        
+        # Convert metrics to tensors and aggregate across GPUs
+        if self.args.local_rank != -1:  # Only aggregate in distributed setting
+            aggregated_metrics = {}
+            
+            for k, v in custom_metrics_prefixed.items():
+                if isinstance(v, (int, float)):
+                    # Convert to tensor on the correct device
+                    if hasattr(self.model, 'device'):
+                        device = self.model.device
+                    elif torch.cuda.is_available():
+                        device = torch.device(f'cuda:{self.args.local_rank}')
+                    else:
+                        device = torch.device('cpu')
+                        
+                    tensor_val = torch.tensor(float(v), device=device, dtype=torch.float32)
+                    
+                    # All-reduce across all processes
+                    if "count" in k.lower() or "total" in k.lower():
+                        # Sum for count/total metrics
+                        torch.distributed.all_reduce(tensor_val, op=torch.distributed.ReduceOp.SUM)
+                    else:
+                        # Average for other metrics
+                        torch.distributed.all_reduce(tensor_val, op=torch.distributed.ReduceOp.SUM)
+                        tensor_val /= self.args.world_size
+                    
+                    aggregated_metrics[k] = tensor_val.item()
+                else:
+                    # For non-numeric metrics, just use the value from rank 0
+                    aggregated_metrics[k] = v
+            
+            # Synchronize all processes
+            torch.distributed.barrier()
+            
+        else:
+            # Single GPU case
+            aggregated_metrics = custom_metrics_prefixed
+        
+        # Log only from the main process (rank 0)
+        if self.args.local_rank <= 0:
+            print("Aggregated custom metrics:", aggregated_metrics)
+            self.log(aggregated_metrics)
+        
+        # Update the main metrics dictionary
+        metrics.update(aggregated_metrics)
+        
+        return metrics
+```
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
