@@ -609,7 +609,7 @@ if rank_zero_only(self.rank):
 
 186. Your git merge only works with local target branch. Make sure you have git pulled before you merge.
 
-187. How to build your custom evaluation over HF evaluate():
+187. How to build your custom evaluation over HF evaluate(): (+deepspeed zero2)
 ```
 class QwenSFTTrainer(Trainer):
     """
