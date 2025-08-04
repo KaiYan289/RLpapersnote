@@ -128,7 +128,7 @@ However, such practice (the one datapoint method) may face the problem of **not 
     torch.backends.cudnn.deterministic = True 
     \# torch.use_deterministic_algorithms(True) use with caution; this line of code changes many behavior of program. 
     torch.backends.cudnn.benchmark = False \# CUDNN will try different methods and use an optimal one if this is set to true. This could be harmful if your input size / architecture is changing.
-    ```
+```
 
 Note: once the random seed is set anywhere in this process (regardless of which file it is in), the seed remain fixed (unless implicitly set by other libraries).
 
