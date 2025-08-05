@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 180 Useful Tips of the Day (updated 2025.7)
+# 190 Useful Tips of the Day (updated 2025.8)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -782,6 +782,141 @@ class QwenSFTTrainer(Trainer):
         
         return metrics
 ```
+
+188. Be careful with single element and list of elements in datasets. For example, you have
+
+```
+allowed = set(allowed_list)
+ds_sub = ds.filter(
+    lambda batch: [v in allowed for v in batch["label"]],
+    batched=True,
+    num_proc=4,        # adjust to CPU cores
+)
+```
+
+for num_proc>1 but 
+
+```
+ds_sub = ds.filter(lambda ex: ex["label"] in allowed)
+```
+
+for single element.
+
+189. Code for retrieving point cloud from image and mask: (remember to check whether the "default direction" is \[0, 0, 1\] or \[0, 0, -1\]!)
+
+```
+def run_custom(self, image_filename, image, masks, output_dir):
+        import math
+        import numpy as np
+        import os
+        import cv2
+        from pathlib import Path
+        import open3d as o3d
+
+        scene_pcd, depth_map_np, focal_val, extrinsic_1, intrinsic_1 = self.create_point_cloud_from_model(image) # PIL image
+        original_points = np.asarray(scene_pcd.points)
+        #print("extrinsic:", extrinsic_1)
+        R, t = extrinsic_1[0, :3, :3].cpu().numpy(), extrinsic_1[0, :3, 3].cpu().numpy()
+        camera_position = -R.T @ t
+        camera_lookat = (R.T @ np.array([[0.0], [0.0], [1.0]])).reshape(-1)
+        K = intrinsic_1[0].cpu().numpy() # The 3x3 intrinsic matrix
+        point_cloud_filepaths = []
+
+        points = np.asarray(scene_pcd.points)   # shape (N, 3)
+        colors = np.asarray(scene_pcd.colors)   # shape (N, 3)
+
+        output_pointcloud_dir = os.path.join(output_dir, "pointclouds")
+        Path(output_pointcloud_dir).mkdir(parents=True, exist_ok=True)
+
+
+        W, H = image.size
+        K_use = K.copy()
+        
+        Hm, Wm = depth_map_np.shape
+        sx, sy = W / Wm, H / Hm
+        K_use[0,0] *= sx          # fx
+        K_use[1,1] *= sy          # fy
+        K_use[0,2] *= sx          # cx
+        K_use[1,2] *= sy          # cy
+        
+        
+        print("==================")
+        for idx, mask_img in enumerate(masks):
+            mask_array = np.array(mask_img, dtype=np.uint8) # 255 * np.ones_like(mask_img, dtype=np.uint8) #
+            print(f"image size: ({W}, {H}), mask array: {mask_array.shape}, depth map: {depth_map_np.shape}")
+            if mask_array.ndim != 2: continue
+
+            if (mask_array.ndim == 2) and ((mask_array.shape[0] != H) or (mask_array.shape[1] != W)): # masks is a list of 2D array (H, W)
+                print("resizing...")
+                mask_array = cv2.resize(mask_array, (W, H), interpolation=cv2.INTER_NEAREST)
+            
+            else: print("not resizing")
+
+            p_cam = (R @ original_points.T + t[:, np.newaxis]).T
+            # Project points from camera to image coordinates
+            p_img = (K_use @ p_cam.T).T # Shape: (N, 3)
+            print("p_img:", p_img.shape, "K:", K, "K_use:", K_use, "R:", R, "t:", t)
+
+            valid_depth_indices = p_img[:, 2] > 0
+            u = p_img[valid_depth_indices, 0] / p_img[valid_depth_indices, 2]
+            v = p_img[valid_depth_indices, 1] / p_img[valid_depth_indices, 2]
+
+            # Check which points fall inside the mask
+            # Keep only points that project within the image boundaries
+
+            bounds_indices = (u >= 0) & (u < W) & (v >= 0) & (v < H)
+
+            # Get the integer pixel coordinates for valid points
+            u_int = u[bounds_indices].astype(int)
+            v_int = v[bounds_indices].astype(int)
+
+            original_valid_indices = np.where(valid_depth_indices)[0][bounds_indices]
+
+            # Look up the mask values at the projected coordinates
+            mask_values = mask_array[v_int, u_int]
+
+            # The final indices are where the mask is non-zero
+            valid_mask_indices = original_valid_indices[mask_values.astype(bool)]
+
+            if len(valid_mask_indices) == 0:
+                print(f"[WARNING] Mask {idx+1} produced no valid points, skipping.")
+                continue
+
+            masked_points = points[valid_mask_indices]
+            masked_colors = colors[valid_mask_indices]
+            if masked_points.size == 0:
+                print(f"[WARNING] No points left after indexing for mask {idx+1}, skipping.")
+                continue
+
+            masked_pcd = o3d.geometry.PointCloud()
+            masked_pcd.points = o3d.utility.Vector3dVector(masked_points)
+            masked_pcd.colors = o3d.utility.Vector3dVector(masked_colors)
+            if masked_pcd.is_empty():
+                print(f"[WARNING] Empty PCD for mask {idx+1}, skipping.")
+                continue
+
+            pointcloud_filepath = os.path.join(
+                output_pointcloud_dir,
+                f"pointcloud_{Path(image_filename).stem}_{idx}.pcd"
+            )
+
+            self.save_pointcloud(masked_pcd, pointcloud_filepath)
+            point_cloud_filepaths.append(pointcloud_filepath)
+
+        normed_pcd_filepath = os.path.join(
+            output_pointcloud_dir,
+            f"pointcloud_{Path(image_filename).stem}_whole.pcd"
+        )
+        self.save_pointcloud(scene_pcd, normed_pcd_filepath)
+
+        return camera_position, camera_lookat, normed_pcd_filepath, point_cloud_filepaths, False, depth_map_np, focal_val # canonicalized = false
+
+```
+
+190. Remember that PIL image has W, H = image.size, but it may be the reverse for the order of dimension in numpy. Be very careful when dealing with the mask.
+
+
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
