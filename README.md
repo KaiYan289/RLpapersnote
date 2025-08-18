@@ -915,7 +915,7 @@ def run_custom(self, image_filename, image, masks, output_dir):
 
 190. Remember that PIL image has W, H = image.size, but it may be the reverse for the order of dimension in numpy. Be very careful when dealing with the mask.
 
-
+191. Check for model's confidence to examine whether it is "guessing" answers on multiple choice questions.
 
 # Useful Linux Debugging Commands
 
