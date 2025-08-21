@@ -917,6 +917,14 @@ def run_custom(self, image_filename, image, masks, output_dir):
 
 191. Check for model's confidence to examine whether it is "guessing" answers on multiple choice questions.
 
+192. The way to fetch every branch from remote and track them, create local branch if it does not exist:
+
+```
+git branch -r | grep origin/ | grep -v -- '->' | sed 's|origin/||' | xargs -I{} git branch --track {} origin/{}
+```
+
+(Note the -- in grep is necessary.)
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
