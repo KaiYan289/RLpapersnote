@@ -925,6 +925,46 @@ git branch -r | grep origin/ | grep -v -- '->' | sed 's|origin/||' | xargs -I{} 
 
 (Note the -- in grep is necessary.)
 
+193. cherry-pick all non-conflict commits:
+
+```
+#!/bin/bash
+
+# Ensure you are on the correct branch before running
+# git checkout my-feature-branch
+
+# Get the list of commits in main that are not in the current branch (HEAD)
+# --reverse ensures they are processed in chronological order (oldest first)
+commits_to_pick=$(git rev-list --reverse HEAD..main)
+
+if [ -z "$commits_to_pick" ]; then
+  echo "Your branch is up to date with main. Nothing to do."
+  exit 0
+fi
+
+echo "Starting to cherry-pick commits from main..."
+
+# Loop through each commit hash
+for commit in $commits_to_pick
+do
+  echo "--------------------------------------------------------"
+  echo "Attempting to cherry-pick commit: $(git log --format='%h %s' -n 1 $commit)"
+
+  # Attempt to cherry-pick the commit.
+  # The '-n' or '--no-commit' option is not used so that successful picks are committed automatically.
+  if git cherry-pick $commit &> /dev/null; then
+    echo "✅ Successfully cherry-picked $commit"
+  else
+    echo "❌ Conflict detected on commit $commit. Skipping it."
+    # Abort the cherry-pick to reset the working directory to a clean state
+    git cherry-pick --abort
+  fi
+done
+
+echo "--------------------------------------------------------"
+echo "Process complete. All non-conflicting commits have been applied."
+```
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
