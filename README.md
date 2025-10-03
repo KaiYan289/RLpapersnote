@@ -965,6 +965,8 @@ echo "--------------------------------------------------------"
 echo "Process complete. All non-conflicting commits have been applied."
 ```
 
+194. when you are using ray, you need to check whether the worker sees the same file as the driver. This is particularly confusing if you are working on the same node.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
