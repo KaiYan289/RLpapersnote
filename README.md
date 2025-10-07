@@ -967,6 +967,19 @@ echo "Process complete. All non-conflicting commits have been applied."
 
 194. when you are using ray, you need to check whether the worker sees the same file as the driver. This is particularly confusing if you are working on the same node.
 
+195. Be careful of your GPU utilization ratio (for VLLM) when you are training LLM (e.g. with verl). If you are using smaller GPUs, you should slightly decrease this utilization ratio to make room for pytorch.
+
+196. Qwen models might meet illegal memory access issue; try to add these when running your experiments:
+
+```
+export CUDA_ENABLE_COREDUMP_ON_EXCEPTION=1
+export CUDA_COREDUMP_SHOW_PROGRESS=1
+export CUDA_COREDUMP_GENERATION_FLAGS='skip_nonrelocated_elf_images,skip_global_memory,skip_shared_memory,skip_local_memory'
+export CUDA_COREDUMP_FILE="/persistent_dir/cuda_coredump_%h.%p.%t"
+
+export VLLM_ATTENTION_BACKEND=XFORMERS # important!
+```
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
