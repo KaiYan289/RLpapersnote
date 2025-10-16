@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 190 Useful Tips of the Day (updated 2025.8)
+# 190 Useful Tips of the Day (updated 2025.10)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -979,6 +979,8 @@ export CUDA_COREDUMP_FILE="/persistent_dir/cuda_coredump_%h.%p.%t"
 
 export VLLM_ATTENTION_BACKEND=XFORMERS # important!
 ```
+
+197. be very careful when using if {data_structure}; check bool() explicitly. For example, dataproto in verl could silently be false when converted to bool, causing "if ..." to fail.
 
 # Useful Linux Debugging Commands
 
