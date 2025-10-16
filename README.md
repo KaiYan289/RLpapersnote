@@ -982,6 +982,8 @@ export VLLM_ATTENTION_BACKEND=XFORMERS # important!
 
 197. be very careful when using if {data_structure}; check bool() explicitly. For example, dataproto in verl could silently be false when converted to bool, causing "if ..." to fail.
 
+198. When you check logprob between ref model and actor, be very careful with your temperature, which could scale logprob!
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
