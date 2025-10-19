@@ -984,6 +984,26 @@ export VLLM_ATTENTION_BACKEND=XFORMERS # important!
 
 198. When you check logprob between ref model and actor, be very careful with your temperature, which could scale logprob!
 
+199. How to find indentation error in a big project:
+
+```
+from pathlib import Path
+import sys
+for p in sorted(Path('.').rglob('*.py')):
+    try:
+        compile(p.read_text(encoding='utf-8'), str(p), 'exec')
+    except IndentationError as e:
+        print(f"\nIndentationError in {p}:{e.lineno}:{e.offset or ''} -> {e.msg}")
+        # Show the bad line:
+        try:
+            line = p.read_text(encoding='utf-8').splitlines()[e.lineno-1]
+            print(f"  {line}")
+        except Exception:
+            pass
+        sys.exit(1)
+print("No IndentationError found.")
+```
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
