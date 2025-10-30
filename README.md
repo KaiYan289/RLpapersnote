@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 190 Useful Tips of the Day (updated 2025.10)
+# 201 Useful Tips of the Day (updated 2025.10)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -1002,6 +1002,39 @@ for p in sorted(Path('.').rglob('*.py')):
             pass
         sys.exit(1)
 print("No IndentationError found.")
+```
+
+201. How to implement a "conditional flag" in latex that can be used for camera-ready modifications:
+
+```
+\documentclass{article}
+\usepackage{xcolor} % 支持颜色
+\usepackage{ifthen} % 支持条件判断
+
+% 定义一个flag变量（1表示开启颜色，0表示关闭）
+\newcommand{\colorflag}{1}
+
+% 定义一个条件颜色命令
+\newcommand{\flagcolor}[2]{%
+  \ifthenelse{\equal{\colorflag}{1}}%
+    {{\color{#1}#2}}% 如果flag=1，应用颜色
+    {#2}% 如果flag=0，不变
+}
+
+\begin{document}
+
+% 示例
+这是正常文字。
+
+% flag=1 时：
+\flagcolor{red}{这是红色的文字。}
+
+% 如果在文首将 \renewcommand{\colorflag}{0}
+% 则：
+% \flagcolor{red}{这段文字将不变色。}
+
+\end{document}
+
 ```
 
 # Useful Linux Debugging Commands
