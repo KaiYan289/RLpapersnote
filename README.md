@@ -1004,7 +1004,13 @@ for p in sorted(Path('.').rglob('*.py')):
 print("No IndentationError found.")
 ```
 
-201. How to implement a "conditional flag" in latex that can be used for camera-ready modifications:
+200. If the training hangs, you could consider:
+
+1. tensor parallel and NCCL. Is it the problem of xformers / tensor parallel size with too small overhead for communication?
+
+2. Do you have the same number of forward / backward across different ranks for training?
+
+202. How to implement a "conditional flag" in latex that can be used for camera-ready modifications:
 
 ```
 \documentclass{article}
