@@ -1010,37 +1010,12 @@ print("No IndentationError found.")
 
 2. Do you have the same number of forward / backward across different ranks for training?
 
-202. How to implement a "conditional flag" in latex that can be used for camera-ready modifications:
+201. How to check which card has ECC error:
+
 
 ```
-\documentclass{article}
-\usepackage{xcolor} % 支持颜色
-\usepackage{ifthen} % 支持条件判断
-
-% 定义一个flag变量（1表示开启颜色，0表示关闭）
-\newcommand{\colorflag}{1}
-
-% 定义一个条件颜色命令
-\newcommand{\flagcolor}[2]{%
-  \ifthenelse{\equal{\colorflag}{1}}%
-    {{\color{#1}#2}}% 如果flag=1，应用颜色
-    {#2}% 如果flag=0，不变
-}
-
-\begin{document}
-
-% 示例
-这是正常文字。
-
-% flag=1 时：
-\flagcolor{red}{这是红色的文字。}
-
-% 如果在文首将 \renewcommand{\colorflag}{0}
-% 则：
-% \flagcolor{red}{这段文字将不变色。}
-
-\end{document}
-
+nvidia-smi -q -d ECC | egrep "GPU [0-9]|Single Bit|Double Bit|Uncorrectable" -n
+nvidia-smi --query-gpu=index,pci.bus_id --format=csv,noheader
 ```
 
 # Useful Linux Debugging Commands
