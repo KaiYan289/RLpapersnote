@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 201 Useful Tips of the Day (updated 2025.10)
+# 201 Useful Tips of the Day (updated 2025.12)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -1009,6 +1009,8 @@ print("No IndentationError found.")
 1. tensor parallel and NCCL. Is it the problem of xformers / tensor parallel size with too small overhead for communication?
 
 2. Do you have the same number of forward / backward across different ranks for training?
+
+specifically, for verl which hangs at NCCL version, set export NCCL_P2P_DISABLE=1 as suggested by this: https://github.com/volcengine/verl/issues/597
 
 201. How to check which card has ECC error:
 
