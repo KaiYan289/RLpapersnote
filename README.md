@@ -2,7 +2,7 @@
 
 2021/7/27 Update: The original Chinese notes can be found at readme-legacy.md; they are mainly written in 2019-2020. Current English version adds some papers, and remove several erroneous comments.
 
-# 201 Useful Tips of the Day (updated 2025.12)
+# 201 Useful Tips of the Day (updated 2026.1)
 
 1. Vanilla A2C/PPO without reward shaping/prolonged episode/ exploration skills are actually hard to deal with mountain car, as the reward is too sparse.
 
@@ -1019,6 +1019,10 @@ specifically, for verl which hangs at NCCL version, set export NCCL_P2P_DISABLE=
 nvidia-smi -q -d ECC | egrep "GPU [0-9]|Single Bit|Double Bit|Uncorrectable" -n
 nvidia-smi --query-gpu=index,pci.bus_id --format=csv,noheader
 ```
+
+202. vllm version matters with respect to performance, especially with GRPO (which has importance sampling). Incorrect version may bring spurious spikes in importance samplin ratio. Be very careful with the environment version!
+
+203. Be very careful with gradient accumulation, and think twice before deciding using token-mean vs. token-sum!
 
 # Useful Linux Debugging Commands
 
