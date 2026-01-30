@@ -1024,6 +1024,24 @@ nvidia-smi --query-gpu=index,pci.bus_id --format=csv,noheader
 
 203. Be very careful with gradient accumulation, and think twice before deciding using token-mean vs. token-sum!
 
+204. If you find that your verl training breaks due to dying actor when GPU should not be so much of an issue, try using rm -rf /tmp/ray before you start the next run.
+
+205. Be very, very, very, very careful about the pythonpath and symbol links when you set up an environment on docker on a server using virtualenv (virtualenv is more robust than venv) with troublesome space and permission limits. Always check with which python, which pip and pip show xxx (your package), and run --dry-run before installing anything that could break your current dependency. You may want to use export PYTHONNOUSERSITE=1 to avoid mixing up your docker environment with usr/.local packages. **ALWAYS THINK TWICE BEFORE YOU MODIFY PYTHONPATH.**
+
+206. If you mess up with your docker file by uninstalling the packages compiled inside it, the best way to start over is to re-download a docker (e.g. .sif file) and **not using cache**.
+
+207. When you are compiling from code, remember to wisely use --no-build-isolation and --no-deps to avoid messing up your old dependency.
+
+208. An example to install package on a server:
+
+```
+export LOGFILE=.../pip_build_$(date +%F_%H%M%S).log
+MAX_JOBS=5 pip install -vvv --no-build-isolation --no-cache-dir -e . \
+2>&1 | tee "$LOGFILE"
+```
+
+The "MAX_JOBS" is because of the memory of your GPU node. Oftentimes you need to install everything inside a GPU node, and you want to avoid OOM error.
+
 # Useful Linux Debugging Commands
 
 Checking CPU/cache config: lscpu
